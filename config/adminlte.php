@@ -348,6 +348,11 @@ return [
             'url' => '/matrizes',
             'icon' => 'fas fa-fw fa-book-open',
         ],
+        [
+            'text' => ' Turmas',
+            'url' => '/turmas',
+            'icon' => 'fas fa-fw fa-users',
+        ],
         // [
         //     'text' => 'change_password',
         //     'url' => 'admin/settings',

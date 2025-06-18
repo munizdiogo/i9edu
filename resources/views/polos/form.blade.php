@@ -207,10 +207,10 @@
             </div>
         </div>
 
-        <div class="row pb-4">
+        <div class="row pb-5">
             <div class="col-12 text-right">
-                <a href="{{ route('polos.index') }}" class="btn bg-lg btn-default">Voltar</a>
-                <button type="submit" class="btn bg-lg btn-success px-5">Salvar</button>
+                <a href="{{ route('polos.index') }}" class="btn btn-lg px-5 btn-default">Voltar</a>
+                <button type="submit" class="btn btn-lg px-5 btn-primary">Salvar</button>
             </div>
         </div>
     </form>

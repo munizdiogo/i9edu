@@ -37,7 +37,8 @@
                 <select name="status" id="status" class="form-control">
                     <option value="ATIVO" {{ old('status', $curso->status ?? '') == 'ATIVO' ? 'selected' : '' }}>ATIVO
                     </option>
-                    <option value="INATIVO" {{ old('status', $curso->status ?? '') == 'INATIVO' ? 'selected' : '' }}>INATIVO
+                    <option value="INATIVO" {{ old('status', $curso->status ?? '') == 'INATIVO' ? 'selected' : '' }}>
+                        INATIVO
                     </option>
                 </select>
             </div>
@@ -56,7 +57,8 @@
                 <select name="modalidade" id="modalidade" class="form-control">
                     @foreach(['Presencial', 'EaD', 'Híbrido'] as $m)
                         <option value="{{ $m }}" {{ old('modalidade', $curso->modalidade ?? '') == $m ? 'selected' : '' }}>
-                            {{ $m }}</option>
+                            {{ $m }}
+                        </option>
                     @endforeach
                 </select>
             </div>
@@ -74,9 +76,9 @@
     </div>
 </div>
 
-<div class="row mt-3">
+<div class="row mt-3 pb-5">
     <div class="col text-right">
-        <a href="{{ route('cursos.index') }}" class="btn btn-default">Voltar</a>
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{{ route('cursos.index') }}" class="btn btn-lg px-5 btn-default">Voltar</a>
+        <button type="submit" class="btn btn-lg px-5 btn-primary">Salvar</button>
     </div>
 </div>

@@ -101,6 +101,23 @@ class MatrizCurricularController extends Controller
             'modalidade' => 'required|in:Presencial,EaD,Híbrido',
             'inep_id' => 'nullable|string',
             'data_curriculo' => 'nullable|date',
+            'tipo_horas_atividades' => 'integer',
+            'min_hr_aula' => 'integer',
+            'creditos' => 'numeric',
+            'carga_horaria' => 'integer',
+            'ch_teorica' => 'integer',
+            // … (demais CH)
+            'media_periodo' => 'numeric',
+            'media_minima' => 'numeric',
+            'freq_periodo' => 'integer',
+            // … (demais notas)
+            'nota_minima' => 'numeric',
+            'nota_maxima' => 'numeric',
+            'prazo_em' => 'in:Anos,Semestres',
+            'prazo_inicial' => 'integer',
+            'prazo_maximo' => 'integer',
+            'periodicidade' => 'string',
+            'possivel_trancar_1periodo' => 'boolean',
             // demais validações omitidas por brevidade... assume semelhantes
         ];
 

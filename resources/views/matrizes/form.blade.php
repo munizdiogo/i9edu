@@ -51,7 +51,133 @@
     </div>
 </div>
 
-<div class="row mt-3">
-    <div class="col text-right"><a href="{{ route('matrizes.index') }}" class="btn btn-default">Voltar</a><button
-            type="submit" class="btn btn-primary">Salvar</button></div>
+{{-- Configuração de Horas --}}
+<div class="card card-info">
+  <div class="card-header"><h3 class="card-title">Configuração de Horas</h3></div>
+  <div class="card-body">
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label>Tipo Horas Atividades</label>
+        <input type="number" name="tipo_horas_atividades" class="form-control"
+               value="{{ old('tipo_horas_atividades', $matriz->tipo_horas_atividades ?? 0) }}">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Min. Hr. Aula</label>
+        <input type="number" name="min_hr_aula" class="form-control"
+               value="{{ old('min_hr_aula', $matriz->min_hr_aula ?? 0) }}">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Créditos</label>
+        <input type="number" step="0.01" name="creditos" class="form-control"
+               value="{{ old('creditos', $matriz->creditos ?? 0) }}">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Carga Horária</label>
+        <input type="number" name="carga_horaria" class="form-control"
+               value="{{ old('carga_horaria', $matriz->carga_horaria ?? 0) }}">
+      </div>
+    </div>
+    <div class="form-row">
+      @foreach(['ch_teorica','ch_presencial','ch_ativ_exigidas','ch_ativ_extensao','ch_itinerario','ch_tcc','ch_estagio','ch_pratica','ch_ead'] as $field)
+      <div class="form-group col-md-2">
+        <label>{{ strtoupper(str_replace('_',' ', $field)) }}</label>
+        <input type="number" name="{{ $field }}" class="form-control"
+               value="{{ old($field, $matriz->$field ?? 0) }}">
+      </div>
+      @endforeach
+    </div>
+  </div>
+</div>
+
+{{-- Configuração de Notas --}}
+<div class="card card-warning">
+  <div class="card-header"><h3 class="card-title">Configuração de Notas</h3></div>
+  <div class="card-body">
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label>Média Período</label>
+        <input type="number" step="0.01" name="media_periodo" class="form-control"
+               value="{{ old('media_periodo', $matriz->media_periodo ?? 5) }}">
+      </div>
+      <div class="form-group col-md-2">
+        <label>Média Mínima</label>
+        <input type="number" step="0.01" name="media_minima" class="form-control"
+               value="{{ old('media_minima', $matriz->media_minima ?? 5) }}">
+      </div>
+      <div class="form-group col-md-2">
+        <label>Frequência (%)</label>
+        <input type="number" name="freq_periodo" class="form-control"
+               value="{{ old('freq_periodo', $matriz->freq_periodo ?? 75) }}">
+      </div>
+      <div class="form-group col-md-2">
+        <label>Média Recuperação</label>
+        <input type="number" step="0.01" name="media_recuperacao" class="form-control"
+               value="{{ old('media_recuperacao', $matriz->media_recuperacao ?? 5) }}">
+      </div>
+      <div class="form-group col-md-2">
+        <label>Média Mínima Rec.</label>
+        <input type="number" step="0.01" name="media_minima_rec" class="form-control"
+               value="{{ old('media_minima_rec', $matriz->media_minima_rec ?? 5) }}">
+      </div>
+      <div class="form-group col-md-2">
+        <label>Freq. Recuperação</label>
+        <input type="text" name="freq_recuperacao" class="form-control"
+               value="{{ old('freq_recuperacao', $matriz->freq_recuperacao ?? '') }}">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label>Nota Mínima</label>
+        <input type="number" step="0.01" name="nota_minima" class="form-control"
+               value="{{ old('nota_minima', $matriz->nota_minima ?? 0) }}">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Nota Máxima</label>
+        <input type="number" step="0.01" name="nota_maxima" class="form-control"
+               value="{{ old('nota_maxima', $matriz->nota_maxima ?? 10) }}">
+      </div>
+    </div>
+  </div>
+</div>
+
+{{-- Configuração de Prazo --}}
+<div class="card card-success">
+  <div class="card-header"><h3 class="card-title">Configuração de Prazo</h3></div>
+  <div class="card-body">
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label>Prazo em</label>
+        <select name="prazo_em" class="form-control">
+          <option value="Anos"      {{ old('prazo_em',$matriz->prazo_em ?? '')=='Anos'?'selected':'' }}>Anos</option>
+          <option value="Semestres" {{ old('prazo_em',$matriz->prazo_em ?? '')=='Semestres'?'selected':'' }}>Semestres</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label>Prazo Inicial</label>
+        <input type="number" name="prazo_inicial" class="form-control"
+               value="{{ old('prazo_inicial', $matriz->prazo_inicial ?? 8) }}">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Prazo Máximo</label>
+        <input type="number" name="prazo_maximo" class="form-control"
+               value="{{ old('prazo_maximo', $matriz->prazo_maximo ?? 14) }}">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Periodicidade</label>
+        <input type="text" name="periodicidade" class="form-control"
+               value="{{ old('periodicidade', $matriz->periodicidade ?? 'Semestral') }}">
+      </div>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" name="possivel_trancar_1periodo" class="form-check-input"
+             {{ old('possivel_trancar_1periodo',$matriz->possivel_trancar_1periodo ?? false) ? 'checked':'' }}>
+      <label class="form-check-label">Possível trancar no 1º Período</label>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mt-3 pb-5">
+    <div class="col text-right"><a href="{{ route('matrizes.index') }}" class="btn btn-lg px-5 btn-default">Voltar</a><button
+            type="submit" class="btn btn-lg px-5 btn-primary">Salvar</button></div>
 </div>

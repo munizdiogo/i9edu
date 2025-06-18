@@ -234,8 +234,8 @@
 
     <div class="row">
         <div class="col-12 text-right">
-            <a href="{{ route('profiles.index') }}" class="btn btn-default">Voltar</a>
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="{{ route('profiles.index') }}" class="btn btn-lg px-5 btn-default">Voltar</a>
+            <button type="submit" class="btn btn-lg px-5 btn-primary">Salvar</button>
         </div>
     </div>
 </form>

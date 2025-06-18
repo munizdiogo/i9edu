@@ -78,10 +78,23 @@ Route::middleware('auth')->group(function () {
 // 
 // 
 // 
+
 use App\Http\Controllers\MatrizCurricularController;
 
 Route::middleware('auth')->group(function () {
     Route::get('matrizes/data', [MatrizCurricularController::class, 'data'])->name('matrizes.data');
     Route::resource('matrizes', MatrizCurricularController::class)->parameters(['matrizes' => 'matriz']);
     ;
+});
+
+
+// 
+// 
+// 
+
+use App\Http\Controllers\TurmaController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('turmas/data', [TurmaController::class, 'data'])->name('turmas.data');
+    Route::resource('turmas', TurmaController::class);
 });
