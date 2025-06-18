@@ -1,26 +1,32 @@
 @extends('adminlte::page')
 
-@section('title', 'Turmas')
+@section('title', 'Períodos Letivos')
+
 @section('content_header')
-    <h1 class="d-inline">Turmas</h1>
-    <a href="{{ route('turmas.create') }}" class="btn btn-success float-right">Nova Turma</a>
+    <h1 class="d-inline">Períodos Letivos</h1>
+    <a href="{{ route('periodos.create') }}" class="btn btn-success float-right">
+        Novo Período
+    </a>
 @endsection
+
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap4.min.css">
 @endsection
+
 @section('content')
     <div class="card">
         <div class="card-body p-0">
-            <table id="turmas-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+            <table id="periodos-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nome</th>
-                        <th>Matriz</th>
-                        <th>Período</th>
-                        <th>Status</th>
+                        <th>Descrição</th>
+                        <th>Início</th>
+                        <th>Término</th>
+                        <th>Ano</th>
+                        <th>Situação</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -29,6 +35,7 @@
         </div>
     </div>
 @endsection
+
 @section('js')
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
@@ -43,23 +50,29 @@
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
+
     <script>
         $(function () {
-            $('#turmas-table').DataTable({
-                processing: true, serverSide: true,
-                ajax: '{{ route("turmas.data") }}',
+            $('#periodos-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route("periodos.data") }}',
                 columns: [
                     { data: 'id' },
-                    { data: 'nome' },
-                    { data: 'matriz' },
-                    { data: 'periodo' },
-                    { data: 'status' },
+                    { data: 'descricao' },
+                    { data: 'data_inicio' },
+                    { data: 'data_termino' },
+                    { data: 'ano' },
+                    { data: 'situacao' },
                     { data: 'actions', orderable: false, searchable: false }
                 ],
-                dom: 'lBfrtip', buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 'colvis'],
-                responsive: true, autoWidth: false,
+                dom: 'lBfrtip',
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 'colvis'],
+                responsive: true,
+                autoWidth: false,
                 language: { url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json' },
-                pageLength: 10, lengthMenu: [[10, 25, 50, -1], ['10', '25', '50', 'Todos']]
+                pageLength: 10,
+                lengthMenu: [[10, 25, 50, -1], ['10', '25', '50', 'Todos']]
             });
         });
     </script>

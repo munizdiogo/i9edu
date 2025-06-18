@@ -98,3 +98,17 @@ Route::middleware('auth')->group(function () {
     Route::get('turmas/data', [TurmaController::class, 'data'])->name('turmas.data');
     Route::resource('turmas', TurmaController::class);
 });
+
+
+
+// 
+// 
+// 
+
+
+use App\Http\Controllers\PeriodoLetivoController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('periodos/data', [PeriodoLetivoController::class, 'data'])->name('periodos.data');
+    Route::resource('periodos', PeriodoLetivoController::class);
+});

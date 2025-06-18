@@ -353,6 +353,11 @@ return [
             'url' => '/turmas',
             'icon' => 'fas fa-fw fa-users',
         ],
+        [
+            'text' => ' Períodos Letivos',
+            'url' => '/periodos',
+            'icon' => 'fas fa-fw fa-users',
+        ],
         // [
         //     'text' => 'change_password',
         //     'url' => 'admin/settings',

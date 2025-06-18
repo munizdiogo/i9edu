@@ -12,6 +12,7 @@ class TurmaController extends Controller
 {
     public function index()
     {
+
         return view('turmas.index');
     }
 
@@ -72,7 +73,42 @@ class TurmaController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $data = $this->validateData($request);
+        Turma::create($data);
+        return redirect()->route('turmas.index')->with('success', 'Turma criada!');
+    }
+
+    public function show(Turma $turma)
+    {
+        return view('turmas.show', compact('turma'));
+    }
+
+    public function edit(Turma $turma)
+    {
+        $matrizes = MatrizCurricular::all();
+        $periodos = PeriodoLetivo::all();
+        $polos = Polo::all();
+        $professores = Profile::all();
+        return view('turmas.edit', compact('turma', 'matrizes', 'periodos', 'polos', 'professores'));
+    }
+
+    public function update(Request $request, Turma $turma)
+    {
+        $data = $request->validate([/* mesmas regras de store */]);
+        $turma->update($data);
+        return redirect()->route('turmas.index')->with('success', 'Turma atualizada!');
+    }
+
+    public function destroy(Turma $turma)
+    {
+        $turma->delete();
+        return redirect()->route('turmas.index')->with('success', 'Turma removida.');
+    }
+
+
+    protected function validateData(Request $request, $id = null)
+    {
+        $rules = [
             'matriz_curricular_id' => 'required|exists:matrizes_curriculares,id',
             'periodo_letivo_id' => 'required|exists:periodos_letivos,id',
             'nome' => 'required|string|max:255',
@@ -104,35 +140,9 @@ class TurmaController extends Controller
             'acesso_biblioteca' => 'boolean',
             'acesso_blackboard' => 'boolean',
             'atendimento_online' => 'boolean',
-        ]);
-        Turma::create($data);
-        return redirect()->route('turmas.index')->with('success', 'Turma criada!');
-    }
+        ];
 
-    public function show(Turma $turma)
-    {
-        return view('turmas.show', compact('turma'));
-    }
 
-    public function edit(Turma $turma)
-    {
-        $matrizes = MatrizCurricular::all();
-        $periodos = PeriodoLetivo::all();
-        $polos = Polo::all();
-        $professores = Profile::all();
-        return view('turmas.edit', compact('turma', 'matrizes', 'periodos', 'polos', 'professores'));
-    }
-
-    public function update(Request $request, Turma $turma)
-    {
-        $data = $request->validate([/* mesmas regras de store */]);
-        $turma->update($data);
-        return redirect()->route('turmas.index')->with('success', 'Turma atualizada!');
-    }
-
-    public function destroy(Turma $turma)
-    {
-        $turma->delete();
-        return redirect()->route('turmas.index')->with('success', 'Turma removida.');
+        return $request->validate($rules);
     }
 }
