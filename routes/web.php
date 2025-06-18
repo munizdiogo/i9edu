@@ -33,3 +33,15 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+// 
+// 
+// 
+
+
+use App\Http\Controllers\ProfileController;
+
+Route::middleware('auth')->group(function () {
+    Route::resource('profiles', ProfileController::class);
+});
