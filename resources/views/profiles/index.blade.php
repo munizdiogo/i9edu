@@ -18,13 +18,14 @@
 @endsection
 
 @section('content')
-    <div class="card">
+    <div class="card p-4">
         <div class="card-body p-0">
             <table id="profiles-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Tipo</th>
+                        <th>CPF/CNPJ</th>
                         <th>Nome/Razão</th>
                         <th>Email</th>
                         <th>Ações</th>
@@ -65,6 +66,7 @@
                 columns: [
                     { data: 'id' },
                     { data: 'type' },
+                    { data: 'cpf' },
                     { data: 'name' },
                     { data: 'email' },
                     { data: 'actions', orderable: false, searchable: false },

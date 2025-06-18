@@ -120,7 +120,7 @@ class ProfileController extends Controller
 
     public function data(Request $request)
     {
-        $columns = ['id', 'type', 'name', 'email'];
+        $columns = ['id', 'type', 'cpf', 'name', 'email'];
         $total = Profile::count();
 
         $query = Profile::query();
@@ -130,6 +130,7 @@ class ProfileController extends Controller
             $query->where(function ($q) use ($search) {
                 $q->where('email', 'like', "%{$search}%")
                     ->orWhere('nome', 'like', "%{$search}%")
+                    ->orWhere('cpf', 'like', "%{$search}%")
                     ->orWhere('sobrenome', 'like', "%{$search}%")
                     ->orWhere('razao_social', 'like', "%{$search}%");
             });
@@ -153,6 +154,7 @@ class ProfileController extends Controller
             return [
                 'id' => $p->id,
                 'type' => $p->type == 'fisica' ? 'Física' : 'Jurídica',
+                'cpf' => $p->type == 'fisica' ? $p->cpf : $p->cnpj,
                 'name' => $p->type == 'fisica'
                     ? "{$p->nome} {$p->sobrenome}"
                     : $p->razao_social,
