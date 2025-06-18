@@ -44,6 +44,6 @@
 
 @section('auth_footer')
     <p class="mb-1">
-        <a href="#">Esqueci minha senha</a>
+        <a href="{{ route('password.request') }}">Esqueci minha senha</a>
     </p>
 @endsection
