@@ -43,5 +43,7 @@ Route::middleware('auth')->group(function () {
 use App\Http\Controllers\ProfileController;
 
 Route::middleware('auth')->group(function () {
-    Route::resource('profiles', ProfileController::class);
+    Route::get('profiles/data', [App\Http\Controllers\ProfileController::class, 'data'])
+        ->name('profiles.data');
+    Route::resource('profiles', App\Http\Controllers\ProfileController::class);
 });

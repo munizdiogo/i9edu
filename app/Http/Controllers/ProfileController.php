@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -115,5 +116,56 @@ class ProfileController extends Controller
 
 
         return $request->validate($rules);
+    }
+
+    public function data(Request $request)
+    {
+        $columns = ['id', 'type', 'name', 'email'];
+        $total = Profile::count();
+
+        $query = Profile::query();
+
+        // search
+        if ($search = $request->input('search.value')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('email', 'like', "%{$search}%")
+                    ->orWhere('nome', 'like', "%{$search}%")
+                    ->orWhere('sobrenome', 'like', "%{$search}%")
+                    ->orWhere('razao_social', 'like', "%{$search}%");
+            });
+        }
+        $filtered = $query->count();
+
+        // ordering
+        if (($order = $request->input('order.0'))) {
+            $col = $columns[$order['column']];
+            $dir = $order['dir'];
+            $query->orderBy($col, $dir);
+        }
+
+        // paging
+        $start = $request->input('start', 0);
+        $length = $request->input('length', 10);
+        $profiles = $query->skip($start)->take($length)->get();
+
+        // prepare data
+        $data = $profiles->map(function ($p) {
+            return [
+                'id' => $p->id,
+                'type' => $p->type == 'fisica' ? 'Física' : 'Jurídica',
+                'name' => $p->type == 'fisica'
+                    ? "{$p->nome} {$p->sobrenome}"
+                    : $p->razao_social,
+                'email' => $p->email,
+                'actions' => view('profiles.partials.actions', compact('p'))->render(),
+            ];
+        });
+
+        return response()->json([
+            'draw' => intval($request->input('draw')),
+            'recordsTotal' => $total,
+            'recordsFiltered' => $filtered,
+            'data' => $data,
+        ]);
     }
 }
