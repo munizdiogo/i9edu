@@ -73,3 +73,15 @@ Route::middleware('auth')->group(function () {
     Route::get('cursos/data', [CursoController::class, 'data'])->name('cursos.data');
     Route::resource('cursos', CursoController::class);
 });
+
+
+// 
+// 
+// 
+use App\Http\Controllers\MatrizCurricularController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('matrizes/data', [MatrizCurricularController::class, 'data'])->name('matrizes.data');
+    Route::resource('matrizes', MatrizCurricularController::class)->parameters(['matrizes' => 'matriz']);
+    ;
+});

@@ -343,6 +343,11 @@ return [
             'url' => '/cursos',
             'icon' => 'fas fa-fw fa-book',
         ],
+        [
+            'text' => ' Matrizes Curriculares',
+            'url' => '/matrizes',
+            'icon' => 'fas fa-fw fa-book-open',
+        ],
         // [
         //     'text' => 'change_password',
         //     'url' => 'admin/settings',
