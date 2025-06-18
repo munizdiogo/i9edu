@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PoloController;
 
 Route::middleware('guest')->group(function () {
     // Registro
@@ -46,4 +47,16 @@ Route::middleware('auth')->group(function () {
     Route::get('profiles/data', [App\Http\Controllers\ProfileController::class, 'data'])
         ->name('profiles.data');
     Route::resource('profiles', App\Http\Controllers\ProfileController::class);
+});
+
+
+
+// 
+// 
+// 
+
+Route::middleware('auth')->group(function () {
+    // endpoint AJAX para o DataTable
+    Route::get('polos/data', [PoloController::class, 'data'])->name('polos.data');
+    Route::resource('polos', PoloController::class);
 });

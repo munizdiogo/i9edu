@@ -333,6 +333,11 @@ return [
             'url' => '/profiles',
             'icon' => 'fas fa-fw fa-user',
         ],
+        [
+            'text' => ' Polos',
+            'url' => '/polos',
+            'icon' => 'fas fa-fw fa-building',
+        ],
         // [
         //     'text' => 'change_password',
         //     'url' => 'admin/settings',
