@@ -80,7 +80,11 @@ class TurmaController extends Controller
 
     public function show(Turma $turma)
     {
-        return view('turmas.show', compact('turma'));
+        $matrizes = MatrizCurricular::all();
+        $periodos = PeriodoLetivo::all();
+        $polos = Polo::all();
+        $professores = Profile::all();
+        return view('turmas.show', compact('turma', 'matrizes', 'periodos', 'polos', 'professores'));
     }
 
     public function edit(Turma $turma)
@@ -89,12 +93,13 @@ class TurmaController extends Controller
         $periodos = PeriodoLetivo::all();
         $polos = Polo::all();
         $professores = Profile::all();
+
         return view('turmas.edit', compact('turma', 'matrizes', 'periodos', 'polos', 'professores'));
     }
 
     public function update(Request $request, Turma $turma)
     {
-        $data = $request->validate([/* mesmas regras de store */]);
+        $data = $this->validateData($request);
         $turma->update($data);
         return redirect()->route('turmas.index')->with('success', 'Turma atualizada!');
     }

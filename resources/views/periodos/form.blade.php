@@ -1,4 +1,4 @@
-<div class="card card-primary">
+<div class="card card-primary p-2">
   <div class="card-header"><h3 class="card-title">Dados do Período Letivo</h3></div>
   <div class="card-body">
     <div class="form-row">

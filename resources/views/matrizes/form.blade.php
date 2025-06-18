@@ -1,5 +1,5 @@
 {{-- Partial form fields --}}
-<div class="card card-primary">
+<div class="card card-primary p-2">
     <div class="card-header">
         <h3 class="card-title">Dados da Matriz Curricular</h3>
     </div>
@@ -52,7 +52,7 @@
 </div>
 
 {{-- Configuração de Horas --}}
-<div class="card card-info">
+<div class="card card-info p-2">
   <div class="card-header"><h3 class="card-title">Configuração de Horas</h3></div>
   <div class="card-body">
     <div class="form-row">
@@ -90,7 +90,7 @@
 </div>
 
 {{-- Configuração de Notas --}}
-<div class="card card-warning">
+<div class="card card-warning p-2">
   <div class="card-header"><h3 class="card-title">Configuração de Notas</h3></div>
   <div class="card-body">
     <div class="form-row">
@@ -141,7 +141,7 @@
 </div>
 
 {{-- Configuração de Prazo --}}
-<div class="card card-success">
+<div class="card card-success p-2">
   <div class="card-header"><h3 class="card-title">Configuração de Prazo</h3></div>
   <div class="card-body">
     <div class="form-row">
@@ -178,6 +178,8 @@
 
 
 <div class="row mt-3 pb-5">
-    <div class="col text-right"><a href="{{ route('matrizes.index') }}" class="btn btn-lg px-5 btn-default">Voltar</a><button
-            type="submit" class="btn btn-lg px-5 btn-primary">Salvar</button></div>
+    <div class="col text-right">
+      <a href="{{ route('matrizes.index') }}" class="btn btn-lg px-5 btn-default">Voltar</a>
+      <button type="submit" class="btn btn-lg px-5 btn-primary">Salvar</button>
+    </div>
 </div>

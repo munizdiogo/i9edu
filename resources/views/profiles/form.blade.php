@@ -7,7 +7,7 @@
     @csrf
     @if(isset($profile)) @method('PUT') @endif
 
-    <div class="card card-primary">
+    <div class="card card-primary p-2">
         <div class="card-header">
             <h3 class="card-title">Dados Pessoais</h3>
         </div>
@@ -158,7 +158,7 @@
     </div>
 
     {{-- Endereço Principal --}}
-    <div class="card card-secondary">
+    <div class="card card-secondary p-2">
         <div class="card-header">
             <h3 class="card-title">Endereço Principal</h3>
         </div>
@@ -200,7 +200,7 @@
     </div>
 
     {{-- Contato --}}
-    <div class="card card-info">
+    <div class="card card-info p-2">
         <div class="card-header">
             <h3 class="card-title">Contato</h3>
         </div>

@@ -2,7 +2,7 @@
     $turnos = ['Manhã', 'Tarde', 'Noite', 'EaD', 'Integral'];
 @endphp
 
-<div class="card card-primary">
+<div class="card card-primary p-2">
     <div class="card-header">
         <h3 class="card-title">Principal</h3>
     </div>
@@ -17,9 +17,9 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-4"><label>Matriz*</label><select name="matriz_curricular_id"
-                    class="form-control" required>@foreach($matrizes as $m)<option value="{{$m->id}}"
-                        {{old('matriz_curricular_id', $turma->matriz_curricular_id ?? '') == $m->id ? 'selected' : ''}}>
-                        {{$m->nome}}
+                    class="form-control" required>@foreach($matrizes as $matriz)<option value="{{$matriz->id}}"
+                        {{old('matriz_curricular_id', $turma->matriz_curricular_id ?? '') == $matriz->id ? 'selected' : ''}}>
+                        {{$matriz->nome}}
                     </option>@endforeach</select></div>
             <div class="form-group col-md-4"><label>Período Letivo*</label><select name="periodo_letivo_id"
                     class="form-control" required>@foreach($periodos as $p)<option value="{{$p->id}}"
@@ -62,7 +62,7 @@
     </div>
 </div>
 
-<div class="card card-info">
+<div class="card card-dark p-2">
     <div class="card-header">
         <h3 class="card-title">Configuração de Notas</h3>
     </div>
@@ -98,7 +98,7 @@
     </div>
 </div>
 
-<div class="card card-warning">
+<div class="card card-dark p-2">
     <div class="card-header">
         <h3 class="card-title">Info. Complementares</h3>
     </div>
@@ -138,6 +138,7 @@
 </div>
 
 <div class="row mt-3">
-    <div class="col text-right"><a href="{{ route('turmas.index') }}" class="btn btn-default">Voltar</a><button
-            type="submit" class="btn btn-primary">Salvar</button></div>
+    <div class="col text-right">
+        <a href="{{ route('turmas.index') }}" class="btn btn-default">Voltar</a>
+        <button type="submit" class="btn btn-primary">Salvar</button></div>
 </div>

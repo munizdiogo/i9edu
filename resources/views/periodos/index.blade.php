@@ -16,7 +16,7 @@
 @endsection
 
 @section('content')
-    <div class="card">
+    <div class="card p-4">
         <div class="card-body p-0">
             <table id="periodos-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                 <thead>

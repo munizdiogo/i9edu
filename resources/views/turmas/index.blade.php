@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap4.min.css">
 @endsection
 @section('content')
-    <div class="card">
+    <div class="card p-4">
         <div class="card-body p-0">
             <table id="turmas-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                 <thead>
