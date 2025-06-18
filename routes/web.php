@@ -60,3 +60,16 @@ Route::middleware('auth')->group(function () {
     Route::get('polos/data', [PoloController::class, 'data'])->name('polos.data');
     Route::resource('polos', PoloController::class);
 });
+
+
+
+// 
+// 
+// 
+
+use App\Http\Controllers\CursoController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('cursos/data', [CursoController::class, 'data'])->name('cursos.data');
+    Route::resource('cursos', CursoController::class);
+});

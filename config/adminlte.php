@@ -338,6 +338,11 @@ return [
             'url' => '/polos',
             'icon' => 'fas fa-fw fa-building',
         ],
+        [
+            'text' => ' Cursos',
+            'url' => '/cursos',
+            'icon' => 'fas fa-fw fa-book',
+        ],
         // [
         //     'text' => 'change_password',
         //     'url' => 'admin/settings',
