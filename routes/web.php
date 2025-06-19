@@ -101,3 +101,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('alunos', AlunoController::class);
     ;
 });
+
+
+// Aluno Curso Admissão
+use App\Http\Controllers\AlunoCursoAdmissaoController as AdmissaoController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('admissoes/data', [AdmissaoController::class, 'data'])->name('admissoes.data');
+    Route::resource('admissoes', AdmissaoController::class);
+});
