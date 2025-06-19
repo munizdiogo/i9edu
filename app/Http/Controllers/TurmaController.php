@@ -5,7 +5,7 @@ use App\Models\Turma;
 use App\Models\MatrizCurricular;
 use App\Models\PeriodoLetivo;
 use App\Models\Polo;
-use App\Models\Profile;
+use App\Models\Perfil;
 use Illuminate\Http\Request;
 
 class TurmaController extends Controller
@@ -67,7 +67,7 @@ class TurmaController extends Controller
         $matrizes = MatrizCurricular::all();
         $periodos = PeriodoLetivo::all();
         $polos = Polo::all();
-        $professores = Profile::all();
+        $professores = Perfil::all();
         return view('turmas.create', compact('matrizes', 'periodos', 'polos', 'professores'));
     }
 
@@ -83,7 +83,7 @@ class TurmaController extends Controller
         $matrizes = MatrizCurricular::all();
         $periodos = PeriodoLetivo::all();
         $polos = Polo::all();
-        $professores = Profile::all();
+        $professores = Perfil::all();
         return view('turmas.show', compact('turma', 'matrizes', 'periodos', 'polos', 'professores'));
     }
 
@@ -92,7 +92,7 @@ class TurmaController extends Controller
         $matrizes = MatrizCurricular::all();
         $periodos = PeriodoLetivo::all();
         $polos = Polo::all();
-        $professores = Profile::all();
+        $professores = Perfil::all();
 
         return view('turmas.edit', compact('turma', 'matrizes', 'periodos', 'polos', 'professores'));
     }
@@ -136,7 +136,7 @@ class TurmaController extends Controller
             'formato_venda' => 'nullable|string',
             'inep_id' => 'nullable|string',
             'seguro_escolar' => 'nullable|string',
-            'professor_responsavel_id' => 'nullable|exists:profiles,id',
+            'professor_responsavel_id' => 'nullable|exists:perfis,id',
             'fech_diario' => 'nullable|date',
             'data_limite_matriculas' => 'nullable|date',
             'data_abono_faltas' => 'nullable|date',

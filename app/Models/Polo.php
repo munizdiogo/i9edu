@@ -41,15 +41,15 @@ class Polo extends Model
 
     public function gestor()
     {
-        return $this->belongsTo(Profile::class, 'gestor_id');
+        return $this->belongsTo(Perfil::class, 'gestor_id');
     }
     public function gestorFaturamento()
     {
-        return $this->belongsTo(Profile::class, 'gestor_faturamento_id');
+        return $this->belongsTo(Perfil::class, 'gestor_faturamento_id');
     }
     public function supervisor()
     {
-        return $this->belongsTo(Profile::class, 'supervisor_id');
+        return $this->belongsTo(Perfil::class, 'supervisor_id');
     }
 
 }

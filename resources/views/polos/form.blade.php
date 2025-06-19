@@ -174,9 +174,9 @@
                         <label for="gestor_id">Gestor</label>
                         <select id="gestor_id" name="gestor_id" class="form-control">
                             <option value="">-- selecione --</option>
-                            @foreach($profiles as $profile)
-                                <option value="{{ $profile->id }}" {{ old('gestor_id', $polo->gestor_id ?? '') == $profile->id ? 'selected' : '' }}>
-                                    {{ $profile->nome }} {{ $profile->sobrenome }}
+                            @foreach($perfis as $perfil)
+                                <option value="{{ $perfil->id }}" {{ old('gestor_id', $polo->gestor_id ?? '') == $perfil->id ? 'selected' : '' }}>
+                                    {{ $perfil->nome }} {{ $perfil->sobrenome }}
                                 </option>
                             @endforeach
                         </select>
@@ -185,9 +185,9 @@
                         <label for="gestor_faturamento_id">Gestor Faturamento</label>
                         <select id="gestor_faturamento_id" name="gestor_faturamento_id" class="form-control">
                             <option value="">-- selecione --</option>
-                            @foreach($profiles as $profile)
-                                <option value="{{ $profile->id }}" {{ old('gestor_faturamento_id', $polo->gestor_faturamento_id ?? '') == $profile->id ? 'selected' : '' }}>
-                                    {{ $profile->nome }} {{ $profile->sobrenome }}
+                            @foreach($perfis as $perfil)
+                                <option value="{{ $perfil->id }}" {{ old('gestor_faturamento_id', $polo->gestor_faturamento_id ?? '') == $perfil->id ? 'selected' : '' }}>
+                                    {{ $perfil->nome }} {{ $perfil->sobrenome }}
                                 </option>
                             @endforeach
                         </select>
@@ -196,9 +196,9 @@
                         <label for="supervisor_id">Supervisor</label>
                         <select id="supervisor_id" name="supervisor_id" class="form-control">
                             <option value="">-- selecione --</option>
-                            @foreach($profiles as $profile)
-                                <option value="{{ $profile->id }}" {{ old('supervisor_id', $polo->supervisor_id ?? '') == $profile->id ? 'selected' : '' }}>
-                                    {{ $profile->nome }} {{ $profile->sobrenome }}
+                            @foreach($perfis as $perfil)
+                                <option value="{{ $perfil->id }}" {{ old('supervisor_id', $polo->supervisor_id ?? '') == $perfil->id ? 'selected' : '' }}>
+                                    {{ $perfil->nome }} {{ $perfil->sobrenome }}
                                 </option>
                             @endforeach
                         </select>

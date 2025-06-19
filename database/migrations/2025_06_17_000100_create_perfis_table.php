@@ -4,15 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProfilesTable extends Migration
+class CreatePerfisTable extends Migration
 {
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('perfis', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             // Tipo de perfil
-            $table->enum('type', ['fisica', 'juridica']);
+            $table->enum('tipo_cadastro', ['fisica', 'juridica']);
 
             // Campos Pessoa Física
             $table->string('nome')->nullable();
@@ -36,7 +36,7 @@ class CreateProfilesTable extends Migration
 
             // Campos comuns
             $table->string('email')->unique();
-            $table->enum('profile_role', ['aluno', 'docente', 'tecnico', 'parceiro', 'outro'])->default('aluno');
+            $table->enum('tipo_perfil', ['aluno', 'docente', 'tecnico', 'parceiro', 'outro'])->default('aluno');
             $table->string('photo_url')->nullable();
 
             // Endereço
@@ -60,7 +60,7 @@ class CreateProfilesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('perfis');
     }
 }
 

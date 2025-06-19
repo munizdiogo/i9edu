@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
+use App\Models\Perfil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class ProfileController extends Controller
+class PerfilController extends Controller
 {
     public function index()
     {
-        $profiles = Profile::latest()->paginate(15);
-        return view('profiles.index', compact('profiles'));
+        $perfis = Perfil::latest()->paginate(15);
+        return view('perfis.index', compact('perfis'));
     }
 
     public function create()
     {
-        return view('profiles.create');
+        return view('perfis.create');
     }
 
     public function store(Request $request)
@@ -26,55 +26,55 @@ class ProfileController extends Controller
 
         // Tratamento de upload de foto
         if ($request->hasFile('photo')) {
-            $data['photo_url'] = $request->file('photo')->store('profiles', 'public');
+            $data['photo_url'] = $request->file('photo')->store('perfis', 'public');
         }
 
-        Profile::create($data);
-        return redirect()->route('profiles.index')->with('success', 'Perfil criado com sucesso!');
+        Perfil::create($data);
+        return redirect()->route('perfis.index')->with('success', 'Perfil criado com sucesso!');
     }
 
-    public function show(Profile $profile)
+    public function show(Perfil $perfil)
     {
-        return view('profiles.show', compact('profile'));
+        return view('perfis.show', compact('perfil'));
     }
 
-    public function edit(Profile $profile)
+    public function edit(Perfil $perfil)
     {
-        return view('profiles.edit', compact('profile'));
+        return view('perfis.edit', compact('perfil'));
     }
 
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request, Perfil $perfil)
     {
-        $data = $this->validateData($request, $profile->id);
+        $data = $this->validateData($request, $perfil->id);
 
         if ($request->hasFile('photo')) {
             // Deleta foto antiga
-            if ($profile->photo_url) {
-                Storage::disk('public')->delete($profile->photo_url);
+            if ($perfil->photo_url) {
+                Storage::disk('public')->delete($perfil->photo_url);
             }
-            $data['photo_url'] = $request->file('photo')->store('profiles', 'public');
+            $data['photo_url'] = $request->file('photo')->store('perfis', 'public');
         }
 
-        $profile->update($data);
-        return redirect()->route('profiles.index')->with('success', 'Perfil atualizado com sucesso!');
+        $perfil->update($data);
+        return redirect()->route('perfis.index')->with('success', 'Perfil atualizado com sucesso!');
     }
 
-    public function destroy(Profile $profile)
+    public function destroy(Perfil $perfil)
     {
-        if ($profile->photo_url) {
-            Storage::disk('public')->delete($profile->photo_url);
+        if ($perfil->photo_url) {
+            Storage::disk('public')->delete($perfil->photo_url);
         }
-        $profile->delete();
-        return redirect()->route('profiles.index')->with('success', 'Perfil removido.');
+        $perfil->delete();
+        return redirect()->route('perfis.index')->with('success', 'Perfil removido.');
     }
 
     protected function validateData(Request $request, $id = null)
     {
-        $uniqueEmail = 'unique:profiles,email' . ($id ? ",$id" : '');
+        $uniqueEmail = 'unique:perfis,email' . ($id ? ",$id" : '');
         $rules = [
-            'type' => 'required|in:fisica,juridica',
+            'tipo_cadastro' => 'required|in:fisica,juridica',
             'email' => "required|email|$uniqueEmail",
-            // 'profile_role' => 'required|in:aluno,docente,tecnico,parceiro,outro',
+            // 'tipo_perfil' => 'required|in:aluno,docente,tecnico,parceiro,outro',
             'photo' => 'nullable|image|max:2048',
             'logradouro' => 'nullable|string',
             'numero' => 'nullable|string',
@@ -89,8 +89,8 @@ class ProfileController extends Controller
             'fone_comercial' => 'nullable|string',
         ];
 
-        if ($request->type === 'fisica') {
-            $uniqueCpf = 'unique:profiles,cpf' . ($id ? ",$id" : '');
+        if ($request->tipo_cadastro === 'fisica') {
+            $uniqueCpf = 'unique:perfis,cpf' . ($id ? ",$id" : '');
             $rules += [
                 'nome' => 'required|string|max:255',
                 'sobrenome' => 'required|string|max:255',
@@ -104,7 +104,7 @@ class ProfileController extends Controller
                 'estado_civil' => 'nullable|in:solteiro,casado,divorciado',
             ];
         } else {
-            $uniqueCnpj = 'unique:profiles,cnpj' . ($id ? ",$id" : '');
+            $uniqueCnpj = 'unique:perfis,cnpj' . ($id ? ",$id" : '');
             $rules += [
                 'razao_social' => 'required|string|max:255',
                 'nome_fantasia' => 'required|string|max:255',
@@ -120,10 +120,10 @@ class ProfileController extends Controller
 
     public function data(Request $request)
     {
-        $columns = ['id', 'type', 'cpf', 'name', 'email'];
-        $total = Profile::count();
+        $columns = ['id', 'tipo_cadastro', 'cpf', 'name', 'email'];
+        $total = Perfil::count();
 
-        $query = Profile::query();
+        $query = Perfil::query();
 
         // search
         if ($search = $request->input('search.value')) {
@@ -147,19 +147,19 @@ class ProfileController extends Controller
         // paging
         $start = $request->input('start', 0);
         $length = $request->input('length', 10);
-        $profiles = $query->skip($start)->take($length)->get();
+        $perfis = $query->skip($start)->take($length)->get();
 
         // prepare data
-        $data = $profiles->map(function ($p) {
+        $data = $perfis->map(function ($p) {
             return [
                 'id' => $p->id,
-                'type' => $p->type == 'fisica' ? 'Física' : 'Jurídica',
-                'cpf' => $p->type == 'fisica' ? $p->cpf : $p->cnpj,
-                'name' => $p->type == 'fisica'
+                'tipo_cadastro' => $p->tipo_cadastro == 'fisica' ? 'Física' : 'Jurídica',
+                'cpf' => $p->tipo_cadastro == 'fisica' ? $p->cpf : $p->cnpj,
+                'name' => $p->tipo_cadastro == 'fisica'
                     ? "{$p->nome} {$p->sobrenome}"
                     : $p->razao_social,
                 'email' => $p->email,
-                'actions' => view('profiles.partials.actions', compact('p'))->render(),
+                'actions' => view('perfis.partials.actions', compact('p'))->render(),
             ];
         });
 

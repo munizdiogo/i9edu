@@ -41,12 +41,13 @@ Route::middleware('auth')->group(function () {
 // 
 
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PerfilController;
 
 Route::middleware('auth')->group(function () {
-    Route::get('profiles/data', [App\Http\Controllers\ProfileController::class, 'data'])
-        ->name('profiles.data');
-    Route::resource('profiles', App\Http\Controllers\ProfileController::class);
+    Route::get('perfis/data', [PerfilController::class, 'data'])
+        ->name('perfis.data');
+    Route::resource('perfis', PerfilController::class)->parameters(['perfis' => 'perfil']);
+    ;
 });
 
 

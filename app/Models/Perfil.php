@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Perfil extends Model
 {
     use HasFactory;
 
+    protected $table = 'perfis';
+
     protected $fillable = [
-        'type',
+        'tipo_cadastro',
         'nome',
         'sobrenome',
         'social_name',
@@ -28,7 +30,7 @@ class Profile extends Model
         'inscricao_estadual',
         'inscricao_municipal',
         'email',
-        'profile_role',
+        'tipo_perfil',
         'photo_url',
         'logradouro',
         'numero',
@@ -50,11 +52,11 @@ class Profile extends Model
     // Escopos
     public function scopeFisicas($query)
     {
-        return $query->where('type', 'fisica');
+        return $query->where('tipo_cadastro', 'fisica');
     }
 
     public function scopeJuridicas($query)
     {
-        return $query->where('type', 'juridica');
+        return $query->where('tipo_cadastro', 'juridica');
     }
 }

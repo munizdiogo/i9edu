@@ -330,7 +330,7 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => ' Perfil',
-            'url' => '/profiles',
+            'url' => '/perfis',
             'icon' => 'fas fa-fw fa-user',
         ],
         [

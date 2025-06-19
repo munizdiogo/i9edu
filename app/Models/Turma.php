@@ -65,6 +65,6 @@ class Turma extends Model
     }
     public function professorResponsavel()
     {
-        return $this->belongsTo(Profile::class, 'professor_responsavel_id');
+        return $this->belongsTo(Perfil::class, 'professor_responsavel_id');
     }
 }

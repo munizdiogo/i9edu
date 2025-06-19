@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1 class="d-inline">Detalhes do Perfil</h1>
-    <a href="{{ route('profiles.index') }}" class="btn btn-secondary float-right">Voltar</a>
+    <a href="{{ route('perfis.index') }}" class="btn btn-secondary float-right">Voltar</a>
 @endsection
 
 @section('content')
@@ -14,80 +14,80 @@
                 <!-- Dados Pessoais -->
                 <div class="row">
                     <div class="col-md-2 text-center">
-                        <img src="{{ $profile->photo_url
-        ? asset('storage/' . $profile->photo_url)
+                        <img src="{{ $perfil->photo_url
+        ? asset('storage/' . $perfil->photo_url)
         : asset('images/sem-foto-perfil.jpg') }}" class="img-fluid mb-2" />
                     </div>
                     <div class="col-md-10">
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label>Código</label>
-                                <input type="text" class="form-control" value="{{ $profile->id }}">
+                                <input type="text" class="form-control" value="{{ $perfil->id }}">
                             </div>
                             <div class="form-group col-md-4">
-                                <label>Tipo</label>
-                                <input type="text" class="form-control" value="{{ $profile->type == 'fisica'
+                                <label>Tipo de Cadastro</label>
+                                <input type="text" class="form-control" value="{{ $perfil->tipo_cadastro == 'fisica'
         ? 'Pessoa Física'
         : 'Pessoa Jurídica' }}">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Email</label>
-                                <input type="email" class="form-control" value="{{ $profile->email }}">
+                                <input type="email" class="form-control" value="{{ $perfil->email }}">
                             </div>
                         </div>
 
-                        @if($profile->type == 'fisica')
+                        @if($perfil->tipo_cadastro == 'fisica')
                             <!-- Campos para Pessoa Física -->
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label>Nome Civil</label>
-                                    <input type="text" class="form-control" value="{{ $profile->nome }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->nome }}">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Sobrenome</label>
-                                    <input type="text" class="form-control" value="{{ $profile->sobrenome }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->sobrenome }}">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Nome Social</label>
-                                    <input type="text" class="form-control" value="{{ $profile->social_name }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->social_name }}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label>CPF</label>
-                                    <input type="text" class="form-control" value="{{ $profile->cpf }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->cpf }}">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>RG</label>
-                                    <input type="text" class="form-control" value="{{ $profile->rg }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->rg }}">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Órgão Exp.</label>
-                                    <input type="text" class="form-control" value="{{ $profile->orgao_expedidor }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->orgao_expedidor }}">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>UF Exp.</label>
-                                    <input type="text" class="form-control" value="{{ $profile->uf_expedidor }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->uf_expedidor }}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label>Data Nasc.</label>
                                     <input type="text" class="form-control"
-                                        value="{{ optional($profile->data_nascimento)->format('d/m/Y') }}">
+                                        value="{{ optional($perfil->data_nascimento)->format('d/m/Y') }}">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Sexo</label>
                                     <input type="text" class="form-control"
-                                        value="{{ $profile->sexo == 'M' ? 'Masculino' : 'Feminino' }}">
+                                        value="{{ $perfil->sexo == 'M' ? 'Masculino' : 'Feminino' }}">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Estado Civil</label>
-                                    <input type="text" class="form-control" value="{{ ucfirst($profile->estado_civil) }}">
+                                    <input type="text" class="form-control" value="{{ ucfirst($perfil->estado_civil) }}">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Passaporte</label>
-                                    <input type="text" class="form-control" value="{{ $profile->passaporte }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->passaporte }}">
                                 </div>
                             </div>
                         @else
@@ -95,25 +95,25 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>Razão Social</label>
-                                    <input type="text" class="form-control" value="{{ $profile->razao_social }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->razao_social }}">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Nome Fantasia</label>
-                                    <input type="text" class="form-control" value="{{ $profile->nome_fantasia }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->nome_fantasia }}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label>CNPJ</label>
-                                    <input type="text" class="form-control" value="{{ $profile->cnpj }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->cnpj }}">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Inscr. Est.</label>
-                                    <input type="text" class="form-control" value="{{ $profile->inscricao_estadual }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->inscricao_estadual }}">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Inscr. Municipal</label>
-                                    <input type="text" class="form-control" value="{{ $profile->inscricao_municipal }}">
+                                    <input type="text" class="form-control" value="{{ $perfil->inscricao_municipal }}">
                                 </div>
                             </div>
                         @endif
@@ -127,29 +127,29 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Logradouro</label>
-                        <input type="text" class="form-control" value="{{ $profile->logradouro }}">
+                        <input type="text" class="form-control" value="{{ $perfil->logradouro }}">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Número</label>
-                        <input type="text" class="form-control" value="{{ $profile->numero }}">
+                        <input type="text" class="form-control" value="{{ $perfil->numero }}">
                     </div>
                     <div class="form-group col-md-4">
                         <label>CEP</label>
-                        <input type="text" class="form-control" value="{{ $profile->cep }}">
+                        <input type="text" class="form-control" value="{{ $perfil->cep }}">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label>Cidade</label>
-                        <input type="text" class="form-control" value="{{ $profile->cidade }}">
+                        <input type="text" class="form-control" value="{{ $perfil->cidade }}">
                     </div>
                     <div class="form-group col-md-4">
                         <label>Bairro</label>
-                        <input type="text" class="form-control" value="{{ $profile->bairro }}">
+                        <input type="text" class="form-control" value="{{ $perfil->bairro }}">
                     </div>
                     <div class="form-group col-md-4">
                         <label>Complemento</label>
-                        <input type="text" class="form-control" value="{{ $profile->complemento }}">
+                        <input type="text" class="form-control" value="{{ $perfil->complemento }}">
                     </div>
                 </div>
 
@@ -160,23 +160,23 @@
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         <label>DDI</label>
-                        <input type="text" class="form-control" value="{{ $profile->ddi }}">
+                        <input type="text" class="form-control" value="{{ $perfil->ddi }}">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Fone</label>
-                        <input type="text" class="form-control" value="{{ $profile->fone }}">
+                        <input type="text" class="form-control" value="{{ $perfil->fone }}">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Celular</label>
-                        <input type="text" class="form-control" value="{{ $profile->celular }}">
+                        <input type="text" class="form-control" value="{{ $perfil->celular }}">
                     </div>
                     <div class="form-group col-md-3">
                         <label>Fax</label>
-                        <input type="text" class="form-control" value="{{ $profile->fax }}">
+                        <input type="text" class="form-control" value="{{ $perfil->fax }}">
                     </div>
                     <div class="form-group col-md-3">
                         <label>Fone Comercial</label>
-                        <input type="text" class="form-control" value="{{ $profile->fone_comercial }}">
+                        <input type="text" class="form-control" value="{{ $perfil->fone_comercial }}">
                     </div>
                 </div>
             </fieldset>

@@ -1,11 +1,11 @@
 @section('content_header')
-    <h1>{{ isset($profile) ? 'Editar Perfil' : 'Novo Perfil' }}</h1>
+    <h1>{{ isset($perfil) ? 'Editar Perfil' : 'Novo Perfil' }}</h1>
 @endsection
 @section('content')
-<form action="{{ isset($profile) ? route('profiles.update', $profile) : route('profiles.store') }}" method="post"
+<form action="{{ isset($perfil) ? route('perfis.update', $perfil) : route('perfis.store') }}" method="post"
     enctype="multipart/form-data">
     @csrf
-    @if(isset($profile)) @method('PUT') @endif
+    @if(isset($perfil)) @method('PUT') @endif
 
     <div class="card card-primary p-2">
         <div class="card-header">
@@ -17,7 +17,7 @@
                 <div class="col-md-2 text-center">
                     <div class="form-group">
                         <label>Foto</label><br>
-                        <img src="{{ isset($profile) && $profile->photo_url ? asset($profile->photo_url) : asset('images/sem-foto-perfil.jpg') }}"
+                        <img src="{{ isset($perfil) && $perfil->photo_url ? asset($perfil->photo_url) : asset('images/sem-foto-perfil.jpg') }}"
                             class="img-fluid mb-2" />
                         <div class="custom-file">
                             <input type="file" name="photo" class="custom-file-input" id="photo">
@@ -31,19 +31,19 @@
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <label>Código</label>
-                            <input type="text" class="form-control" value="{{ $profile->id ?? '---' }}" readonly>
+                            <input type="text" class="form-control" value="{{ $perfil->id ?? '---' }}" readonly>
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Tipo</label>
-                            <select name="type" id="type" class="form-control" required>
-                                <option value="fisica" {{ (old('type', $profile->type ?? '') == 'fisica') ? 'selected' : '' }}>Pessoa Física</option>
-                                <option value="juridica" {{ (old('type', $profile->type ?? '') == 'juridica') ? 'selected' : '' }}>Pessoa Jurídica</option>
+                            <label>Tipode Cadastro</label>
+                            <select name="tipo_cadastro" id="tipo_cadastro" class="form-control" required>
+                                <option value="fisica" {{ (old('tipo_cadastro', $perfil->tipo_cadastro ?? '') == 'fisica') ? 'selected' : '' }}>Pessoa Física</option>
+                                <option value="juridica" {{ (old('tipo_cadastro', $perfil->tipo_cadastro ?? '') == 'juridica') ? 'selected' : '' }}>Pessoa Jurídica</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Email</label>
                             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                                placeholder="E-mail" value="{{ old('email', $profile->email ?? '') }}" required>
+                                placeholder="E-mail" value="{{ old('email', $perfil->email ?? '') }}" required>
                             @error('email')<span class="invalid-feedback">{{ $message }}</span>@enderror
                         </div>
                     </div>
@@ -54,53 +54,53 @@
                             <div class="form-group col-md-4">
                                 <label>Nome Civil</label>
                                 <input type="text" name="nome" class="form-control"
-                                    value="{{ old('nome', $profile->nome ?? '') }}">
+                                    value="{{ old('nome', $perfil->nome ?? '') }}">
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Sobrenome</label>
                                 <input type="text" name="sobrenome" class="form-control"
-                                    value="{{ old('sobrenome', $profile->sobrenome ?? '') }}">
+                                    value="{{ old('sobrenome', $perfil->sobrenome ?? '') }}">
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Nome Social</label>
                                 <input type="text" name="social_name" class="form-control"
-                                    value="{{ old('social_name', $profile->social_name ?? '') }}">
+                                    value="{{ old('social_name', $perfil->social_name ?? '') }}">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label>CPF</label>
                                 <input type="text" name="cpf" class="form-control"
-                                    value="{{ old('cpf', $profile->cpf ?? '') }}">
+                                    value="{{ old('cpf', $perfil->cpf ?? '') }}">
                             </div>
                             <div class="form-group col-md-3">
                                 <label>RG</label>
                                 <input type="text" name="rg" class="form-control"
-                                    value="{{ old('rg', $profile->rg ?? '') }}">
+                                    value="{{ old('rg', $perfil->rg ?? '') }}">
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Órgão Exp.</label>
                                 <input type="text" name="orgao_expedidor" class="form-control"
-                                    value="{{ old('orgao_expedidor', $profile->orgao_expedidor ?? '') }}">
+                                    value="{{ old('orgao_expedidor', $perfil->orgao_expedidor ?? '') }}">
                             </div>
                             <div class="form-group col-md-3">
                                 <label>UF Exp.</label>
                                 <input type="text" name="uf_expedidor" class="form-control"
-                                    value="{{ old('uf_expedidor', $profile->uf_expedidor ?? '') }}">
+                                    value="{{ old('uf_expedidor', $perfil->uf_expedidor ?? '') }}">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label>Data Nasc.</label>
                                 <input type="date" name="data_nascimento" class="form-control"
-                                    value="{{ old('data_nascimento', $profile->data_nascimento ?? '') }}">
+                                    value="{{ old('data_nascimento', $perfil->data_nascimento ?? '') }}">
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Sexo</label>
                                 <select name="sexo" class="form-control">
-                                    <option value="M" {{ old('sexo', $profile->sexo ?? '') == 'M' ? 'selected' : '' }}>
+                                    <option value="M" {{ old('sexo', $perfil->sexo ?? '') == 'M' ? 'selected' : '' }}>
                                         Masculino</option>
-                                    <option value="F" {{ old('sexo', $profile->sexo ?? '') == 'F' ? 'selected' : '' }}>
+                                    <option value="F" {{ old('sexo', $perfil->sexo ?? '') == 'F' ? 'selected' : '' }}>
                                         Feminino</option>
                                 </select>
                             </div>
@@ -115,7 +115,7 @@
                             <div class="form-group col-md-3">
                                 <label>Passaporte</label>
                                 <input type="text" name="passaporte" class="form-control"
-                                    value="{{ old('passaporte', $profile->passaporte ?? '') }}">
+                                    value="{{ old('passaporte', $perfil->passaporte ?? '') }}">
                             </div>
                         </div>
                     </div>
@@ -126,29 +126,29 @@
                             <div class="form-group col-md-6">
                                 <label>Razão Social</label>
                                 <input type="text" name="razao_social" class="form-control"
-                                    value="{{ old('razao_social', $profile->razao_social ?? '') }}">
+                                    value="{{ old('razao_social', $perfil->razao_social ?? '') }}">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Nome Fantasia</label>
                                 <input type="text" name="nome_fantasia" class="form-control"
-                                    value="{{ old('nome_fantasia', $profile->nome_fantasia ?? '') }}">
+                                    value="{{ old('nome_fantasia', $perfil->nome_fantasia ?? '') }}">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label>CNPJ</label>
                                 <input type="text" name="cnpj" class="form-control"
-                                    value="{{ old('cnpj', $profile->cnpj ?? '') }}">
+                                    value="{{ old('cnpj', $perfil->cnpj ?? '') }}">
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Inscr. Est.</label>
                                 <input type="text" name="inscricao_estadual" class="form-control"
-                                    value="{{ old('inscricao_estadual', $profile->inscricao_estadual ?? '') }}">
+                                    value="{{ old('inscricao_estadual', $perfil->inscricao_estadual ?? '') }}">
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Inscr. Municipal</label>
                                 <input type="text" name="inscricao_municipal" class="form-control"
-                                    value="{{ old('inscricao_municipal', $profile->inscricao_municipal ?? '') }}">
+                                    value="{{ old('inscricao_municipal', $perfil->inscricao_municipal ?? '') }}">
                             </div>
                         </div>
                     </div>
@@ -167,33 +167,33 @@
                 <div class="form-group col-md-6">
                     <label>Logradouro</label>
                     <input type="text" name="logradouro" class="form-control"
-                        value="{{ old('logradouro', $profile->logradouro ?? '') }}">
+                        value="{{ old('logradouro', $perfil->logradouro ?? '') }}">
                 </div>
                 <div class="form-group col-md-2">
                     <label>Número</label>
                     <input type="text" name="numero" class="form-control"
-                        value="{{ old('numero', $profile->numero ?? '') }}">
+                        value="{{ old('numero', $perfil->numero ?? '') }}">
                 </div>
                 <div class="form-group col-md-4">
                     <label>CEP</label>
-                    <input type="text" name="cep" class="form-control" value="{{ old('cep', $profile->cep ?? '') }}">
+                    <input type="text" name="cep" class="form-control" value="{{ old('cep', $perfil->cep ?? '') }}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label>Cidade</label>
                     <input type="text" name="cidade" class="form-control"
-                        value="{{ old('cidade', $profile->cidade ?? '') }}">
+                        value="{{ old('cidade', $perfil->cidade ?? '') }}">
                 </div>
                 <div class="form-group col-md-4">
                     <label>Bairro</label>
                     <input type="text" name="bairro" class="form-control"
-                        value="{{ old('bairro', $profile->bairro ?? '') }}">
+                        value="{{ old('bairro', $perfil->bairro ?? '') }}">
                 </div>
                 <div class="form-group col-md-4">
                     <label>Complemento</label>
                     <input type="text" name="complemento" class="form-control"
-                        value="{{ old('complemento', $profile->complemento ?? '') }}">
+                        value="{{ old('complemento', $perfil->complemento ?? '') }}">
                 </div>
             </div>
         </div>
@@ -208,33 +208,33 @@
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <label>DDI</label>
-                    <input type="text" name="ddi" class="form-control" value="{{ old('ddi', $profile->ddi ?? '') }}">
+                    <input type="text" name="ddi" class="form-control" value="{{ old('ddi', $perfil->ddi ?? '') }}">
                 </div>
                 <div class="form-group col-md-2">
                     <label>Fone</label>
-                    <input type="text" name="fone" class="form-control" value="{{ old('fone', $profile->fone ?? '') }}">
+                    <input type="text" name="fone" class="form-control" value="{{ old('fone', $perfil->fone ?? '') }}">
                 </div>
                 <div class="form-group col-md-2">
                     <label>Celular</label>
                     <input type="text" name="celular" class="form-control"
-                        value="{{ old('celular', $profile->celular ?? '') }}">
+                        value="{{ old('celular', $perfil->celular ?? '') }}">
                 </div>
                 <div class="form-group col-md-3">
                     <label>Fax</label>
-                    <input type="text" name="fax" class="form-control" value="{{ old('fax', $profile->fax ?? '') }}">
+                    <input type="text" name="fax" class="form-control" value="{{ old('fax', $perfil->fax ?? '') }}">
                 </div>
                 <div class="form-group col-md-3">
                     <label>Fone Comercial</label>
                     <input type="text" name="fone_comercial" class="form-control"
-                        value="{{ old('fone_comercial', $profile->fone_comercial ?? '') }}">
+                        value="{{ old('fone_comercial', $perfil->fone_comercial ?? '') }}">
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row pb-4">
         <div class="col-12 text-right">
-            <a href="{{ route('profiles.index') }}" class="btn btn-lg px-5 btn-default">Voltar</a>
+            <a href="{{ route('perfis.index') }}" class="btn btn-lg px-5 btn-default">Voltar</a>
             <button type="submit" class="btn btn-lg px-5 btn-primary">Salvar</button>
         </div>
     </div>
@@ -244,13 +244,14 @@
 @section('js')
     <script>
         function toggleType() {
-            const type = $('#type').val();
-            $('#fields-fisica').toggle(type === 'fisica');
-            $('#fields-juridica').toggle(type === 'juridica');
+            const tipo_cadastro = $('#tipo_cadastro').val();
+            $('#fields-fisica').toggle(tipo_cadastro === 'fisica');
+            $('#fields-juridica').toggle(tipo_cadastro === 'juridica');
         }
+
         $(document).ready(function () {
             toggleType();
-            $('#type').change(toggleType);
+            $('#tipo_cadastro').change(toggleType);
             bsCustomFileInput.init();
         });
     </script>

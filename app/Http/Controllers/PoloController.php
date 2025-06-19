@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Polo;
-use App\Models\Profile;
+use App\Models\Perfil;
 use Illuminate\Http\Request;
 
 class PoloController extends Controller
@@ -15,8 +15,8 @@ class PoloController extends Controller
     }
     public function create()
     {
-        $profiles = Profile::all();
-        return view('polos.create', compact('profiles'));
+        $perfis = Perfil::all();
+        return view('polos.create', compact('perfis'));
     }
 
     public function store(Request $request)
@@ -28,14 +28,14 @@ class PoloController extends Controller
 
     public function show(Polo $polo)
     {
-        $profiles = Profile::all();
-        return view('polos.show', compact('polo', 'profiles'));
+        $perfis = Perfil::all();
+        return view('polos.show', compact('polo', 'perfis'));
     }
 
     public function edit(Polo $polo)
     {
-        $profiles = Profile::all();
-        return view('polos.edit', compact('polo', 'profiles'));
+        $perfis = Perfil::all();
+        return view('polos.edit', compact('polo', 'perfis'));
     }
 
     public function update(Request $request, Polo $polo)
@@ -76,9 +76,9 @@ class PoloController extends Controller
             'nao_apresentar_atendimento' => 'boolean',
             'data_ativacao' => 'nullable|date',
             'data_inativacao' => 'nullable|date',
-            'gestor_id' => 'nullable|exists:profiles,id',
-            'gestor_faturamento_id' => 'nullable|exists:profiles,id',
-            'supervisor_id' => 'nullable|exists:profiles,id',
+            'gestor_id' => 'nullable|exists:perfis,id',
+            'gestor_faturamento_id' => 'nullable|exists:perfis,id',
+            'supervisor_id' => 'nullable|exists:perfis,id',
             'data_contrato_inicio' => 'nullable|date',
             'data_contrato_termino' => 'nullable|date',
         ];

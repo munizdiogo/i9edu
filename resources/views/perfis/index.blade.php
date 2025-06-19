@@ -1,11 +1,11 @@
-{{-- resources/views/profiles/index.blade.php --}}
+{{-- resources/views/perfis/index.blade.php --}}
 @extends('adminlte::page')
 
 @section('title', 'Perfis')
 
 @section('content_header')
     <h1 class="d-inline">Perfis</h1>
-    <a href="{{ route('profiles.create') }}" class="btn btn-success float-right">
+    <a href="{{ route('perfis.create') }}" class="btn btn-success float-right">
         Novo Perfil
     </a>
 @endsection
@@ -20,11 +20,11 @@
 @section('content')
     <div class="card p-4">
         <div class="card-body p-0">
-            <table id="profiles-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+            <table id="perfis-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Tipo</th>
+                        <th>Tipo Cadastro</th>
                         <th>CPF/CNPJ</th>
                         <th>Nome/Razão</th>
                         <th>Email</th>
@@ -59,13 +59,13 @@
 
     <script>
         $(document).ready(function () {
-            $('#profiles-table').DataTable({
+            $('#perfis-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route("profiles.data") }}',
+                ajax: '{{ route("perfis.data") }}',
                 columns: [
                     { data: 'id' },
-                    { data: 'type' },
+                    { data: 'tipo_cadastro' },
                     { data: 'cpf' },
                     { data: 'name' },
                     { data: 'email' },
