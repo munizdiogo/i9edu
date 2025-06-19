@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 class AlunoCursoAdmissaoController extends Controller
 {
+    private $instituicoes = ['UNIP', 'ANHANGUERA'];
     public function index()
     {
         return view('admissoes.index');
@@ -27,7 +28,7 @@ class AlunoCursoAdmissaoController extends Controller
         if ($s = $request->input('search.value')) {
             $query->whereHas('aluno', function ($q) use ($s) {
                 $q->where('ra', 'like', "%{$s}%")
-                    ->orWhere('nome_civil', 'like', "%{$s}%");
+                    ->orWhere('nome', 'like', "%{$s}%");
             });
         }
 
@@ -38,7 +39,7 @@ class AlunoCursoAdmissaoController extends Controller
             $dir = $order['dir'];
             if ($col === 'aluno') {
                 $query->join('alunos', 'admissoes.aluno_id', '=', 'alunos.id')
-                    ->orderBy('alunos.nome_civil', $dir);
+                    ->orderBy('alunos.nome', $dir);
             } elseif ($col === 'matriz') {
                 $query->join('matrizes_curriculares', 'admissoes.matriz_curricular_id', '=', 'matrizes_curriculares.id')
                     ->orderBy('matrizes_curriculares.nome', $dir);
@@ -52,11 +53,12 @@ class AlunoCursoAdmissaoController extends Controller
         $page = $query->skip($start)->take($length)->get();
 
         $data = $page->map(function ($row) {
+            $data_ingresso = date_create($row->data_ingresso);
             return [
                 'id' => $row->id,
-                'aluno' => "{$row->aluno->ra} — {$row->aluno->perfil->nome_civil}",
+                'aluno' => "{$row->aluno->ra} — {$row->aluno->perfil->nome}",
                 'matriz' => $row->matriz->nome,
-                'data_ingresso' => $row->data_ingresso->format('d/m/Y'),
+                'data_ingresso' => $data_ingresso->format('d/m/Y'),
                 'turno' => $row->turno,
                 'status' => $row->status,
                 'actions' => view('admissoes.partials.actions', ['row' => $row])->render(),
@@ -73,23 +75,74 @@ class AlunoCursoAdmissaoController extends Controller
 
     public function create()
     {
-        $alunos = Aluno::with('perfil')->get()->pluck('perfil.nome_civil', 'id');
+        $alunos = Aluno::with('perfil')->get()->pluck('perfil.nome', 'id');
         $matrizes = MatrizCurricular::pluck('nome', 'id');
         $polos = Polo::pluck('nome', 'id');
         $periodos = PeriodoLetivo::pluck('nome_impressao', 'id');
         $turmas = Turma::pluck('nome', 'id');
-        $editais = EditalProcessoSeletivo::pluck('titulo', 'id');
-        return view('admissoes.create', compact('alunos', 'matrizes', 'polos', 'periodos', 'turmas', 'editais'));
+        $editais = EditalProcessoSeletivo::pluck('descricao', 'id');
+        $instituicoes = $this->instituicoes;
+
+        return view('admissoes.create', compact('alunos', 'matrizes', 'polos', 'periodos', 'turmas', 'editais', 'instituicoes'));
     }
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $data = $this->validateData($request);
+        AlunoCursoAdmissao::create($data);
+        return redirect()->route('admissoes.index')->with('success', 'Registro salvo!');
+    }
+
+    public function show(AlunoCursoAdmissao $admissao)
+    {
+        // mesmos selectlists do create
+        $alunos = Aluno::with('perfil')->get()->pluck('perfil.nome', 'id');
+        $matrizes = MatrizCurricular::pluck('nome', 'id');
+        $polos = Polo::pluck('nome', 'id');
+        $periodos = PeriodoLetivo::pluck('nome_impressao', 'id');
+        $turmas = Turma::pluck('nome', 'id');
+        $editais = EditalProcessoSeletivo::pluck('descricao', 'id');
+        $instituicoes = $this->instituicoes;
+
+        return view('admissoes.show', compact('admissao', 'alunos', 'matrizes', 'polos', 'periodos', 'turmas', 'editais', 'instituicoes'));
+    }
+
+    public function edit(AlunoCursoAdmissao $admissao)
+    {
+        // mesmos selectlists do create
+        $alunos = Aluno::with('perfil')->get()->pluck('perfil.nome', 'id');
+        $matrizes = MatrizCurricular::pluck('nome', 'id');
+        $polos = Polo::pluck('nome', 'id');
+        $periodos = PeriodoLetivo::pluck('nome_impressao', 'id');
+        $turmas = Turma::pluck('nome', 'id');
+        $editais = EditalProcessoSeletivo::pluck('descricao', 'id');
+        $instituicoes = $this->instituicoes;
+
+        return view('admissoes.edit', compact('admissao', 'alunos', 'matrizes', 'polos', 'periodos', 'turmas', 'editais', 'instituicoes'));
+    }
+
+    public function update(Request $request, AlunoCursoAdmissao $admissao)
+    {
+        $data = $this->validateData($request);
+        $admissao->update($data);
+        return redirect()->route('admissoes.index')->with('success', 'Registro atualizado!');
+    }
+
+    public function destroy(AlunoCursoAdmissao $admissao)
+    {
+        $admissao->delete();
+        return redirect()->route('admissoes.index')->with('success', 'Registro removido.');
+    }
+
+
+    protected function validateData(Request $request, $id = null)
+    {
+        $rules = [
             'aluno_id' => 'required|exists:alunos,id',
             'matriz_curricular_id' => 'required|exists:matrizes_curriculares,id',
-            'campus_polo_id' => 'nullable|exists:polos,id',
-            'periodo_letivo_ingresso_id' => 'nullable|exists:periodos_letivos,id',
-            'turma_base_id' => 'nullable|exists:turmas,id',
+            // 'campus_polo_id' => 'nullable|exists:polos,id',
+            // 'periodo_letivo_ingresso_id' => 'nullable|exists:periodos_letivos,id',
+            // 'turma_base_id' => 'nullable|exists:turmas,id',
             'edital_processo_seletivo_id' => 'nullable|exists:editais_processo_seletivo,id',
             'data_ingresso' => 'required|date',
             'data_inicio_curso' => 'nullable|date',
@@ -109,41 +162,10 @@ class AlunoCursoAdmissaoController extends Controller
             'observacao' => 'nullable|string',
             'data_estagio' => 'nullable|date',
             'horas_estagio' => 'nullable|integer',
-            'instituicao_transferencia_id' => 'nullable|exists:instituicoes,id',
-            'status' => 'required|in:ATIVO,INATIVO'
-        ]);
+            // 'instituicao_transferencia_id' => 'nullable|exists:instituicoes,id',
+            // 'status' => 'required|in:ATIVO,INATIVO'
+        ];
 
-        AlunoCursoAdmissao::create($data);
-        return redirect()->route('admissoes.index')->with('success', 'Registro salvo!');
-    }
-
-    public function show(AlunoCursoAdmissao $admissao)
-    {
-        return view('admissoes.show', compact('admissao'));
-    }
-
-    public function edit(AlunoCursoAdmissao $admissao)
-    {
-        // mesmos selectlists do create
-        $alunos = Aluno::with('perfil')->get()->pluck('perfil.nome_civil', 'id');
-        $matrizes = MatrizCurricular::pluck('nome', 'id');
-        $polos = Polo::pluck('nome', 'id');
-        $periodos = PeriodoLetivo::pluck('nome_impressao', 'id');
-        $turmas = Turma::pluck('nome', 'id');
-        $editais = EditalProcessoSeletivo::pluck('titulo', 'id');
-        return view('admissoes.edit', compact('admissao', 'alunos', 'matrizes', 'polos', 'periodos', 'turmas', 'editais'));
-    }
-
-    public function update(Request $request, AlunoCursoAdmissao $admissao)
-    {
-        $data = $request->validate(/* mesmas regras de store */);
-        $admissao->update($data);
-        return redirect()->route('admissoes.index')->with('success', 'Registro atualizado!');
-    }
-
-    public function destroy(AlunoCursoAdmissao $admissao)
-    {
-        $admissao->delete();
-        return redirect()->route('admissoes.index')->with('success', 'Registro removido.');
+        return $request->validate($rules);
     }
 }

@@ -83,9 +83,9 @@
                 <label>Edital Vestibular</label>
                 <select name="edital_processo_seletivo_id" class="form-control select2bs4">
                     <option value="">— selecione —</option>
-                    @foreach($editais as $id => $titulo)
+                    @foreach($editais as $id => $descricao)
                         <option value="{{ $id }}" {{ old('edital_processo_seletivo_id', $admissao->edital_processo_seletivo_id ?? '') == $id ? 'selected' : '' }}>
-                            {{ $titulo }}
+                            {{ $descricao }}
                         </option>
                     @endforeach
                 </select>
