@@ -28,6 +28,7 @@ Route::middleware('guest')->group(function () {
 // Logout
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
+
 // Dashboard
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
@@ -36,11 +37,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// 
-// 
-// 
-
-
+// Perfil
 use App\Http\Controllers\PerfilController;
 
 Route::middleware('auth')->group(function () {
@@ -51,11 +48,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
-// 
-// 
-// 
-
+// Polos
 Route::middleware('auth')->group(function () {
     // endpoint AJAX para o DataTable
     Route::get('polos/data', [PoloController::class, 'data'])->name('polos.data');
@@ -63,11 +56,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
-// 
-// 
-// 
-
+// Cursos
 use App\Http\Controllers\CursoController;
 
 Route::middleware('auth')->group(function () {
@@ -76,10 +65,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// 
-// 
-// 
-
+// Matrizes Curriculares
 use App\Http\Controllers\MatrizCurricularController;
 
 Route::middleware('auth')->group(function () {
@@ -89,10 +75,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// 
-// 
-// 
-
+// Turmas
 use App\Http\Controllers\TurmaController;
 
 Route::middleware('auth')->group(function () {
@@ -101,15 +84,20 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
-// 
-// 
-// 
-
-
+// Perriodos Letivos
 use App\Http\Controllers\PeriodoLetivoController;
 
 Route::middleware('auth')->group(function () {
     Route::get('periodos/data', [PeriodoLetivoController::class, 'data'])->name('periodos.data');
     Route::resource('periodos', PeriodoLetivoController::class);
+});
+
+
+// Alunos
+use App\Http\Controllers\AlunoController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('alunos/data', [AlunoController::class, 'data'])->name('alunos.data');
+    Route::resource('alunos', AlunoController::class);
+    ;
 });

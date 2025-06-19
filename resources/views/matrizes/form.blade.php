@@ -11,7 +11,8 @@
                     value="{{ old('nome_reduzido', $matriz->nome_reduzido ?? '') }}" class="form-control"></div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-4"><label>Curso*</label><select name="curso_id" class="form-control">
+            <div class="form-group col-md-4"><label>Curso*</label>
+              <select name="curso_id" class="form-control select2bs4">
                     <option value="">-- selecione --</option>@foreach($cursos as $c)<option value="{{$c->id}}"
                         {{old('curso_id', $matriz->curso_id ?? '') == $c->id ? 'selected' : ''}}>{{$c->nome_impressao1}}
                     </option>@endforeach
@@ -183,3 +184,17 @@
       <button type="submit" class="btn btn-lg px-5 btn-primary">Salvar</button>
     </div>
 </div>
+
+@push('js')
+    <script>
+        $(function () {
+            $('.select2bs4').select2({
+                theme: 'bootstrap4',
+                allowClear: true,
+                placeholder: function () {
+                    return $(this).data('placeholder');
+                }
+            });
+        });
+    </script>
+@endpush

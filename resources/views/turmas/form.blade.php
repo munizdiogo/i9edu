@@ -16,16 +16,19 @@
                     class="form-control" value="{{ old('identificador', $turma->identificador ?? '') }}"></div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-4"><label>Matriz*</label><select name="matriz_curricular_id"
-                    class="form-control" required>@foreach($matrizes as $matriz)<option value="{{$matriz->id}}"
-                        {{old('matriz_curricular_id', $turma->matriz_curricular_id ?? '') == $matriz->id ? 'selected' : ''}}>
+            <div class="form-group col-md-4"><label>Matriz*</label>
+                <select name="matriz_curricular_id" class="form-control select2bs4"
+                    required>@foreach($matrizes as $matriz)<option value="{{$matriz->id}}" {{old('matriz_curricular_id', $turma->matriz_curricular_id ?? '') == $matriz->id ? 'selected' : ''}}>
                         {{$matriz->nome}}
-                    </option>@endforeach</select></div>
-            <div class="form-group col-md-4"><label>Período Letivo*</label><select name="periodo_letivo_id"
-                    class="form-control" required>@foreach($periodos as $p)<option value="{{$p->id}}"
-                        {{old('periodo_letivo_id', $turma->periodo_letivo_id ?? '') == $p->id ? 'selected' : ''}}>
+                    </option>@endforeach</select>
+            </div>
+            <div class="form-group col-md-4"><label>Período Letivo*</label>
+                <select name="periodo_letivo_id" class="form-control select2bs4" required>@foreach($periodos as $p)
+                    <option value="{{$p->id}}" {{old('periodo_letivo_id', $turma->periodo_letivo_id ?? '') == $p->id ? 'selected' : ''}}>
                         {{$p->nome}}
-                    </option>@endforeach</select></div>
+                </option>@endforeach
+                </select>
+            </div>
             <div class="form-group col-md-4"><label>Turma Base</label><select name="turma_base_id" class="form-control">
                     <option value="">--</option>@foreach($turmasBase ?? [] as $tb)<option value="{{$tb->id}}"
                         {{old('turma_base_id', $turma->turma_base_id ?? '') == $tb->id ? 'selected' : ''}}>{{$tb->nome}}
@@ -33,12 +36,13 @@
                 </select></div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-4"><label>Centro de Custo</label><select name="centro_custo_id"
-                    class="form-control">
+            <div class="form-group col-md-4"><label>Centro de Custo</label>
+                <select name="centro_custo_id" class="form-control select2bs4">
                     <option value="">--</option>@foreach($polos as $p)<option value="{{$p->id}}"
                         {{old('centro_custo_id', $turma->centro_custo_id ?? '') == $p->id ? 'selected' : ''}}>{{$p->nome}}
                     </option>@endforeach
-                </select></div>
+                </select>
+            </div>
             <div class="form-group col-md-4"><label>Professor Resp.</label><select name="professor_responsavel_id"
                     class="form-control">
                     <option value="">--</option>@foreach($professores as $pr)<option value="{{$pr->id}}"
@@ -140,5 +144,20 @@
 <div class="row mt-3">
     <div class="col text-right">
         <a href="{{ route('turmas.index') }}" class="btn btn-default">Voltar</a>
-        <button type="submit" class="btn btn-primary">Salvar</button></div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
 </div>
+
+@push('js')
+    <script>
+        $(function () {
+            $('.select2bs4').select2({
+                theme: 'bootstrap4',
+                allowClear: true,
+                placeholder: function () {
+                    return $(this).data('placeholder');
+                }
+            });
+        });
+    </script>
+@endpush

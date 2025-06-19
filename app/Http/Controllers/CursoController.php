@@ -65,18 +65,7 @@ class CursoController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'nome_impressao1' => 'required|string|max:255',
-            'nome_impressao2' => 'nullable|string|max:255',
-            'nome_impressao3' => 'nullable|string|max:255',
-            'nome_reduzido' => 'nullable|string|max:50',
-            'grau_academico' => 'required|in:BACHARELADO,LICENCIATURA,TECNÓLOGO,MESTRADO,DOUTORADO',
-            'status' => 'required|in:ATIVO,INATIVO',
-            'regime_funcionamento' => 'required|in:PRESENCIAL,EaD,HÍBRIDO',
-            'modalidade' => 'required|in:Presencial,EaD,Híbrido',
-            'codigo_emec' => 'nullable|string|max:50',
-            'link_emec' => 'nullable|url',
-        ]);
+        $data = $this->validateData($request);
         Curso::create($data);
         return redirect()->route('cursos.index')->with('success', 'Curso criado!');
     }
@@ -93,7 +82,21 @@ class CursoController extends Controller
 
     public function update(Request $request, Curso $curso)
     {
-        $data = $request->validate([
+        $data = $this->validateData($request);
+        $curso->update($data);
+        return redirect()->route('cursos.index')->with('success', 'Curso atualizado!');
+    }
+
+    public function destroy(Curso $curso)
+    {
+        $curso->delete();
+        return redirect()->route('cursos.index')->with('success', 'Curso removido.');
+    }
+
+
+    protected function validateData(Request $request, $id = null)
+    {
+        $rules = [
             'nome_impressao1' => 'required|string|max:255',
             'nome_impressao2' => 'nullable|string|max:255',
             'nome_impressao3' => 'nullable|string|max:255',
@@ -104,14 +107,8 @@ class CursoController extends Controller
             'modalidade' => 'required|in:Presencial,EaD,Híbrido',
             'codigo_emec' => 'nullable|string|max:50',
             'link_emec' => 'nullable|url',
-        ]);
-        $curso->update($data);
-        return redirect()->route('cursos.index')->with('success', 'Curso atualizado!');
-    }
+        ];
 
-    public function destroy(Curso $curso)
-    {
-        $curso->delete();
-        return redirect()->route('cursos.index')->with('success', 'Curso removido.');
+        return $request->validate($rules);
     }
 }

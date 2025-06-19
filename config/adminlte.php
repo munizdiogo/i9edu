@@ -358,6 +358,11 @@ return [
             'url' => '/periodos',
             'icon' => 'fas fa-fw fa-users',
         ],
+        [
+            'text' => ' Alunos',
+            'url' => '/alunos',
+            'icon' => 'fas fa-fw fa-user',
+        ],
         // [
         //     'text' => 'change_password',
         //     'url' => 'admin/settings',
@@ -475,18 +480,12 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
-                ],
+                ['type' => 'css', 'asset' => true, 'location' => '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'],
+                ['type' => 'css', 'asset' => true, 'location' => '//cdn.jsdelivr.net/npm/select2-bootstrap4-theme@1.0.0/dist/select2-bootstrap4.min.css'],
+                ['type' => 'js', 'asset' => true, 'location' => '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js'],
+
             ],
         ],
         'Chartjs' => [
