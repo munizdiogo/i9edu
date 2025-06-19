@@ -363,6 +363,16 @@ return [
             'url' => '/alunos',
             'icon' => 'fas fa-fw fa-user',
         ],
+        [
+            'text' => ' Alunos Curso Admissão',
+            'url' => '/admissoes',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => ' Editais Processo Seletivo',
+            'url' => '/editais',
+            'icon' => 'fas fa-fw fa-user',
+        ],
         // [
         //     'text' => 'change_password',
         //     'url' => 'admin/settings',

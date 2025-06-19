@@ -110,3 +110,12 @@ Route::middleware('auth')->group(function () {
     Route::get('admissoes/data', [AdmissaoController::class, 'data'])->name('admissoes.data');
     Route::resource('admissoes', AdmissaoController::class);
 });
+
+
+// Editais Processo Seletivo
+use App\Http\Controllers\EditalProcessoSeletivoController as EditalController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('editais/data', [EditalController::class, 'data'])->name('editais.data');
+    Route::resource('editais', EditalController::class)->parameters(['editais' => 'edital']);
+});

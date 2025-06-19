@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Alunos Curso Ingresso')
+@section('title', 'Editais / Processos Seletivos')
 
 @section('content_header')
-    <h1 class="d-inline">Alunos Curso Ingresso</h1>
-    <a href="{{ route('admissoes.create') }}" class="btn btn-success float-right">Novo Registro</a>
+    <h1 class="d-inline">Editais</h1>
+    <a href="{{ route('editais.create') }}" class="btn btn-success float-right">Novo Edital</a>
 @endsection
 
 @section('css')
@@ -16,18 +16,19 @@
 @section('content')
     <div class="card p-4">
         <div class="card-body p-0">
-            <table id="admissoes-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+            <table id="editais-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Aluno (RA)</th>
-                        <th>Matriz</th>
-                        <th>Ingresso</th>
-                        <th>Turno</th>
+                        <th>Descrição</th>
+                        <th>Período Letivo</th>
+                        <th>Início</th>
+                        <th>Fim</th>
                         <th>Status</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
+                <tbody></tbody>
             </table>
         </div>
     </div>
@@ -49,16 +50,16 @@
 
     <script>
         $(function () {
-            $('#admissoes-table').DataTable({
+            $('#editais-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route("admissoes.data") }}',
+                ajax: '{{ route("editais.data") }}',
                 columns: [
                     { data: 'id' },
-                    { data: 'aluno' },
-                    { data: 'matriz' },
-                    { data: 'data_ingresso' },
-                    { data: 'turno' },
+                    { data: 'descricao' },
+                    { data: 'periodo' },
+                    { data: 'data_inicio' },
+                    { data: 'data_fim' },
                     { data: 'status' },
                     { data: 'actions', orderable: false, searchable: false }
                 ],
