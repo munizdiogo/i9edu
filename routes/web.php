@@ -217,3 +217,12 @@ Route::middleware('auth')->group(function () {
     Route::get('funcoes/data', [FuncaoController::class, 'data'])->name('funcoes.data');
     Route::resource('funcoes', FuncaoController::class);
 });
+
+
+// Funções
+use App\Http\Controllers\FuncionarioController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('funcionarios/data', [FuncionarioController::class, 'data'])->name('funcionarios.data');
+    Route::resource('funcionarios', FuncionarioController::class);
+});

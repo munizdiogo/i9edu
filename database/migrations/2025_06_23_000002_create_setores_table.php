@@ -21,7 +21,6 @@ return new class extends Migration {
             $table->string('email')->nullable();
             $table->foreignId('funcionario_responsavel_id')
                 ->nullable()
-                ->constrained('funcionarios')
                 ->nullOnDelete();
             $table->enum('status', ['ATIVO', 'INATIVO'])->default('ATIVO');
             $table->timestamps();
