@@ -169,3 +169,13 @@ Route::middleware('auth')->group(function () {
     Route::get('modulos/data', [ModuloController::class, 'data'])->name('modulos.data');
     Route::resource('modulos', ModuloController::class);
 });
+
+
+// Grade Disciplinas Matrizes
+use App\Http\Controllers\GradeDisciplinasMatrizController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('grade_disciplinas_matrizes/data', [GradeDisciplinasMatrizController::class, 'data'])
+        ->name('grade_disciplinas_matrizes.data');
+    Route::resource('grade_disciplinas_matrizes', GradeDisciplinasMatrizController::class);
+});
