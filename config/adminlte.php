@@ -378,6 +378,16 @@ return [
             'url' => '/matriculas',
             'icon' => 'fas fa-fw fa-check-double',
         ],
+        [
+            'text' => ' Área de Conhecimento',
+            'url' => '/area_conhecimentos',
+            'icon' => 'fas fa-fw fa-book-reader',
+        ],
+        [
+            'text' => ' Disciplinas Base',
+            'url' => '/disciplinas_base',
+            'icon' => 'fas fa-fw fa-list-alt',
+        ],
         // [
         //     'text' => 'change_password',
         //     'url' => 'admin/settings',

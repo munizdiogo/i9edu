@@ -129,3 +129,23 @@ Route::middleware('auth')->group(function () {
         ->name('matriculas.data');
     Route::resource('matriculas', MatriculaController::class);
 });
+
+
+//  Disciplinas Base
+use App\Http\Controllers\DisciplinaBaseController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('disciplinas_base/data', [DisciplinaBaseController::class, 'data'])
+        ->name('disciplinas_base.data');
+    Route::resource('disciplinas_base', DisciplinaBaseController::class);
+});
+
+
+
+//  Área de Conhecimento
+use App\Http\Controllers\AreaConhecimentoController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('area_conhecimentos/data', [AreaConhecimentoController::class, 'data'])->name('area_conhecimentos.data');
+    Route::resource('area_conhecimentos', AreaConhecimentoController::class);
+});
