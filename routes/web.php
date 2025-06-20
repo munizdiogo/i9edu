@@ -119,3 +119,13 @@ Route::middleware('auth')->group(function () {
     Route::get('editais/data', [EditalController::class, 'data'])->name('editais.data');
     Route::resource('editais', EditalController::class)->parameters(['editais' => 'edital']);
 });
+
+
+// Matrículas
+use App\Http\Controllers\MatriculaController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('matriculas/data', [MatriculaController::class, 'data'])
+        ->name('matriculas.data');
+    Route::resource('matriculas', MatriculaController::class);
+});

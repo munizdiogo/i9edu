@@ -351,27 +351,32 @@ return [
         [
             'text' => ' Turmas',
             'url' => '/turmas',
-            'icon' => 'fas fa-fw fa-users',
+            'icon' => 'fas fa-fw fa-chalkboard-teacher',
         ],
         [
             'text' => ' Períodos Letivos',
             'url' => '/periodos',
-            'icon' => 'fas fa-fw fa-users',
+            'icon' => 'fas fa-fw fa-calendar-alt',
         ],
         [
             'text' => ' Alunos',
             'url' => '/alunos',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-address-card',
         ],
         [
             'text' => ' Alunos Curso Admissão',
             'url' => '/admissoes',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-graduation-cap',
         ],
         [
             'text' => ' Editais Processo Seletivo',
             'url' => '/editais',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-clipboard-list',
+        ],
+        [
+            'text' => ' Matrículas',
+            'url' => '/matriculas',
+            'icon' => 'fas fa-fw fa-check-double',
         ],
         // [
         //     'text' => 'change_password',
