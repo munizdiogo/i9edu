@@ -390,6 +390,11 @@ return [
             'url' => '/disciplinas_base',
             'icon' => 'fas fa-fw fa-list-alt',
         ],
+        [
+            'text' => ' Etapa Período Letivo',
+            'url' => '/etapas_periodos_letivos',
+            'icon' => 'fas fa-fw fa-stream',
+        ],
         // [
         //     'text' => 'change_password',
         //     'url' => 'admin/settings',

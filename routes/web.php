@@ -149,3 +149,14 @@ Route::middleware('auth')->group(function () {
     Route::get('area_conhecimentos/data', [AreaConhecimentoController::class, 'data'])->name('area_conhecimentos.data');
     Route::resource('area_conhecimentos', AreaConhecimentoController::class);
 });
+
+
+
+// Etapas Período Letivo
+use App\Http\Controllers\EtapaPeriodoLetivoController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('etapas_periodos_letivos/data', [EtapaPeriodoLetivoController::class, 'data'])
+        ->name('etapas_periodos_letivos.data');
+    Route::resource('etapas_periodos_letivos', EtapaPeriodoLetivoController::class);
+});
