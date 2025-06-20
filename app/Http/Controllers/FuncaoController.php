@@ -55,7 +55,7 @@ class FuncaoController extends Controller
 
     public function show(Funcao $funcao)
     {
-        return view('funcoes.edit', compact('funcao'));
+        return view('funcoes.show', compact('funcao'));
     }
 
     public function edit(Funcao $funcao)
