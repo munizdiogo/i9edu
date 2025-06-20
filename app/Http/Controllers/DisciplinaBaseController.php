@@ -94,7 +94,7 @@ class DisciplinaBaseController extends Controller
 
     protected function validateData(Request $request, $origem = "create", $disciplinas_base = null)
     {
-        if ($origem == 'crate') {
+        if ($origem == 'create') {
             $rules = [
                 'codigo' => 'required|unique:disciplinas_base,codigo',
                 'status' => 'required|in:Ativo,Inativo',

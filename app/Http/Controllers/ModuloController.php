@@ -87,7 +87,7 @@ class ModuloController extends Controller
 
     protected function validateData(Request $request, $origem = "create", $modulo = null)
     {
-        if ($origem == 'crate') {
+        if ($origem == 'create') {
             $rules = [
                 'codigo' => 'required|unique:modulos,codigo',
                 'descricao' => 'required|string',

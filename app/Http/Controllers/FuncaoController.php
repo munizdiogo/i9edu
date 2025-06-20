@@ -79,7 +79,7 @@ class FuncaoController extends Controller
 
     protected function validateData(Request $request, $origem = "create", $funcao = null)
     {
-        if ($origem == 'crate') {
+        if ($origem == 'create') {
             $rules = [
                 'codigo' => 'required|integer|unique:funcoes,codigo',
                 'descricao' => 'required|string',

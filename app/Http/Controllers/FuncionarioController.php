@@ -96,7 +96,7 @@ class FuncionarioController extends Controller
 
     protected function validateData(Request $request, $origem = "create", $funcionario = null)
     {
-        if ($origem == 'crate') {
+        if ($origem == 'create') {
             $rules = [
                 'codigo' => 'required|integer|unique:funcionarios,codigo',
                 'perfil_id' => 'required|exists:perfis,id',

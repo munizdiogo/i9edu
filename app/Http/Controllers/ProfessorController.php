@@ -12,15 +12,15 @@ class ProfessorController extends Controller
         return view('professores.index');
     }
 
-    public function data(Request $r)
+    public function data(Request $request)
     {
         $q = Professor::with('funcionario');
         $total = $q->count();
-        if ($s = $r->input('search.value')) {
+        if ($s = $request->input('search.value')) {
             $q->whereHas('funcionario', fn($q) => $q->where('nome', 'like', "%{$s}%"));
         }
         $filtered = $q->count();
-        $data = $q->skip($r->start)->take($r->length)->get()->map(fn($p) => [
+        $data = $q->skip($request->start)->take($request->length)->get()->map(fn($p) => [
             'id' => $p->id,
             'funcionario' => $p->funcionario->nome,
             'graduacao' => $p->graduacao,
@@ -28,7 +28,7 @@ class ProfessorController extends Controller
             'actions' => view('professores.partials.actions', compact('p'))->render(),
         ]);
         return response()->json([
-            'draw' => intval($r->draw),
+            'draw' => intval($request->draw),
             'recordsTotal' => $total,
             'recordsFiltered' => $filtered,
             'data' => $data
@@ -54,9 +54,68 @@ class ProfessorController extends Controller
         return view('professores.create', compact('funcionarios', 'opcoesGrad', 'opcoesTit'));
     }
 
-    public function store(Request $r)
+    public function store(Request $request)
     {
-        $data = $r->validate([
+        $data = $this->validateData($request);
+        Professor::create($data);
+        return redirect()->route('professores.index')->with('success', 'Professor criado!');
+    }
+
+    public function show(Professor $professor)
+    {
+        $funcionarios = with('perfil')->get()->pluck('perfil.nome', 'id');
+        $opcoesGrad = [
+            'Extensão',
+            'Pós-Graduação',
+            'Graduação',
+            'Mestrado',
+            'Ensino Médio',
+            'Ensino Técnico de Nível Médio',
+            'Especializacao',
+            'mba',
+            'Doutorado',
+            'Curso Livre'
+        ];
+        $opcoesTit = ['Mestre', 'Doutor', 'Especialista', 'Mestrado'];
+        return view('professores.show', compact('professor', 'funcionarios', 'opcoesGrad', 'opcoesTit'));
+    }
+
+    public function edit(Professor $professor)
+    {
+        $funcionarios = with('perfil')->get()->pluck('perfil.nome', 'id');
+        $opcoesGrad = [
+            'Extensão',
+            'Pós-Graduação',
+            'Graduação',
+            'Mestrado',
+            'Ensino Médio',
+            'Ensino Técnico de Nível Médio',
+            'Especializacao',
+            'mba',
+            'Doutorado',
+            'Curso Livre'
+        ];
+        $opcoesTit = ['Mestre', 'Doutor', 'Especialista', 'Mestrado'];
+        return view('professores.edit', compact('professor', 'funcionarios', 'opcoesGrad', 'opcoesTit'));
+    }
+
+    public function update(Request $request, Professor $professor)
+    {
+        $data = $this->validateData($request, "update", $professor);
+        $professor->update($data);
+        return redirect()->route('professores.index')->with('success', 'Professor atualizado!');
+    }
+
+    public function destroy(Professor $professor)
+    {
+        $professor->delete();
+        return redirect()->route('professores.index')->with('success', 'Professor removido!');
+    }
+
+
+    protected function validateData(Request $request, $origem = "create", $professor = null)
+    {
+        $rules = [
             'funcionario_id' => 'required|exists:funcionarios,id',
             'graduacao' => 'required|in:Extensão,Pós-Graduação,Graduação,Mestrado,' .
                 'Ensino Médio,Ensino Técnico de Nível Médio,' .
@@ -83,42 +142,8 @@ class ProfessorController extends Controller
             'atuacao_grad_distancia' => 'boolean',
             'atuacao_pos_grad_distancia' => 'boolean',
             'atuacao_bolsa_pesquisa' => 'boolean',
-        ]);
-        Professor::create($data);
-        return redirect()->route('professores.index')->with('success', 'Professor criado!');
-    }
-
-    public function edit(Professor $professor)
-    {
-        $funcionarios = with('perfil')->get()->pluck('perfil.nome', 'id');
-        $opcoesGrad = [
-            'Extensão',
-            'Pós-Graduação',
-            'Graduação',
-            'Mestrado',
-            'Ensino Médio',
-            'Ensino Técnico de Nível Médio',
-            'Especializacao',
-            'mba',
-            'Doutorado',
-            'Curso Livre'
         ];
-        $opcoesTit = ['Mestre', 'Doutor', 'Especialista', 'Mestrado'];
-        return view('professores.edit', compact('professor', 'funcionarios', 'opcoesGrad', 'opcoesTit'));
-    }
 
-    public function update(Request $r, Professor $professor)
-    {
-        $data = $r->validate([
-            // mesmos rules do store...
-        ]);
-        $professor->update($data);
-        return redirect()->route('professores.index')->with('success', 'Professor atualizado!');
-    }
-
-    public function destroy(Professor $professor)
-    {
-        $professor->delete();
-        return redirect()->route('professores.index')->with('success', 'Professor removido!');
+        return $request->validate($rules);
     }
 }

@@ -93,7 +93,7 @@ class EtapaPeriodoLetivoController extends Controller
 
     protected function validateData(Request $request, $origem = "create", $etapas_periodos_letivo = null)
     {
-        if ($origem == 'crate') {
+        if ($origem == 'create') {
             $rules = [
                 'codigo' => 'required|unique:etapas_periodos_letivos,codigo',
                 'descricao' => 'required|string',

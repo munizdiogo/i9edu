@@ -93,7 +93,7 @@ class SetorController extends Controller
 
     protected function validateData(Request $request, $origem = "create", $setor = null)
     {
-        if ($origem == 'crate') {
+        if ($origem == 'create') {
             $rules = [
                 'codigo' => 'required|integer|unique:setores,codigo',
                 'descricao' => 'required|string',
