@@ -92,7 +92,7 @@
         </div>
     </div>
 </div>
-<div class="mt-3 text-right">
+<div class="mt-3 text-right pb-4">
     <a href="{{ route('funcionarios.index') }}" class="btn btn-default">Voltar</a>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </div>

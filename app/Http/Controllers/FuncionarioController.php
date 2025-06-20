@@ -57,26 +57,18 @@ class FuncionarioController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'codigo' => 'required|integer|unique:funcionarios,codigo',
-            'perfil_id' => 'required|exists:perfis,id',
-            'nome_conjuge' => 'nullable|string',
-            'fone_conjuge' => 'nullable|string',
-            'nr_dependentes' => 'nullable|integer',
-            'email_empresa' => 'nullable|email',
-            'senha_email' => 'nullable|string',
-            'status' => 'required|in:Ativo,Inativo',
-            'data_admissao' => 'nullable|date',
-            'data_demissao' => 'nullable|date|after_or_equal:data_admissao',
-            'setor_id' => 'nullable|exists:setores,id',
-            'funcao_id' => 'nullable|exists:funcoes,id',
-            'nr_folha' => 'nullable|string',
-            'nr_horas_mes' => 'nullable|integer',
-            'tipo_contrato' => 'required|in:Não informado,CLT,PJ,Autônomo',
-        ]);
+        $data = $this->validateData($request, "create");
 
         Funcionario::create($data);
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário criado!');
+    }
+
+    public function show(Funcionario $funcionario)
+    {
+        $perfis = Perfil::pluck('nome', 'id');
+        $setores = Setor::pluck('descricao', 'id');
+        $funcoes = Funcao::pluck('descricao', 'id');
+        return view('funcionarios.show', compact('funcionario', 'perfis', 'setores', 'funcoes'));
     }
 
     public function edit(Funcionario $funcionario)
@@ -89,23 +81,7 @@ class FuncionarioController extends Controller
 
     public function update(Request $request, Funcionario $funcionario)
     {
-        $data = $request->validate([
-            'codigo' => 'required|integer|unique:funcionarios,codigo,' . $funcionario->id,
-            'perfil_id' => 'required|exists:perfis,id',
-            'nome_conjuge' => 'nullable|string',
-            'fone_conjuge' => 'nullable|string',
-            'nr_dependentes' => 'nullable|integer',
-            'email_empresa' => 'nullable|email',
-            'senha_email' => 'nullable|string',
-            'status' => 'required|in:Ativo,Inativo',
-            'data_admissao' => 'nullable|date',
-            'data_demissao' => 'nullable|date|after_or_equal:data_admissao',
-            'setor_id' => 'nullable|exists:setores,id',
-            'funcao_id' => 'nullable|exists:funcoes,id',
-            'nr_folha' => 'nullable|string',
-            'nr_horas_mes' => 'nullable|integer',
-            'tipo_contrato' => 'required|in:Não informado,CLT,PJ,Autônomo',
-        ]);
+        $data = $this->validateData($request, "update", $funcionario);
 
         $funcionario->update($data);
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário atualizado!');
@@ -115,5 +91,51 @@ class FuncionarioController extends Controller
     {
         $funcionario->delete();
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário removido!');
+    }
+
+
+    protected function validateData(Request $request, $origem = "create", $funcionario = null)
+    {
+        if ($origem == 'crate') {
+            $rules = [
+                'codigo' => 'required|integer|unique:funcionarios,codigo',
+                'perfil_id' => 'required|exists:perfis,id',
+                'nome_conjuge' => 'nullable|string',
+                'fone_conjuge' => 'nullable|string',
+                'nr_dependentes' => 'nullable|integer',
+                'email_empresa' => 'nullable|email',
+                'senha_email' => 'nullable|string',
+                'status' => 'required|in:Ativo,Inativo',
+                'data_admissao' => 'nullable|date',
+                'data_demissao' => 'nullable|date|after_or_equal:data_admissao',
+                'setor_id' => 'nullable|exists:setores,id',
+                'funcao_id' => 'nullable|exists:funcoes,id',
+                'nr_folha' => 'nullable|string',
+                'nr_horas_mes' => 'nullable|integer',
+                'tipo_contrato' => 'required|in:Não informado,CLT,PJ,Autônomo',
+            ];
+
+        } else {
+            $rules = [
+                'codigo' => 'required|integer|unique:funcionarios,codigo,' . $funcionario->id,
+                'perfil_id' => 'required|exists:perfis,id',
+                'nome_conjuge' => 'nullable|string',
+                'fone_conjuge' => 'nullable|string',
+                'nr_dependentes' => 'nullable|integer',
+                'email_empresa' => 'nullable|email',
+                'senha_email' => 'nullable|string',
+                'status' => 'required|in:Ativo,Inativo',
+                'data_admissao' => 'nullable|date',
+                'data_demissao' => 'nullable|date|after_or_equal:data_admissao',
+                'setor_id' => 'nullable|exists:setores,id',
+                'funcao_id' => 'nullable|exists:funcoes,id',
+                'nr_folha' => 'nullable|string',
+                'nr_horas_mes' => 'nullable|integer',
+                'tipo_contrato' => 'required|in:Não informado,CLT,PJ,Autônomo',
+            ];
+
+        }
+
+        return $request->validate($rules);
     }
 }
