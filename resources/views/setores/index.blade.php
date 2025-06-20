@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Setores')
 @section('content_header')
-    <h1>Setores</h1>
+    <h1 class="d-inline">Setores</h1>
     <a href="{{ route('setores.create') }}" class="btn btn-success float-right">Novo Setor</a>
 @endsection
 @section('css')

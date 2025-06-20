@@ -197,7 +197,7 @@ use App\Http\Controllers\ProfessorController;
 
 Route::middleware('auth')->group(function () {
     Route::get('professores/data', [ProfessorController::class, 'data'])->name('professores.data');
-    Route::resource('professores', ProfessorController::class)->parameters(['prefessores' => 'professor']);
+    Route::resource('professores', ProfessorController::class)->parameters(['professores' => 'professor']);
 });
 
 

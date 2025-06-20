@@ -1,4 +1,3 @@
-{{-- resources/views/polos/index.blade.php --}}
 @extends('adminlte::page')
 
 @section('title', 'Polos')

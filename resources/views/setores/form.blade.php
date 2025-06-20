@@ -32,22 +32,25 @@
                     <option value=""></option>
                     @foreach($funcionarios as $id => $nome)
                         <option value="{{ $id }}" {{ old('funcionario_responsavel_id', $setor->funcionario_responsavel_id ?? '') == $id ? 'selected' : '' }}>
-                            {{ $nome }}</option>
+                            {{ $nome }}
+                        </option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group col-md-2">
                 <label>Status*</label>
                 <select name="status" class="form-control select2bs4" required>
-                    <option value="ATIVO" {{ old('status', $setor->status ?? '') == 'ATIVO' ? 'selected' : '' }}>ATIVO</option>
-                    <option value="INATIVO" {{ old('status', $setor->status ?? '') == 'INATIVO' ? 'selected' : '' }}>INATIVO
+                    <option value="ATIVO" {{ old('status', $setor->status ?? '') == 'ATIVO' ? 'selected' : '' }}>ATIVO
+                    </option>
+                    <option value="INATIVO" {{ old('status', $setor->status ?? '') == 'INATIVO' ? 'selected' : '' }}>
+                        INATIVO
                     </option>
                 </select>
             </div>
         </div>
     </div>
 </div>
-<div class="mt-3 text-right">
+<div class="mt-3 text-right pb-5">
     <a href="{{ route('setores.index') }}" class="btn btn-default">Voltar</a>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </div>

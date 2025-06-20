@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Professor;
-use App\Models\Funcionario;
+use App\Models\Funcionario as Funcionarios;
 use Illuminate\Http\Request;
 
 class ProfessorController extends Controller
@@ -14,19 +14,26 @@ class ProfessorController extends Controller
 
     public function data(Request $request)
     {
-        $q = Professor::with('funcionario');
-        $total = $q->count();
-        if ($s = $request->input('search.value')) {
-            $q->whereHas('funcionario', fn($q) => $q->where('nome', 'like', "%{$s}%"));
+        $query = Professor::with('funcionario');
+        $total = $query->count();
+
+        if ($search = $request->input('search.value')) {
+            $query->where('nome', 'like', "%{$search}%");
         }
-        $filtered = $q->count();
-        $data = $q->skip($request->start)->take($request->length)->get()->map(fn($p) => [
-            'id' => $p->id,
-            'funcionario' => $p->funcionario->nome,
-            'graduacao' => $p->graduacao,
-            'titulacao_principal' => $p->titulacao_principal,
-            'actions' => view('professores.partials.actions', compact('p'))->render(),
-        ]);
+
+        $filtered = $query->count();
+
+        $data = $query->skip($request->start)
+            ->take($request->length)
+            ->get()
+            ->map(fn($p) => [
+                'id' => $p->id,
+                'funcionario' => $p->funcionario->perfil->nome,
+                'tipo_docente' => $p->tipo_docente,
+                'situacao_docente' => $p->situacao_docente,
+                'actions' => view('professores.partials.actions', compact('p'))->render(),
+            ]);
+
         return response()->json([
             'draw' => intval($request->draw),
             'recordsTotal' => $total,
@@ -37,7 +44,7 @@ class ProfessorController extends Controller
 
     public function create()
     {
-        $funcionarios = Funcionario::with('perfil')->get()->pluck('perfil.nome', 'id');
+        $funcionarios = Funcionarios::with('perfil')->get()->pluck('perfil.nome', 'id');
         $opcoesGrad = [
             'Extensão',
             'Pós-Graduação',
@@ -63,7 +70,7 @@ class ProfessorController extends Controller
 
     public function show(Professor $professor)
     {
-        $funcionarios = with('perfil')->get()->pluck('perfil.nome', 'id');
+        $funcionarios = Funcionarios::with('perfil')->get()->pluck('perfil.nome', 'id');
         $opcoesGrad = [
             'Extensão',
             'Pós-Graduação',
@@ -78,11 +85,14 @@ class ProfessorController extends Controller
         ];
         $opcoesTit = ['Mestre', 'Doutor', 'Especialista', 'Mestrado'];
         return view('professores.show', compact('professor', 'funcionarios', 'opcoesGrad', 'opcoesTit'));
+
+
+
     }
 
     public function edit(Professor $professor)
     {
-        $funcionarios = with('perfil')->get()->pluck('perfil.nome', 'id');
+        $funcionarios = Funcionarios::with('perfil')->get()->pluck('perfil.nome', 'id');
         $opcoesGrad = [
             'Extensão',
             'Pós-Graduação',
