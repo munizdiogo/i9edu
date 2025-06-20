@@ -367,6 +367,7 @@ return [
             'text' => ' Alunos Curso Admissão',
             'url' => '/admissoes',
             'icon' => 'fas fa-fw fa-graduation-cap',
+            'icon_color' => 'yellow',
         ],
         [
             'text' => ' Editais Processo Seletivo',
@@ -377,6 +378,7 @@ return [
             'text' => ' Matrículas',
             'url' => '/matriculas',
             'icon' => 'fas fa-fw fa-check-double',
+            'icon_color' => 'yellow',
         ],
         [
             'text' => ' Área de Conhecimento',
