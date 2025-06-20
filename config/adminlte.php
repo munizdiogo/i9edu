@@ -381,7 +381,7 @@ return [
             'icon_color' => 'yellow',
         ],
         [
-            'text' => ' Área de Conhecimento',
+            'text' => ' Áreas de Conhecimento',
             'url' => '/area_conhecimentos',
             'icon' => 'fas fa-fw fa-book-reader',
         ],
@@ -391,9 +391,14 @@ return [
             'icon' => 'fas fa-fw fa-list-alt',
         ],
         [
-            'text' => ' Etapa Período Letivo',
+            'text' => ' Etapas Período Letivo',
             'url' => '/etapas_periodos_letivos',
             'icon' => 'fas fa-fw fa-stream',
+        ],
+        [
+            'text' => ' Módulos',
+            'url' => '/modulos',
+            'icon' => 'fab fa-fw fa-buffer',
         ],
         // [
         //     'text' => 'change_password',

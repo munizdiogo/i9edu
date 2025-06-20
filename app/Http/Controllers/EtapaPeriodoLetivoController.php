@@ -57,7 +57,7 @@ class EtapaPeriodoLetivoController extends Controller
 
     public function store(Request $request)
     {
-        $data = $this->validateData($request, "update");
+        $data = $this->validateData($request, "create");
         EtapaPeriodoLetivo::create($data);
         return redirect()->route('etapas_periodos_letivos.index')
             ->with('success', 'Etapa criada!');

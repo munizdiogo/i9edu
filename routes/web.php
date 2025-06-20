@@ -160,3 +160,12 @@ Route::middleware('auth')->group(function () {
         ->name('etapas_periodos_letivos.data');
     Route::resource('etapas_periodos_letivos', EtapaPeriodoLetivoController::class);
 });
+
+
+// Módulos
+use App\Http\Controllers\ModuloController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('modulos/data', [ModuloController::class, 'data'])->name('modulos.data');
+    Route::resource('modulos', ModuloController::class);
+});
