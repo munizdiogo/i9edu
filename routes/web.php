@@ -199,3 +199,12 @@ Route::middleware('auth')->group(function () {
     Route::get('professores/data', [ProfessorController::class, 'data'])->name('professores.data');
     Route::resource('professores', ProfessorController::class);
 });
+
+
+//  Setores
+use App\Http\Controllers\SetorController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('setores/data', [SetorController::class, 'data'])->name('setores.data');
+    Route::resource('setores', SetorController::class);
+});
