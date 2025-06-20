@@ -179,3 +179,12 @@ Route::middleware('auth')->group(function () {
         ->name('grade_disciplinas_matrizes.data');
     Route::resource('grade_disciplinas_matrizes', GradeDisciplinasMatrizController::class);
 });
+
+
+// Disciplinas
+use App\Http\Controllers\DisciplinaController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('disciplinas/data', [DisciplinaController::class, 'data'])->name('disciplinas.data');
+    Route::resource('disciplinas', DisciplinaController::class);
+});
