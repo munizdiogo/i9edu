@@ -12,40 +12,39 @@
             </select>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-4">
-                <label>Graduação</label>
-                <select name="graduacao_id" class="form-control select2bs4">
-                    <option value=""></option>
-                    @foreach($graduacoes as $id => $desc)
-                        <option value="{{ $id }}" {{ old('graduacao_id', $professor->graduacao_id ?? '') == $id ? 'selected' : '' }}>
-                            {{ $desc }}
-                        </option>
-                    @endforeach
-                </select>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Graduação (Grau de Especialização)*</label>
+                    <select name="graduacao" class="form-control select2bs4" required>
+                        @foreach($opcoesGrad as $opt)
+                            <option value="{{ $opt }}" {{ old('graduacao', $professor->graduacao ?? '') == $opt ? 'selected' : '' }}>
+                                {{ $opt }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Titulação Principal*</label>
+                    <select name="titulacao_principal" class="form-control select2bs4" required>
+                        @foreach($opcoesTit as $opt)
+                            <option value="{{ $opt }}" {{ old('titulacao_principal', $professor->titulacao_principal ?? '') == $opt ? 'selected' : '' }}>
+                                {{ $opt }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Tipo Docente</label>
+                    <select name="tipo_docente" class="form-control select2bs4">
+                        @foreach(['Não possui', 'Docente', 'Tutor EAD', 'Docente/Tutor EAD'] as $opt)
+                            <option value="{{ $opt }}" {{ old('tipo_docente', $professor->tipo_docente ?? '') == $opt ? 'selected' : '' }}>
+                                {{ $opt }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
-            <div class="form-group col-md-4">
-                <label>Titulação Principal</label>
-                <select name="titulacao_principal_id" class="form-control select2bs4">
-                    <option value=""></option>
-                    @foreach($titulacoes as $id => $desc)
-                        <option value="{{ $id }}" {{ old('titulacao_principal_id', $professor->titulacao_principal_id ?? '') == $id ? 'selected' : '' }}>
-                            {{ $desc }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label>Tipo Docente</label>
-                <select name="tipo_docente" class="form-control select2bs4">
-                    @foreach(['Não possui', 'Docente', 'Tutor EAD', 'Docente/Tutor EAD'] as $opt)
-                        <option value="{{ $opt }}" {{ old('tipo_docente', $professor->tipo_docente ?? '') == $opt ? 'selected' : '' }}>
-                            {{ $opt }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
+            {{-- Continue com os demais campos seguindo o mesmo padrão: regime_trabalho, situacao_docente, id_inep, etc.
+            --}}
         </div>
-        {{-- Continue com os demais campos seguindo o mesmo padrão: regime_trabalho, situacao_docente, id_inep, etc.
-        --}}
     </div>
-</div>

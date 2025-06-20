@@ -8,12 +8,38 @@ return new class extends Migration {
     {
         Schema::create('professores', function (Blueprint $table) {
             $table->id();
+            // FK para Funcionário
             $table->foreignId('funcionario_id')->constrained('funcionarios')->onDelete('cascade');
-            $table->foreignId('graduacao_id')->nullable()->constrained('graduacoes')->nullOnDelete();
-            $table->foreignId('titulacao_principal_id')->nullable()->constrained('titulacoes')->nullOnDelete();
+            // enum Graduação
+            $table->enum('graduacao', [
+                'Extensão',
+                'Pós-Graduação',
+                'Graduação',
+                'Mestrado',
+                'Ensino Médio',
+                'Ensino Técnico de Nível Médio',
+                'Especializacao',
+                'mba',
+                'Doutorado',
+                'Curso Livre'
+            ])->default('Graduação');
+            // enum Titulação Principal
+            $table->enum('titulacao_principal', [
+                'Mestre',
+                'Doutor',
+                'Especialista',
+                'Mestrado'
+            ])->default('Mestre');
+            // demais campos inalterados
             $table->enum('tipo_docente', ['Não possui', 'Docente', 'Tutor EAD', 'Docente/Tutor EAD'])->default('Não possui');
             $table->enum('regime_trabalho', ['Não possui', 'CLT', 'Estagiário', 'Outros'])->default('Não possui');
-            $table->enum('situacao_docente', ['Não possui', 'Em Exercício', 'Afastado para qualificação', 'Afastado outros motivos', 'Tratamento saúde'])->default('Não possui');
+            $table->enum('situacao_docente', [
+                'Não possui',
+                'Em Exercício',
+                'Afastado para qualificação',
+                'Afastado outros motivos',
+                'Tratamento saúde'
+            ])->default('Não possui');
             $table->string('id_inep')->nullable();
             $table->string('registro_docente')->nullable();
             $table->string('nis')->nullable();
@@ -32,7 +58,6 @@ return new class extends Migration {
             $table->boolean('atuacao_grad_distancia')->default(false);
             $table->boolean('atuacao_pos_grad_distancia')->default(false);
             $table->boolean('atuacao_bolsa_pesquisa')->default(false);
-            // timestamps
             $table->timestamps();
         });
     }

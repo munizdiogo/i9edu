@@ -10,8 +10,8 @@ class Professor extends Model
 
     protected $fillable = [
         'funcionario_id',
-        'graduacao_id',
-        'titulacao_principal_id',
+        'graduacao',
+        'titulacao_principal',
         'tipo_docente',
         'regime_trabalho',
         'situacao_docente',
@@ -31,19 +31,11 @@ class Professor extends Model
         'atuacao_gestao_plano',
         'atuacao_grad_distancia',
         'atuacao_pos_grad_distancia',
-        'atuacao_bolsa_pesquisa'
+        'atuacao_bolsa_pesquisa',
     ];
 
     public function funcionario()
     {
         return $this->belongsTo(Funcionario::class);
-    }
-    public function graduacao()
-    {
-        return $this->belongsTo(Graduacao::class);
-    }
-    public function titulacaoPrincipal()
-    {
-        return $this->belongsTo(Titulacao::class, 'titulacao_principal_id');
     }
 }

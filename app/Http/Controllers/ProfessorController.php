@@ -3,8 +3,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Professor;
 use App\Models\Funcionario;
-use App\Models\Graduacao;
-use App\Models\Titulacao;
 use Illuminate\Http\Request;
 
 class ProfessorController extends Controller
@@ -25,8 +23,8 @@ class ProfessorController extends Controller
         $data = $q->skip($r->start)->take($r->length)->get()->map(fn($p) => [
             'id' => $p->id,
             'funcionario' => $p->funcionario->nome,
-            'tipo_docente' => $p->tipo_docente,
-            'situacao_docente' => $p->situacao_docente,
+            'graduacao' => $p->graduacao,
+            'titulacao_principal' => $p->titulacao_principal,
             'actions' => view('professores.partials.actions', compact('p'))->render(),
         ]);
         return response()->json([
@@ -40,20 +38,34 @@ class ProfessorController extends Controller
     public function create()
     {
         $funcionarios = Funcionario::pluck('nome', 'id');
-        $graduacoes = Graduacao::pluck('descricao', 'id');
-        $titulacoes = Titulacao::pluck('descricao', 'id');
-        return view('professores.create', compact('funcionarios', 'graduacoes', 'titulacoes'));
+        $opcoesGrad = [
+            'Extensão',
+            'Pós-Graduação',
+            'Graduação',
+            'Mestrado',
+            'Ensino Médio',
+            'Ensino Técnico de Nível Médio',
+            'Especializacao',
+            'mba',
+            'Doutorado',
+            'Curso Livre'
+        ];
+        $opcoesTit = ['Mestre', 'Doutor', 'Especialista', 'Mestrado'];
+        return view('professores.create', compact('funcionarios', 'opcoesGrad', 'opcoesTit'));
     }
 
     public function store(Request $r)
     {
         $data = $r->validate([
             'funcionario_id' => 'required|exists:funcionarios,id',
-            'graduacao_id' => 'nullable|exists:graduacoes,id',
-            'titulacao_principal_id' => 'nullable|exists:titulacoes,id',
+            'graduacao' => 'required|in:Extensão,Pós-Graduação,Graduação,Mestrado,' .
+                'Ensino Médio,Ensino Técnico de Nível Médio,' .
+                'Especializacao,mba,Doutorado,Curso Livre',
+            'titulacao_principal' => 'required|in:Mestre,Doutor,Especialista,Mestrado',
             'tipo_docente' => 'in:Não possui,Docente,Tutor EAD,Docente/Tutor EAD',
             'regime_trabalho' => 'in:Não possui,CLT,Estagiário,Outros',
-            'situacao_docente' => 'in:Não possui,Em Exercício,Afastado para qualificação,Afastado outros motivos,Tratamento saúde',
+            'situacao_docente' => 'in:Não possui,Em Exercício,Afastado para qualificação,' .
+                'Afastado outros motivos,Tratamento saúde',
             'id_inep' => 'nullable|string',
             'registro_docente' => 'nullable|string',
             'nis' => 'nullable|string',
@@ -79,14 +91,27 @@ class ProfessorController extends Controller
     public function edit(Professor $professor)
     {
         $funcionarios = Funcionario::pluck('nome', 'id');
-        $graduacoes = Graduacao::pluck('descricao', 'id');
-        $titulacoes = Titulacao::pluck('descricao', 'id');
-        return view('professores.edit', compact('professor', 'funcionarios', 'graduacoes', 'titulacoes'));
+        $opcoesGrad = [
+            'Extensão',
+            'Pós-Graduação',
+            'Graduação',
+            'Mestrado',
+            'Ensino Médio',
+            'Ensino Técnico de Nível Médio',
+            'Especializacao',
+            'mba',
+            'Doutorado',
+            'Curso Livre'
+        ];
+        $opcoesTit = ['Mestre', 'Doutor', 'Especialista', 'Mestrado'];
+        return view('professores.edit', compact('professor', 'funcionarios', 'opcoesGrad', 'opcoesTit'));
     }
 
     public function update(Request $r, Professor $professor)
     {
-        $data = $r->validate([]);
+        $data = $r->validate([
+            // mesmos rules do store...
+        ]);
         $professor->update($data);
         return redirect()->route('professores.index')->with('success', 'Professor atualizado!');
     }
