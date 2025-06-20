@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap4.min.css">
 @endsection
 @section('content')
-    <div class="card">
+    <div class="card p-4">
         <div class="card-body p-0">
             <table id="tbl-etapas" class="table table-striped table-bordered">
                 <thead>

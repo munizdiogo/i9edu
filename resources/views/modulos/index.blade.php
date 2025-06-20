@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
 @endsection
 @section('content')
-    <div class="card">
+    <div class="card p-4">
         <div class="card-body p-0">
             <table id="tbl-modulos" class="table table-striped table-bordered">
                 <thead>
