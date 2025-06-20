@@ -171,6 +171,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
+// ------
+
 // Grade Disciplinas Matrizes
 use App\Http\Controllers\GradeDisciplinasMatrizController;
 
@@ -187,4 +189,13 @@ use App\Http\Controllers\DisciplinaController;
 Route::middleware('auth')->group(function () {
     Route::get('disciplinas/data', [DisciplinaController::class, 'data'])->name('disciplinas.data');
     Route::resource('disciplinas', DisciplinaController::class);
+});
+
+
+// Professores
+use App\Http\Controllers\ProfessorController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('professores/data', [ProfessorController::class, 'data'])->name('professores.data');
+    Route::resource('professores', ProfessorController::class);
 });
