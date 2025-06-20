@@ -400,6 +400,46 @@ return [
             'url' => '/modulos',
             'icon' => 'fab fa-fw fa-buffer',
         ],
+        [
+            'text' => ' Grade Disciplinas Matrizes',
+            'url' => '/grade_disciplinas_matrizes',
+            'icon' => 'fab fa-fw fa-buffer',
+        ],
+        [
+            'text' => ' Grade Disciplinas Matrizes',
+            'url' => '/grade_disciplinas_matrizes',
+            'icon' => 'fab fa-fw fa-buffer',
+        ],
+        [
+            'text' => ' Disciplinas',
+            'url' => '/disciplinas',
+            'icon' => 'fab fa-fw fa-buffer',
+        ],
+        [
+            'text' => ' Professores',
+            'url' => '/professores',
+            'icon' => 'fa fa-fw fa-chalkboard-teacher',
+        ],
+        [
+            'text' => ' Setores',
+            'url' => '/setores',
+            'icon' => 'fa fa-fw fa-sitemap',
+        ],
+        [
+            'text' => ' Funções',
+            'url' => '/funcoes',
+            'icon' => 'fa fa-fw fa-vector-square',
+        ],
+        [
+            'text' => ' Funcionários',
+            'url' => '/funcionarios',
+            'icon' => 'fa fa-fw fa-briefcase',
+        ],
+        // [
+        //     'text' => ' aaaaa',
+        //     'url' => '/aaaaa',
+        //     'icon' => 'fab fa-fw fa-buffer',
+        // ],
         // [
         //     'text' => 'change_password',
         //     'url' => 'admin/settings',

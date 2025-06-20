@@ -48,13 +48,14 @@ class FuncaoController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'codigo' => 'required|integer|unique:funcoes,codigo',
-            'descricao' => 'required|string',
-            'status' => 'required|in:Ativo,Inativo',
-        ]);
+        $data = $this->validateData($request, "create");
         Funcao::create($data);
         return redirect()->route('funcoes.index')->with('success', 'Função criada!');
+    }
+
+    public function show(Funcao $funcao)
+    {
+        return view('funcoes.edit', compact('funcao'));
     }
 
     public function edit(Funcao $funcao)
@@ -64,11 +65,7 @@ class FuncaoController extends Controller
 
     public function update(Request $request, Funcao $funcao)
     {
-        $data = $request->validate([
-            'codigo' => 'required|integer|unique:funcoes,codigo,' . $funcao->id,
-            'descricao' => 'required|string',
-            'status' => 'required|in:Ativo,Inativo',
-        ]);
+        $data = $this->validateData($request, "update", $funcao);
         $funcao->update($data);
         return redirect()->route('funcoes.index')->with('success', 'Função atualizada!');
     }
@@ -77,5 +74,27 @@ class FuncaoController extends Controller
     {
         $funcao->delete();
         return redirect()->route('funcoes.index')->with('success', 'Função removida!');
+    }
+
+
+    protected function validateData(Request $request, $origem = "create", $funcao = null)
+    {
+        if ($origem == 'crate') {
+            $rules = [
+                'codigo' => 'required|integer|unique:funcoes,codigo',
+                'descricao' => 'required|string',
+                'status' => 'required|in:Ativo,Inativo',
+            ];
+
+        } else {
+            $rules = [
+                'codigo' => 'required|integer|unique:funcoes,codigo,' . $funcao->id,
+                'descricao' => 'required|string',
+                'status' => 'required|in:Ativo,Inativo',
+            ];
+
+        }
+
+        return $request->validate($rules);
     }
 }

@@ -8,6 +8,8 @@ class Setor extends Model
 {
     use HasFactory;
 
+    protected $table = "setores";
+
     protected $fillable = [
         'codigo',
         'descricao',

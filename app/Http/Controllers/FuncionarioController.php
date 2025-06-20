@@ -31,7 +31,7 @@ class FuncionarioController extends Controller
             ->map(fn($f) => [
                 'id' => $f->id,
                 'codigo' => $f->codigo,
-                'perfil' => $f->perfil->nome_social ?? '',
+                'perfil' => $f->perfil->nome ?? '',
                 'email_empresa' => $f->email_empresa,
                 'status' => $f->status,
                 'setor' => $f->setor->descricao ?? '',
@@ -49,7 +49,7 @@ class FuncionarioController extends Controller
 
     public function create()
     {
-        $perfis = Perfil::pluck('nome_social', 'id');
+        $perfis = Perfil::pluck('nome', 'id');
         $setores = Setor::pluck('descricao', 'id');
         $funcoes = Funcao::pluck('descricao', 'id');
         return view('funcionarios.create', compact('perfis', 'setores', 'funcoes'));
@@ -81,7 +81,7 @@ class FuncionarioController extends Controller
 
     public function edit(Funcionario $funcionario)
     {
-        $perfis = Perfil::pluck('nome_social', 'id');
+        $perfis = Perfil::pluck('nome', 'id');
         $setores = Setor::pluck('descricao', 'id');
         $funcoes = Funcao::pluck('descricao', 'id');
         return view('funcionarios.edit', compact('funcionario', 'perfis', 'setores', 'funcoes'));

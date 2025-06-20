@@ -8,6 +8,8 @@ class Funcionario extends Model
 {
     use HasFactory;
 
+    protected $table = "funcionarios";
+
     protected $fillable = [
         'codigo',
         'perfil_id',

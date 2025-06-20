@@ -37,7 +37,7 @@ class ProfessorController extends Controller
 
     public function create()
     {
-        $funcionarios = Funcionario::pluck('nome', 'id');
+        $funcionarios = Funcionario::with('perfil')->get()->pluck('perfil.nome', 'id');
         $opcoesGrad = [
             'Extensão',
             'Pós-Graduação',
@@ -90,7 +90,7 @@ class ProfessorController extends Controller
 
     public function edit(Professor $professor)
     {
-        $funcionarios = Funcionario::pluck('nome', 'id');
+        $funcionarios = with('perfil')->get()->pluck('perfil.nome', 'id');
         $opcoesGrad = [
             'Extensão',
             'Pós-Graduação',

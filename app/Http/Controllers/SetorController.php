@@ -47,7 +47,7 @@ class SetorController extends Controller
 
     public function create()
     {
-        $funcionarios = Funcionario::pluck('nome', 'id');
+        $funcionarios = Funcionario::with('perfil')->get()->pluck('perfil.nome', 'id');
         $tipos = ['NENHUM', 'ADMINISTRATIVO', 'ACADEMICO', 'FINANCEIRO', 'TI', 'OUTRO'];
         return view('setores.create', compact('funcionarios', 'tipos'));
     }
@@ -69,7 +69,7 @@ class SetorController extends Controller
 
     public function edit(Setor $setor)
     {
-        $funcionarios = Funcionario::pluck('nome', 'id');
+        $funcionarios = with('perfil')->get()->pluck('perfil.nome', 'id');
         $tipos = ['NENHUM', 'ADMINISTRATIVO', 'ACADEMICO', 'FINANCEIRO', 'TI', 'OUTRO'];
         return view('setores.edit', compact('setor', 'funcionarios', 'tipos'));
     }

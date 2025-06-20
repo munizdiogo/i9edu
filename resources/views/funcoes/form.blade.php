@@ -14,15 +14,17 @@
             <div class="form-group col-md-2">
                 <label>Status*</label>
                 <select name="status" class="form-control select2bs4" required>
-                    <option value="Ativo" {{ old('status', $funcao->status ?? '') == 'Ativo' ? 'selected' : '' }}>Ativo</option>
-                    <option value="Inativo" {{ old('status', $funcao->status ?? '') == 'Inativo' ? 'selected' : '' }}>Inativo
+                    <option value="Ativo" {{ old('status', $funcao->status ?? '') == 'Ativo' ? 'selected' : '' }}>Ativo
+                    </option>
+                    <option value="Inativo" {{ old('status', $funcao->status ?? '') == 'Inativo' ? 'selected' : '' }}>
+                        Inativo
                     </option>
                 </select>
             </div>
         </div>
     </div>
 </div>
-<div class="mt-3 text-right">
+<div class="mt-3 text-right pb-5">
     <a href="{{ route('funcoes.index') }}" class="btn btn-default">Voltar</a>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </div>

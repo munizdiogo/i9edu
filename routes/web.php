@@ -188,7 +188,7 @@ use App\Http\Controllers\DisciplinaController;
 
 Route::middleware('auth')->group(function () {
     Route::get('disciplinas/data', [DisciplinaController::class, 'data'])->name('disciplinas.data');
-    Route::resource('disciplinas', DisciplinaController::class);
+    Route::resource('disciplinas', DisciplinaController::class)->parameters(['disciplinas' => 'disciplina']);
 });
 
 
@@ -197,7 +197,7 @@ use App\Http\Controllers\ProfessorController;
 
 Route::middleware('auth')->group(function () {
     Route::get('professores/data', [ProfessorController::class, 'data'])->name('professores.data');
-    Route::resource('professores', ProfessorController::class);
+    Route::resource('professores', ProfessorController::class)->parameters(['prefessores' => 'professor']);
 });
 
 
@@ -206,7 +206,7 @@ use App\Http\Controllers\SetorController;
 
 Route::middleware('auth')->group(function () {
     Route::get('setores/data', [SetorController::class, 'data'])->name('setores.data');
-    Route::resource('setores', SetorController::class);
+    Route::resource('setores', SetorController::class)->parameters(['setores' => 'setor']);
 });
 
 
@@ -215,7 +215,7 @@ use App\Http\Controllers\FuncaoController;
 
 Route::middleware('auth')->group(function () {
     Route::get('funcoes/data', [FuncaoController::class, 'data'])->name('funcoes.data');
-    Route::resource('funcoes', FuncaoController::class);
+    Route::resource('funcoes', FuncaoController::class)->parameters(['funcoes' => 'funcao']);
 });
 
 
@@ -224,5 +224,5 @@ use App\Http\Controllers\FuncionarioController;
 
 Route::middleware('auth')->group(function () {
     Route::get('funcionarios/data', [FuncionarioController::class, 'data'])->name('funcionarios.data');
-    Route::resource('funcionarios', FuncionarioController::class);
+    Route::resource('funcionarios', FuncionarioController::class)->parameters(['funcionarios' => 'funcionario']);
 });
