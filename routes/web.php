@@ -208,3 +208,12 @@ Route::middleware('auth')->group(function () {
     Route::get('setores/data', [SetorController::class, 'data'])->name('setores.data');
     Route::resource('setores', SetorController::class);
 });
+
+
+// Funções
+use App\Http\Controllers\FuncaoController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('funcoes/data', [FuncaoController::class, 'data'])->name('funcoes.data');
+    Route::resource('funcoes', FuncaoController::class);
+});
