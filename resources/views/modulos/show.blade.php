@@ -1,5 +1,6 @@
 @extends('adminlte::page')
-@section('title', 'Detalhes do Módulo')
+@section('title', 'Detalhes do Módulo #' . $modulo->id)
+@section('content_header')<h1>Detalhes do Módulo #{{ $modulo->id }}</h1>@endsection
 @section('content')
     <div class="card">
         <div class="card-body">

@@ -31,3 +31,10 @@
         </div>
     </div>
 </div>
+
+<div class="row mt-3">
+    <div class="col text-right">
+        <a href="{{ route('etapas_periodos_letivos.index') }}" class="btn btn-default">Voltar</a>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+</div>

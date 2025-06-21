@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Módulos')
 @section('content_header')
-    <h1>Módulos</h1>
+    <h1 class="d-inline">Módulos</h1>
     <a href="{{ route('modulos.create') }}" class="btn btn-success float-right">Novo Módulo</a>
 @endsection
 @section('css')

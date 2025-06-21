@@ -1,5 +1,6 @@
 @extends('adminlte::page')
-@section('title', 'Detalhes Etapa #' . $etapas_periodos_letivo->id)
+@section('title', 'Detalhes da Etapa #' . $etapas_periodos_letivo->id)
+@section('content_header')<h1>Detalhes da Etapa #{{ $etapas_periodos_letivo->id }}</h1>@endsection
 @section('content')
     <div class="card">
         <div class="card-body">

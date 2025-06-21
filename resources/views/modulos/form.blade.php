@@ -23,7 +23,8 @@
         <div class="form-group">
             <label>Status*</label>
             <select name="status" class="form-control select2bs4">
-                <option value="Ativo" {{ old('status', $modulo->status ?? '') == 'Ativo' ? 'selected' : '' }}>Ativo</option>
+                <option value="Ativo" {{ old('status', $modulo->status ?? '') == 'Ativo' ? 'selected' : '' }}>Ativo
+                </option>
                 <option value="Inativo" {{ old('status', $modulo->status ?? '') == 'Inativo' ? 'selected' : '' }}>Inativo
                 </option>
             </select>
@@ -39,5 +40,12 @@
                 @endforeach
             </select>
         </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col text-right">
+        <a href="{{ route('modulos.index') }}" class="btn btn-default">Voltar</a>
+        <button type="submit" class="btn btn-primary">Salvar</button>
     </div>
 </div>

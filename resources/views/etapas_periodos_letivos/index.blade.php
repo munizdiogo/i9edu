@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Etapas de Períodos Letivos')
 @section('content_header')
-    <h1>Etapas de Períodos Letivos</h1>
+    <h1 class="d-inline">Etapas de Períodos Letivos</h1>
     <a href="{{ route('etapas_periodos_letivos.create') }}" class="btn btn-success float-right">Nova Etapa</a>
 @endsection
 @section('css')

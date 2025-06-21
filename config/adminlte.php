@@ -403,12 +403,12 @@ return [
         [
             'text' => ' Módulos',
             'url' => '/modulos',
-            'icon' => 'fab fa-fw fa-buffer',
+            'icon' => 'fas fa-fw fa-shapes',
         ],
         [
             'text' => ' Grade Disciplinas Matrizes',
             'url' => '/grade_disciplinas_matrizes',
-            'icon' => 'fab fa-fw fa-buffer',
+            'icon' => 'fa fa-fw fa-table',
             'icon_color' => 'red',
         ],
         [

@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 @section('title', 'Detalhes do Funcionário #' . $funcionario->id)
+@section('content_header')<h1>Detalhes do Funcionário #{{ $funcionario->id }}</h1>@endsection
 @section('content')
     <div class="card">
         <div class="card-body">

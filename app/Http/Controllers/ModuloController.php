@@ -63,7 +63,8 @@ class ModuloController extends Controller
 
     public function show(Modulo $modulo)
     {
-        return view('modulos.show', compact('modulo'));
+        $proximos = Modulo::pluck('descricao', 'id');
+        return view('modulos.show', compact('modulo', 'proximos'));
     }
 
     public function edit(Modulo $modulo)

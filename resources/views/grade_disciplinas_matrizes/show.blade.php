@@ -3,7 +3,7 @@
 @section('content_header')
     <h1>Detalhes da Disciplina x Matriz Curricular #{{ $grade_disciplinas_matrize->id }}</h1>
 @endsection
-@section('content')<div class="card">
+@section('content')
     <div class="card">
         <div class="card-body">
             <fieldset disabled>

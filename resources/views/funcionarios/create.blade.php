@@ -1,5 +1,8 @@
 @extends('adminlte::page')
 @section('title', 'Novo Funcionário')
+@section('content_header')
+    <h1>Novo Funcionário</h1>
+@endsection
 @section('content')
     <form action="{{ route('funcionarios.store') }}" method="POST">@csrf
         @include('funcionarios.form')
