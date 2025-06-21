@@ -57,14 +57,56 @@ class DisciplinaController extends Controller
         $bases = DisciplinaBase::pluck('nome', 'id');
         $etapas = EtapaPeriodoLetivo::pluck('descricao', 'id');
         $modulos = Modulo::pluck('descricao', 'id');
-        $professores = Professor::pluck('nome', 'id');
-        $areas = AreaConhecimento::pluck('nome', 'id');
+        $professores = Professor::with('funcionario.perfil')->get()->pluck('funcionario.perfil.nome', 'id');
+        $areas = AreaConhecimento::pluck('descricao', 'id');
         return view('disciplinas.create', compact('bases', 'etapas', 'modulos', 'professores', 'areas'));
     }
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $data = $this->validateData($request);
+        Disciplina::create($data);
+        return redirect()->route('disciplinas.index')
+            ->with('success', 'Disciplina criada!');
+    }
+
+    public function show(Disciplina $disciplina)
+    {
+        $bases = DisciplinaBase::pluck('nome', 'id');
+        $etapas = EtapaPeriodoLetivo::pluck('descricao', 'id');
+        $modulos = Modulo::pluck('descricao', 'id');
+        $professores = Professor::with('funcionario.perfil')->get()->pluck('funcionario.perfil.nome', 'id');
+        $areas = AreaConhecimento::pluck('descricao', 'id');
+        return view('disciplinas.show', compact('disciplina', 'bases', 'etapas', 'modulos', 'professores', 'areas'));
+    }
+
+    public function edit(Disciplina $disciplina)
+    {
+        $bases = DisciplinaBase::pluck('nome', 'id');
+        $etapas = EtapaPeriodoLetivo::pluck('descricao', 'id');
+        $modulos = Modulo::pluck('descricao', 'id');
+        $professores = Professor::with('funcionario.perfil')->get()->pluck('funcionario.perfil.nome', 'id');
+        $areas = AreaConhecimento::pluck('descricao', 'id');
+        return view('disciplinas.edit', compact('disciplina', 'bases', 'etapas', 'modulos', 'professores', 'areas'));
+    }
+
+    public function update(Request $request, Disciplina $disciplina)
+    {
+        $data = $this->validateData($request);
+        $disciplina->update($data);
+        return redirect()->route('disciplinas.index')->with('success', 'Disciplina atualizada!');
+    }
+
+    public function destroy(Disciplina $disciplina)
+    {
+        $disciplina->delete();
+        return redirect()->route('disciplinas.index')->with('success', 'Disciplina removida!');
+    }
+
+
+    protected function validateData(Request $request, $origem = "create", $setor = null)
+    {
+        $rules = [
             'disciplina_base_id' => 'required|exists:disciplinas_base,id',
             'etapa_periodo_letivo_id' => 'required|exists:etapas_periodos_letivos,id',
             'modulo_id' => 'required|exists:modulos,id',
@@ -92,46 +134,16 @@ class DisciplinaController extends Controller
             'complementaridade' => 'in:Não Informado,Sim,Não',
             'area_avaliacao_id' => 'nullable|exists:area_conhecimentos,id',
             'disciplina_tcc' => 'boolean',
-            'nao_apresentar_nota' => 'boolean',
-            'reprovar_por_frequencia' => 'boolean',
-            'nao_apresentar_frequencia' => 'boolean',
-            'nao_contabilizar_reprovacao' => 'boolean',
-            'nao_enviar_educacenso' => 'boolean',
-            'nao_validar_conflito' => 'boolean',
-            'nao_contar_minimo' => 'boolean',
+            // 'nao_apresentar_nota' => 'boolean',
+            // 'reprovar_por_frequencia' => 'boolean',
+            // 'nao_apresentar_frequencia' => 'boolean',
+            // 'nao_contabilizar_reprovacao' => 'boolean',
+            // 'nao_enviar_educacenso' => 'boolean',
+            // 'nao_validar_conflito' => 'boolean',
+            // 'nao_contar_minimo' => 'boolean',
             'ter_cursado_pct' => 'numeric'
-        ]);
-        Disciplina::create($data);
-        return redirect()->route('disciplinas.index')->with('success', 'Disciplina criada!');
-    }
+        ];
 
-    public function show(Disciplina $disciplina)
-    {
-        return view('disciplinas.show', compact('disciplina'));
-    }
-
-    public function edit(Disciplina $disciplina)
-    {
-        $bases = DisciplinaBase::pluck('nome', 'id');
-        $etapas = EtapaPeriodoLetivo::pluck('descricao', 'id');
-        $modulos = Modulo::pluck('descricao', 'id');
-        $professores = Professor::pluck('nome', 'id');
-        $areas = AreaConhecimento::pluck('nome', 'id');
-        return view('disciplinas.edit', compact('disciplina', 'bases', 'etapas', 'modulos', 'professores', 'areas'));
-    }
-
-    public function update(Request $request, Disciplina $disciplina)
-    {
-        $data = $request->validate([
-            // mesmos campos do store...
-        ]);
-        $disciplina->update($data);
-        return redirect()->route('disciplinas.index')->with('success', 'Disciplina atualizada!');
-    }
-
-    public function destroy(Disciplina $disciplina)
-    {
-        $disciplina->delete();
-        return redirect()->route('disciplinas.index')->with('success', 'Disciplina removida!');
+        return $request->validate($rules);
     }
 }

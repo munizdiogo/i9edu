@@ -188,7 +188,7 @@ use App\Http\Controllers\DisciplinaController;
 
 Route::middleware('auth')->group(function () {
     Route::get('disciplinas/data', [DisciplinaController::class, 'data'])->name('disciplinas.data');
-    Route::resource('disciplinas', DisciplinaController::class)->parameters(['disciplinas' => 'disciplina']);
+    Route::resource('disciplinas', DisciplinaController::class);
 });
 
 
