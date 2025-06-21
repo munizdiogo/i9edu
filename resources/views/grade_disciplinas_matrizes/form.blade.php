@@ -24,3 +24,10 @@
         </div>
     </div>
 </div>
+
+<div class="row mt-3 pb-5">
+    <div class="col text-right">
+        <a href="{{ route('grade_disciplinas_matrizes.index') }}" class="btn btn-lg px-5 btn-default">Voltar</a>
+        <button type="submit" class="btn btn-lg px-5 btn-primary">Salvar</button>
+    </div>
+</div>

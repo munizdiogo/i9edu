@@ -131,16 +131,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-//  Disciplinas Base
-use App\Http\Controllers\DisciplinaBaseController;
-
-Route::middleware('auth')->group(function () {
-    Route::get('disciplinas_base/data', [DisciplinaBaseController::class, 'data'])
-        ->name('disciplinas_base.data');
-    Route::resource('disciplinas_base', DisciplinaBaseController::class);
-});
-
-
 
 //  Área de Conhecimento
 use App\Http\Controllers\AreaConhecimentoController;
@@ -181,6 +171,18 @@ Route::middleware('auth')->group(function () {
         ->name('grade_disciplinas_matrizes.data');
     Route::resource('grade_disciplinas_matrizes', GradeDisciplinasMatrizController::class);
 });
+
+
+//  Disciplinas Base
+use App\Http\Controllers\DisciplinaBaseController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('disciplinas_base/data', [DisciplinaBaseController::class, 'data'])
+        ->name('disciplinas_base.data');
+    Route::resource('disciplinas_base', DisciplinaBaseController::class);
+});
+
+
 
 
 // Disciplinas

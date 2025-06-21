@@ -391,6 +391,11 @@ return [
             'icon' => 'fas fa-fw fa-list-alt',
         ],
         [
+            'text' => ' Disciplinas',
+            'url' => '/disciplinas',
+            'icon' => 'fab fa-fw fa-buffer',
+        ],
+        [
             'text' => ' Etapas Período Letivo',
             'url' => '/etapas_periodos_letivos',
             'icon' => 'fas fa-fw fa-stream',
@@ -404,16 +409,7 @@ return [
             'text' => ' Grade Disciplinas Matrizes',
             'url' => '/grade_disciplinas_matrizes',
             'icon' => 'fab fa-fw fa-buffer',
-        ],
-        [
-            'text' => ' Grade Disciplinas Matrizes',
-            'url' => '/grade_disciplinas_matrizes',
-            'icon' => 'fab fa-fw fa-buffer',
-        ],
-        [
-            'text' => ' Disciplinas',
-            'url' => '/disciplinas',
-            'icon' => 'fab fa-fw fa-buffer',
+            'icon_color' => 'red',
         ],
         [
             'text' => ' Professores',
