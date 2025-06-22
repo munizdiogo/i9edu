@@ -320,232 +320,140 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
-        // [
-        //     'text' => 'pages',
-        //     'url' => 'admin/pages',
-        //     'icon' => 'far fa-fw fa-file',
-        //     'label' => 4,
-        //     'label_color' => 'success',
-        // ],
-        // ['header' => 'account_settings'],
-        // [
-        //     'text' => ' Perfil',
-        //     'url' => '/perfis',
-        //     'icon' => 'fas fa-fw fa-user',
-        // ],
-        // [
-        //     'text' => ' Polos',
-        //     'url' => '/polos',
-        //     'icon' => 'fas fa-fw fa-building',
-        // ],
-        // [
-        //     'text' => ' Cursos',
-        //     'url' => '/cursos',
-        //     'icon' => 'fas fa-fw fa-book',
-        // ],
-        // [
-        //     'text' => ' Matrizes Curriculares',
-        //     'url' => '/matrizes',
-        //     'icon' => 'fas fa-fw fa-book-open',
-        // ],
-        // [
-        //     'text' => ' Turmas',
-        //     'url' => '/turmas',
-        //     'icon' => 'fas fa-fw fa-chalkboard-teacher',
-        // ],
-        // [
-        //     'text' => ' Períodos Letivos',
-        //     'url' => '/periodos',
-        //     'icon' => 'fas fa-fw fa-calendar-alt',
-        // ],
-        // [
-        //     'text' => ' Alunos',
-        //     'url' => '/alunos',
-        //     'icon' => 'fas fa-fw fa-address-card',
-        // ],
-        // [
-        //     'text' => ' Alunos Curso Admissão',
-        //     'url' => '/admissoes',
-        //     'icon' => 'fas fa-fw fa-graduation-cap',
-        //     'icon_color' => 'yellow',
-        // ],
-        // [
-        //     'text' => ' Editais Processo Seletivo',
-        //     'url' => '/editais',
-        //     'icon' => 'fas fa-fw fa-clipboard-list',
-        // ],
-        // [
-        //     'text' => ' Matrículas',
-        //     'url' => '/matriculas',
-        //     'icon' => 'fas fa-fw fa-check-double',
-        //     'icon_color' => 'yellow',
-        // ],
-        // [
-        //     'text' => ' Áreas de Conhecimento',
-        //     'url' => '/area_conhecimentos',
-        //     'icon' => 'fas fa-fw fa-book-reader',
-        // ],
-        // [
-        //     'text' => ' Disciplinas Base',
-        //     'url' => '/disciplinas_base',
-        //     'icon' => 'fas fa-fw fa-list-alt',
-        // ],
-        // [
-        //     'text' => ' Disciplinas',
-        //     'url' => '/disciplinas',
-        //     'icon' => 'fab fa-fw fa-buffer',
-        // ],
-        // [
-        //     'text' => ' Etapas Período Letivo',
-        //     'url' => '/etapas_periodos_letivos',
-        //     'icon' => 'fas fa-fw fa-stream',
-        // ],
-        // [
-        //     'text' => ' Módulos',
-        //     'url' => '/modulos',
-        //     'icon' => 'fas fa-fw fa-shapes',
-        // ],
-        // [
-        //     'text' => ' Grade Disciplinas Matrizes',
-        //     'url' => '/grade_disciplinas_matrizes',
-        //     'icon' => 'fa fa-fw fa-table',
-        //     'icon_color' => 'red',
-        // ],
-        // [
-        //     'text' => ' Professores',
-        //     'url' => '/professores',
-        //     'icon' => 'fa fa-fw fa-chalkboard-teacher',
-        // ],
-        // [
-        //     'text' => ' Setores',
-        //     'url' => '/setores',
-        //     'icon' => 'fa fa-fw fa-sitemap',
-        // ],
-        // [
-        //     'text' => ' Funções',
-        //     'url' => '/funcoes',
-        //     'icon' => 'fa fa-fw fa-vector-square',
-        // ],
-        // [
-        //     'text' => ' Funcionários',
-        //     'url' => '/funcionarios',
-        //     'icon' => 'fa fa-fw fa-briefcase',
-        // ],
-        [
-            'text' => 'CADASTROS',
-            'icon' => 'fas fa-fw fa-pencil-alt',
-            'icon_color' => 'white',
-            'submenu' => [
-                [
-                    'text' => ' Perfil',
-                    'url' => '/perfis',
-                    'icon' => 'fas fa-fw fa-user',
-                ],
-                [
-                    'text' => ' Polos',
-                    'url' => '/polos',
-                    'icon' => 'fas fa-fw fa-building',
-                ],
-                [
-                    'text' => ' Professores',
-                    'url' => '/professores',
-                    'icon' => 'fa fa-fw fa-chalkboard-teacher',
-                ],
-                [
-                    'text' => ' Funcionários',
-                    'url' => '/funcionarios',
-                    'icon' => 'fa fa-fw fa-briefcase',
-                ],
-            ],
-        ],
-        [
-            'text' => ' CADASTROS GERAIS',
-            'icon' => 'fa fa-fw fa-pencil-alt',
-            'icon_color' => 'white',
-            'submenu' => [
-                [
-                    'text' => ' Setores',
-                    'url' => '/setores',
-                    'icon' => 'fa fa-fw fa-sitemap',
-                ],
-                [
-                    'text' => ' Funções',
-                    'url' => '/funcoes',
-                    'icon' => 'fa fa-fw fa-vector-square',
-                ],
-            ],
-        ],
-        [
-            'text' => 'ACADÊMICO',
-            'icon' => 'fas fa-fw fa-book',
-            'icon_color' => 'white',
-            'url' => '#',
-            'submenu' => [
-                [
-                    'text' => ' Cursos',
-                    'url' => '/cursos',
-                    'icon' => 'fas fa-fw fa-book',
-                ],
-                [
-                    'text' => ' Matrizes Curriculares',
-                    'url' => '/matrizes',
-                    'icon' => 'fas fa-fw fa-book-open',
-                ],
-                [
-                    'text' => ' Turmas',
-                    'url' => '/turmas',
-                    'icon' => 'fas fa-fw fa-chalkboard-teacher',
-                ],
-                [
-                    'text' => ' Disciplinas Base',
-                    'url' => '/disciplinas_base',
-                    'icon' => 'fas fa-fw fa-list-alt',
-                ],
-                [
-                    'text' => ' Disciplinas',
-                    'url' => '/disciplinas',
-                    'icon' => 'fab fa-fw fa-buffer',
-                ],
-                [
-                    'text' => ' Grade Disciplinas Matrizes',
-                    'url' => '/grade_disciplinas_matrizes',
-                    'icon' => 'fa fa-fw fa-table',
-                ],
-                [
-                    'text' => ' Períodos Letivos',
-                    'url' => '/periodos',
-                    'icon' => 'fas fa-fw fa-calendar-alt',
-                ],
-                [
-                    'text' => ' Etapas Período Letivo',
-                    'url' => '/etapas_periodos_letivos',
-                    'icon' => 'fas fa-fw fa-stream',
-                ],
-                [
-                    'text' => ' Áreas de Conhecimento',
-                    'url' => '/area_conhecimentos',
-                    'icon' => 'fas fa-fw fa-book-reader',
-                ],
-                [
-                    'text' => ' Módulos',
-                    'url' => '/modulos',
-                    'icon' => 'fas fa-fw fa-puzzle-piece',
-                ],
 
-            ],
+        ['header' => '_____________________'],
+        ['header' => '   '],
+        ['header' => 'CADASTROS '],
+        [
+            'text' => ' Perfil',
+            'url' => '/perfis',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => ' CAPTAÇÃO',
-            'icon' => 'fas fa-fw fa-address-book',
-            'icon_color' => 'white',
-            'submenu' => [
-                [
-                    'text' => ' Editais Processo Seletivo',
-                    'url' => '/editais',
-                    'icon' => 'fas fa-fw fa-clipboard-list',
-                ],
-            ],
+            'text' => ' Polos',
+            'url' => '/polos',
+            'icon' => 'fas fa-fw fa-building',
         ],
+        [
+            'text' => ' Professores',
+            'url' => '/professores',
+            'icon' => 'fa fa-fw fa-chalkboard-teacher',
+        ],
+        [
+            'text' => ' Funcionários',
+            'url' => '/funcionarios',
+            'icon' => 'fa fa-fw fa-briefcase',
+        ],
+
+        // [
+        //     'text' => 'CADASTROS',
+        //     'icon' => 'fas fa-fw fa-pencil-alt',
+        //     'icon_color' => 'white',
+        //     'submenu' => [
+        //     ],
+        // ],
+        ['header' => '_____________________'],
+        ['header' => '   '],
+        ['header' => 'CADASTROS GERAIS '],
+        [
+            'text' => ' Setores',
+            'url' => '/setores',
+            'icon' => 'fa fa-fw fa-sitemap',
+        ],
+        [
+            'text' => ' Funções',
+            'url' => '/funcoes',
+            'icon' => 'fa fa-fw fa-vector-square',
+        ],
+        // [
+        //     'text' => ' CADASTROS GERAIS',
+        //     'icon' => 'fa fa-fw fa-pencil-alt',
+        //     'icon_color' => 'white',
+        //     'submenu' => [
+        //     ],
+        // ],
+        ['header' => '_____________________'],
+        ['header' => '   '],
+        ['header' => 'ACADÊMICO '],
+        [
+            'text' => ' Cursos',
+            'url' => '/cursos',
+            'icon' => 'fas fa-fw fa-book',
+        ],
+        [
+            'text' => ' Matrizes Curriculares',
+            'url' => '/matrizes',
+            'icon' => 'fas fa-fw fa-book-open',
+        ],
+        [
+            'text' => ' Turmas',
+            'url' => '/turmas',
+            'icon' => 'fas fa-fw fa-chalkboard-teacher',
+        ],
+        [
+            'text' => ' Disciplinas Base',
+            'url' => '/disciplinas_base',
+            'icon' => 'fas fa-fw fa-list-alt',
+        ],
+        [
+            'text' => ' Disciplinas',
+            'url' => '/disciplinas',
+            'icon' => 'fab fa-fw fa-buffer',
+        ],
+        [
+            'text' => ' Grade Disciplinas Matrizes',
+            'url' => '/grade_disciplinas_matrizes',
+            'icon' => 'fa fa-fw fa-table',
+        ],
+        [
+            'text' => ' Períodos Letivos',
+            'url' => '/periodos',
+            'icon' => 'fas fa-fw fa-calendar-alt',
+        ],
+        [
+            'text' => ' Etapas Período Letivo',
+            'url' => '/etapas_periodos_letivos',
+            'icon' => 'fas fa-fw fa-stream',
+        ],
+        [
+            'text' => ' Áreas de Conhecimento',
+            'url' => '/area_conhecimentos',
+            'icon' => 'fas fa-fw fa-book-reader',
+        ],
+        [
+            'text' => ' Módulos',
+            'url' => '/modulos',
+            'icon' => 'fas fa-fw fa-puzzle-piece',
+        ],
+        // [
+        //     'text' => 'ACADÊMICO',
+        //     'icon' => 'fas fa-fw fa-book',
+        //     'icon_color' => 'white',
+        //     'url' => '#',
+        //     'submenu' => [
+
+        //     ],
+        // ],
+        ['header' => '_____________________'],
+        ['header' => '   '],
+        ['header' => 'CAPTAÇÃO',],
+
+
+        [
+            'text' => ' Editais Processo Seletivo',
+            'url' => '/editais',
+            'icon' => 'fas fa-fw fa-clipboard-list',
+        ],
+        // [
+        //     'text' => ' CAPTAÇÃO',
+        //     'icon' => 'fas fa-fw fa-address-book',
+        //     'icon_color' => 'white',
+        //     'submenu' => [
+        //     ],
+        // ],
+        ['header' => '_____________________'],
+        ['header' => '   '],
+        ['header' => 'OUTROS MENUS'],
         [
             'text' => ' Alunos',
             'url' => '/alunos',
