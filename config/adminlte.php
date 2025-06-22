@@ -238,7 +238,7 @@ return [
 
     'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
-    'right_sidebar_theme' => 'dark',
+    'right_sidebar_theme' => 'light',
     'right_sidebar_slide' => true,
     'right_sidebar_push' => true,
     'right_sidebar_scrollbar_theme' => 'os-theme-light',
@@ -434,7 +434,7 @@ return [
         [
             'text' => 'CADASTROS',
             'icon' => 'fas fa-fw fa-pencil-alt',
-            'icon_color' => 'green',
+            'icon_color' => 'white',
             'submenu' => [
                 [
                     'text' => ' Perfil',
@@ -461,7 +461,7 @@ return [
         [
             'text' => ' CADASTROS GERAIS',
             'icon' => 'fa fa-fw fa-pencil-alt',
-            'icon_color' => 'green',
+            'icon_color' => 'white',
             'submenu' => [
                 [
                     'text' => ' Setores',
@@ -478,7 +478,7 @@ return [
         [
             'text' => 'ACADÊMICO',
             'icon' => 'fas fa-fw fa-book',
-            'icon_color' => 'green',
+            'icon_color' => 'white',
             'url' => '#',
             'submenu' => [
                 [
@@ -529,15 +529,15 @@ return [
                 [
                     'text' => ' Módulos',
                     'url' => '/modulos',
-                    'icon' => 'fas fa-fw fa-shapes',
+                    'icon' => 'fas fa-fw fa-puzzle-piece',
                 ],
 
             ],
         ],
         [
             'text' => ' CAPTAÇÃO',
-            'icon' => 'fas fa-fw fa-clipboard-list',
-            'icon_color' => 'green',
+            'icon' => 'fas fa-fw fa-address-book',
+            'icon_color' => 'white',
             'submenu' => [
                 [
                     'text' => ' Editais Processo Seletivo',
@@ -563,6 +563,12 @@ return [
             'url' => '/matriculas',
             'icon' => 'fas fa-fw fa-check-double',
             'icon_color' => 'yellow',
+        ],
+        [
+            'text' => ' Matriz Captação',
+            'url' => '/matriz-captacao',
+            'icon' => 'fas fa-fw fa-check-double',
+            'icon_color' => 'blue',
         ],
 
         // [
@@ -706,11 +712,11 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
                 ],
             ],

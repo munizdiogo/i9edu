@@ -13,6 +13,7 @@ class CreateCursosTable extends Migration
         Schema::create('cursos', function (Blueprint $table) {
             $table->bigIncrements('id');
             // Dados do curso
+            $table->string('nome');
             $table->string('nome_impressao1');
             $table->string('nome_impressao2')->nullable();
             $table->string('nome_impressao3')->nullable();

@@ -228,3 +228,22 @@ Route::middleware('auth')->group(function () {
     Route::get('funcionarios/data', [FuncionarioController::class, 'data'])->name('funcionarios.data');
     Route::resource('funcionarios', FuncionarioController::class)->parameters(['funcionarios' => 'funcionario']);
 });
+
+
+//  Matriz Captação
+use App\Http\Controllers\MatrizCaptacaoController;
+use App\Http\Controllers\CursoMatrizCaptacaoController;
+use App\Http\Controllers\PoloMatrizCaptacaoController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('matriz-captacao/data', [MatrizCaptacaoController::class, 'data'])->name('matriz_captacao.data');
+    Route::resource('matriz-captacao', MatrizCaptacaoController::class)->parameters(['matriz-captacao' => 'matriz']);
+
+    Route::get('matriz-captacao/{matriz}/cursos/data', [CursoMatrizCaptacaoController::class, 'data'])->name('matriz_captacao.cursos.data');
+    Route::post('matriz-captacao/{matriz}/cursos', [CursoMatrizCaptacaoController::class, 'store'])->name('matriz_captacao.cursos.store');
+    Route::delete('cursos-matriz-captacao/{curso}', [CursoMatrizCaptacaoController::class, 'destroy'])->name('matriz_captacao.cursos.destroy');
+
+    Route::get('matriz-captacao/{matriz}/polos/data', [PoloMatrizCaptacaoController::class, 'data'])->name('matriz_captacao.polos.data');
+    Route::post('matriz-captacao/{matriz}/polos', [PoloMatrizCaptacaoController::class, 'store'])->name('matriz_captacao.polos.store');
+    Route::delete('polos-matriz-captacao/{polo}', [PoloMatrizCaptacaoController::class, 'destroy'])->name('matriz_captacao.polos.destroy');
+});

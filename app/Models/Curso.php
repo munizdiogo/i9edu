@@ -12,6 +12,7 @@ class Curso extends Model
 
     protected $table = 'cursos';
     protected $fillable = [
+        'nome',
         'nome_impressao1',
         'nome_impressao2',
         'nome_impressao3',
