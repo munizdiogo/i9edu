@@ -7,10 +7,17 @@
         <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap4.min.css">
     @endsection
 
-    <h1>
-        Matriz Captação
-        <a href="{{ route('matriz-captacao.create') }}" class="btn btn-success float-right">Nova Matriz</a>
-    </h1>
+
+    <div class="row">
+        <div class="col-6">
+            <h1 class="mb-3"> Matriz Captação </h1>
+        </div>
+        <div class="col-6">
+            <a href="{{ route('matriz-captacao.create') }}" class="btn btn-success float-right">
+                <i class="fas fa-plus text-light mx-3"></i> Nova Matriz
+            </a>
+        </div>
+    </div>
 @endsection
 
 @section('content')

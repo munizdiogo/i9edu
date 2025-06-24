@@ -19,3 +19,10 @@
     <textarea name="descricao" id="descricao" class="form-control" rows="3"
         placeholder="Descrição opcional">{{ old('descricao', $matriz->descricao ?? '') }}</textarea>
 </div>
+
+<div class="row mt-3">
+    <div class="col text-right">
+        <a href="{{ route('matriz-captacao.index') }}" class="btn btn-default">Voltar</a>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+</div>
