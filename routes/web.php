@@ -247,3 +247,28 @@ Route::middleware('auth')->group(function () {
     Route::post('matriz-captacao/{matriz}/polos', [PoloMatrizCaptacaoController::class, 'store'])->name('matriz_captacao.polos.store');
     Route::delete('polos-matriz-captacao/{polo}', [PoloMatrizCaptacaoController::class, 'destroy'])->name('matriz_captacao.polos.destroy');
 });
+
+
+
+//  Plano de `Pagamento
+use App\Http\Controllers\PlanoPagamentoController;
+use App\Http\Controllers\ParcelaPlanoPagamentoController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('planos/data', [PlanoPagamentoController::class, 'data'])->name('planos.data');
+    Route::resource('planos_pagamento', PlanoPagamentoController::class);
+
+    Route::get('planos_pagamento/{plano}/parcelas/data', [ParcelaPlanoPagamentoController::class, 'data'])
+        ->name('planos.parcelas.data');
+
+    Route::post('planos_pagamento/{plano}/parcelas', [ParcelaPlanoPagamentoController::class, 'store'])
+        ->name('planos.parcelas.store');
+
+    Route::put('planos_pagamento/{plano}/parcelas', [ParcelaPlanoPagamentoController::class, 'update'])
+        ->name('planos.parcelas.update');
+
+    Route::delete('parcelas_plano_pagamento/{r}', [ParcelaPlanoPagamentoController::class, 'destroy'])
+        ->name('planos.parcelas.destroy');
+
+
+});

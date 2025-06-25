@@ -476,6 +476,12 @@ return [
             'text' => ' Matriz Captação',
             'url' => '/matriz-captacao',
             'icon' => 'fas fa-fw fa-check-double',
+            'icon_color' => 'yellow',
+        ],
+        [
+            'text' => ' Planos de Pagamento',
+            'url' => '/planos_pagamento',
+            'icon' => 'fas fa-fw fa-dollar-sign',
             'icon_color' => 'blue',
         ],
 
