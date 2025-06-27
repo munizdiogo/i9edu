@@ -1,5 +1,10 @@
 @extends('adminlte::page')
 @section('title','Editar Plano')
+@section('css')
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap4.min.css">
+@endsection
 @section('content')
 <form action="{{ route('planos_pagamento.update',$planos_pagamento) }}" method="post">
   @csrf @method('PUT')
