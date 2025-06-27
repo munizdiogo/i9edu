@@ -19,6 +19,8 @@
 /storage/*.key
 /storage/pail
 /vendor
+/storage
 Homestead.json
 Homestead.yaml
 Thumbs.db
+storage/app/.gitignore

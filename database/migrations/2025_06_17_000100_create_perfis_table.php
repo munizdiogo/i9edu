@@ -40,12 +40,14 @@ class CreatePerfisTable extends Migration
             $table->string('photo_url')->nullable();
 
             // Endereço
+            $table->string('cep')->nullable();
             $table->string('logradouro')->nullable();
             $table->string('numero')->nullable();
-            $table->string('cep')->nullable();
-            $table->string('cidade')->nullable();
-            $table->string('bairro')->nullable();
             $table->string('complemento')->nullable();
+            $table->string('bairro')->nullable();
+            $table->string('cidade')->nullable();
+            $table->string('uf', 2)->nullable();
+            $table->string('pais')->nullable();
 
             // Contato
             $table->string('ddi', 5)->nullable();

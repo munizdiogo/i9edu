@@ -70,12 +70,12 @@
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label>CPF</label>
-                                <input type="text" name="cpf" class="form-control"
+                                <input type="text" id="cpf" name="cpf" class="form-control"
                                     value="{{ old('cpf', $perfil->cpf ?? '') }}">
                             </div>
                             <div class="form-group col-md-3">
                                 <label>RG</label>
-                                <input type="text" name="rg" class="form-control"
+                                <input type="text" name="id" name="rg" class="form-control"
                                     value="{{ old('rg', $perfil->rg ?? '') }}">
                             </div>
                             <div class="form-group col-md-3">
@@ -137,7 +137,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label>CNPJ</label>
-                                <input type="text" name="cnpj" class="form-control"
+                                <input type="text" id="cnpj" name="cnpj" class="form-control"
                                     value="{{ old('cnpj', $perfil->cnpj ?? '') }}">
                             </div>
                             <div class="form-group col-md-4">
@@ -164,37 +164,49 @@
         </div>
         <div class="card-body">
             <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label>CEP</label>
+                    <input type="text" id="cep" name="cep" class="form-control"
+                        value="{{ old('cep', $perfil->cep ?? '') }}">
+                </div>
                 <div class="form-group col-md-6">
                     <label>Logradouro</label>
-                    <input type="text" name="logradouro" class="form-control"
+                    <input type="text" id="logradouro" name="logradouro" class="form-control"
                         value="{{ old('logradouro', $perfil->logradouro ?? '') }}">
                 </div>
                 <div class="form-group col-md-2">
                     <label>Número</label>
-                    <input type="text" name="numero" class="form-control"
+                    <input type="text" id="numero" name="numero" class="form-control"
                         value="{{ old('numero', $perfil->numero ?? '') }}">
                 </div>
-                <div class="form-group col-md-4">
-                    <label>CEP</label>
-                    <input type="text" name="cep" class="form-control" value="{{ old('cep', $perfil->cep ?? '') }}">
+                <div class="form-group col-md-2">
+                    <label>Complemento</label>
+                    <input type="text" id="complemento" name="complemento" class="form-control"
+                        value="{{ old('complemento', $perfil->complemento ?? '') }}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label>Cidade</label>
-                    <input type="text" name="cidade" class="form-control"
-                        value="{{ old('cidade', $perfil->cidade ?? '') }}">
-                </div>
-                <div class="form-group col-md-4">
                     <label>Bairro</label>
-                    <input type="text" name="bairro" class="form-control"
+                    <input type="text" id="bairro" name="bairro" class="form-control"
                         value="{{ old('bairro', $perfil->bairro ?? '') }}">
                 </div>
                 <div class="form-group col-md-4">
-                    <label>Complemento</label>
-                    <input type="text" name="complemento" class="form-control"
-                        value="{{ old('complemento', $perfil->complemento ?? '') }}">
+                    <label>Cidade</label>
+                    <input type="text" id="cidade" name="cidade" class="form-control"
+                        value="{{ old('cidade', $perfil->cidade ?? '') }}">
                 </div>
+                <div class="form-group col-md-2">
+                    <label>UF</label>
+                    <input type="text" id="uf" name="uf" class="form-control"
+                        value="{{ old('uf', $perfil->uf ?? '') }}">
+                </div>
+                <div class="form-group col-md-2">
+                    <label>País</label>
+                    <input type="text" id="pais" name="pais" class="form-control"
+                        value="{{ old('pais', $perfil->pais ?? '') }}">
+                </div>
+
             </div>
         </div>
     </div>
@@ -208,24 +220,27 @@
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <label>DDI</label>
-                    <input type="text" name="ddi" class="form-control" value="{{ old('ddi', $perfil->ddi ?? '') }}">
+                    <input type="text" id="ddi" name="ddi" class="form-control"
+                        value="{{ old('ddi', $perfil->ddi ?? '') }}" placeholder="+55">
                 </div>
                 <div class="form-group col-md-2">
                     <label>Fone</label>
-                    <input type="text" name="fone" class="form-control" value="{{ old('fone', $perfil->fone ?? '') }}">
+                    <input type="text" id="fone" name="fone" class="form-control"
+                        value="{{ old('fone', $perfil->fone ?? '') }}">
                 </div>
                 <div class="form-group col-md-2">
                     <label>Celular</label>
-                    <input type="text" name="celular" class="form-control"
+                    <input type="text" id="celular" name="celular" class="form-control"
                         value="{{ old('celular', $perfil->celular ?? '') }}">
                 </div>
                 <div class="form-group col-md-3">
                     <label>Fax</label>
-                    <input type="text" name="fax" class="form-control" value="{{ old('fax', $perfil->fax ?? '') }}">
+                    <input type="text" id="fax" name="fax" class="form-control"
+                        value="{{ old('fax', $perfil->fax ?? '') }}">
                 </div>
                 <div class="form-group col-md-3">
                     <label>Fone Comercial</label>
-                    <input type="text" name="fone_comercial" class="form-control"
+                    <input type="text" id="fone_comercial" name="fone_comercial" class="form-control"
                         value="{{ old('fone_comercial', $perfil->fone_comercial ?? '') }}">
                 </div>
             </div>
@@ -242,6 +257,9 @@
 
 {{-- Script para toggle de campos PF/PJ --}}
 @section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+
     <script>
         function toggleType() {
             const tipo_cadastro = $('#tipo_cadastro').val();
@@ -253,6 +271,47 @@
             toggleType();
             $('#tipo_cadastro').change(toggleType);
             bsCustomFileInput.init();
+        });
+    </script>
+
+    {{-- CONSULTA CEP E FAZENDO AUTO PREENCHIMENTO DOS CAMPOS --}}
+    <script>
+        document.getElementById('cep').addEventListener('blur', function () {
+            const cep = this.value.replace(/\D/g, '');
+            if (cep.length !== 8) {
+                alert('CEP inválido!');
+                return;
+            }
+
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.erro) {
+                        alert('CEP não encontrado!');
+                        return;
+                    }
+
+                    // Preencher os campos
+                    document.getElementById('logradouro').value = data.logradouro || '';
+                    document.getElementById('bairro').value = data.bairro || '';
+                    document.getElementById('cidade').value = data.localidade || '';
+                    document.getElementById('uf').value = data.uf || '';
+                    document.getElementById('pais').value = 'Brasil';
+                })
+                .catch(() => alert('Erro ao buscar CEP'));
+        });
+    </script>
+
+    {{-- APLICANDO MÁSCARAS NOS CAMPOS --}}
+    <script>
+        $(document).ready(function () {
+            $('#cep').mask('00000-000');
+            $('#cpf').mask('000.000.000-00', { reverse: true });
+            $('#cnpj').mask('00.000.00/0000-00', { reverse: true });
+            $('#rg').mask('00.000.000-0', { reverse: true });
+            $('#ddi').mask('+00');
+            $('#celular').mask('(00) 00000-0000');
+            $('#fone').mask('(00) 0000-0000');
         });
     </script>
 @endsection
