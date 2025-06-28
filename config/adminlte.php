@@ -328,21 +328,25 @@ return [
             'text' => ' Perfil',
             'url' => '/perfis',
             'icon' => 'fas fa-fw fa-user',
+            'icon_color' => 'red',
         ],
         [
             'text' => ' Polos',
             'url' => '/polos',
             'icon' => 'fas fa-fw fa-building',
+            'icon_color' => 'red',
         ],
         [
             'text' => ' Professores',
             'url' => '/professores',
             'icon' => 'fa fa-fw fa-chalkboard-teacher',
+            'icon_color' => 'red',
         ],
         [
             'text' => ' Funcionários',
             'url' => '/funcionarios',
             'icon' => 'fa fa-fw fa-briefcase',
+            'icon_color' => 'red',
         ],
 
         // [
@@ -379,51 +383,79 @@ return [
             'text' => ' Cursos',
             'url' => '/cursos',
             'icon' => 'fas fa-fw fa-book',
+            'icon_color' => 'yellow',
         ],
         [
             'text' => ' Matrizes Curriculares',
             'url' => '/matrizes',
             'icon' => 'fas fa-fw fa-book-open',
+            'icon_color' => 'yellow',
         ],
         [
             'text' => ' Turmas',
             'url' => '/turmas',
             'icon' => 'fas fa-fw fa-chalkboard-teacher',
+            'icon_color' => 'yellow',
         ],
         [
             'text' => ' Disciplinas Base',
             'url' => '/disciplinas_base',
             'icon' => 'fas fa-fw fa-list-alt',
+            'icon_color' => 'yellow',
         ],
         [
             'text' => ' Disciplinas',
             'url' => '/disciplinas',
             'icon' => 'fab fa-fw fa-buffer',
+            'icon_color' => 'yellow',
         ],
         [
             'text' => ' Grade Disciplinas Matrizes',
             'url' => '/grade_disciplinas_matrizes',
             'icon' => 'fa fa-fw fa-table',
+            'icon_color' => 'yellow',
         ],
         [
             'text' => ' Períodos Letivos',
             'url' => '/periodos',
             'icon' => 'fas fa-fw fa-calendar-alt',
+            'icon_color' => 'yellow',
         ],
         [
             'text' => ' Etapas Período Letivo',
             'url' => '/etapas_periodos_letivos',
             'icon' => 'fas fa-fw fa-stream',
+            'icon_color' => 'yellow',
         ],
         [
             'text' => ' Áreas de Conhecimento',
             'url' => '/area_conhecimentos',
             'icon' => 'fas fa-fw fa-book-reader',
+            'icon_color' => 'yellow',
         ],
         [
             'text' => ' Módulos',
             'url' => '/modulos',
             'icon' => 'fas fa-fw fa-puzzle-piece',
+            'icon_color' => 'yellow',
+        ],
+        [
+            'text' => ' Alunos',
+            'url' => '/alunos',
+            'icon' => 'fas fa-fw fa-user-graduate',
+            'icon_color' => 'yellow',
+        ],
+        [
+            'text' => ' Alunos Curso Admissão',
+            'url' => '/admissoes',
+            'icon' => 'fas fa-fw fa-graduation-cap',
+            'icon_color' => 'yellow',
+        ],
+        [
+            'text' => ' Matrículas',
+            'url' => '/matriculas',
+            'icon' => 'fas fa-fw fa-address-card',
+            'icon_color' => 'yellow',
         ],
         // [
         //     'text' => 'ACADÊMICO',
@@ -444,6 +476,12 @@ return [
             'url' => '/editais',
             'icon' => 'fas fa-fw fa-clipboard-list',
         ],
+        [
+            'text' => ' Matriz Captação',
+            'url' => '/matriz-captacao',
+            'icon' => 'fas fa-fw fa-table',
+            // 'icon' => 'fas fa-fw fa-check-double',
+        ],
         // [
         //     'text' => ' CAPTAÇÃO',
         //     'icon' => 'fas fa-fw fa-address-book',
@@ -453,102 +491,28 @@ return [
         // ],
         ['header' => '_____________________'],
         ['header' => '   '],
-        ['header' => 'OUTROS MENUS'],
-        [
-            'text' => ' Alunos',
-            'url' => '/alunos',
-            'icon' => 'fas fa-fw fa-address-card',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text' => ' Alunos Curso Admissão',
-            'url' => '/admissoes',
-            'icon' => 'fas fa-fw fa-graduation-cap',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text' => ' Matrículas',
-            'url' => '/matriculas',
-            'icon' => 'fas fa-fw fa-check-double',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text' => ' Matriz Captação',
-            'url' => '/matriz-captacao',
-            'icon' => 'fas fa-fw fa-check-double',
-            'icon_color' => 'yellow',
-        ],
+        ['header' => 'FINANCEIRO'],
+
+
         [
             'text' => ' Planos de Pagamento',
             'url' => '/planos_pagamento',
             'icon' => 'fas fa-fw fa-dollar-sign',
+            'icon_color' => 'green',
+        ],
+        ['header' => '_____________________'],
+        ['header' => '   '],
+        ['header' => 'OUTROS MENUS'],
+
+
+        [
+            'text' => ' AAAAAAAA',
+            'url' => '/planos_pagamento',
+            'icon' => 'fas fa-fw fa-check-double',
             'icon_color' => 'blue',
         ],
 
-        // [
-        //     'text' => ' aaaaa',
-        //     'url' => '/aaaaa',
-        //     'icon' => 'fab fa-fw fa-buffer',
-        // ],
-        // [
-        //     'text' => 'change_password',
-        //     'url' => 'admin/settings',
-        //     'icon' => 'fas fa-fw fa-lock',
-        // ],
-        // [
-        //     'text' => 'multilevel',
-        //     'icon' => 'fas fa-fw fa-share',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'level_one',
-        //             'url' => '#',
-        //         ],
-        //         [
-        //             'text' => 'level_one',
-        //             'url' => '#',
-        //             'submenu' => [
-        //                 [
-        //                     'text' => 'level_two',
-        //                     'url' => '#',
-        //                 ],
-        //                 [
-        //                     'text' => 'level_two',
-        //                     'url' => '#',
-        //                     'submenu' => [
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url' => '#',
-        //                         ],
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url' => '#',
-        //                         ],
-        //                     ],
-        //                 ],
-        //             ],
-        //         ],
-        //         [
-        //             'text' => 'level_one',
-        //             'url' => '#',
-        //         ],
-        //     ],
-        // ],
-        // ['header' => 'labels'],
-        // [
-        //     'text' => 'important',
-        //     'icon_color' => 'red',
-        //     'url' => '#',
-        // ],
-        // [
-        //     'text' => 'warning',
-        //     'icon_color' => 'yellow',
-        //     'url' => '#',
-        // ],
-        // [
-        //     'text' => 'information',
-        //     'icon_color' => 'cyan',
-        //     'url' => '#',
-        // ],
+
     ],
 
     /*

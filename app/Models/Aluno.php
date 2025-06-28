@@ -34,4 +34,9 @@ class Aluno extends Model
     {
         return $this->belongsTo(Perfil::class, 'perfil_id');
     }
+
+    public function admissao()
+    {
+        return $this->belongsTo(AlunoCursoAdmissao::class, 'id', 'aluno_id');
+    }
 }

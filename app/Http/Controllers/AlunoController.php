@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\AlunoCursoAdmissao;
 use App\Models\Perfil;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class AlunoController extends Controller
     {
         $cols = ['id', 'ra', 'nome', 'status'];
         $total = Aluno::count();
-        $query = Aluno::with('perfil');
+        $query = Aluno::with(['perfil', 'admissao']);
 
         if ($s = $request->input('search.value')) {
             $query->where('ra', 'like', "%{$s}%")
@@ -80,12 +81,14 @@ class AlunoController extends Controller
     public function show(Aluno $aluno)
     {
         $perfis = Perfil::pluck('nome', 'id');
-        return view('alunos.show', compact('aluno', 'perfis'));
+        $admissoes = AlunoCursoAdmissao::where('aluno_id', $aluno->id)->get();
+        return view('alunos.show', compact('aluno', 'perfis', 'admissoes'));
     }
 
     public function edit(Aluno $aluno)
     {
         $perfis = Perfil::pluck('nome', 'id');
+        // $aluno = Aluno::with(['perfil', 'admissao'])->get();
         return view('alunos.edit', compact('aluno', 'perfis'));
     }
 

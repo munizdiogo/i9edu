@@ -135,10 +135,10 @@
                             value="{{ old('perc_comissao', $polo->perc_comissao ?? '') }}" class="form-control">
                     </div>
                     <div class="form-group col-md-3 d-flex align-items-end">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="nao_apresentar_atendimento"
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" id="nao_apresentar_atendimento"
                                 name="nao_apresentar_atendimento" {{ old('nao_apresentar_atendimento', $polo->nao_apresentar_atendimento ?? false) ? 'checked' : '' }}>
-                            <label class="form-check-label" for="nao_apresentar_atendimento">Não apresentar no
+                            <label class="custom-control-label" for="nao_apresentar_atendimento">Não apresentar no
                                 atendimento</label>
                         </div>
                     </div>

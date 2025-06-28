@@ -6,15 +6,15 @@
       <input type="text" name="nome" class="form-control"
              value="{{ old('nome',$planos_pagamento->nome ?? '') }}" required>
     </div>
-    <div class="form-check">
-      <input type="checkbox" name="disponivel_todos_cursos" class="form-check-input"
+    <div class="custom-control custom-checkbox">
+      <input class="custom-control-input" type="checkbox" name="disponivel_todos_cursos" id="checkboxTodosCursos{{ $planos_pagamento->id }}" 
              {{ old('disponivel_todos_cursos',$planos_pagamento->disponivel_todos_cursos??false)?'checked':'' }}>
-      <label class="form-check-label">Disponível p/ todos os cursos</label>
+      <label for="checkboxTodosCursos{{ $planos_pagamento->id }}" class="custom-control-label">Disponível p/ todos os cursos</label>
     </div>
-    <div class="form-check">
-      <input type="checkbox" name="permite_cupom" class="form-check-input"
+    <div class="custom-control custom-checkbox">
+      <input class="custom-control-input" type="checkbox" name="permite_cupom" id="checkboxCupom{{ $planos_pagamento->id }}" 
              {{ old('permite_cupom',$planos_pagamento->permite_cupom??false)?'checked':'' }}>
-      <label class="form-check-label">Permite cupom de desconto</label>
+      <label for="checkboxCupom{{ $planos_pagamento->id }}" class="custom-control-label">Permite cupom de desconto</label>
     </div>
   </div>
 </div>
