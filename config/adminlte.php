@@ -500,10 +500,21 @@ return [
             'icon' => 'fas fa-fw fa-dollar-sign',
             'icon_color' => 'green',
         ],
+
+        ['header' => '_____________________'],
+        ['header' => '   '],
+        ['header' => 'REQUERIMENTOS'],
+
+        [
+            'text' => ' Departamentos',
+            'url' => '/requerimentos_departamentos',
+            'icon' => 'fas fa-fw fa-check-double',
+            'icon_color' => 'purple',
+        ],
+
         ['header' => '_____________________'],
         ['header' => '   '],
         ['header' => 'OUTROS MENUS'],
-
 
         [
             'text' => ' AAAAAAAA',

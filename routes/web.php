@@ -275,3 +275,13 @@ Route::middleware('auth')->group(function () {
 
 
 });
+
+
+//  Requerimentos
+use App\Http\Controllers\RequerimentoDepartamentoController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('requerimentos_departamentos/data', [RequerimentoDepartamentoController::class, 'data'])->name('requerimentos_departamentos.data');
+    Route::resource('requerimentos_departamentos', RequerimentoDepartamentoController::class)->parameters(['requerimentos_departamentos' => 'requerimento_departamento']);
+
+});
