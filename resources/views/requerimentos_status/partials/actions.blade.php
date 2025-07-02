@@ -1,7 +1,7 @@
 <div class="btn-group">
-    <a href="{{ route('requerimento_departamento.edit', $item) }}" class="btn btn-sm btn-warning">Editar</a>
+    <a href="{{ route('requerimentos-status.edit', $item) }}" class="btn btn-sm btn-warning">Editar</a>
     <button class="btn btn-sm btn-danger"
-        onclick="if(confirm('Tem certeza?')) { deletar('{{ route('requerimento_departamento.destroy', $item) }}') }">Excluir</button>
+        onclick="if(confirm('Tem certeza?')) { deletar('{{ route('requerimentos-status.destroy', $item) }}') }">Excluir</button>
 </div>
 
 <script>

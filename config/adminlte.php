@@ -511,6 +511,12 @@ return [
             'icon' => 'fas fa-fw fa-check-double',
             'icon_color' => 'purple',
         ],
+        [
+            'text' => ' Status',
+            'url' => '/requerimentos-status',
+            'icon' => 'fas fa-fw fa-check-double',
+            'icon_color' => 'purple',
+        ],
 
         ['header' => '_____________________'],
         ['header' => '   '],

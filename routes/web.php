@@ -285,3 +285,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('requerimentos_departamentos', RequerimentoDepartamentoController::class)->parameters(['requerimentos_departamentos' => 'requerimento_departamento']);
 
 });
+
+
+use App\Http\Controllers\RequerimentoStatusController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('requerimentos-status/data', [RequerimentoStatusController::class, 'data'])->name('requerimentos-status.data');
+    Route::resource('requerimentos-status', RequerimentoStatusController::class)->parameters(['requerimentos-status' => 'requerimento-status']);
+});
