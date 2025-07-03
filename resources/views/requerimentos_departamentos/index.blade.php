@@ -3,7 +3,7 @@
 
 @section('content_header')
     <h1 class="d-inline">Departamentos</h1>
-    <a href="{{ route('requerimentos_departamentos.create') }}" class="btn btn-success float-right">Novo Módulo</a>
+    <a href="{{ route('requerimentos_departamentos.create') }}" class="btn btn-success float-right">Novo Departamento</a>
 @endsection
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">

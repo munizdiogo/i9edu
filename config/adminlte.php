@@ -506,17 +506,32 @@ return [
         ['header' => 'REQUERIMENTOS'],
 
         [
-            'text' => ' Departamentos',
-            'url' => '/requerimentos_departamentos',
+            'text' => ' REQUERIMENTOS',
+            'url' => '#',
             'icon' => 'fas fa-fw fa-check-double',
             'icon_color' => 'purple',
+            'submenu' => [
+                [
+                    'text' => ' Departamentos',
+                    'url' => '/requerimentos_departamentos',
+                    'icon' => 'fas fa-fw fa-circle',
+                    'icon_color' => 'purple',
+                ],
+                [
+                    'text' => ' Status',
+                    'url' => '/requerimentos-status',
+                    'icon' => 'fas fa-fw fa-circle',
+                    'icon_color' => 'purple',
+                ],
+                [
+                    'text' => ' Assuntos',
+                    'url' => '/requerimentos_assuntos',
+                    'icon' => 'fas fa-fw fa-circle',
+                    'icon_color' => 'purple',
+                ],
+            ]
         ],
-        [
-            'text' => ' Status',
-            'url' => '/requerimentos-status',
-            'icon' => 'fas fa-fw fa-check-double',
-            'icon_color' => 'purple',
-        ],
+
 
         ['header' => '_____________________'],
         ['header' => '   '],
@@ -611,7 +626,7 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => true,
+                    'asset' => false,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
                 ],
             ],
