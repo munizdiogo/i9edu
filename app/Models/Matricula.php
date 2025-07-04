@@ -27,4 +27,19 @@ class Matricula extends Model
     {
         return $this->belongsTo(Turma::class);
     }
+
+    public function curso()
+    {
+        return $this->belongsTo(Curso::class);
+    }
+
+    public function polo()
+    {
+        return $this->belongsTo(Polo::class);
+    }
+
+    public function disciplinas()
+    {
+        return $this->belongsToMany(Disciplina::class, 'matricula_disciplinas');
+    }
 }

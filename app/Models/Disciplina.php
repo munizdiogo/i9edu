@@ -75,4 +75,9 @@ class Disciplina extends Model
     {
         return $this->belongsTo(AreaConhecimento::class, 'area_avaliacao_id');
     }
+
+    // public function matriculas()
+    // {
+    //     return $this->belongsToMany(Matricula::class, 'matricula_disciplinas');
+    // }
 }

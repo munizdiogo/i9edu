@@ -506,30 +506,28 @@ return [
         ['header' => 'REQUERIMENTOS'],
 
         [
-            'text' => ' REQUERIMENTOS',
-            'url' => '#',
-            'icon' => 'fas fa-fw fa-check-double',
+            'text' => ' Departamentos',
+            'url' => '/requerimentos_departamentos',
+            'icon' => 'fas fa-fw fa-circle',
             'icon_color' => 'purple',
-            'submenu' => [
-                [
-                    'text' => ' Departamentos',
-                    'url' => '/requerimentos_departamentos',
-                    'icon' => 'fas fa-fw fa-circle',
-                    'icon_color' => 'purple',
-                ],
-                [
-                    'text' => ' Status',
-                    'url' => '/requerimentos-status',
-                    'icon' => 'fas fa-fw fa-circle',
-                    'icon_color' => 'purple',
-                ],
-                [
-                    'text' => ' Assuntos',
-                    'url' => '/requerimentos_assuntos',
-                    'icon' => 'fas fa-fw fa-circle',
-                    'icon_color' => 'purple',
-                ],
-            ]
+        ],
+        [
+            'text' => ' Status',
+            'url' => '/requerimentos-status',
+            'icon' => 'fas fa-fw fa-circle',
+            'icon_color' => 'purple',
+        ],
+        [
+            'text' => ' Assuntos',
+            'url' => '/requerimentos_assuntos',
+            'icon' => 'fas fa-fw fa-circle',
+            'icon_color' => 'purple',
+        ],
+        [
+            'text' => ' Solicitações',
+            'url' => '/requerimentos_solicitacoes',
+            'icon' => 'fas fa-fw fa-circle',
+            'icon_color' => 'purple',
         ],
 
 
@@ -627,7 +625,7 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11',
                 ],
             ],
         ],

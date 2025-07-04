@@ -33,7 +33,7 @@ class RequerimentoAssuntoController extends Controller
                 'descricao' => $item->descricao,
                 'departamento' => $item->departamento->descricao,
                 'tipo_assunto' => $item->tipo_assunto,
-                'status' => $item->status === 'ativo' ? '<span class="badge bg-success">Ativo</span>' : '<span class="badge bg-danger">Inativo</span>',
+                'status' => $item->status === 'ATIVO' ? '<span class="badge bg-success">Ativo</span>' : '<span class="badge bg-danger">Inativo</span>',
                 'acoes' => view('requerimentos_assuntos.partials.actions', compact('item'))->render(),
             ];
         });

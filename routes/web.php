@@ -300,3 +300,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('requerimentos_assuntos/data', [RequerimentoAssuntoController::class, 'data'])->name('requerimentos_assuntos.data');
     Route::resource('requerimentos_assuntos', RequerimentoAssuntoController::class)->parameters(['requerimentos_assuntos' => 'requerimento_assunto']);
 });
+
+
+use App\Http\Controllers\RequerimentoSolicitacaoController;
+Route::middleware(['auth'])->group(function () {
+    Route::get('requerimentos_solicitacoes/data', [RequerimentoSolicitacaoController::class, 'data'])->name('requerimentos_solicitacoes.data');
+    Route::post('requerimentos_solicitacoes/upload', [RequerimentoSolicitacaoController::class, 'upload'])->name('requerimentos_solicitacoes.upload');
+    Route::resource('requerimentos_solicitacoes', RequerimentoSolicitacaoController::class)->parameters(['requerimentos_solicitacoes' => 'requerimento_solicitacao']);
+});
+
+
+use App\Http\Controllers\Api\ApiAlunoController as ApiAlunoController;
+use App\Http\Controllers\Api\ApiMatriculaController;
+
+Route::get('api/alunos/{id}/matriculas', [ApiAlunoController::class, 'matriculas']);
+Route::get('api/matriculas/{id}/disciplinas', [ApiMatriculaController::class, 'disciplinas']);

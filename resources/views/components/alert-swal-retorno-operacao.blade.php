@@ -1,9 +1,17 @@
+<script>
+    function decodeHtml(html) {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    }
+</script>
 @if (session('success'))
     <script>
+        var mensagemCorrigida = decodeHtml('{{ session('success') }}');
         Swal.fire({
             icon: 'success',
             title: 'Sucesso!',
-            text: '{{ session('success') }}',
+            text: mensagemCorrigida,
             confirmButtonText: 'OK'
         });
     </script>
@@ -11,10 +19,11 @@
 
 @if (session('error'))
     <script>
+        var mensagemCorrigida = decodeHtml('{{ session('error') }}');
         Swal.fire({
             icon: 'error',
             title: 'Erro!',
-            text: '{{ session('error') }}',
+            text: mensagemCorrigida,
             confirmButtonText: 'OK'
         });
     </script>

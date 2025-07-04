@@ -51,6 +51,10 @@ class MatrizCurricular extends Model
     {
         return $this->belongsTo(Curso::class, 'curso_id');
     }
+    public function gradeDisciplinas()
+    {
+        return $this->belongsTo(Curso::class, 'curso_id');
+    }
     public function centroCusto()
     {
         return $this->belongsTo(Polo::class, 'centro_custo_id');

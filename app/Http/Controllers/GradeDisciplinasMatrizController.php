@@ -38,7 +38,7 @@ class GradeDisciplinasMatrizController extends Controller
             ->map(fn($g) => [
                 'id' => $g->id,
                 'matriz' => $g->matrizCurricular->nome,
-                'disciplina' => $g->disciplina->nome,
+                'disciplina' => $g->disciplina->descricao,
                 'actions' => view('grade_disciplinas_matrizes.partials.actions', compact('g'))->render(),
             ]);
 
