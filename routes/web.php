@@ -303,15 +303,17 @@ Route::middleware(['auth'])->group(function () {
 
 
 use App\Http\Controllers\RequerimentoSolicitacaoController;
+use App\Http\Controllers\Api\ApiAlunoController as ApiAlunoController;
+use App\Http\Controllers\Api\ApiMatriculaController;
 Route::middleware(['auth'])->group(function () {
     Route::get('requerimentos_solicitacoes/data', [RequerimentoSolicitacaoController::class, 'data'])->name('requerimentos_solicitacoes.data');
     Route::post('requerimentos_solicitacoes/upload', [RequerimentoSolicitacaoController::class, 'upload'])->name('requerimentos_solicitacoes.upload');
     Route::resource('requerimentos_solicitacoes', RequerimentoSolicitacaoController::class)->parameters(['requerimentos_solicitacoes' => 'requerimento_solicitacao']);
+    // API PARA POPULAR CAMPOS - SELECT
+    Route::get('api/alunos/{id}/matriculas', [ApiAlunoController::class, 'matriculas']);
+    Route::get('api/matriculas/{id}/disciplinas', [ApiMatriculaController::class, 'disciplinas']);
 });
 
-
-use App\Http\Controllers\Api\ApiAlunoController as ApiAlunoController;
-use App\Http\Controllers\Api\ApiMatriculaController;
-
-Route::get('api/alunos/{id}/matriculas', [ApiAlunoController::class, 'matriculas']);
-Route::get('api/matriculas/{id}/disciplinas', [ApiMatriculaController::class, 'disciplinas']);
+use App\Http\Controllers\GrupoContaController;
+Route::get('grupo-contas-data', [GrupoContaController::class, 'data'])->name('grupo-contas.data');
+Route::resource('grupo-contas', GrupoContaController::class)->names('grupo-contas');
