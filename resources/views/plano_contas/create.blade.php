@@ -7,8 +7,6 @@
         <form action="{{ route('plano-contas.store') }}" method="POST">
             @csrf
             @include('plano_contas.form')
-            <button type="submit" class="btn btn-success">Salvar</button>
-            <a href="{{ route('plano-contas.index') }}" class="btn btn-secondary">Voltar</a>
         </form>
     </div>
 @endsection

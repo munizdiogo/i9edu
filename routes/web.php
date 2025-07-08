@@ -327,3 +327,32 @@ use App\Http\Controllers\PlanoContaController;
 
 Route::get('plano-contas/data', [PlanoContaController::class, 'data'])->name('plano-contas.data');
 Route::resource('plano-contas', PlanoContaController::class)->parameters(['plano-contas' => 'plano-conta']);
+
+
+// Convênios
+use App\Http\Controllers\ConvenioController;
+Route::get('convenios-data', [ConvenioController::class, 'data'])->name('convenios.data');
+Route::resource('convenios', ConvenioController::class);
+
+
+
+// Cupom
+use App\Http\Controllers\CupomController;
+Route::get('cupons/data', [CupomController::class, 'data'])->name('cupons.data');
+Route::resource('cupons', CupomController::class)->parameters(['cupons' => 'cupom']);
+
+// >> Liberações Cursos
+Route::prefix('cupons')->group(function () {
+    Route::get('{cupom}/cursos/data', [CupomController::class, 'cursosData'])->name('cupons.cursos.data');
+    Route::post('{cupom}/cursos/adicionar', [CupomController::class, 'adicionarCurso'])->name('cupons.cursos.adicionar');
+    Route::delete('{cupom}/cursos/{curso}/remover', [CupomController::class, 'removerCurso'])->name('cupons.cursos.remover');
+    Route::delete('cupons/{cupom}/cursos/remover-todos', [CupomController::class, 'removerTodosCursos'])->name('cupons.cursos.remover_todos');
+});
+// >> Liberações Polos
+Route::prefix('cupons')->group(function () {
+    // ... outras rotas ...
+    Route::get('{cupom}/polos/data', [CupomController::class, 'polosData'])->name('cupons.polos.data');
+    Route::post('{cupom}/polos/adicionar', [CupomController::class, 'adicionarPolo'])->name('cupons.polos.adicionar');
+    Route::delete('{cupom}/polos/{polo}/remover', [CupomController::class, 'removerPolo'])->name('cupons.polos.remover');
+    Route::delete('cupons/{cupom}/polos/remover-todos', [CupomController::class, 'removerTodosPolos'])->name('cupons.polos.remover_todos');
+});

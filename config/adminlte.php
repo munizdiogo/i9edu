@@ -512,6 +512,18 @@ return [
             'icon' => 'fas fa-fw fa-dollar-sign',
             'icon_color' => 'green',
         ],
+        [
+            'text' => ' Convênios',
+            'url' => '/convenios',
+            'icon' => 'fas fa-fw fa-dollar-sign',
+            'icon_color' => 'green',
+        ],
+        [
+            'text' => ' Cupons',
+            'url' => '/cupons',
+            'icon' => 'fas fa-fw fa-dollar-sign',
+            'icon_color' => 'green',
+        ],
 
         ['header' => '_____________________'],
         ['header' => '   '],

@@ -1,3 +1,6 @@
+<script src="//code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
 <script>
     $(function () {
         $('#datatable').DataTable({

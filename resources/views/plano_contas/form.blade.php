@@ -36,11 +36,11 @@
     </select>
 </div>
 <div class="mb-3">
-    <label for="id_grupo_conta" class="form-label">Grupo de Contas</label>
-    <select name="id_grupo_conta" class="form-select">
+    <label for="grupo_conta_id" class="form-label">Grupo de Contas</label>
+    <select name="grupo_conta_id" class="form-select">
         @foreach ($gruposContas as $grupo)
             @if(isset($grupo->id))
-                <option value="{{ $grupo->id ?? ''}}" {{ old('id_grupo_conta', $planoConta->id_grupo_conta ?? '') == $grupo->id ?
+                <option value="{{ $grupo->id ?? ''}}" {{ old('grupo_conta_id', $planoConta->grupo_conta_id ?? '') == $grupo->id ?
                     'selected' : '' }}>
                     {{ $grupo->descricao }}
                 </option>

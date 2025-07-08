@@ -16,12 +16,12 @@ class PlanoConta extends Model
         'operacao',
         'status',
         'tipo_conta',
-        'id_grupo_conta',
+        'grupo_conta_id',
         'natureza',
     ];
 
     public function grupoConta()
     {
-        return $this->belongsTo(GrupoConta::class, 'id_grupo_conta');
+        return $this->belongsTo(GrupoConta::class, 'grupo_conta_id');
     }
 }

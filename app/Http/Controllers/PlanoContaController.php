@@ -28,10 +28,16 @@ class PlanoContaController extends Controller
         return redirect()->route('plano-contas.index')->with('success', 'Plano de conta criado com sucesso!');
     }
 
-    public function edit(PlanoConta $plano_conta)
+    public function show(PlanoConta $plano_conta)
     {
         $grupos = GrupoConta::pluck('descricao', 'id');
-        return view('plano_contas.edit', compact('plano_conta', 'grupos'));
+        return view('plano_contas.show', compact('plano_conta', 'grupos'));
+    }
+
+    public function edit(PlanoConta $plano_conta)
+    {
+        $gruposContas = GrupoConta::pluck('descricao', 'id');
+        return view('plano_contas.edit', compact('plano_conta', 'gruposContas'));
     }
 
     public function update(Request $request, PlanoConta $plano_conta)
@@ -49,20 +55,40 @@ class PlanoContaController extends Controller
         return redirect()->route('plano-contas.index')->with('success', 'Plano de conta excluído com sucesso!');
     }
 
-    public function data()
+    public function data(Request $request)
     {
-        $planos = PlanoConta::with('grupoConta')->get();
+        $query = PlanoConta::with('grupoConta');
+        $total = $query->count();
 
-        return datatables()->of($planos)
-            ->addColumn('grupo', fn($row) => $row->grupoConta->descricao ?? '-')
-            ->addColumn('actions', function ($row) {
-                return view('components.actions', [
-                    'edit' => route('plano-contas.edit', $row->id),
-                    'destroy' => route('plano-contas.destroy', $row->id)
-                ]);
-            })
-            ->rawColumns(['actions'])
-            ->make(true);
+        if ($search = $request->input('search.value')) {
+            $query->where('id', $search)
+                ->orWhere('descricao', 'like', '%' . $search . '%')
+                ->orWhere('codigo', 'like', '%' . $search . '%');
+        }
+
+        $filtered = $query->count();
+
+        $data = $query->get()->map(function ($item) {
+            $dataCriacao = date_create($item->created_at);
+            return [
+                'id' => $item->id,
+                'descricao' => $item->descricao,
+                'codigo' => $item->codigo,
+                'grupo' => $item->grupoConta->descricao,
+                'operacao' => $item->operacao,
+                'status' => $item->status,
+                'actions' => view('plano_contas.partials.actions', compact('item'))->render(),
+            ];
+        });
+
+        return response()->json([
+            'data' => $data,
+            'recordsTotal' => $total,
+            'recordsFiltered' => $filtered,
+            'draw' => intval($request->draw),
+        ]);
+
+
     }
 
     protected function validateData(Request $request, $origem = "create", $professor = null)
