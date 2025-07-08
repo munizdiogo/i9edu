@@ -314,6 +314,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('api/matriculas/{id}/disciplinas', [ApiMatriculaController::class, 'disciplinas']);
 });
 
+// Grupo de Contas
+
 use App\Http\Controllers\GrupoContaController;
 Route::get('grupo-contas-data', [GrupoContaController::class, 'data'])->name('grupo-contas.data');
 Route::resource('grupo-contas', GrupoContaController::class)->names('grupo-contas');
+
+
+
+// Plano de Contas
+use App\Http\Controllers\PlanoContaController;
+
+Route::get('plano-contas/data', [PlanoContaController::class, 'data'])->name('plano-contas.data');
+Route::resource('plano-contas', PlanoContaController::class)->parameters(['plano-contas' => 'plano-conta']);

@@ -506,6 +506,12 @@ return [
             'icon' => 'fas fa-fw fa-dollar-sign',
             'icon_color' => 'green',
         ],
+        [
+            'text' => ' Plano de Contas',
+            'url' => '/plano-contas',
+            'icon' => 'fas fa-fw fa-dollar-sign',
+            'icon_color' => 'green',
+        ],
 
         ['header' => '_____________________'],
         ['header' => '   '],
