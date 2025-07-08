@@ -356,3 +356,9 @@ Route::prefix('cupons')->group(function () {
     Route::delete('{cupom}/polos/{polo}/remover', [CupomController::class, 'removerPolo'])->name('cupons.polos.remover');
     Route::delete('cupons/{cupom}/polos/remover-todos', [CupomController::class, 'removerTodosPolos'])->name('cupons.polos.remover_todos');
 });
+
+
+// Restrições de Plano de Pagamento
+use App\Http\Controllers\RestricaoPlanoPagamentoController;
+Route::get('restricoes_plano_pagamento/data', [RestricaoPlanoPagamentoController::class, 'data'])->name('restricoes_plano_pagamento.data');
+Route::resource('restricoes_plano_pagamento', RestricaoPlanoPagamentoController::class);

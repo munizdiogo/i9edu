@@ -524,6 +524,12 @@ return [
             'icon' => 'fas fa-fw fa-dollar-sign',
             'icon_color' => 'green',
         ],
+        [
+            'text' => ' Restrições Plano de Pagamento',
+            'url' => '/restricoes_plano_pagamento',
+            'icon' => 'fas fa-fw fa-dollar-sign',
+            'icon_color' => 'green',
+        ],
 
         ['header' => '_____________________'],
         ['header' => '   '],
