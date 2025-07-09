@@ -362,3 +362,11 @@ Route::prefix('cupons')->group(function () {
 use App\Http\Controllers\RestricaoPlanoPagamentoController;
 Route::get('restricoes_plano_pagamento/data', [RestricaoPlanoPagamentoController::class, 'data'])->name('restricoes_plano_pagamento.data');
 Route::resource('restricoes_plano_pagamento', RestricaoPlanoPagamentoController::class);
+
+
+// Documentos
+use App\Http\Controllers\DocumentosController;
+use App\Http\Controllers\DocumentoController;
+
+Route::resource('documentos', DocumentosController::class);
+Route::get('documentos-data', [DocumentosController::class, 'data'])->name('documentos.data');

@@ -369,6 +369,11 @@ return [
             'url' => '/funcoes',
             'icon' => 'fa fa-fw fa-vector-square',
         ],
+        [
+            'text' => ' Documentos',
+            'url' => '/documentos',
+            'icon' => 'fa fa-fw fa-vector-square',
+        ],
         // [
         //     'text' => ' CADASTROS GERAIS',
         //     'icon' => 'fa fa-fw fa-pencil-alt',
