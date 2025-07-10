@@ -21,6 +21,8 @@ class CreateParcelasPlanoPagamentoTable extends Migration
             $table->foreign('plano_pagamento_id')
                 ->references('id')->on('planos_pagamento')
                 ->onDelete('cascade');
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

@@ -16,4 +16,14 @@ class Documento extends Model
         'obrigatorio_informar_data',
         'processar_historico_disciplinas'
     ];
+
+    protected static function booted()
+    {
+        static::addGlobalScope('estrutura', function ($query) {
+            if (session('estrutura_id')) {
+                $query->where('id_estrutura', session('estrutura_id'));
+            }
+        });
+    }
+
 }

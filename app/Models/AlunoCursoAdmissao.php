@@ -65,4 +65,13 @@ class AlunoCursoAdmissao extends Model
         return $this->belongsTo(EditalProcessoSeletivo::class, 'edital_processo_seletivo_id');
     }
     // outros relacionamentos: formaIngresso, instituicao, instituicaoTransferencia...
+    protected static function booted()
+    {
+        static::addGlobalScope('estrutura', function ($query) {
+            if (session('estrutura_id')) {
+                $query->where('id_estrutura', session('estrutura_id'));
+            }
+        });
+    }
+
 }

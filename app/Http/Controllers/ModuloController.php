@@ -57,6 +57,7 @@ class ModuloController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
+        $data['id_estrutura'] = session('estrutura_id');
         Modulo::create($data);
         return redirect()->route('modulos.index')->with('success', 'Módulo criado!');
     }
@@ -76,6 +77,7 @@ class ModuloController extends Controller
     public function update(Request $request, Modulo $modulo)
     {
         $data = $this->validateData($request, "update", $modulo);
+        $data['id_estrutura'] = session('estrutura_id');
         $modulo->update($data);
         return redirect()->route('modulos.index')->with('success', 'Módulo atualizado!');
     }

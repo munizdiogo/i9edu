@@ -24,4 +24,14 @@ class Curso extends Model
         'codigo_emec',
         'link_emec'
     ];
+
+    protected static function booted()
+    {
+        static::addGlobalScope('estrutura', function ($query) {
+            if (session('estrutura_id')) {
+                $query->where('id_estrutura', session('estrutura_id'));
+            }
+        });
+    }
+
 }

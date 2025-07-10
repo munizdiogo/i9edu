@@ -321,6 +321,13 @@ return [
             'can' => 'manage-blog',
         ],
 
+
+        [
+            'text' => ' Estruturas',
+            'url' => '/estruturas',
+            'icon' => 'fas fa-fw fa-user',
+            'icon_color' => 'red',
+        ],
         ['header' => '_____________________'],
         ['header' => '   '],
         ['header' => 'CADASTROS '],

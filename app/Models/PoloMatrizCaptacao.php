@@ -13,4 +13,14 @@ class PoloMatrizCaptacao extends Model
     {
         return $this->belongsTo(MatrizCaptacao::class, 'matriz_captacao_id');
     }
+
+    protected static function booted()
+    {
+        static::addGlobalScope('estrutura', function ($query) {
+            if (session('estrutura_id')) {
+                $query->where('id_estrutura', session('estrutura_id'));
+            }
+        });
+    }
+
 }

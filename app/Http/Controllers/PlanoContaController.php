@@ -21,9 +21,10 @@ class PlanoContaController extends Controller
 
     public function store(Request $request)
     {
-        $this->validateData($request, "create");
+        $data = $this->validateData($request, "create");
+        $data['id_estrutura'] = session('estrutura_id');
 
-        PlanoConta::create($request->all());
+        PlanoConta::create($data);
 
         return redirect()->route('plano-contas.index')->with('success', 'Plano de conta criado com sucesso!');
     }
@@ -42,9 +43,11 @@ class PlanoContaController extends Controller
 
     public function update(Request $request, PlanoConta $plano_conta)
     {
-        $this->validateData($request, "update");
+        $data = $this->validateData($request, "update");
+        $data['id_estrutura'] = session('estrutura_id');
 
-        $plano_conta->update($request->all());
+
+        $plano_conta->update($data);
 
         return redirect()->route('plano-contas.index')->with('success', 'Plano de conta atualizado com sucesso!');
     }

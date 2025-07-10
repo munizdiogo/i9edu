@@ -43,6 +43,7 @@ class MatrizCaptacaoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+        $data['id_estrutura'] = session('estrutura_id');
 
         $matriz = MatrizCaptacao::create($data);
 
@@ -65,6 +66,7 @@ class MatrizCaptacaoController extends Controller
     public function update(Request $request, MatrizCaptacao $matriz)
     {
         $data = $this->validateData($request);
+        $data['id_estrutura'] = session('estrutura_id');
         $matriz->update($data);
 
         return redirect()->route('matriz-captacao.edit', $matriz->id)

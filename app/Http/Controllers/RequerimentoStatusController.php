@@ -20,14 +20,15 @@ class RequerimentoStatusController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $request->validate([
+        $data = $request->validate([
             'descricao' => 'required|string|max:255',
             // 'cor' => 'nullable|string|max:20',
             // 'status' => 'required|in:Ativo,Inativo',
         ]);
+        $data['id_estrutura'] = session('estrutura_id');
 
 
-        RequerimentoStatus::create($request->all());
+        RequerimentoStatus::create($data);
 
         return redirect()->route('requerimentos-status.index')->with('success', 'Status cadastrado com sucesso.');
     }
@@ -40,14 +41,15 @@ class RequerimentoStatusController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $data = $request->validate([
             'descricao' => 'required|string|max:255',
             'cor' => 'nullable|string|max:20',
             'status' => 'required|in:Ativo,Inativo',
         ]);
+        $data['id_estrutura'] = session('estrutura_id');
 
         $statusModel = RequerimentoStatus::findOrFail($id);
-        $statusModel->update($request->all());
+        $statusModel->update($data);
 
         return redirect()->route('requerimentos-status.index')->with('success', 'Status atualizado com sucesso.');
     }

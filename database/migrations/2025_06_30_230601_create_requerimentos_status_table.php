@@ -15,6 +15,8 @@ return new class extends Migration {
             $table->boolean('email_encaminhamento_setor')->default(false);
             $table->boolean('permite_encaminhar')->default(false);
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

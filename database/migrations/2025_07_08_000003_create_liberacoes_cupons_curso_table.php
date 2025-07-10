@@ -18,6 +18,8 @@ class CreateLiberacoesCuponsCursoTable extends Migration
             $table->foreign('cupom_id')->references('id')->on('cupons')->onDelete('cascade');
             $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
             $table->unique(['cupom_id', 'curso_id']);
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

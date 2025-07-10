@@ -17,6 +17,8 @@ return new class extends Migration {
                 ->constrained('modulos')
                 ->nullOnDelete();
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

@@ -15,6 +15,8 @@ class CreateRestricoesPlanoPagamentoTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_plano_pagamento')->references('id')->on('planos_pagamento');
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

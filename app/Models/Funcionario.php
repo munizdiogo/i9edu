@@ -48,4 +48,14 @@ class Funcionario extends Model
     {
         return $this->hasOne(Professor::class, 'funcionario_id');
     }
+
+    protected static function booted()
+    {
+        static::addGlobalScope('estrutura', function ($query) {
+            if (session('estrutura_id')) {
+                $query->where('id_estrutura', session('estrutura_id'));
+            }
+        });
+    }
+
 }

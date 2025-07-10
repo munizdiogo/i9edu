@@ -20,4 +20,14 @@ class GrupoConta extends Model
         'mensalidade',
         'apresentar_relatorio',
     ];
+
+    protected static function booted()
+    {
+        static::addGlobalScope('estrutura', function ($query) {
+            if (session('estrutura_id')) {
+                $query->where('id_estrutura', session('estrutura_id'));
+            }
+        });
+    }
+
 }

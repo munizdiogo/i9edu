@@ -72,6 +72,7 @@ class EditalProcessoSeletivoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+        $data['id_estrutura'] = session('estrutura_id');
 
         EditalProcessoSeletivo::create($data);
         return redirect()->route('editais.index')->with('success', 'Edital criado!');
@@ -92,6 +93,7 @@ class EditalProcessoSeletivoController extends Controller
     public function update(Request $request, EditalProcessoSeletivo $edital)
     {
         $data = $this->validateData($request);
+        $data['id_estrutura'] = session('estrutura_id');
 
         $edital->update($data);
         return redirect()->route('editais.index')->with('success', 'Edital atualizado!');

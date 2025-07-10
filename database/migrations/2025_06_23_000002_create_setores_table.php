@@ -24,6 +24,8 @@ return new class extends Migration {
                 ->nullOnDelete();
             $table->enum('status', ['ATIVO', 'INATIVO'])->default('ATIVO');
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

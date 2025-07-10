@@ -20,6 +20,8 @@ class CreateDocumentosTable extends Migration
             $table->boolean('obrigatorio_informar_data')->default(false);
             $table->boolean('processar_historico_disciplinas')->default(false);
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

@@ -14,6 +14,8 @@ return new class extends Migration {
             $table->enum('modalidade', ['Presencial', 'EaD'])->default('EaD');
             $table->integer('quantidade_vagas')->default(0);
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
     public function down()

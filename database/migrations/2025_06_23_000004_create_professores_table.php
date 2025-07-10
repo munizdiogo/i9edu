@@ -59,6 +59,8 @@ return new class extends Migration {
             $table->boolean('atuacao_pos_grad_distancia')->default(false);
             $table->boolean('atuacao_bolsa_pesquisa')->default(false);
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

@@ -57,6 +57,7 @@ class MatrizCurricularController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+        $data['id_estrutura'] = session('estrutura_id');
         MatrizCurricular::create($data);
         return redirect()->route('matrizes.index')->with('success', 'Matriz criada!');
     }
@@ -78,6 +79,7 @@ class MatrizCurricularController extends Controller
     public function update(Request $request, MatrizCurricular $matriz)
     {
         $data = $this->validateData($request);
+        $data['id_estrutura'] = session('estrutura_id');
         $matriz->update($data);
         return redirect()->route('matrizes.index')->with('success', 'Matriz atualizada!');
     }

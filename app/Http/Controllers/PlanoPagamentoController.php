@@ -57,6 +57,7 @@ class PlanoPagamentoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
+        $data['id_estrutura'] = session('estrutura_id');
         $plano = PlanoPagamento::create($data);
         return redirect()->route('planos_pagamento.edit', $plano->id);
     }
@@ -71,6 +72,7 @@ class PlanoPagamentoController extends Controller
     public function update(Request $request, PlanoPagamento $planos_pagamento)
     {
         $data = $this->validateData($request, "update");
+        $data['id_estrutura'] = session('estrutura_id');
         $planos_pagamento->update($data);
         $planos_pagamento->cursos()->sync($request->input('cursos', []));
         $planos_pagamento->polos()->sync($request->input('polos', []));

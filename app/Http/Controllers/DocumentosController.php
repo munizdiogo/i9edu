@@ -54,6 +54,7 @@ class DocumentosController extends Controller
     public function store(Request $request)
     {
         $data = $request->validateData($request, "create");
+        $data['id_estrutura'] = session('estrutura_id');
 
         $data = $request->except(['template']);
         if ($request->hasFile('template')) {
@@ -78,6 +79,7 @@ class DocumentosController extends Controller
     public function update(Request $request, Documento $documento)
     {
         $data = $request->validateData($request, "update");
+        $data['id_estrutura'] = session('estrutura_id');
 
         $data = $request->except(['template']);
         if ($request->hasFile('template')) {

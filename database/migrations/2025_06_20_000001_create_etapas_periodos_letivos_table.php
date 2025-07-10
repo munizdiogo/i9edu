@@ -15,6 +15,8 @@ return new class extends Migration {
                 ->constrained('periodos_letivos')
                 ->onDelete('cascade');
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

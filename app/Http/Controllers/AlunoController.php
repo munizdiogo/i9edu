@@ -72,6 +72,7 @@ class AlunoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+        $data['id_estrutura'] = session('estrutura_id');
 
         Aluno::create($data);
         return redirect()->route('alunos.index')
@@ -95,6 +96,7 @@ class AlunoController extends Controller
     public function update(Request $request, Aluno $aluno)
     {
         $data = $this->validateData($request);
+        $data['id_estrutura'] = session('estrutura_id');
 
         $aluno->update($data);
         return redirect()->route('alunos.index')

@@ -25,4 +25,13 @@ class RequerimentoStatus extends Model
         'email_encaminhamento_setor' => 'boolean',
         'permite_encaminhar' => 'boolean',
     ];
+    protected static function booted()
+    {
+        static::addGlobalScope('estrutura', function ($query) {
+            if (session('estrutura_id')) {
+                $query->where('id_estrutura', session('estrutura_id'));
+            }
+        });
+    }
+
 }

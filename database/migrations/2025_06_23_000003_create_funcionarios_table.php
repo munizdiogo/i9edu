@@ -26,6 +26,8 @@ return new class extends Migration {
             $table->integer('nr_horas_mes')->nullable();
             $table->enum('tipo_contrato', ['Não informado', 'CLT', 'PJ', 'Autônomo'])->default('Não informado');
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

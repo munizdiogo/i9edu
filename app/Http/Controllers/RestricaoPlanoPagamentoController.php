@@ -93,6 +93,7 @@ class RestricaoPlanoPagamentoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
+        $data['id_estrutura'] = session('estrutura_id');
 
         $restricao = RestricaoPlanoPagamento::create($data);
 
@@ -118,6 +119,8 @@ class RestricaoPlanoPagamentoController extends Controller
     {
         $restricao = RestricaoPlanoPagamento::findOrFail($id);
         $data = $this->validateData($request, "update");
+        $data['id_estrutura'] = session('estrutura_id');
+
         $restricao->update($data);
         $restricao->cursos()->sync($request->curso_ids ?: []);
         $restricao->polos()->sync($request->polo_ids ?: []);

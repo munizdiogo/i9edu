@@ -87,6 +87,7 @@ class MatriculaController extends Controller
             'data_ocorrencia' => 'nullable|date',
             'status' => 'required|in:ATIVA,AGUARDANDO,APROVADO,APROVADO_PARCIALMENTE,CANCELADA,DESISTENTE,INFREQUENTE,REENQUADRADA',
         ]);
+        $data['id_estrutura'] = session('estrutura_id');
 
         Matricula::create($data);
 
@@ -122,6 +123,7 @@ class MatriculaController extends Controller
             'data_ocorrencia' => 'nullable|date',
             'status' => 'required|in:ATIVA,AGUARDANDO,APROVADO,APROVADO_PARCIALMENTE,CANCELADA,DESISTENTE,INFREQUENTE,REENQUADRADA',
         ]);
+        $data['id_estrutura'] = session('estrutura_id');
 
         $matricula->update($data);
 

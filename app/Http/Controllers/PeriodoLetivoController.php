@@ -65,6 +65,7 @@ class PeriodoLetivoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+        $data['id_estrutura'] = session('estrutura_id');
 
         PeriodoLetivo::create($data);
         return redirect()->route('periodos.index')->with('success', 'Período Letivo criado!');
@@ -83,6 +84,7 @@ class PeriodoLetivoController extends Controller
     public function update(Request $request, PeriodoLetivo $periodo)
     {
         $data = $this->validateData($request);
+        $data['id_estrutura'] = session('estrutura_id');
 
         $periodo->update($data);
         return redirect()->route('periodos.index')->with('success', 'Período Letivo atualizado!');

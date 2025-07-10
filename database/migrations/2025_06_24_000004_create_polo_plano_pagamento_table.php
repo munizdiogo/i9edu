@@ -19,6 +19,8 @@ class CreatePoloPlanoPagamentoTable extends Migration
             $table->foreign('polo_id')
                 ->references('id')->on('polos')
                 ->onDelete('cascade');
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

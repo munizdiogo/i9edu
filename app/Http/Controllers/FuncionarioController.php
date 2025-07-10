@@ -58,6 +58,7 @@ class FuncionarioController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
+        $data['id_estrutura'] = session('estrutura_id');
 
         Funcionario::create($data);
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário criado!');
@@ -82,6 +83,7 @@ class FuncionarioController extends Controller
     public function update(Request $request, Funcionario $funcionario)
     {
         $data = $this->validateData($request, "update", $funcionario);
+        $data['id_estrutura'] = session('estrutura_id');
 
         $funcionario->update($data);
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário atualizado!');

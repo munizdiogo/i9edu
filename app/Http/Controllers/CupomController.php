@@ -47,6 +47,7 @@ class CupomController extends Controller
         $data = $this->validateData($request, "create");
         $data['criar_convenio_pagador'] = $request->has('criar_convenio_pagador');
         $data['validar_matricula_ativa'] = $request->has('validar_matricula_ativa');
+        $data['id_estrutura'] = session('estrutura_id');
 
         $cupom = Cupom::create($data);
 
@@ -72,6 +73,7 @@ class CupomController extends Controller
         $data = $this->validateData($request, "update", $cupom);
         $data['criar_convenio_pagador'] = $request->has('criar_convenio_pagador');
         $data['validar_matricula_ativa'] = $request->has('validar_matricula_ativa');
+        $data['id_estrutura'] = session('estrutura_id');
 
         $cupom->update($data);
 

@@ -41,6 +41,8 @@ class CreateDisciplinasBaseTable extends Migration
             $table->foreign('area_avaliacao_id')
                 ->references('id')->on('area_conhecimentos')
                 ->onDelete('set null');
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

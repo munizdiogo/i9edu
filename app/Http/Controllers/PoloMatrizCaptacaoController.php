@@ -30,6 +30,7 @@ class PoloMatrizCaptacaoController extends Controller
             'status' => 'required|in:Ativo,Inativo',
             'quantidade_vagas' => 'required|integer',
         ]);
+        $data['id_estrutura'] = session('estrutura_id');
         PoloMatrizCaptacao::create($data);
         return back()->with('success', 'Polo adicionado!');
     }

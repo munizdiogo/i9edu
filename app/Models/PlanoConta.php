@@ -24,4 +24,14 @@ class PlanoConta extends Model
     {
         return $this->belongsTo(GrupoConta::class, 'grupo_conta_id');
     }
+
+    protected static function booted()
+    {
+        static::addGlobalScope('estrutura', function ($query) {
+            if (session('estrutura_id')) {
+                $query->where('id_estrutura', session('estrutura_id'));
+            }
+        });
+    }
+
 }

@@ -26,6 +26,8 @@ return new class extends Migration {
             $table->enum('tipo_assunto', ['POLO', 'ALUNO', 'TODOS'])->default('TODOS');
             $table->text('observacoes')->nullable();
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

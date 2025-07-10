@@ -61,6 +61,8 @@ class ConvenioController extends Controller
     {
         $data = $this->validateData($request, "create");
         $data['perde_convenio'] = $request->has('perde_convenio');
+        $data['id_estrutura'] = session('estrutura_id');
+
         Convenio::create($data);
         return redirect()->route('convenios.index')->with('success', 'Convênio cadastrado!');
     }
@@ -75,6 +77,8 @@ class ConvenioController extends Controller
     {
         $data = $this->validateData($request, "update");
         $data['perde_convenio'] = $request->has('perde_convenio');
+        $data['id_estrutura'] = session('estrutura_id');
+
         $convenio->update($data);
         return redirect()->route('convenios.index')->with('success', 'Convênio atualizado!');
     }

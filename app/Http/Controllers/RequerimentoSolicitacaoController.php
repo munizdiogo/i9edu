@@ -84,6 +84,7 @@ class RequerimentoSolicitacaoController extends Controller
     {
         try {
             $data = $this->validateData($request, "update");
+            $data['id_estrutura'] = session('estrutura_id');
 
             if ($request->hasFile('arquivo')) {
                 $nomeArquivo = Str::uuid() . '.' . $request->arquivo->extension();
@@ -132,6 +133,7 @@ class RequerimentoSolicitacaoController extends Controller
     public function update(Request $request, RequerimentoSolicitacao $requerimento_solicitacao)
     {
         $data = $this->validateData($request, "update");
+        $data['id_estrutura'] = session('estrutura_id');
 
         if ($request->hasFile('arquivo')) {
             if ($requerimento_solicitacao->caminho_anexo) {

@@ -22,6 +22,8 @@ return new class extends Migration {
             $table->boolean('mensalidade')->default(false);
             $table->boolean('apresentar_relatorio')->default(false);
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

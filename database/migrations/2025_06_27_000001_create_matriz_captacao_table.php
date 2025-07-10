@@ -12,6 +12,8 @@ return new class extends Migration {
             $table->text('descricao')->nullable();
             $table->enum('status', ['Ativo', 'Inativo'])->default('Ativo');
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
     public function down()

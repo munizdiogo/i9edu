@@ -51,6 +51,8 @@ return new class extends Migration {
             $table->decimal('ter_cursado_pct', 5, 2)->nullable();
             // timestamps
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

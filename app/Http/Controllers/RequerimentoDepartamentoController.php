@@ -62,13 +62,14 @@ class RequerimentoDepartamentoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'descricao' => 'required|string|max:255',
             'status' => 'required|string',
             'tipo' => 'required|string',
         ]);
+        $data['id_estrutura'] = session('estrutura_id');
 
-        RequerimentoDepartamento::create($request->all());
+        RequerimentoDepartamento::create($data);
 
         return redirect()->route('requerimentos_departamentos.index')
             ->with('success', 'Departamento cadastrado com sucesso!');
@@ -86,13 +87,14 @@ class RequerimentoDepartamentoController extends Controller
 
     public function update(Request $request, RequerimentoDepartamento $requerimento_departamento)
     {
-        $request->validate([
+        $data = $request->validate([
             'descricao' => 'required|string|max:255',
             'status' => 'required|string',
             'tipo' => 'required|string',
         ]);
+        $data['id_estrutura'] = session('estrutura_id');
 
-        $requerimento_departamento->update($request->all());
+        $requerimento_departamento->update($data);
 
         return redirect()->route('requerimentos_departamentos.index')
             ->with('success', 'Departamento atualizado com sucesso!');

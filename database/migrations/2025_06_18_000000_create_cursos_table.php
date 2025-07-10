@@ -26,6 +26,8 @@ class CreateCursosTable extends Migration
             $table->string('link_emec')->nullable();
             // timestamps
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

@@ -61,4 +61,13 @@ class RequerimentoSolicitacao extends Model
     // {
     //     return $this->hasMany(RequerimentoInteracao::class, 'id_requerimento_solicitacao');
     // }
+    protected static function booted()
+    {
+        static::addGlobalScope('estrutura', function ($query) {
+            if (session('estrutura_id')) {
+                $query->where('id_estrutura', session('estrutura_id'));
+            }
+        });
+    }
+
 }

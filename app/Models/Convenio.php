@@ -31,4 +31,13 @@ class Convenio extends Model
     {
         return $this->belongsTo(PlanoConta::class, 'plano_conta_id');
     }
+
+    protected static function booted()
+    {
+        static::addGlobalScope('estrutura', function ($query) {
+            if (session('estrutura_id')) {
+                $query->where('id_estrutura', session('estrutura_id'));
+            }
+        });
+    }
 }

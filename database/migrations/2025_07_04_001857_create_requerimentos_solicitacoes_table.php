@@ -28,6 +28,8 @@ return new class extends Migration {
             $table->foreign('id_polo')->references('id')->on('polos');
             $table->foreign('id_curso')->references('id')->on('cursos');
             $table->foreign('id_status')->references('id')->on('requerimentos_status');
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

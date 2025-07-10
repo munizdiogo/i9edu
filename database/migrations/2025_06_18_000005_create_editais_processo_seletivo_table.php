@@ -28,6 +28,8 @@ class CreateEditaisProcessoSeletivoTable extends Migration
             $table->foreign('periodo_letivo_id')
                 ->references('id')->on('periodos_letivos')
                 ->onDelete('cascade');
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 

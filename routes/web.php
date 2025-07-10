@@ -331,8 +331,10 @@ Route::resource('plano-contas', PlanoContaController::class)->parameters(['plano
 
 // Convênios
 use App\Http\Controllers\ConvenioController;
-Route::get('convenios-data', [ConvenioController::class, 'data'])->name('convenios.data');
-Route::resource('convenios', ConvenioController::class);
+Route::middleware(['auth', 'estrutura'])->group(function () {
+    Route::get('convenios-data', [ConvenioController::class, 'data'])->name('convenios.data');
+    Route::resource('convenios', ConvenioController::class);
+});
 
 
 
@@ -370,3 +372,10 @@ use App\Http\Controllers\DocumentoController;
 
 Route::resource('documentos', DocumentosController::class);
 Route::get('documentos-data', [DocumentosController::class, 'data'])->name('documentos.data');
+
+
+// Estruturas
+use App\Http\Controllers\EstruturaController;
+
+Route::resource('estruturas', EstruturaController::class);
+Route::post('estruturas/selecionar', [\App\Http\Controllers\EstruturaController::class, 'selecionar'])->name('estruturas.selecionar');

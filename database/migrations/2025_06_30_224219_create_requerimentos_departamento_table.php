@@ -17,6 +17,8 @@ return new class extends Migration {
             $table->enum('status', ['Ativo', 'Inativo'])->default('Ativo');
             $table->enum('tipo', ['Aluno', 'Polo', 'Funcionario']);
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
 
