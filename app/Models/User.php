@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -46,17 +47,38 @@ class User extends Authenticatable
         ];
     }
 
-    public function roles()
+
+
+    public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
     }
-    public function hasPermission($permission)
+
+    public function hasRole(string $roleName): bool
     {
-        return $this->roles()->with('permissions')
-            ->get()
-            ->pluck('permissions')
-            ->flatten()
-            ->pluck('name')
-            ->contains($permission);
+        return $this->roles->contains('name', $roleName);
+    }
+    public function hasPermissionTo(string|Permission $permission): bool
+    {
+        $permissionName = is_string($permission) ? $permission : $permission->name;
+
+        foreach ($this->roles as $role) {
+            if ($role->permissions->contains('name', $permissionName)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    public function getAllPermissions()
+    {
+        $permissions = collect();
+
+        foreach ($this->roles as $role) {
+            $permissions = $permissions->merge($role->permissions);
+        }
+
+        // Retorna uma coleção única de permissões
+        return $permissions->unique('id');
     }
 }

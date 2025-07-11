@@ -13,6 +13,7 @@ class CupomController extends Controller
 {
     public function index()
     {
+
         return view('cupons.index');
     }
 

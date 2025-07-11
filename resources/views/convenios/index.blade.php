@@ -1,9 +1,13 @@
 @extends('adminlte::page')
 @section('title', 'Convênios')
+
+
 @section('content_header')
     <h1 class="d-inline">Convênios</h1>
     <a href="{{ route('convenios.create') }}" class="btn btn-success float-right">Novo Convênio</a>
 @endsection
+
+
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
 @endsection

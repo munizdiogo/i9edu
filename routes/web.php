@@ -192,7 +192,7 @@ Route::middleware('auth')->group(function () {
 // #Teste Permissão de acesso
 use App\Http\Controllers\DisciplinaController;
 
-Route::group(['middleware' => ['permission:disciplinas.edit']], function () {
+Route::group(['permission' => ['permission:disciplinas.edit']], function () {
     Route::get('disciplinas/data', [DisciplinaController::class, 'data'])->name('disciplinas.data');
     Route::resource('disciplinas', DisciplinaController::class);
 });

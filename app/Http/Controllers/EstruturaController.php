@@ -48,8 +48,10 @@ class EstruturaController extends Controller
     // Selecionar estrutura ativa (opcional)
     public function selecionar(Request $request)
     {
+        $estrutura = Estrutura::find($request->estrutura_id);
         $request->validate(['estrutura_id' => 'required|exists:estruturas,id']);
         Session::put('estrutura_id', $request->estrutura_id);
+        Session::put('estrutura_descricao', $estrutura->descricao);
         return redirect()->back()->with('success', 'Estrutura selecionada!');
     }
 
