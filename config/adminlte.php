@@ -321,10 +321,19 @@ return [
             'can' => 'manage-blog',
         ],
 
+        ['header' => '_____________________'],
+        ['header' => '   '],
+        ['header' => 'CONFIG. SISTEMA '],
 
         [
             'text' => ' Estruturas',
             'url' => '/estruturas',
+            'icon' => 'fas fa-fw fa-user',
+            'icon_color' => 'red',
+        ],
+        [
+            'text' => ' Regras de acesso',
+            'url' => '/roles',
             'icon' => 'fas fa-fw fa-user',
             'icon_color' => 'red',
         ],

@@ -189,12 +189,14 @@ Route::middleware('auth')->group(function () {
 
 
 // Disciplinas
+// #Teste Permissão de acesso
 use App\Http\Controllers\DisciplinaController;
 
-Route::middleware('auth')->group(function () {
+Route::group(['middleware' => ['permission:disciplinas.edit']], function () {
     Route::get('disciplinas/data', [DisciplinaController::class, 'data'])->name('disciplinas.data');
     Route::resource('disciplinas', DisciplinaController::class);
 });
+
 
 
 // Professores
@@ -378,4 +380,17 @@ Route::get('documentos-data', [DocumentosController::class, 'data'])->name('docu
 use App\Http\Controllers\EstruturaController;
 
 Route::resource('estruturas', EstruturaController::class);
-Route::post('estruturas/selecionar', [\App\Http\Controllers\EstruturaController::class, 'selecionar'])->name('estruturas.selecionar');
+Route::post('estruturas/selecionar', [EstruturaController::class, 'selecionar'])->name('estruturas.selecionar');
+
+
+// Gerenciamento das Permissões de acesso
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\PermissionsController;
+
+// CRUD de Roles
+Route::resource('roles', RolesController::class);
+
+// Tela para GERENCIAR PERMISSÕES de uma Role (ex: roles/1/permissions)
+Route::get('roles/{role}/permissions', [RolesController::class, 'permissions'])->name('roles.permissions');
+Route::put('roles/{role}/permissions', [RolesController::class, 'updatePermissions'])->name('roles.permissions.update');
+// Route::resource('permissions', PermissionsController::class);
