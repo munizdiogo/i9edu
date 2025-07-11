@@ -3,7 +3,10 @@
 @section('title', 'Cursos')
 @section('content_header')
     <h1 class="d-inline">Cursos</h1>
-    <a href="{{ route('cursos.create') }}" class="btn btn-success float-right">Novo Curso</a>
+
+    @can('cursos.create')
+        <a href="{{ route('cursos.create') }}" class="btn btn-success float-right">Novo Curso</a>
+    @endcan
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">

@@ -5,9 +5,11 @@
 
 @section('content_header')
     <h1 class="d-inline">Perfis</h1>
-    <a href="{{ route('perfis.create') }}" class="btn btn-success float-right">
-        Novo Perfil
-    </a>
+    @can('perfis.create')
+        <a href="{{ route('perfis.create') }}" class="btn btn-success float-right">
+            Novo Perfil
+        </a>
+    @endcan
 @endsection
 
 @section('css')

@@ -2,12 +2,10 @@
 
 @section('title', 'Alunos Curso Ingresso')
 
-
 @section('content_header')
     <h1 class="d-inline">Alunos Curso Ingresso</h1>
     <a href="{{ route('admissoes.create') }}" class="btn btn-success float-right">Novo Registro</a>
 @endsection
-
 
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
