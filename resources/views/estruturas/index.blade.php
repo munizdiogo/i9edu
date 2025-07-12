@@ -55,7 +55,7 @@
                                     @can('estruturas.delete')
                                         <button type="button" class="btn btn-danger btn-sm"
                                             onclick="confirmarExclusao('{{ route('estruturas.destroy', $estrutura->id) }}','{{ $estrutura->id }}')">
-                                            Excluir
+                                            <i class="fas fa-trash-alt"></i>
                                         </button>
                                     @endcan
 
