@@ -48,9 +48,9 @@ class RolesController extends Controller
 
     public function edit(Role $role)
     {
+        $role = $role->find($role->id);
         $permissions = Permission::all();
-        $rolePermissions = $role->permissions()->pluck('id')->toArray();
-        return view('roles.permissions', compact('role', 'permissions', 'rolePermissions'));
+        return view('roles.edit', compact('role', 'permissions'));
     }
 
     public function update(Request $request, Role $role)

@@ -2,13 +2,15 @@
 @section('title', 'Estruturas')
 
 @section('content_header')
-    <h1 class="p-4 d-inline">Estruturas</h1>
+    <div class="my-4">
+        <h1 class="callout callout-info bg-transparent border-none shadow-none p-4 d-inline">Estruturas</h1>
 
-    @can('estruturas.create')
-        <a href="{{ route('estruturas.create') }}" class="btn btn-success float-right">
-            <i class="fa fa-plus"></i> Nova Estrutura
-        </a>
-    @endcan
+        @can('estruturas.create')
+            <a href="{{ route('estruturas.create') }}" class="btn btn-success float-right">
+                <i class="fa fa-plus"></i> Nova Estrutura
+            </a>
+        @endcan
+    </div>
 @endsection
 
 

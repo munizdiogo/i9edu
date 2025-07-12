@@ -393,4 +393,4 @@ Route::resource('roles', RolesController::class);
 // Tela para GERENCIAR PERMISSÕES de uma Role (ex: roles/1/permissions)
 Route::get('roles/{role}/permissions', [RolesController::class, 'permissions'])->name('roles.permissions');
 Route::put('roles/{role}/permissions', [RolesController::class, 'updatePermissions'])->name('roles.permissions.update');
-// Route::resource('permissions', PermissionsController::class);
+Route::resource('permissions', RolesController::class);
