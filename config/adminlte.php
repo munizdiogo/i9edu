@@ -237,14 +237,14 @@ return [
             'text' => ' Estruturas',
             'url' => '/estruturas',
             'icon' => 'fas fa-fw fa-object-ungroup',
-            'icon_color' => 'red',
+            'icon_color' => 'red pr-4',
             'classes' => 'pl-2',
         ],
         [
             'text' => ' Regras de acesso',
             'url' => '/roles',
-            'icon' => 'fas fa-fw fa-user',
-            'icon_color' => 'red',
+            'icon' => 'fas fa-fw fa-user-shield',
+            'icon_color' => 'red pr-4',
             'classes' => 'pl-2',
         ],
 

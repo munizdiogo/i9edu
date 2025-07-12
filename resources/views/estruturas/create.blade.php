@@ -6,14 +6,16 @@
 @endsection
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            <form action="{{ route('estruturas.store') }}" method="POST">
+    <form action="{{ route('estruturas.store') }}" method="POST">
+        <div class="card">
+            <div class="card-body">
                 @csrf
                 @include('estruturas.partials.form')
-                <button type="submit" class="btn btn-primary">Salvar</button>
-                <a href="{{ route('estruturas.index') }}" class="btn btn-secondary">Voltar</a>
-            </form>
+            </div>
         </div>
-    </div>
+        <div class="card-footer text-right">
+            <a href="{{ route('estruturas.index') }}" class="btn btn-default">Voltar</a>
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </div>
+    </form>
 @endsection
