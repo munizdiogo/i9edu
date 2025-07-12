@@ -1,21 +1,21 @@
 @extends('adminlte::page')
 @section('title', 'Estruturas')
 
-@section('content')
-    <div class="container-fluid">
-        <h1 class="mb-4">Estruturas</h1>
+@section('content_header')
+    <h1 class="p-4 d-inline">Estruturas</h1>
 
-        {{-- Mensagens de sucesso --}}
-        @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
-
-        {{-- Botão Nova Estrutura --}}
-        <a href="{{ route('estruturas.create') }}" class="btn btn-primary mb-3">
+    @can('estruturas.create')
+        <a href="{{ route('estruturas.create') }}" class="btn btn-success float-right">
             <i class="fa fa-plus"></i> Nova Estrutura
         </a>
+    @endcan
+@endsection
 
-        {{-- Tabela de Estruturas --}}
+
+
+@section('content')
+    <div class="container-fluid">
+
         <div class="card">
             <div class="card-body p-0">
                 <table class="table table-hover table-striped mb-0">
@@ -25,6 +25,7 @@
                             <th>Descrição</th>
                             <th>Nome Fantasia</th>
                             <th>CNPJ</th>
+                            <th>Modelo</th>
                             <th>Status</th>
                             <th class="text-center">Ações</th>
                         </tr>
@@ -36,6 +37,7 @@
                                 <td>{{ $estrutura->descricao }}</td>
                                 <td>{{ $estrutura->nome_fantasia }}</td>
                                 <td>{{ $estrutura->cnpj }}</td>
+                                <td>{{ $estrutura->modelo_negocio }}</td>
                                 <td>
                                     <span
                                         class="badge {{ $estrutura->status == 'Ativo' ? 'badge-success' : 'badge-secondary' }}">
@@ -43,19 +45,20 @@
                                     </span>
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route('estruturas.edit', $estrutura) }}" class="btn btn-sm btn-warning"
-                                        title="Editar">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <form action="{{ route('estruturas.destroy', $estrutura) }}" method="POST" class="d-inline"
-                                        onsubmit="return confirm('Deseja realmente excluir esta estrutura?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-sm btn-danger" title="Excluir">
-                                            <i class="fa fa-trash"></i>
+                                    @can('estruturas.edit')
+                                        <a href="{{ route('estruturas.edit', $estrutura) }}" class="btn btn-sm btn-warning"
+                                            title="Editar">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    @endcan
+
+                                    @can('estruturas.delete')
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                            onclick="confirmarExclusao('{{ route('estruturas.destroy', $estrutura->id) }}','{{ $estrutura->id }}')">
+                                            Excluir
                                         </button>
-                                    </form>
-                                    {{-- (Opcional) Botão de seleção da estrutura ativa --}}
+                                    @endcan
+
                                     <form action="{{ route('estruturas.selecionar') }}" method="POST" class="d-inline">
                                         @csrf
                                         <input type="hidden" name="estrutura_id" value="{{ $estrutura->id }}">
@@ -78,4 +81,9 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    @include('components.alert-swal-retorno-operacao')
+    @include('components.alert-swal-excluir')
 @endsection

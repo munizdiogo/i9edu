@@ -2,7 +2,7 @@
     function confirmarExclusao(url, id) {
         Swal.fire({
             title: 'Tem certeza?',
-            text: `Essa ação não poderá ser desfeita! Deseja excluir o cadastro #${id} `,
+            text: `Essa ação não poderá ser desfeita! Deseja excluir o cadastro #${id}? `,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Sim, excluir!',

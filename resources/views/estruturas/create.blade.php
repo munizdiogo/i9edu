@@ -1,11 +1,12 @@
 @extends('adminlte::page')
 @section('title', 'Nova Estrutura')
 
+@section('content_header')
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Nova Estrutura</h1>
+@endsection
+
 @section('content')
-    <div class="card m-4">
-        <div class="card-header">
-            <h4>Nova Estrutura</h4>
-        </div>
+    <div class="card">
         <div class="card-body">
             <form action="{{ route('estruturas.store') }}" method="POST">
                 @csrf

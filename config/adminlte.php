@@ -236,7 +236,7 @@ return [
         [
             'text' => ' Estruturas',
             'url' => '/estruturas',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-object-ungroup',
             'icon_color' => 'red',
             'classes' => 'pl-2',
         ],

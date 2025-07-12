@@ -1,26 +1,26 @@
-<div class="row">
+<div class="row mb-4">
     <div class="form-group col-md-12">
-        <label for="descricao">Descrição*</label>
+        <label for="descricao">Descrição <sup class="marcador_obrigatorio">(Obrigatório)</sup></label>
         <input type="text" name="descricao" id="descricao" class="form-control" required
             value="{{ old('descricao', $estrutura->descricao ?? '') }}">
     </div>
     <div class="form-group col-md-6">
-        <label for="nome_fantasia">Nome Fantasia*</label>
+        <label for="nome_fantasia">Nome Fantasia <sup class="marcador_obrigatorio">(Obrigatório)</sup></label>
         <input type="text" name="nome_fantasia" id="nome_fantasia" class="form-control" required
             value="{{ old('nome_fantasia', $estrutura->nome_fantasia ?? '') }}">
     </div>
     <div class="form-group col-md-6">
-        <label for="nome_comercial">Nome Comercial*</label>
+        <label for="nome_comercial">Nome Comercial <sup class="marcador_obrigatorio">(Obrigatório)</sup></label>
         <input type="text" name="nome_comercial" id="nome_comercial" class="form-control" required
             value="{{ old('nome_comercial', $estrutura->nome_comercial ?? '') }}">
     </div>
     <div class="form-group col-md-6">
-        <label for="nome_complementar">Nome Complementar*</label>
+        <label for="nome_complementar">Nome Complementar <sup class="marcador_obrigatorio">(Obrigatório)</sup></label>
         <input type="text" name="nome_complementar" id="nome_complementar" class="form-control"
             value="{{ old('nome_complementar', $estrutura->nome_complementar ?? '') }}">
     </div>
     <div class="form-group col-md-6">
-        <label for="nome_reduzido">Nome Reduzido*</label>
+        <label for="nome_reduzido">Nome Reduzido <sup class="marcador_obrigatorio">(Obrigatório)</sup></label>
         <input type="text" name="nome_reduzido" id="nome_reduzido" class="form-control"
             value="{{ old('nome_reduzido', $estrutura->nome_reduzido ?? '') }}">
     </div>
@@ -30,7 +30,7 @@
             value="{{ old('nome_portal_diplomados', $estrutura->nome_portal_diplomados ?? '') }}">
     </div>
     <div class="form-group col-md-6">
-        <label for="cnpj">CNPJ*</label>
+        <label for="cnpj">CNPJ <sup class="marcador_obrigatorio">(Obrigatório)</sup></label>
         <input type="text" name="cnpj" id="cnpj" class="form-control" required
             value="{{ old('cnpj', $estrutura->cnpj ?? '') }}">
     </div>
@@ -50,7 +50,7 @@
             value="{{ old('telefone', $estrutura->telefone ?? '') }}">
     </div>
     <div class="form-group col-md-6">
-        <label for="status">Status*</label>
+        <label for="status">Status<sup class="marcador_obrigatorio">(Obrigatório)</sup></label>
         <select name="status" id="status" class="form-control" required>
             <option value="Ativo" {{ old('status', $estrutura->status ?? '') == 'Ativo' ? 'selected' : '' }}>Ativo
             </option>
@@ -59,8 +59,12 @@
         </select>
     </div>
     <div class="form-group col-md-6">
-        <label for="modelo_negocio">Modelo de Negócio</label>
-        <input type="text" name="modelo_negocio" id="modelo_negocio" class="form-control"
-            value="{{ old('modelo_negocio', $estrutura->modelo_negocio ?? '') }}">
+        <label for="modelo_negocio">Modelo de Negócio <sup class="marcador_obrigatorio">(Obrigatório)</sup></label>
+        <select name="modelo_negocio" id="modelo_negocio" class="form-control" required>
+            <option value="GRADUAÇÃO" {{ old('modelo_negocio', $estrutura->modelo_negocio ?? '') == 'GRADUAÇÃO' ? 'selected' : '' }}>GRADUAÇÃO
+            </option>
+            <option value="PÓS-GRADUAÇÃO" {{ old('modelo_negocio', $estrutura->modelo_negocio ?? '') == 'PÓS-GRADUAÇÃO' ? 'selected' : '' }}>PÓS-GRADUAÇÃO
+            </option>
+        </select>
     </div>
 </div>
