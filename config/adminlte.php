@@ -225,11 +225,7 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'Pesquisar tela',
         ],
-        [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
-        ],
+
 
         ['header' => 'CONFIG. SISTEMA ', 'classes' => 'pt-5'],
 

@@ -6,11 +6,11 @@
         <h1 class="callout callout-info bg-transparent border-none shadow-none p-4 d-inline">
             Regras de Acesso
         </h1>
-        {{-- @can('roles.create') --}}
-        <a href="{{ route('roles.create') }}" class="btn btn-success float-right">
-            <i class="fa fa-plus"></i> Nova Regra
-        </a>
-        {{-- @endcan --}}
+        @can('roles.create')
+            <a href="{{ route('roles.create') }}" class="btn btn-success float-right">
+                <i class="fa fa-plus"></i> Nova Regra
+            </a>
+        @endcan
     </div>
 @endsection
 
@@ -35,9 +35,10 @@
                                 <td>{{ $role->name }}</td>
                                 <td>{{ $role->description }}</td>
                                 <td>
-                                    <a href="{{ route('roles.permissions', $role->id) }}"
-                                        class="btn btn-sm btn-info">Permissões</a>
-                                    <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-sm btn-warning">Editar</a>
+                                    <a href="{{ route('roles.permissions', $role->id) }}" class="btn btn-sm btn-info">
+                                        <i class="fas fa-user-shield"></i></a>
+                                    <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-sm btn-warning">
+                                        <i class="fa fa-edit"></i></a>
                                 </td>
                             </tr>
                         @endforeach
