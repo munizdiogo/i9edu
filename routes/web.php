@@ -394,3 +394,15 @@ Route::resource('roles', RolesController::class);
 Route::get('roles/{role}/permissions', [RolesController::class, 'permissions'])->name('roles.permissions');
 Route::put('roles/{role}/permissions', [RolesController::class, 'updatePermissions'])->name('roles.permissions.update');
 Route::resource('permissions', RolesController::class);
+
+
+//  Tela Transacoes
+use App\Http\Controllers\TransacaoController;
+Route::resource('transacoes', TransacaoController::class);
+Route::get('transacoes-data', [TransacaoController::class, 'data'])->name('transacoes.data');
+
+
+// Tela de Contratos
+use App\Http\Controllers\ContratoController;
+Route::resource('contratos', ContratoController::class);
+Route::get('contratos-data', [ContratoController::class, 'data'])->name('contratos.data');
