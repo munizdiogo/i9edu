@@ -1,6 +1,12 @@
-<a href="{{ route('funcoes.show', $f) }}" class="btn my-0 btn-primary"><i class="fas fa-eye"></i></a>
-<a href="{{ route('funcoes.edit', $f) }}" class="btn my-0 btn-warning"><i class="fas fa-edit"></i></a>
-<form action="{{ route('funcoes.destroy', $f) }}" method="post" class="d-inline" onsubmit="return confirm('Apagar?')">
-    @csrf @method('DELETE')
-    <button class="btn my-0 btn-danger"><i class="fas fa-trash-alt"></i></button>
-</form>
+<a href="{{ route('funcoes.show', $item->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+
+@can('funcoes.edit')
+    <a href="{{ route('funcoes.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+@endcan
+
+@can('funcoes.delete')
+    <button type="button" class="btn btn-danger btn-sm"
+        onclick="confirmarExclusao('{{ route('funcoes.destroy', $item->id) }}','{{ $item->id }}')">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+@endcan

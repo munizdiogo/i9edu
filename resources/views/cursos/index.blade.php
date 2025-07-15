@@ -62,7 +62,7 @@
                 buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 'colvis'],
                 responsive: true,
                 autoWidth: false,
-                language: { url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json' },
+                language: { url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json' },
                 pageLength: 10,
                 lengthMenu: [[10, 25, 50, -1], ['10 linhas', '25 linhas', '50 linhas', 'Todos']]
             });

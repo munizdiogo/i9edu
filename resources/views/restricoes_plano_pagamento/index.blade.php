@@ -51,7 +51,7 @@
                     { data: 'modalidade', name: 'modalidade', defaultContent: '-' },
                     { data: 'actions', name: 'actions', orderable: false, searchable: false },
                 ],
-                language: { url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/pt_br.json' }
+                language: { url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json' }
             });
         });
     </script>

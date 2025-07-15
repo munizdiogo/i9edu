@@ -1,6 +1,12 @@
-<a href="{{ route('setores.show', $s) }}" class="btn my-0 btn-primary"><i class="fas fa-eye"></i></a>
-<a href="{{ route('setores.edit', $s) }}" class="btn my-0 btn-warning"><i class="fas fa-edit"></i></a>
-<form action="{{ route('setores.destroy', $s) }}" method="post" class="d-inline" onsubmit="return confirm('Apagar?')">
-    @csrf @method('DELETE')
-    <button class="btn my-0 btn-danger"><i class="fas fa-trash-alt"></i></button>
-</form>
+<a href="{{ route('setores.show', $item->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+
+@can('setores.edit')
+    <a href="{{ route('setores.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+@endcan
+
+@can('setores.delete')
+    <button type="button" class="btn btn-danger btn-sm"
+        onclick="confirmarExclusao('{{ route('setores.destroy', $item->id) }}','{{ $item->id }}')">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+@endcan

@@ -25,12 +25,12 @@ class FuncaoController extends Controller
         $data = $query->skip($request->start)
             ->take($request->length)
             ->get()
-            ->map(fn($f) => [
-                'id' => $f->id,
-                'codigo' => $f->codigo,
-                'descricao' => $f->descricao,
-                'status' => $f->status,
-                'actions' => view('funcoes.partials.actions', compact('f'))->render(),
+            ->map(fn($item) => [
+                'id' => $item->id,
+                'codigo' => $item->codigo,
+                'descricao' => $item->descricao,
+                'status' => $item->status,
+                'actions' => view('funcoes.partials.actions', compact('item'))->render(),
             ]);
 
         return response()->json([

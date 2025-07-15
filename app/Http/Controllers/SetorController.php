@@ -27,14 +27,14 @@ class SetorController extends Controller
         $data = $query->skip($request->start)
             ->take($request->length)
             ->get()
-            ->map(fn($s) => [
-                'id' => $s->id,
-                'codigo' => $s->codigo,
-                'descricao' => $s->descricao,
-                'tipo' => $s->tipo,
-                'responsavel' => $s->responsavel->nome ?? "",
-                'status' => $s->status,
-                'actions' => view('setores.partials.actions', compact('s'))->render(),
+            ->map(fn($item) => [
+                'id' => $item->id,
+                'codigo' => $item->codigo,
+                'descricao' => $item->descricao,
+                'tipo' => $item->tipo,
+                'responsavel' => $item->responsavel->nome ?? "",
+                'status' => $item->status,
+                'actions' => view('setores.partials.actions', compact('item'))->render(),
             ]);
 
         return response()->json([
