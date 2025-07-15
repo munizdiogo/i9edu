@@ -490,6 +490,7 @@ return [
                     'icon_color' => 'teal',
                     'classes' => 'pl-4',
                 ],
+
             ]
         ],
 
@@ -551,6 +552,21 @@ return [
             'url' => '#',
             'icon' => 'fas fa-fw fa-check-double',
             'icon_color' => 'blue',
+        ],
+
+        [
+            'text' => ' Contratos',
+            'url' => '/contratos',
+            'icon' => 'fas fa-fw fa-circle',
+            'icon_color' => 'teal',
+            'classes' => 'pl-4',
+        ],
+        [
+            'text' => ' Transações',
+            'url' => '/transacoes',
+            'icon' => 'fas fa-fw fa-circle',
+            'icon_color' => 'teal',
+            'classes' => 'pl-4',
         ],
 
 

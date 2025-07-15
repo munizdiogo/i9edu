@@ -13,6 +13,9 @@ return new class extends Migration {
         Schema::table('convenios', function (Blueprint $table) {
             $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
+        Schema::table('alunos', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+        });
         Schema::table('alunos_curso_admissao', function (Blueprint $table) {
             $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
@@ -125,6 +128,12 @@ return new class extends Migration {
             $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
         Schema::table('turmas', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+        });
+        Schema::table('contratos', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+        });
+        Schema::table('transacoes', function (Blueprint $table) {
             $table->unsignedBigInteger('id_estrutura')->default(1)->index();
         });
     }
