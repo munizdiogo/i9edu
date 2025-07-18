@@ -13,6 +13,53 @@ class PoloController extends Controller
         $polos = Polo::all();
         return view('polos.index', compact('polos'));
     }
+
+    public function data(Request $request)
+    {
+        $columns = ['id', 'nome', 'cidade', 'status'];
+        $total = Polo::count();
+
+        $query = Polo::query();
+
+        // filtro global
+        if ($search = $request->input('search.value')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('nome', 'like', "%{$search}%")
+                    ->orWhere('cidade', 'like', "%{$search}%");
+            });
+        }
+        $filtered = $query->count();
+
+        // ordenação
+        if ($order = $request->input('order.0')) {
+            $col = $columns[$order['column']];
+            $dir = $order['dir'];
+            $query->orderBy($col, $dir);
+        }
+
+        // paginação
+        $start = $request->input('start', 0);
+        $length = $request->input('length', 10);
+        $pageData = $query->skip($start)->take($length)->get();
+
+        // monta JSON
+        $data = $pageData->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'nome' => $item->nome,
+                'cidade' => $item->cidade,
+                'status' => $item->status,
+                'actions' => view('polos.partials.actions', ['item' => $item])->render(),
+            ];
+        });
+
+        return response()->json([
+            'draw' => intval($request->input('draw')),
+            'recordsTotal' => $total,
+            'recordsFiltered' => $filtered,
+            'data' => $data,
+        ]);
+    }
     public function create()
     {
         $perfis = Perfil::all();
@@ -90,51 +137,6 @@ class PoloController extends Controller
     }
 
 
-    public function data(Request $request)
-    {
-        $columns = ['id', 'nome', 'cidade', 'status'];
-        $total = Polo::count();
 
-        $query = Polo::query();
-
-        // filtro global
-        if ($search = $request->input('search.value')) {
-            $query->where(function ($q) use ($search) {
-                $q->where('nome', 'like', "%{$search}%")
-                    ->orWhere('cidade', 'like', "%{$search}%");
-            });
-        }
-        $filtered = $query->count();
-
-        // ordenação
-        if ($order = $request->input('order.0')) {
-            $col = $columns[$order['column']];
-            $dir = $order['dir'];
-            $query->orderBy($col, $dir);
-        }
-
-        // paginação
-        $start = $request->input('start', 0);
-        $length = $request->input('length', 10);
-        $pageData = $query->skip($start)->take($length)->get();
-
-        // monta JSON
-        $data = $pageData->map(function ($p) {
-            return [
-                'id' => $p->id,
-                'nome' => $p->nome,
-                'cidade' => $p->cidade,
-                'status' => $p->status,
-                'actions' => view('polos.partials.actions', ['polo' => $p])->render(),
-            ];
-        });
-
-        return response()->json([
-            'draw' => intval($request->input('draw')),
-            'recordsTotal' => $total,
-            'recordsFiltered' => $filtered,
-            'data' => $data,
-        ]);
-    }
 
 }

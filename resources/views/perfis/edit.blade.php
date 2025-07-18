@@ -2,7 +2,7 @@
 @section('title', 'Editar Perfil')
 
 @section('content_header')
-    <h1>Editar Perfil #{{ $perfil->id }}</h1>
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Editar Perfil #{{ $perfil->id }}</h1>
 @endsection
 
 @section('content')
