@@ -1,7 +1,3 @@
-@section('content_header')
-    <h1>{{ isset($perfil) ? 'Editar Perfil' : 'Novo Perfil' }}</h1>
-@endsection
-@section('content')
 <form action="{{ isset($perfil) ? route('perfis.update', $perfil) : route('perfis.store') }}" method="post"
     enctype="multipart/form-data">
     @csrf
@@ -247,12 +243,12 @@
         </div>
     </div>
 
-    <div class="row pb-4">
-        <div class="col-12 text-right">
-            <a href="{{ route('perfis.index') }}" class="btn btn-lg px-5 btn-default">Voltar</a>
-            <button type="submit" class="btn btn-lg px-5 btn-primary">Salvar</button>
+    @if(!str_contains(Route::current()->getName(), 'show'))
+        <div class="mt-3 text-right pb-5">
+            <a href="{{ route('perfis.index') }}" class="btn btn-default">Voltar</a>
+            <button type="submit" class="btn btn-success">Salvar</button>
         </div>
-    </div>
+    @endif
 </form>
 
 {{-- Script para toggle de campos PF/PJ --}}

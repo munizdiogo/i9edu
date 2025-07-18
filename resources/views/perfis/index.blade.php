@@ -4,13 +4,17 @@
 @section('title', 'Perfis')
 
 @section('content_header')
-    <h1 class="d-inline">Perfis</h1>
-    @can('perfis.create')
-        <a href="{{ route('perfis.create') }}" class="btn btn-success float-right">
-            Novo Perfil
-        </a>
-    @endcan
+    <div class="my-4">
+        <h1 class="callout callout-info bg-transparent border-none shadow-none p-4 d-inline">Perfis</h1>
+
+        @can('perfis.create')
+            <a href="{{ route('perfis.create') }}" class="btn btn-success float-right">
+                <i class="fa fa-plus"></i> Novo Perfil
+            </a>
+        @endcan
+    </div>
 @endsection
+
 
 @section('css')
     {{-- DataTables & Buttons CSS --}}
@@ -42,6 +46,9 @@
 @endsection
 
 @section('js')
+    @include('components.alert-swal-retorno-operacao')
+    @include('components.alert-swal-excluir')
+
     {{-- jQuery, DataTables & Buttons JS --}}
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>

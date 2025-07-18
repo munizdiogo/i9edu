@@ -15,6 +15,60 @@ class PerfilController extends Controller
         return view('perfis.index', compact('perfis'));
     }
 
+
+    public function data(Request $request)
+    {
+        $columns = ['id', 'tipo_cadastro', 'cpf', 'name', 'email'];
+        $total = Perfil::count();
+
+        $query = Perfil::query();
+
+        // search
+        if ($search = $request->input('search.value')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('email', 'like', "%{$search}%")
+                    ->orWhere('nome', 'like', "%{$search}%")
+                    ->orWhere('cpf', 'like', "%{$search}%")
+                    ->orWhere('sobrenome', 'like', "%{$search}%")
+                    ->orWhere('razao_social', 'like', "%{$search}%");
+            });
+        }
+        $filtered = $query->count();
+
+        // ordering
+        if (($order = $request->input('order.0'))) {
+            $col = $columns[$order['column']];
+            $dir = $order['dir'];
+            $query->orderBy($col, $dir);
+        }
+
+        // paging
+        $start = $request->input('start', 0);
+        $length = $request->input('length', 10);
+        $perfis = $query->skip($start)->take($length)->get();
+
+        // prepare data
+        $data = $perfis->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'tipo_cadastro' => $item->tipo_cadastro == 'fisica' ? 'Física' : 'Jurídica',
+                'cpf' => $item->tipo_cadastro == 'fisica' ? $item->cpf : $item->cnpj,
+                'name' => $item->tipo_cadastro == 'fisica'
+                    ? "{$item->nome} {$item->sobrenome}"
+                    : $item->razao_social,
+                'email' => $item->email,
+                'actions' => view('perfis.partials.actions', compact('item'))->render(),
+            ];
+        });
+
+        return response()->json([
+            'draw' => intval($request->input('draw')),
+            'recordsTotal' => $total,
+            'recordsFiltered' => $filtered,
+            'data' => $data,
+        ]);
+    }
+
     public function create()
     {
         return view('perfis.create');
@@ -120,56 +174,4 @@ class PerfilController extends Controller
         return $request->validate($rules);
     }
 
-    public function data(Request $request)
-    {
-        $columns = ['id', 'tipo_cadastro', 'cpf', 'name', 'email'];
-        $total = Perfil::count();
-
-        $query = Perfil::query();
-
-        // search
-        if ($search = $request->input('search.value')) {
-            $query->where(function ($q) use ($search) {
-                $q->where('email', 'like', "%{$search}%")
-                    ->orWhere('nome', 'like', "%{$search}%")
-                    ->orWhere('cpf', 'like', "%{$search}%")
-                    ->orWhere('sobrenome', 'like', "%{$search}%")
-                    ->orWhere('razao_social', 'like', "%{$search}%");
-            });
-        }
-        $filtered = $query->count();
-
-        // ordering
-        if (($order = $request->input('order.0'))) {
-            $col = $columns[$order['column']];
-            $dir = $order['dir'];
-            $query->orderBy($col, $dir);
-        }
-
-        // paging
-        $start = $request->input('start', 0);
-        $length = $request->input('length', 10);
-        $perfis = $query->skip($start)->take($length)->get();
-
-        // prepare data
-        $data = $perfis->map(function ($p) {
-            return [
-                'id' => $p->id,
-                'tipo_cadastro' => $p->tipo_cadastro == 'fisica' ? 'Física' : 'Jurídica',
-                'cpf' => $p->tipo_cadastro == 'fisica' ? $p->cpf : $p->cnpj,
-                'name' => $p->tipo_cadastro == 'fisica'
-                    ? "{$p->nome} {$p->sobrenome}"
-                    : $p->razao_social,
-                'email' => $p->email,
-                'actions' => view('perfis.partials.actions', compact('p'))->render(),
-            ];
-        });
-
-        return response()->json([
-            'draw' => intval($request->input('draw')),
-            'recordsTotal' => $total,
-            'recordsFiltered' => $filtered,
-            'data' => $data,
-        ]);
-    }
 }
