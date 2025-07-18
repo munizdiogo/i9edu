@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 @section('title', 'Novo Professor')
+
 @section('content_header')
-    <h1>Novo Professor</h1>
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Novo professor</h1>
 @endsection
+
 @section('content')
     <form action="{{ route('professores.store') }}" method="POST">@csrf
-        @include('professores.form')
-        {{-- <button class="btn btn-primary">Salvar</button> --}}
-        {{-- <a href="{{ route('professores.index') }}" class="btn btn-default">Voltar</a> --}}
+        @include('professores.partials.form')
     </form>
 @endsection
 

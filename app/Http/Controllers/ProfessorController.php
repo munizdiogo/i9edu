@@ -26,12 +26,12 @@ class ProfessorController extends Controller
         $data = $query->skip($request->start)
             ->take($request->length)
             ->get()
-            ->map(fn($p) => [
-                'id' => $p->id,
-                'funcionario' => $p->funcionario->perfil->nome,
-                'tipo_docente' => $p->tipo_docente,
-                'situacao_docente' => $p->situacao_docente,
-                'actions' => view('professores.partials.actions', compact('p'))->render(),
+            ->map(fn($item) => [
+                'id' => $item->id,
+                'funcionario' => $item->funcionario->perfil->nome,
+                'tipo_docente' => $item->tipo_docente,
+                'situacao_docente' => $item->situacao_docente,
+                'actions' => view('professores.partials.actions', compact('item'))->render(),
             ]);
 
         return response()->json([
