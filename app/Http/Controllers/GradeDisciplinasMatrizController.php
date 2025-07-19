@@ -35,11 +35,11 @@ class GradeDisciplinasMatrizController extends Controller
         $data = $query->skip($request->start)
             ->take($request->length)
             ->get()
-            ->map(fn($g) => [
-                'id' => $g->id,
-                'matriz' => $g->matrizCurricular->nome,
-                'disciplina' => $g->disciplina->descricao,
-                'actions' => view('grade_disciplinas_matrizes.partials.actions', compact('g'))->render(),
+            ->map(fn($item) => [
+                'id' => $item->id,
+                'matriz' => $item->matrizCurricular->nome,
+                'disciplina' => $item->disciplina->descricao,
+                'actions' => view('grade_disciplinas_matrizes.partials.actions', compact('item'))->render(),
             ]);
 
         return response()->json([

@@ -1,11 +1,18 @@
 @extends('adminlte::page')
 @section('title', 'Novo Vínculo')
+
+@section('content_header')
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Nova Grade Disciplina x Matriz Curricular</h1>
+@endsection
+
+
 @section('content')
     <form action="{{ route('grade_disciplinas_matrizes.store') }}" method="POST">
         @csrf
-        @include('grade_disciplinas_matrizes.form')
+        @include('grade_disciplinas_matrizes.partials.form')
     </form>
 @endsection
+
 @push('js')
     <script>
         $(function () {
