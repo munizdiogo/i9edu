@@ -3,13 +3,13 @@
 @section('title', 'Novo Edital')
 
 @section('content_header')
-    <h1>Novo Edital</h1>
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Novo Edital</h1>
 @endsection
 
 @section('content')
     <form action="{{ route('editais.store') }}" method="post">
         @csrf
-        @include('editais.form')
+        @include('editais.partials.form')
     </form>
 @endsection
 @push('js')

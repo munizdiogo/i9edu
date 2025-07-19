@@ -3,14 +3,14 @@
 @section('title', 'Editar Edital #' . $edital->id)
 
 @section('content_header')
-    <h1>Editar Edital #{{ $edital->id }}</h1>
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Editar Edital #{{ $edital->id }}</h1>
 @endsection
 
 @section('content')
     <form action="{{ route('editais.update', $edital) }}" method="post">
         @csrf
         @method('PUT')
-        @include('editais.form')
+        @include('editais.partials.form')
     </form>
 @endsection
 @push('js')

@@ -40,18 +40,18 @@ class EditalProcessoSeletivoController extends Controller
         $length = $request->input('length', 10);
         $page = $query->skip($start)->take($length)->get();
 
-        $data = $page->map(function ($e) {
+        $data = $page->map(function ($item) {
 
-            $data_inicio = date_create($e->data_inicio);
-            $data_fim = date_create($e->data_fim);
+            $data_inicio = date_create($item->data_inicio);
+            $data_fim = date_create($item->data_fim);
             return [
-                'id' => $e->id,
-                'descricao' => $e->descricao,
-                'periodo' => $e->periodoLetivo->descricao,
+                'id' => $item->id,
+                'descricao' => $item->descricao,
+                'periodo' => $item->periodoLetivo->descricao,
                 'data_inicio' => $data_inicio->format('d/m/Y'),
                 'data_fim' => $data_fim->format('d/m/Y'),
-                'status' => $e->status,
-                'actions' => view('editais.partials.actions', ['e' => $e])->render(),
+                'status' => $item->status,
+                'actions' => view('editais.partials.actions', ['item' => $item])->render(),
             ];
         });
 
