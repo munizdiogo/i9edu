@@ -28,15 +28,15 @@ class FuncionarioController extends Controller
         $data = $query->skip($request->start)
             ->take($request->length)
             ->get()
-            ->map(fn($f) => [
-                'id' => $f->id,
-                'codigo' => $f->codigo,
-                'perfil' => $f->perfil->nome ?? '',
-                'email_empresa' => $f->email_empresa,
-                'status' => $f->status,
-                'setor' => $f->setor->descricao ?? '',
-                'funcao' => $f->funcao->descricao ?? '',
-                'actions' => view('funcionarios.partials.actions', compact('f'))->render(),
+            ->map(fn($item) => [
+                'id' => $item->id,
+                'codigo' => $item->codigo,
+                'perfil' => $item->perfil->nome ?? '',
+                'email_empresa' => $item->email_empresa,
+                'status' => $item->status,
+                'setor' => $item->setor->descricao ?? '',
+                'funcao' => $item->funcao->descricao ?? '',
+                'actions' => view('funcionarios.partials.actions', compact('item'))->render(),
             ]);
 
         return response()->json([

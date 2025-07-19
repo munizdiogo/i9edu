@@ -1,12 +1,23 @@
 @extends('adminlte::page')
 @section('title', 'Funcionários')
+
 @section('content_header')
-    <h1 class="d-inline">Funcionários</h1>
-    <a href="{{ route('funcionarios.create') }}" class="btn btn-success float-right">Novo Funcionário</a>
+    <div class="my-4">
+        <h1 class="callout callout-info bg-transparent border-none shadow-none p-4 d-inline">Funcionários</h1>
+
+        @can('funcionarios.create')
+            <a href="{{ route('funcionarios.create') }}" class="btn btn-success float-right">
+                <i class="fa fa-plus"></i> Novo Funcionário
+            </a>
+        @endcan
+    </div>
 @endsection
+
+
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
 @endsection
+
 @section('content')
     <div class="card p-4">
         <div class="card-body p-0">
@@ -27,7 +38,11 @@
         </div>
     </div>
 @endsection
+
 @section('js')
+    @include('components.alert-swal-retorno-operacao')
+    @include('components.alert-swal-excluir')
+
     <script src="//code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
