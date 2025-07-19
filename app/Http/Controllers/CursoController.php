@@ -40,13 +40,13 @@ class CursoController extends Controller
         $pageData = $query->skip($start)->take($length)->get();
 
         // montar data
-        $data = $pageData->map(function ($curso) {
+        $data = $pageData->map(function ($item) {
             return [
-                'id' => $curso->id,
-                'nome' => $curso->nome_impressao1,
-                'grau_academico' => $curso->grau_academico,
-                'status' => $curso->status,
-                'actions' => view('cursos.partials.actions', compact('curso'))->render(),
+                'id' => $item->id,
+                'nome' => $item->nome_impressao1,
+                'grau_academico' => $item->grau_academico,
+                'status' => $item->status,
+                'actions' => view('cursos.partials.actions', compact('item'))->render(),
             ];
         });
 
