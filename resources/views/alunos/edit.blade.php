@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 @section('title', 'Editar Aluno')
+
 @section('content_header')
     <h1 class="callout callout-info bg-transparent border-none shadow-none">Editar Aluno #{{ $aluno->id }}</h1>
 @endsection

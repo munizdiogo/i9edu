@@ -3,14 +3,16 @@
 @section('title', 'Editar Curso Ingresso #' . $admissao->id)
 
 @section('content_header')
-    <h1>Editar Curso Ingresso #{{ $admissao->id }}</h1>
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">
+        Editar Curso Ingresso #{{ $admissao->id }}
+    </h1>
 @endsection
 
 @section('content')
     <form action="{{ route('admissoes.update', $admissao) }}" method="post">
         @csrf
         @method('PUT')
-        @include('admissoes.form')
+        @include('admissoes.partials.form')
     </form>
 @endsection
 @push('js')

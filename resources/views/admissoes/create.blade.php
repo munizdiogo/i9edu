@@ -3,13 +3,13 @@
 @section('title', 'Novo Curso Ingresso')
 
 @section('content_header')
-    <h1>Novo Curso Ingresso</h1>
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Novo Curso Ingresso</h1>
 @endsection
 
 @section('content')
     <form action="{{ route('admissoes.store') }}" method="post">
         @csrf
-        @include('admissoes.form')
+        @include('admissoes.partials.form')
     </form>
 @endsection
 @push('js')

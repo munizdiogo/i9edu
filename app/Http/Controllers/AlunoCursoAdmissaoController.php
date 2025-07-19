@@ -52,16 +52,16 @@ class AlunoCursoAdmissaoController extends Controller
         $length = $request->input('length', 10);
         $page = $query->skip($start)->take($length)->get();
 
-        $data = $page->map(function ($row) {
-            $data_ingresso = date_create($row->data_ingresso);
+        $data = $page->map(function ($item) {
+            $data_ingresso = date_create($item->data_ingresso);
             return [
-                'id' => $row->id,
-                'aluno' => "{$row->aluno->ra} — {$row->aluno->perfil->nome}",
-                'matriz' => $row->matriz->nome,
+                'id' => $item->id,
+                'aluno' => "{$item->aluno->ra} — {$item->aluno->perfil->nome}",
+                'matriz' => $item->matriz->nome,
                 'data_ingresso' => $data_ingresso->format('d/m/Y'),
-                'turno' => $row->turno,
-                'status' => $row->status,
-                'actions' => view('admissoes.partials.actions', ['row' => $row])->render(),
+                'turno' => $item->turno,
+                'status' => $item->status,
+                'actions' => view('admissoes.partials.actions', ['item' => $item])->render(),
             ];
         });
 
