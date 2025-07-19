@@ -19,3 +19,11 @@
         </div>
     </div>
 </div>
+
+
+@if(!str_contains(Route::current()->getName(), 'show'))
+    <div class="card-footer text-right">
+        <a href="{{ route('area_conhecimentos.index') }}" class="btn btn-default">Voltar</a>
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </div>
+@endif

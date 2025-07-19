@@ -333,7 +333,7 @@ Route::resource('plano-contas', PlanoContaController::class)->parameters(['plano
 
 // Convênios
 use App\Http\Controllers\ConvenioController;
-Route::middleware(['auth', 'estrutura'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('convenios-data', [ConvenioController::class, 'data'])->name('convenios.data');
     Route::resource('convenios', ConvenioController::class);
 });

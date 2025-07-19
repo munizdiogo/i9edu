@@ -29,7 +29,7 @@ class Curso extends Model
     {
         static::addGlobalScope('estrutura', function ($query) {
             if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+                $query->where('cursos.id_estrutura', session('estrutura_id'));
             }
         });
     }

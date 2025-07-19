@@ -1,12 +1,14 @@
-<a href="{{ route('cupons.show', $item->id) }}" class="btn btn-sm btn-info">Ver</a>
+<a href="{{ route('cupons.show', $item) }}" class="btn btn-sm my-0 btn-primary">
+    <i class="fas fa-eye"></i>
+</a>
+
 @can('cupons.edit')
-    <a href="{{ route('cupons.edit', $item->id) }}" class="btn btn-sm btn-primary">Editar</a>
+    <a href="{{ route('cupons.edit', $item) }}" class="btn btn-sm my-0 btn-warning"><i class="fas fa-edit"></i></a>
 @endcan
+
 @can('cupons.delete')
-    <form action="{{ route('cupons.destroy', $item->id) }}" method="POST" style="display:inline-block;"
-        onsubmit="return confirm('Deseja realmente excluir?')">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
-    </form>
+    <button type="button" class="btn btn-danger btn-sm"
+        onclick="confirmarExclusao('{{ route('cupons.destroy', $item->id) }}','{{ $item->id }}')">
+        <i class="fas fa-trash-alt"></i>
+    </button>
 @endcan

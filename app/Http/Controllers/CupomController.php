@@ -57,7 +57,9 @@ class CupomController extends Controller
 
     public function show(Cupom $cupom)
     {
-        return view('cupons.show', compact('cupom'));
+        $convenios = Convenio::all();
+        $planos = PlanoConta::all();
+        return view('cupons.show', compact('cupom', 'convenios', 'planos'));
     }
 
     public function edit(Cupom $cupom)

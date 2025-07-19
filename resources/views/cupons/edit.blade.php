@@ -19,7 +19,7 @@
             <form action="{{ route('cupons.update', $cupom)}}" method="POST">
                 @csrf
                 @method('PUT')
-                @include('cupons.form')
+                @include('cupons.partials.form')
                 <button class="btn btn-primary">Salvar</button>
                 <a href="{{ route('cupons.index') }}" class="btn btn-default">Voltar</a>
             </form>
