@@ -3,11 +3,12 @@
 @section('content')
     <form action="{{ route('area_conhecimentos.update', $area_conhecimento) }}" method="POST">
         @csrf @method('PUT')
-        @include('area_conhecimentos.form')
+        @include('area_conhecimentos.partials.form')
         <button type="submit" class="btn btn-primary">Salvar</button>
         <a href="{{ route('area_conhecimentos.index') }}" class="btn btn-secondary">Voltar</a>
     </form>
 @endsection
+
 @push('js')
     <script>
         $(function () {

@@ -34,12 +34,12 @@ class AreaConhecimentoController extends Controller
         $data = $query->skip($request->start)
             ->take($request->length)
             ->get()
-            ->map(fn($a) => [
-                'id' => $a->id,
-                'codigo' => $a->codigo,
-                'descricao' => $a->descricao,
-                'status' => $a->status,
-                'actions' => view('area_conhecimentos.partials.actions', compact('a'))->render(),
+            ->map(fn($item) => [
+                'id' => $item->id,
+                'codigo' => $item->codigo,
+                'descricao' => $item->descricao,
+                'status' => $item->status,
+                'actions' => view('area_conhecimentos.partials.actions', compact('item'))->render(),
             ]);
 
         return response()->json([
