@@ -7,7 +7,7 @@
     <form action="{{ route('disciplinas_base.update', $disciplinas_base) }}" method="post">
         @csrf
         @method('PUT')
-        @include('disciplinas_base.form')
+        @include('disciplinas_base.partials.form')
     </form>
 @endsection
 @push('js')

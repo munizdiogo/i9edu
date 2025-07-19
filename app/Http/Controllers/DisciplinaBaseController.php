@@ -34,12 +34,12 @@ class DisciplinaBaseController extends Controller
             ->skip($request->start)
             ->take($request->length)
             ->get()
-            ->map(fn($d) => [
-                'id' => $d->id,
-                'codigo' => $d->codigo,
-                'nome' => $d->nome,
-                'status' => $d->status,
-                'actions' => view('disciplinas_base.partials.actions', compact('d'))->render(),
+            ->map(fn($item) => [
+                'id' => $item->id,
+                'codigo' => $item->codigo,
+                'nome' => $item->nome,
+                'status' => $item->status,
+                'actions' => view('disciplinas_base.partials.actions', compact('item'))->render(),
             ]);
 
         return response()->json([

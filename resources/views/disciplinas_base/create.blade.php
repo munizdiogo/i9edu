@@ -1,12 +1,14 @@
 @extends('adminlte::page')
 @section('title', 'Nova Disciplina Base')
+
 @section('content_header')
-    <h1>Nova Disciplina Base</h1>
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Nova Disciplina Base</h1>
 @endsection
+
 @section('content')
     <form action="{{ route('disciplinas_base.store') }}" method="post">
         @csrf
-        @include('disciplinas_base.form')
+        @include('disciplinas_base.partials.form')
     </form>
 @endsection
 @push('js')
