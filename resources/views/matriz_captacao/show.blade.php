@@ -2,16 +2,22 @@
 
 
 @section('content_header')
-    @section('css')
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap4.min.css">
-        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap4.min.css">
-    @endsection
-
-    <h1>
-        Detalhes da Matriz Captação #{{ $matriz->id }}
-    </h1>
+    <div class="my-4">
+        <h1 class="callout callout-info bg-transparent border-none shadow-none p-4 d-inline">
+            Detalhes da Matriz Captação #{{ $matriz->id }}
+        </h1>
+        <a href="{{ route('matriz-captacao.edit', $matriz) }}" class="btn my-0 btn-warning float-right">
+            <i class="fas fa-edit"></i> Editar
+        </a>
+    </div>
 @endsection
+
+@section('css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap4.min.css">
+@endsection
+
 
 @section('content')
 

@@ -19,11 +19,11 @@ class MatrizCaptacaoController extends Controller
             $q->where('nome', 'like', "%{$search}%");
         }
         $filtered = $q->count();
-        $data = $q->skip($r->start)->take($r->length)->get()->map(fn($m) => [
-            'id' => $m->id,
-            'nome' => $m->nome,
-            'status' => $m->status,
-            'actions' => view('matriz_captacao.partials.actions', compact('m'))->render(),
+        $data = $q->skip($r->start)->take($r->length)->get()->map(fn($item) => [
+            'id' => $item->id,
+            'nome' => $item->nome,
+            'status' => $item->status,
+            'actions' => view('matriz_captacao.partials.actions', compact('item'))->render(),
         ]);
 
         return response()->json([

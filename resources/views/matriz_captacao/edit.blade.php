@@ -1,8 +1,10 @@
 @extends('adminlte::page')
 @section('title', 'Editar Matriz Captação')
+
 @section('content_header')
-    <h1 class="d-inline">Editar Matriz Captação</h1>
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Editar Matriz Captação #{{ $matriz->id }}</h1>
 @endsection
+
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap4.min.css">
@@ -14,7 +16,6 @@
         @csrf @isset($matriz)
             @method('PUT')
         @endisset
-
 
         <div class="card p-4">
             @include('matriz_captacao.partials.form')

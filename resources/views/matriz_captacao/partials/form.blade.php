@@ -20,9 +20,9 @@
         placeholder="Descrição opcional">{{ old('descricao', $matriz->descricao ?? '') }}</textarea>
 </div>
 
-<div class="row mt-3">
-    <div class="col text-right">
+@if(!str_contains(Route::current()->getName(), 'show'))
+    <div class="card-footer text-right">
         <a href="{{ route('matriz-captacao.index') }}" class="btn btn-default">Voltar</a>
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="submit" class="btn btn-success">Salvar</button>
     </div>
-</div>
+@endif

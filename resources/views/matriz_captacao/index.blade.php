@@ -1,23 +1,21 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    @section('css')
-        <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" href="//cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap4.min.css">
-        <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap4.min.css">
-    @endsection
+    <div class="my-4">
+        <h1 class="callout callout-info bg-transparent border-none shadow-none p-4 d-inline">Matriz Captação</h1>
 
-
-    <div class="row">
-        <div class="col-6">
-            <h1 class="mb-3"> Matriz Captação </h1>
-        </div>
-        <div class="col-6">
+        @can('matriz-captacao.create')
             <a href="{{ route('matriz-captacao.create') }}" class="btn btn-success float-right">
-                <i class="fas fa-plus text-light mx-3"></i> Nova Matriz
+                <i class="fa fa-plus"></i> Nova Matriz
             </a>
-        </div>
+        @endcan
     </div>
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap4.min.css">
 @endsection
 
 @section('content')
@@ -39,6 +37,9 @@
 @endsection
 
 @section('js')
+    @include('components.alert-swal-retorno-operacao')
+    @include('components.alert-swal-excluir')
+
     <script src="//code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>

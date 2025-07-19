@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Nova Matriz Captação')
 @section('content_header')
-    <h1 class="d-inline">Nova Matriz Captação</h1>
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Nova Matriz Captação</h1>
 @endsection
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
