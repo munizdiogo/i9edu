@@ -156,7 +156,8 @@
         <label>Prazo em</label>
         <select name="prazo_em" class="form-control">
           <option value="Anos" {{ old('prazo_em', $matriz->prazo_em ?? '') == 'Anos' ? 'selected' : '' }}>Anos</option>
-          <option value="Semestres" {{ old('prazo_em', $matriz->prazo_em ?? '') == 'Semestres' ? 'selected' : '' }}>Semestres
+          <option value="Semestres" {{ old('prazo_em', $matriz->prazo_em ?? '') == 'Semestres' ? 'selected' : '' }}>
+            Semestres
           </option>
         </select>
       </div>
@@ -185,9 +186,9 @@
 </div>
 
 
-<div class="row mt-3 pb-5">
-  <div class="col text-right">
-    <a href="{{ route('matrizes.index') }}" class="btn btn-lg px-5 btn-default">Voltar</a>
-    <button type="submit" class="btn btn-lg px-5 btn-primary">Salvar</button>
+@if(!str_contains(Route::current()->getName(), 'show'))
+  <div class="card-footer text-right">
+    <a href="{{ route('matrizes.index') }}" class="btn btn-default">Voltar</a>
+    <button type="submit" class="btn btn-success">Salvar</button>
   </div>
-</div>
+@endif

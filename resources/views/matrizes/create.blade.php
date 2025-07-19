@@ -1,7 +1,12 @@
 @extends('adminlte::page')
 @section('title', 'Nova Matriz Curricular')
-@section('content_header')<h1>Nova Matriz Curricular</h1>@endsection
-@section('content')<form action="{{ route('matrizes.store') }}" method="post">@csrf @include('matrizes.form')</form>
+
+@section('content_header')
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Nova Matriz Curricular</h1>
+@endsection
+
+@section('content')<form action="{{ route('matrizes.store') }}" method="post">@csrf
+    @include('matrizes.partials.form')</form>
 @endsection
 
 @push('js')

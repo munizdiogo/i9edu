@@ -30,13 +30,13 @@ class MatrizCurricularController extends Controller
         $start = $request->input('start', 0);
         $len = $request->input('length', 10);
         $page = $q->skip($start)->take($len)->get();
-        $data = $page->map(function ($matriz) {
+        $data = $page->map(function ($item) {
             return [
-                'id' => $matriz->id,
-                'nome' => $matriz->nome,
-                'curso' => $matriz->curso->nome_impressao1,
-                'status' => $matriz->status,
-                'actions' => view('matrizes.partials.actions', compact('matriz'))->render(),
+                'id' => $item->id,
+                'nome' => $item->nome,
+                'curso' => $item->curso->nome_impressao1,
+                'status' => $item->status,
+                'actions' => view('matrizes.partials.actions', compact('item'))->render(),
             ];
         });
         return response()->json([
