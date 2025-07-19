@@ -48,15 +48,15 @@ class MatriculaController extends Controller
             ->take($request->input('length', 10))
             ->get();
 
-        $data = $page->map(function ($m) {
-            $data_matricula = date_create($m->data_matricula);
+        $data = $page->map(function ($item) {
+            $data_matricula = date_create($item->data_matricula);
             return [
-                'id' => $m->id,
-                'aluno' => $m->admissao->aluno->perfil->nome,
-                'turma' => $m->turma->nome,
+                'id' => $item->id,
+                'aluno' => $item->admissao->aluno->perfil->nome,
+                'turma' => $item->turma->nome,
                 'data_matricula' => $data_matricula->format('d/m/Y'),
-                'status' => $m->status,
-                'actions' => view('matriculas.partials.actions', compact('m'))->render(),
+                'status' => $item->status,
+                'actions' => view('matriculas.partials.actions', compact('item'))->render(),
             ];
         });
 

@@ -2,10 +2,19 @@
 
 @section('title', 'Matrículas')
 
+
 @section('content_header')
-    <h1 class="d-inline">Matrículas</h1>
-    <a href="{{ route('matriculas.create') }}" class="btn btn-success float-right">Nova Matrícula</a>
+    <div class="my-4">
+        <h1 class="callout callout-info bg-transparent border-none shadow-none p-4 d-inline">Matrículas</h1>
+
+        @can('matriculas.create')
+            <a href="{{ route('matriculas.create') }}" class="btn btn-success float-right">
+                <i class="fa fa-plus"></i> Nova Matrícula
+            </a>
+        @endcan
+    </div>
 @endsection
+
 
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
@@ -34,6 +43,9 @@
 @endsection
 
 @section('js')
+    @include('components.alert-swal-retorno-operacao')
+    @include('components.alert-swal-excluir')
+
     <script src="//code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
