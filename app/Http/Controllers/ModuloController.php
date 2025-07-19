@@ -31,13 +31,13 @@ class ModuloController extends Controller
         $data = $query->skip($request->start)
             ->take($request->length)
             ->get()
-            ->map(fn($m) => [
-                'id' => $m->id,
-                'codigo' => $m->codigo,
-                'descricao' => $m->descricao,
-                'status' => $m->status,
-                'prox' => $m->proxModulo->descricao ?? '',
-                'actions' => view('modulos.partials.actions', compact('m'))->render(),
+            ->map(fn($item) => [
+                'id' => $item->id,
+                'codigo' => $item->codigo,
+                'descricao' => $item->descricao,
+                'status' => $item->status,
+                'prox' => $item->proxModulo->descricao ?? '',
+                'actions' => view('modulos.partials.actions', compact('item'))->render(),
             ]);
 
         return response()->json([

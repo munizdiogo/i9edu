@@ -1,6 +1,12 @@
-<a href="{{ route('modulos.show', $m) }}" class="btn my-0 btn-primary"><i class="fas fa-eye"></i></a>
-<a href="{{ route('modulos.edit', $m) }}" class="btn my-0 btn-warning"><i class="fas fa-edit"></i></a>
-<form action="{{ route('modulos.destroy', $m) }}" method="post" class="d-inline" onsubmit="return confirm('Apagar?')">
-    @csrf @method('DELETE')
-    <button class="btn my-0 btn-danger"><i class="fas fa-trash-alt"></i></button>
-</form>
+<a href="{{ route('modulos.show', $item) }}" class="btn btn-sm my-0 btn-primary"><i class="fas fa-eye"></i></a>
+
+@can('modulos.edit')
+    <a href="{{ route('modulos.edit', $item) }}" class="btn btn-sm my-0 btn-warning"><i class="fas fa-edit"></i></a>
+@endcan
+
+@can('modulos.delete')
+    <button type="button" class="btn btn-danger btn-sm"
+        onclick="confirmarExclusao('{{ route('modulos.destroy', $item->id) }}','{{ $item->id }}')">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+@endcan

@@ -1,13 +1,17 @@
 @extends('adminlte::page')
 @section('title', 'Novo Módulo')
+
+@section('content_header')
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Novo Módulo</h1>
+@endsection
+
 @section('content')
     <form action="{{ route('modulos.store') }}" method="POST">
         @csrf
-        @include('modulos.form')
-        <button class="btn btn-primary">Salvar</button>
-        <a href="{{ route('modulos.index') }}" class="btn btn-default">Voltar</a>
+        @include('modulos.partials.form')
     </form>
 @endsection
+
 @push('js')
     <script>
         $(function () {

@@ -1,12 +1,18 @@
 @extends('adminlte::page')
 @section('title', 'Editar Módulo #' . $modulo->id)
-@section('content_header')<h1>Editar Módulo #{{ $modulo->id }}</h1>@endsection
+
+
+@section('content_header')
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Editar Módulo #{{ $modulo->id }}</h1>
+@endsection
+
 @section('content')
     <form action="{{ route('modulos.update', $modulo) }}" method="POST">
         @csrf @method('PUT')
-        @include('modulos.form')
+        @include('modulos.partials.form')
     </form>
 @endsection
+
 @push('js')
     <script>
         $(function () {
