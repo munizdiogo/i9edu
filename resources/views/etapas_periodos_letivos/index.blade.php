@@ -1,9 +1,21 @@
 @extends('adminlte::page')
 @section('title', 'Etapas de Períodos Letivos')
+
+
 @section('content_header')
-    <h1 class="d-inline">Etapas de Períodos Letivos</h1>
-    <a href="{{ route('etapas_periodos_letivos.create') }}" class="btn btn-success float-right">Nova Etapa</a>
+    <div class="my-4">
+        <h1 class="callout callout-info bg-transparent border-none shadow-none  p-4 d-inline">Etapas de Períodos Letivos
+        </h1>
+
+        @can('etapas_periodos_letivos.create')
+            <a href="{{ route('etapas_periodos_letivos.create') }}" class="btn btn-success float-right">
+                <i class="fa fa-plus"></i> Novo Etapa
+            </a>
+        @endcan
+    </div>
 @endsection
+
+
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap4.min.css">

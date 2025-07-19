@@ -1,10 +1,17 @@
 @extends('adminlte::page')
 @section('title', 'Nova Etapa')
-@section('content_header')<h1>Nova Etapa</h1>@endsection
+
+
+@section('content_header')
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Nova Etapa</h1>
+@endsection
+
+
+
 @section('content')
     <form action="{{ route('etapas_periodos_letivos.store') }}" method="POST">
         @csrf
-        @include('etapas_periodos_letivos.form')
+        @include('etapas_periodos_letivos.partials.form')
     </form>
 @endsection
 @push('js')

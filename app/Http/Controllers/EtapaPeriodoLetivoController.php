@@ -32,13 +32,13 @@ class EtapaPeriodoLetivoController extends Controller
             ->skip($request->start)
             ->take($request->length)
             ->get()
-            ->map(fn($e) => [
-                'id' => $e->id,
-                'codigo' => $e->codigo,
-                'descricao' => $e->descricao,
-                'status' => $e->status,
-                'periodo' => $e->periodoLetivo->descricao,
-                'actions' => view('etapas_periodos_letivos.partials.actions', compact('e'))->render(),
+            ->map(fn($item) => [
+                'id' => $item->id,
+                'codigo' => $item->codigo,
+                'descricao' => $item->descricao,
+                'status' => $item->status,
+                'periodo' => $item->periodoLetivo->descricao,
+                'actions' => view('etapas_periodos_letivos.partials.actions', compact('item'))->render(),
             ]);
 
         return response()->json([
