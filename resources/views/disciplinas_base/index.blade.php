@@ -6,7 +6,7 @@
         <h1 class="callout callout-info bg-transparent border-none shadow-none p-4 d-inline">Disciplinas Base</h1>
         @can('disciplinas_base.create')
             <a href="{{ route('disciplinas_base.create') }}" class="btn btn-success float-right">
-                <i class="fa fa-plus"></i> Nova Disciplina
+                <i class="fa fa-plus"></i> Nova Disciplina Base
             </a>
         @endcan
     </div>

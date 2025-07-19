@@ -35,13 +35,13 @@ class DisciplinaController extends Controller
         $data = $query->skip($request->start)
             ->take($request->length)
             ->get()
-            ->map(fn($d) => [
-                'id' => $d->id,
-                'descricao' => $d->descricao,
-                'base' => $d->base->nome,
-                'etapa' => $d->etapa->descricao,
-                'modulo' => $d->modulo->descricao,
-                'actions' => view('disciplinas.partials.actions', compact('d'))->render(),
+            ->map(fn($item) => [
+                'id' => $item->id,
+                'descricao' => $item->descricao,
+                'base' => $item->base->nome,
+                'etapa' => $item->etapa->descricao,
+                'modulo' => $item->modulo->descricao,
+                'actions' => view('disciplinas.partials.actions', compact('item'))->render(),
             ]);
 
         return response()->json([
