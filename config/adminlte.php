@@ -449,13 +449,6 @@ return [
             'classes' => 'pl-2',
             'submenu' => [
                 [
-                    'text' => ' Departamentos',
-                    'url' => '/requerimentos_departamentos',
-                    'icon' => 'fas fa-fw fa-circle',
-                    'icon_color' => 'teal',
-                    'classes' => 'pl-4',
-                ],
-                [
                     'text' => ' Grupo de Contas',
                     'url' => '/grupo-contas',
                     'icon' => 'fas fa-fw fa-circle',

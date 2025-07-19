@@ -35,17 +35,17 @@ class PeriodoLetivoController extends Controller
         $length = $request->input('length', 10);
 
         $page = $query->skip($start)->take($length)->get();
-        $data = $page->map(function ($periodo) {
-            $data_inicio = date_create($periodo->data_inicio);
-            $data_termino = date_create($periodo->data_termino);
+        $data = $page->map(function ($item) {
+            $data_inicio = date_create($item->data_inicio);
+            $data_termino = date_create($item->data_termino);
             return [
-                'id' => $periodo->id,
-                'descricao' => $periodo->descricao,
+                'id' => $item->id,
+                'descricao' => $item->descricao,
                 'data_inicio' => $data_inicio->format('d/m/Y'),
                 'data_termino' => $data_termino->format('d/m/Y'),
-                'ano' => $periodo->ano,
-                'situacao' => $periodo->situacao,
-                'actions' => view('periodos.partials.actions', compact('periodo'))->render(),
+                'ano' => $item->ano,
+                'situacao' => $item->situacao,
+                'actions' => view('periodos.partials.actions', compact('item'))->render(),
             ];
         });
 

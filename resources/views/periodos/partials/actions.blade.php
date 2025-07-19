@@ -1,7 +1,10 @@
-<a href="{{ route('periodos.show', $periodo) }}" class="btn my-0 btn-primary"><i class="fas fa-eye"></i></a>
-<a href="{{ route('periodos.edit', $periodo) }}" class="btn my-0 btn-warning"><i class="fas fa-edit"></i></a>
-<form action="{{ route('periodos.destroy', $periodo) }}" method="post" class="d-inline"
-    onsubmit="return confirm('Confirma exclusão?')">
-    @csrf @method('DELETE')
-    <button class="btn my-0 btn-danger"><i class="fas fa-trash-alt"></i></button>
-</form>
+<a href="{{ route('periodos.show', $item) }}" class="btn btn-sm my-0 btn-primary"><i class="fas fa-eye"></i></a>
+@can('periodos.edit')
+    <a href="{{ route('periodos.edit', $item) }}" class="btn btn-sm my-0 btn-warning"><i class="fas fa-edit"></i></a>
+@endcan
+@can('periodos.delete')
+    <button type="button" class="btn btn-danger btn-sm"
+        onclick="confirmarExclusao('{{ route('periodos.destroy', $item->id) }}','{{ $item->id }}')">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+@endcan
