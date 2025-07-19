@@ -1,13 +1,15 @@
 @extends('adminlte::page')
 @section('title', 'Editar Turma')
-@section('content_header')<h1>Editar Turma #{{ $turma->id }}</h1>@endsection
+@section('content_header')
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Editar Turma #{{ $turma->id }}</h1>
+@endsection
 
 
 
 @section('content').
     <form action="{{ route('turmas.update', $turma) }}" method="post">
         @csrf @method('PUT')
-        @include('turmas.form')
+        @include('turmas.partials.form')
     </form>
 @endsection
 @push('js')

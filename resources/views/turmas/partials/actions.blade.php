@@ -1,7 +1,12 @@
-<a href="{{ route('turmas.show', $turma) }}" class="btn my-0 btn-primary"><i class="fas fa-eye"></i></a>
-<a href="{{ route('turmas.edit', $turma) }}" class="btn my-0 btn-warning"><i class="fas fa-edit"></i></a>
-<form action="{{ route('turmas.destroy', $turma) }}" method="post" class="d-inline"
-    onsubmit="return confirm('Apagar?')">
-    @csrf @method('DELETE')
-    <button class="btn my-0 btn-danger"><i class="fas fa-trash-alt"></i></button>
-</form>
+<a href="{{ route('turmas.show', $item) }}" class="btn btn-sm my-0 btn-primary"><i class="fas fa-eye"></i></a>
+
+@can('turmas.edit')
+    <a href="{{ route('turmas.edit', $item) }}" class="btn btn-sm my-0 btn-warning"><i class="fas fa-edit"></i></a>
+@endcan
+
+@can('turmas.delete')
+    <button type="button" class="btn btn-danger btn-sm"
+        onclick="confirmarExclusao('{{ route('turmas.destroy', $item->id) }}','{{ $item->id }}')">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+@endcan

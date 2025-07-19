@@ -43,14 +43,14 @@ class TurmaController extends Controller
         $len = $request->input('length', 10);
         $page = $q->skip($start)->take($len)->get();
 
-        $data = $page->map(function ($t) {
+        $data = $page->map(function ($item) {
             return [
-                'id' => $t->id,
-                'nome' => $t->nome,
-                'matriz' => $t->matrizCurricular->nome,
-                'periodo' => $t->periodoLetivo->nome,
-                'status' => $t->status,
-                'actions' => view('turmas.partials.actions', ['turma' => $t])->render(),
+                'id' => $item->id,
+                'nome' => $item->nome,
+                'matriz' => $item->matrizCurricular->nome,
+                'periodo' => $item->periodoLetivo->nome,
+                'status' => $item->status,
+                'actions' => view('turmas.partials.actions', ['item' => $item])->render(),
             ];
         });
 
