@@ -60,9 +60,10 @@
     </div>
 </div>
 
-<div class="row mt-3">
-    <div class="col text-right">
-        <a href="{{ route('alunos.index') }}" class="btn btn-default btn-form">Voltar</a>
-        <button type="submit" class="btn btn-primary  btn-form">Salvar</button>
+
+@if(!str_contains(Route::current()->getName(), 'show'))
+    <div class="card-footer text-right">
+        <a href="{{ route('alunos.index') }}" class="btn btn-default">Voltar</a>
+        <button type="submit" class="btn btn-success">Salvar</button>
     </div>
-</div>
+@endif

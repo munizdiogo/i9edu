@@ -45,13 +45,13 @@ class AlunoController extends Controller
         $length = $request->input('length', 10);
         $page = $query->skip($start)->take($length)->get();
 
-        $data = $page->map(function ($a) {
+        $data = $page->map(function ($item) {
             return [
-                'id' => $a->id,
-                'ra' => $a->ra,
-                'nome' => $a->perfil->nome,
-                'status' => $a->status,
-                'actions' => view('alunos.partials.actions', compact('a'))->render(),
+                'id' => $item->id,
+                'ra' => $item->ra,
+                'nome' => $item->perfil->nome,
+                'status' => $item->status,
+                'actions' => view('alunos.partials.actions', compact('item'))->render(),
             ];
         });
 

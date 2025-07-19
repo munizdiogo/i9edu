@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 @section('title', 'Detalhes do Aluno')
+
 @section('css')
     <style>
         .btn-form {
@@ -7,22 +8,22 @@
         }
     </style>
 @endsection
+
 @section('content_header')
-    <h1 class="d-inline">Detalhes do Aluno #{{ $aluno->id }}</h1>
-    <div class="float-right mr-5">
-        <a href="{{ route('alunos.edit', $aluno) }}" class="btn my-0 btn-warning"><i class="fas fa-edit"></i></a>
-        <form action="{{ route('alunos.destroy', $aluno) }}" method="post" class="d-inline"
-            onsubmit="return confirm('Confirma exclusão?')">
-            @csrf @method('DELETE')
-            <button class="btn my-0 btn-danger"><i class="fas fa-trash-alt"></i></button>
-        </form>
+    <div class="my-4">
+        <h1 class="callout callout-info bg-transparent border-none shadow-none p-4 d-inline">Detalhes do Aluno
+            #{{ $aluno->id }}</h1>
+        <a href="{{ route('alunos.edit', $aluno) }}" class="btn my-0 btn-warning float-right">
+            <i class="fas fa-edit"></i> Editar
+        </a>
     </div>
 @endsection
+
 @section('content')
     <div class="card">
         <div class="card-body">
             <fieldset disabled>
-                @include('alunos.form')
+                @include('alunos.partials.form')
             </fieldset>
             <div class="card shadow-none p-2">
                 <ul class="nav nav-tabs mt-3">
