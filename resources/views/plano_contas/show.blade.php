@@ -1,13 +1,16 @@
 @extends('adminlte::page')
 @section('title', 'Visualizar Plano de Contas')
 
-@section('content')
-    <div class="container">
-        <h1 class="mb-3">Plano de Contas #{{ $plano_conta->id }}</h1>
 
-        <a href="{{ route('plano-contas.index') }}" class="btn btn-default mb-3">
-            <i class="fas fa-arrow-left"></i> Voltar
-        </a>
+@section('content_header')
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">
+        Plano de Contas #{{ $plano_conta->id }}
+    </h1>
+@endsection
+
+
+@section('content')
+    <div class="card p-5">
 
         <table class="table table-bordered">
             <tbody>
@@ -50,4 +53,5 @@
             </tbody>
         </table>
     </div>
+    <div class="card-footer text-right"><a href="{{ route('plano-contas.index') }}" class="btn btn-default">Voltar</a></div>
 @endsection
