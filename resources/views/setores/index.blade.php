@@ -37,9 +37,11 @@
         </div>
     </div>
 @endsection
+
 @section('js')
     @include('components.alert-swal-retorno-operacao')
     @include('components.alert-swal-excluir')
+
     <script src="//code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>

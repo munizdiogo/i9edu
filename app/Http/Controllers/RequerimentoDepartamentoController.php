@@ -77,7 +77,7 @@ class RequerimentoDepartamentoController extends Controller
 
     public function show(RequerimentoDepartamento $requerimento_departamento)
     {
-        return view('requerimentos_departamentos.edit', compact('requerimento_departamento'));
+        return view('requerimentos_departamentos.show', compact('requerimento_departamento'));
     }
 
     public function edit(RequerimentoDepartamento $requerimento_departamento)

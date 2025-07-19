@@ -2,9 +2,18 @@
 @section('title', 'Requerimentos por Departamento')
 
 @section('content_header')
-    <h1 class="d-inline">Departamentos</h1>
-    <a href="{{ route('requerimentos_departamentos.create') }}" class="btn btn-success float-right">Novo Departamento</a>
+    <div class="my-4">
+        <h1 class="callout callout-info bg-transparent border-none shadow-none p-4 d-inline">Departamentos</h1>
+
+        @can('requerimentos_departamentos.create')
+            <a href="{{ route('requerimentos_departamentos.create') }}" class="btn btn-success float-right">
+                <i class="fa fa-plus"></i> Novo Departamento</a>
+        @endcan
+    </div>
 @endsection
+
+
+
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
 @endsection
@@ -16,6 +25,7 @@
             <table id="tbl-requerimentos" class="table table-bordered table-hover">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Descrição</th>
                         <th>Tipo</th>
                         <th>Status</th>
@@ -28,6 +38,9 @@
 @endsection
 
 @section('js')
+    @include('components.alert-swal-retorno-operacao')
+    @include('components.alert-swal-excluir')
+
     <script src="//code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
@@ -38,6 +51,7 @@
                 serverSide: true,
                 ajax: '{{ route('requerimentos_departamentos.data') }}',
                 columns: [
+                    { data: 'id', name: 'id' },
                     { data: 'descricao', name: 'descricao' },
                     { data: 'tipo', name: 'tipo' },
                     { data: 'status', name: 'status' },
