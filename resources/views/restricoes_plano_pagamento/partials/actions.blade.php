@@ -1,13 +1,18 @@
 <div class="btn-group">
-    <a href="{{ route('restricoes_plano_pagamento.edit', $item->id) }}" class="btn btn-sm btn-warning" title="Editar">
-        <i class="fa fa-edit"></i>
+    <a href="{{ route('restricoes_plano_pagamento.show', $item) }}" class="btn btn-sm my-0 btn-primary mx-1">
+        <i class="fas fa-eye"></i>
     </a>
-    <form action="{{ route('restricoes_plano_pagamento.destroy', $item->id) }}" method="POST" style="display:inline"
-        onsubmit="return confirm('Deseja remover esta restrição?');">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-sm btn-danger" type="submit" title="Remover">
-            <i class="fa fa-trash"></i>
+
+    @can('restricoes_plano_pagamento.edit')
+        <a href="{{ route('restricoes_plano_pagamento.edit', $item) }}" class="btn btn-sm my-0 btn-warning mx-1">
+            <i class="fas fa-edit"></i>
+        </a>
+    @endcan
+
+    @can('restricoes_plano_pagamento.delete')
+        <button type="button" class="btn btn-danger btn-sm mx-1"
+            onclick="confirmarExclusao('{{ route('restricoes_plano_pagamento.destroy', $item->id) }}','{{ $item->id }}')">
+            <i class="fas fa-trash-alt"></i>
         </button>
-    </form>
+    @endcan
 </div>

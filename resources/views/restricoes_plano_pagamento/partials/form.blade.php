@@ -1,4 +1,4 @@
-<div class="card-body">
+<div class="card p-4">
     <div class="form-group">
         <label for="id_plano_pagamento">Plano de Pagamento *</label>
         <select class="form-control" name="id_plano_pagamento" required>
@@ -103,3 +103,11 @@
         });
     </script>
 @endpush
+
+
+@if(!str_contains(Route::current()->getName(), 'show'))
+    <div class="mt-3 text-right pb-5">
+        <a href="{{ route('restricoes_plano_pagamento.index') }}" class="btn btn-default">Voltar</a>
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </div>
+@endif

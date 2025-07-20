@@ -105,9 +105,9 @@ class RestricaoPlanoPagamentoController extends Controller
         return redirect()->route('restricoes_plano_pagamento.index')->with('success', 'Restrição adicionada!');
     }
 
-    public function edit($id)
+    public function edit(RestricaoPlanoPagamento $restricao)
     {
-        $restricao = RestricaoPlanoPagamento::findOrFail($id);
+        // $restricao = RestricaoPlanoPagamento::findOrFail($id);
         $planos = PlanoPagamento::all();
         $cursos = Curso::all();
         $polos = Polo::all();
@@ -115,10 +115,20 @@ class RestricaoPlanoPagamentoController extends Controller
         return view('restricoes_plano_pagamento.edit', compact('restricao', 'planos', 'cursos', 'polos', 'turmas'));
     }
 
-    public function update(Request $request, $id)
+    public function show(RestricaoPlanoPagamento $restricao)
     {
-        $restricao = RestricaoPlanoPagamento::findOrFail($id);
-        $data = $this->validateData($request, "update");
+        // $restricao = RestricaoPlanoPagamento::findOrFail($id);
+        $planos = PlanoPagamento::all();
+        $cursos = Curso::all();
+        $polos = Polo::all();
+        $turmas = Turma::all();
+        return view('restricoes_plano_pagamento.edit', compact('restricao', 'planos', 'cursos', 'polos', 'turmas'));
+    }
+
+    public function update(Request $request, RestricaoPlanoPagamento $restricao)
+    {
+        // $restricao = RestricaoPlanoPagamento::findOrFail($id);
+        $data = $this->validateData($request, "update", $restricao);
         $data['id_estrutura'] = session('estrutura_id');
 
         $restricao->update($data);
@@ -135,7 +145,7 @@ class RestricaoPlanoPagamentoController extends Controller
         return response()->json(['success' => true]);
     }
 
-    protected function validateData(Request $request, $origem = "create", $professor = null)
+    protected function validateData(Request $request, $origem = "create", $restricao = null)
     {
         if ($origem == "create") {
             $rules = [

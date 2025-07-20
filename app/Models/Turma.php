@@ -71,7 +71,7 @@ class Turma extends Model
     {
         static::addGlobalScope('estrutura', function ($query) {
             if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+                $query->where('turmas.id_estrutura', session('estrutura_id'));
             }
         });
     }

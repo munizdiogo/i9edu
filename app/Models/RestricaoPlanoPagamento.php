@@ -36,7 +36,7 @@ class RestricaoPlanoPagamento extends Model
     {
         static::addGlobalScope('estrutura', function ($query) {
             if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+                $query->where('restricoes_plano_pagamento.id_estrutura', session('estrutura_id'));
             }
         });
     }

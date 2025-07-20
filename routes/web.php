@@ -365,7 +365,7 @@ Route::prefix('cupons')->group(function () {
 // Restrições de Plano de Pagamento
 use App\Http\Controllers\RestricaoPlanoPagamentoController;
 Route::get('restricoes_plano_pagamento/data', [RestricaoPlanoPagamentoController::class, 'data'])->name('restricoes_plano_pagamento.data');
-Route::resource('restricoes_plano_pagamento', RestricaoPlanoPagamentoController::class);
+Route::resource('restricoes_plano_pagamento', RestricaoPlanoPagamentoController::class)->parameters(['restricoes_plano_pagamento' => 'restricao']);
 
 
 // Documentos

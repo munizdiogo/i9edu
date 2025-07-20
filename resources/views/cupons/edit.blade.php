@@ -20,8 +20,6 @@
                 @csrf
                 @method('PUT')
                 @include('cupons.partials.form')
-                <button class="btn btn-primary">Salvar</button>
-                <a href="{{ route('cupons.index') }}" class="btn btn-default">Voltar</a>
             </form>
         </div>
         <div class="tab-pane fade card p-5" id="cursos" role="tabpanel">

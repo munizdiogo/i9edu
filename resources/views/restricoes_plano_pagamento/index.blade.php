@@ -1,12 +1,19 @@
 @extends('adminlte::page')
 @section('title', 'Restrições Plano de Pagamento')
 
-
 @section('content_header')
-    <h1 class="d-inline">Restrições Plano de Pagamento</h1>
-    <a href="{{ route('restricoes_plano_pagamento.create') }}" class="btn btn-success float-right">Nova Restrição Plano de
-        Pagamento</a>
+    <div class="my-4">
+        <h1 class="callout callout-info bg-transparent border-none shadow-none p-4 d-inline">Restrições Plano de Pagamento
+        </h1>
+
+        @can('restricoes_plano_pagamento.create')
+            <a href="{{ route('restricoes_plano_pagamento.create') }}" class="btn btn-success float-right">
+                <i class="fa fa-plus"></i> Nova Restrição Plano de Pagamento
+            </a>
+        @endcan
+    </div>
 @endsection
+
 
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
@@ -32,7 +39,11 @@
     </div>
 @endsection
 
+
 @section('js')
+    @include('components.alert-swal-retorno-operacao')
+    @include('components.alert-swal-excluir')
+
     <script src="//code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
