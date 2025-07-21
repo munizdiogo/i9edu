@@ -9,7 +9,7 @@ class Disciplina extends Model
     use HasFactory;
 
     protected $fillable = [
-        'disciplina_base_id',
+        'id_disciplina_base',
         'etapa_periodo_letivo_id',
         'id_modulo',
         'descricao',
@@ -49,7 +49,7 @@ class Disciplina extends Model
 
     public function base()
     {
-        return $this->belongsTo(DisciplinaBase::class, 'disciplina_base_id');
+        return $this->belongsTo(DisciplinaBase::class, 'id_disciplina_base');
     }
 
     public function etapa()

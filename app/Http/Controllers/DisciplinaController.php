@@ -109,7 +109,7 @@ class DisciplinaController extends Controller
     protected function validateData(Request $request, $origem = "create", $setor = null)
     {
         $rules = [
-            'disciplina_base_id' => 'required|exists:disciplinas_base,id',
+            'id_disciplina_base' => 'required|exists:disciplinas_base,id',
             'etapa_periodo_letivo_id' => 'required|exists:etapas_periodos_letivos,id',
             'id_modulo' => 'required|exists:modulos,id',
             'descricao' => 'required|string',

@@ -6,10 +6,10 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Disciplina Base*</label>
-                <select name="disciplina_base_id" class="form-control select2bs4" required>
+                <select name="id_disciplina_base" class="form-control select2bs4" required>
                     <option value=""></option>
                     @foreach($bases as $id => $nome)
-                        <option value="{{ $id }}" {{ old('disciplina_base_id', $disciplina->disciplina_base_id ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
+                        <option value="{{ $id }}" {{ old('id_disciplina_base', $disciplina->id_disciplina_base ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
                     @endforeach
                 </select>
             </div>
