@@ -81,10 +81,10 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Edital Vestibular</label>
-                <select name="edital_processo_seletivo_id" class="form-control select2bs4">
+                <select name="id_edital_processo_seletivo" class="form-control select2bs4">
                     <option value="">— selecione —</option>
                     @foreach($editais as $id => $descricao)
-                        <option value="{{ $id }}" {{ old('edital_processo_seletivo_id', $admissao->edital_processo_seletivo_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_edital_processo_seletivo', $admissao->id_edital_processo_seletivo ?? '') == $id ? 'selected' : '' }}>
                             {{ $descricao }}
                         </option>
                     @endforeach

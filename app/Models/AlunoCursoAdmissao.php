@@ -17,7 +17,7 @@ class AlunoCursoAdmissao extends Model
         'campus_id_polo',
         'periodo_letivo_ingresso_id',
         'turma_base_id',
-        'edital_processo_seletivo_id',
+        'id_edital_processo_seletivo',
         'data_ingresso',
         'data_inicio_curso',
         'data_conclusao',
@@ -63,7 +63,7 @@ class AlunoCursoAdmissao extends Model
     }
     public function edital()
     {
-        return $this->belongsTo(EditalProcessoSeletivo::class, 'edital_processo_seletivo_id');
+        return $this->belongsTo(EditalProcessoSeletivo::class, 'id_edital_processo_seletivo');
     }
     // outros relacionamentos: formaIngresso, instituicao, instituicaoTransferencia...
     protected static function booted()

@@ -17,7 +17,7 @@ class CreateAlunosCursoAdmissaoTable extends Migration
             $table->unsignedBigInteger('campus_id_polo')->nullable();
             $table->unsignedBigInteger('periodo_letivo_ingresso_id')->nullable();
             $table->unsignedBigInteger('turma_base_id')->nullable();
-            $table->unsignedBigInteger('edital_processo_seletivo_id')->nullable();
+            $table->unsignedBigInteger('id_edital_processo_seletivo')->nullable();
 
             // Dados do curso
             $table->date('data_ingresso');
@@ -55,7 +55,7 @@ class CreateAlunosCursoAdmissaoTable extends Migration
             $table->foreign('campus_id_polo')->references('id')->on('polos');
             $table->foreign('periodo_letivo_ingresso_id')->references('id')->on('periodos_letivos');
             $table->foreign('turma_base_id')->references('id')->on('turmas');
-            $table->foreign('edital_processo_seletivo_id')->references('id')->on('editais_processo_seletivo');
+            $table->foreign('id_edital_processo_seletivo')->references('id')->on('editais_processo_seletivo');
             // outras FKs (forma_ingresso, instituicao, instituicao_transferencia) você cria conforme sua tabela de cadastros
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();

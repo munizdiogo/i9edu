@@ -145,7 +145,7 @@ class AlunoCursoAdmissaoController extends Controller
             // 'campus_id_polo' => 'nullable|exists:polos,id',
             // 'periodo_letivo_ingresso_id' => 'nullable|exists:periodos_letivos,id',
             // 'turma_base_id' => 'nullable|exists:turmas,id',
-            'edital_processo_seletivo_id' => 'nullable|exists:editais_processo_seletivo,id',
+            'id_edital_processo_seletivo' => 'nullable|exists:editais_processo_seletivo,id',
             'data_ingresso' => 'required|date',
             'data_inicio_curso' => 'nullable|date',
             'data_conclusao' => 'nullable|date',
