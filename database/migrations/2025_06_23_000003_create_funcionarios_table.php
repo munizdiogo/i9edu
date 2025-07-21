@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->date('data_admissao')->nullable();
             $table->date('data_demissao')->nullable();
             // FK para Setor e Função
-            $table->foreignId('setor_id')->nullable()->constrained('setores')->nullOnDelete();
+            $table->foreignId('id_setor')->nullable()->constrained('setores')->nullOnDelete();
             $table->foreignId('id_funcao')->nullable()->constrained('funcoes')->nullOnDelete();
             $table->string('nr_folha')->nullable();
             $table->integer('nr_horas_mes')->nullable();

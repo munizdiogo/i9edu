@@ -21,10 +21,10 @@
 </div>
 
 <div class="form-group">
-    <label for="email_encaminhamento_setor_id">E-mail Encaminhamento Setor</label>
-    <select name="email_encaminhamento_setor_id" class="form-control">
-        <option value="1" {{ old('email_encaminhamento_setor_id', $requerimento_status->email_encaminhamento_setor_id ?? '') == 1 ? 'selected' : '' }}>Sim</option>
-        <option value="0" {{ old('email_encaminhamento_setor_id', $requerimento_status->email_encaminhamento_setor_id ?? '') == 0 ? 'selected' : '' }}>Não</option>
+    <label for="email_encaminhamento_id_setor">E-mail Encaminhamento Setor</label>
+    <select name="email_encaminhamento_id_setor" class="form-control">
+        <option value="1" {{ old('email_encaminhamento_id_setor', $requerimento_status->email_encaminhamento_id_setor ?? '') == 1 ? 'selected' : '' }}>Sim</option>
+        <option value="0" {{ old('email_encaminhamento_id_setor', $requerimento_status->email_encaminhamento_id_setor ?? '') == 0 ? 'selected' : '' }}>Não</option>
     </select>
 </div>
 

@@ -21,7 +21,7 @@ class Funcionario extends Model
         'status',
         'data_admissao',
         'data_demissao',
-        'setor_id',
+        'id_setor',
         'id_funcao',
         'nr_folha',
         'nr_horas_mes',
