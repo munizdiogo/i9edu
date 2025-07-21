@@ -31,13 +31,13 @@ class PlanoPagamentoController extends Controller
         $rows = $q->skip($request->start)
             ->take($request->length)
             ->get()
-            ->map(function ($p) {
+            ->map(function ($item) {
                 return [
-                    'id' => $p->id,
-                    'nome' => $p->nome,
-                    'disponivel_todos_cursos' => $p->disponivel_todos_cursos ? 'Sim' : 'Não',
-                    'permite_cupom' => $p->permite_cupom ? 'Sim' : 'Não',
-                    'actions' => view('planos.partials.actions', ['p' => $p])->render(),
+                    'id' => $item->id,
+                    'nome' => $item->nome,
+                    'disponivel_todos_cursos' => $item->disponivel_todos_cursos ? 'Sim' : 'Não',
+                    'permite_cupom' => $item->permite_cupom ? 'Sim' : 'Não',
+                    'actions' => view('planos.partials.actions', ['item' => $item])->render(),
                 ];
             });
 

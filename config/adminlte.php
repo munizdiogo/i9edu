@@ -318,13 +318,6 @@ return [
             'classes' => 'pl-2',
             'submenu' => [
                 [
-                    'text' => ' Departamentos',
-                    'url' => '/requerimentos_departamentos',
-                    'icon' => 'fas fa-fw fa-circle',
-                    'icon_color' => 'yellow',
-                    'shift' => 'ml-3',
-                ],
-                [
                     'text' => ' Grade Disciplinas Matrizes',
                     'url' => '/grade_disciplinas_matrizes',
                     'icon' => 'fas fa-fw fa-circle',
@@ -495,6 +488,21 @@ return [
             'classes' => 'pl-2',
         ],
 
+        [
+            'text' => ' Contratos',
+            'url' => '/contratos',
+            'icon' => 'fas fa-fw fa-circle',
+            'icon_color' => 'teal',
+            'classes' => 'pl-4',
+        ],
+        [
+            'text' => ' Transações',
+            'url' => '/transacoes',
+            'icon' => 'fas fa-fw fa-circle',
+            'icon_color' => 'teal',
+            'classes' => 'pl-4',
+        ],
+
 
         ['header' => 'REQUERIMENTOS', 'classes' => 'pt-5',],
 
@@ -547,20 +555,7 @@ return [
             'icon_color' => 'blue',
         ],
 
-        [
-            'text' => ' Contratos',
-            'url' => '/contratos',
-            'icon' => 'fas fa-fw fa-circle',
-            'icon_color' => 'teal',
-            'classes' => 'pl-4',
-        ],
-        [
-            'text' => ' Transações',
-            'url' => '/transacoes',
-            'icon' => 'fas fa-fw fa-circle',
-            'icon_color' => 'teal',
-            'classes' => 'pl-4',
-        ],
+
 
 
     ],

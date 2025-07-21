@@ -6,12 +6,8 @@
     </a>
 
     {{-- Excluir parcela --}}
-    <form action="{{ route('planos.parcelas.destroy', [$parcela->id]) }}" method="POST" style="display:inline;"
-        onsubmit="return confirm('Deseja mesmo excluir esta parcela?');">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-sm btn-danger mx-1" title="Excluir">
-            <i class="fas fa-trash-alt"></i>
-        </button>
-    </form>
+    <button type="button" class="btn btn-danger btn-sm"
+        onclick="confirmarExclusao('{{ route('planos.parcelas.destroy', $parcela->id) }}','{{ $parcela->id }}')">
+        <i class="fas fa-trash-alt"></i>
+    </button>
 </div>

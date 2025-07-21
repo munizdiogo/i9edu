@@ -1,14 +1,22 @@
 @extends('adminlte::page')
 @section('title', 'Editar Plano')
+
+@section('content_header')
+  <h1 class="callout callout-info bg-transparent border-none shadow-none">Editar Plano de Pagamento
+    #{{ $planos_pagamento->id }}</h1>
+@endsection
+
 @section('css')
   <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="//cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap4.min.css">
 @endsection
+
+
 @section('content')
   <form action="{{ route('planos_pagamento.update', $planos_pagamento) }}" method="post">
     @csrf @method('PUT')
-    @include('planos.form')
+    @include('planos.partials.form')
 
     <div class="card p-2">
     <ul class="nav nav-tabs mt-3">
@@ -92,11 +100,6 @@
       </div>
     </div>
     </div>
-
-    <div class="mt-3 text-right">
-    <a href="{{ route('planos_pagamento.index') }}" class="btn btn-lg btn-default">Voltar</a>
-    <button class="btn btn-lg btn-success">Salvar</button>
-    </div>
   </form>
 
   {{-- Modal de Parcela --}}
@@ -163,7 +166,11 @@
   </div>
 @endsection
 
+
 @section('js')
+  @include('components.alert-swal-retorno-operacao')
+  @include('components.alert-swal-excluir')
+
   <script src="//code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
   <script src="//cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>

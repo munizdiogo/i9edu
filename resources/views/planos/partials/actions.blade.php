@@ -1,6 +1,11 @@
-<a href="{{ route('planos_pagamento.edit', $p) }}" class="btn my-0 btn-warning"><i class="fas fa-edit"></i></a>
-<form action="{{ route('planos_pagamento.destroy', $p) }}" method="post" class="d-inline"
-    onsubmit="return confirm('Apagar?')">
-    @csrf @method('DELETE')
-    <button class="btn my-0 btn-danger"><i class="fas fa-trash-alt"></i></button>
-</form>
+@can('planos_pagamento.edit')
+    <a href="{{ route('planos_pagamento.edit', $item) }}" class="btn btn-sm my-0 btn-warning"><i
+            class="fas fa-edit"></i></a>
+@endcan
+
+@can('planos_pagamento.delete')
+    <button type="button" class="btn btn-danger btn-sm"
+        onclick="confirmarExclusao('{{ route('planos_pagamento.destroy', $item->id) }}','{{ $item->id }}')">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+@endcan

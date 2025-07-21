@@ -1,14 +1,16 @@
 @extends('adminlte::page')
 @section('title', 'Novo Contrato')
+
+@section('content_header')
+    <h1 class="callout callout-info bg-transparent border-none shadow-none">Novo Contrato</h1>
+@endsection
+
 @section('content')
     <div class="card">
-        <div class="card-header">Novo Contrato</div>
         <div class="card-body">
             <form action="{{ route('contratos.store') }}" method="POST">
                 @csrf
-                @include('contratos.form')
-                <button class="btn btn-primary">Salvar</button>
-                <a href="{{ route('contratos.index') }}" class="btn btn-default">Voltar</a>
+                @include('contratos.partials.form')
             </form>
         </div>
     </div>

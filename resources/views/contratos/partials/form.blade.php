@@ -108,5 +108,15 @@
 <div class="mb-3">
     <label for="observacao" class="form-label">Observação</label>
     <textarea name="observacao" class="form-control"
-        rows="2">{{ old('observacao', $contrato->observacao ?? '') }}</textarea>
+        rows="2">
+        {{ old('observacao', $contrato->observacao ?? '') }}
+    </textarea>
 </div>
+
+
+@if(!str_contains(Route::current()->getName(), 'show'))
+    <div class="card-footer text-right">
+        <a href="{{ route('contratos.index') }}" class="btn btn-default">Voltar</a>
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </div>
+@endif

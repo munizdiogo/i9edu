@@ -10,12 +10,6 @@
 @section('content')
 <form action="{{ route('planos_pagamento.store') }}" method="POST">
     @csrf
-
-    {{-- inclui os campos básicos: nome, flags --}}
-    @include('planos.form')
-
-    <div class="mt-3 text-right">
-        <button type="submit" class="btn btn-success">Inserir</button>
-    </div>
+    @include('planos.partials.form')
 </form>
 @stop
