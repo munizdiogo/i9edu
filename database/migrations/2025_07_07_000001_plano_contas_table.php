@@ -14,11 +14,11 @@ return new class extends Migration {
             $table->enum('operacao', ['Soma', 'Subtração']);
             $table->enum('status', ['Ativo', 'Inativo'])->default('Ativo');
             $table->enum('tipo_conta', ['Sintética', 'Analítica']);
-            $table->unsignedBigInteger('grupo_conta_id')->nullable();
+            $table->unsignedBigInteger('id_grupo_conta')->nullable();
             $table->enum('natureza', ['ATIVO', 'PASSIVO', 'PATRIMONIO', 'RECEITA', 'DESPESA']);
             $table->timestamps();
 
-            $table->foreign('grupo_conta_id')->references('id')->on('grupo_contas');
+            $table->foreign('id_grupo_conta')->references('id')->on('grupo_contas');
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
