@@ -10,7 +10,7 @@ class EstruturaMiddleware
 {
     public function handle($request, Closure $next)
     {
-        if (!Session::has('estrutura_id')) {
+        if (!Session::has('id_estrutura')) {
             return redirect()->route('estrutura.selecionar');
         }
         return $next($request);

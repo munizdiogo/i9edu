@@ -32,7 +32,7 @@ class CursoMatrizCaptacaoController extends Controller
             'modalidade' => 'required|in:Presencial,EaD',
             'quantidade_vagas' => 'required|integer',
         ]);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         CursoMatrizCaptacao::create($data);
         return back()->with('success', 'Curso adicionado!');
     }

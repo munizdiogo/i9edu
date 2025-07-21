@@ -81,7 +81,7 @@ class ContratoController extends Controller
             'cancelado_por' => 'nullable|string',
             'observacao' => 'nullable|string',
         ]);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         Contrato::create($data);
         return redirect()->route('contratos.index')->with('success', 'Contrato criado!');
     }
@@ -106,7 +106,7 @@ class ContratoController extends Controller
         $data = $request->validate([
             // Mesmos campos do store
         ]);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $contrato->update($data);
         return redirect()->route('contratos.index')->with('success', 'Contrato atualizado!');

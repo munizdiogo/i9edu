@@ -41,7 +41,7 @@ class ParcelaPlanoPagamentoController extends Controller
     public function store(Request $request, PlanoPagamento $plano)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $data['plano_pagamento_id'] = $plano->id;
         ParcelaPlanoPagamento::create($data);
         return back();
@@ -62,7 +62,7 @@ class ParcelaPlanoPagamentoController extends Controller
     public function update(Request $request, PlanoPagamento $plano, ParcelaPlanoPagamento $parcela)
     {
         $data = $this->validateData($request, "update");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $parcela->update($data);
         return back()->with('success', 'Parcela atualizada!');

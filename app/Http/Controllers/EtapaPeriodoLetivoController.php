@@ -58,7 +58,7 @@ class EtapaPeriodoLetivoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         EtapaPeriodoLetivo::create($data);
         return redirect()->route('etapas_periodos_letivos.index')
             ->with('success', 'Etapa criada!');
@@ -79,7 +79,7 @@ class EtapaPeriodoLetivoController extends Controller
     public function update(Request $request, EtapaPeriodoLetivo $etapas_periodos_letivo)
     {
         $data = $this->validateData($request, "update", $etapas_periodos_letivo);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $etapas_periodos_letivo->update($data);
         return redirect()->route('etapas_periodos_letivos.index')
             ->with('success', 'Etapa atualizada!');

@@ -64,7 +64,7 @@ class ProfessorController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         Professor::create($data);
         return redirect()->route('professores.index')->with('success', 'Professor criado!');
     }
@@ -113,7 +113,7 @@ class ProfessorController extends Controller
     public function update(Request $request, Professor $professor)
     {
         $data = $this->validateData($request, "update", $professor);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $professor->update($data);
         return redirect()->route('professores.index')->with('success', 'Professor atualizado!');
     }

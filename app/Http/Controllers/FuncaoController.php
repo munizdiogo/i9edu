@@ -49,7 +49,7 @@ class FuncaoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         Funcao::create($data);
         return redirect()->route('funcoes.index')->with('success', 'Função criada!');
     }
@@ -67,7 +67,7 @@ class FuncaoController extends Controller
     public function update(Request $request, Funcao $funcao)
     {
         $data = $this->validateData($request, "update", $funcao);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $funcao->update($data);
         return redirect()->route('funcoes.index')->with('success', 'Função atualizada!');
     }

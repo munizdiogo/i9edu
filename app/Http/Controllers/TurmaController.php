@@ -74,7 +74,7 @@ class TurmaController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         Turma::create($data);
         return redirect()->route('turmas.index')->with('success', 'Turma criada!');
     }
@@ -101,7 +101,7 @@ class TurmaController extends Controller
     public function update(Request $request, Turma $turma)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $turma->update($data);
         return redirect()->route('turmas.index')->with('success', 'Turma atualizada!');

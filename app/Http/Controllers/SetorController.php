@@ -55,7 +55,7 @@ class SetorController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         Setor::create($data);
         return redirect()->route('setores.index')->with('success', 'Setor criado!');
@@ -80,7 +80,7 @@ class SetorController extends Controller
     public function update(Request $request, Setor $setor)
     {
         $data = $this->validateData($request, "update", $setor);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $setor->update($data);
         return redirect()->route('setores.index')->with('success', 'Setor atualizado!');

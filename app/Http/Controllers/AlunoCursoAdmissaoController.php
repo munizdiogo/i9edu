@@ -89,7 +89,7 @@ class AlunoCursoAdmissaoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         AlunoCursoAdmissao::create($data);
         return redirect()->route('admissoes.index')->with('success', 'Registro salvo!');
     }
@@ -125,7 +125,7 @@ class AlunoCursoAdmissaoController extends Controller
     public function update(Request $request, AlunoCursoAdmissao $admissao)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $admissao->update($data);
         return redirect()->route('admissoes.index')->with('success', 'Registro atualizado!');
     }

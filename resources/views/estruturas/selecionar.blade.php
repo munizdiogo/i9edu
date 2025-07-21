@@ -4,7 +4,7 @@
     <h4>Selecione a Estrutura que deseja acessar:</h4>
     <form method="POST" action="{{ route('estrutura.definir') }}">
         @csrf
-        <select name="estrutura_id" class="form-control" required>
+        <select name="id_estrutura" class="form-control" required>
             @foreach($estruturas as $estrutura)
                 <option value="{{ $estrutura->id }}">{{ $estrutura->descricao }}</option>
             @endforeach

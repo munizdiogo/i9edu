@@ -34,7 +34,7 @@ class TransacaoController extends Controller
                 'planoConta',
                 'parcelaPlanoPagamento',
             ])
-            ->where('id_estrutura', session('estrutura_id'));
+            ->where('id_estrutura', session('id_estrutura'));
 
         // Filtros dinâmicos
         if ($request->filled('situacao')) {
@@ -131,7 +131,7 @@ class TransacaoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, 'create');
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         Transacao::create($data);
 
@@ -161,7 +161,7 @@ class TransacaoController extends Controller
         $transacao = Transacao::findOrFail($id);
 
         $data = $this->validateData($request, 'update');
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $transacao->update($data);
 

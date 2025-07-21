@@ -59,7 +59,7 @@ class DisciplinaBaseController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         DisciplinaBase::create($data);
         return redirect()->route('disciplinas_base.index')
             ->with('success', 'Disciplina Base criada!');
@@ -80,7 +80,7 @@ class DisciplinaBaseController extends Controller
     public function update(Request $request, DisciplinaBase $disciplinas_base)
     {
         $data = $this->validateData($request, "update", $disciplinas_base);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $disciplinas_base->update($data);
         return redirect()->route('disciplinas_base.index')
             ->with('success', 'Disciplina Base atualizada!');
