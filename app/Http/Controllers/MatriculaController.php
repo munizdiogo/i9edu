@@ -37,7 +37,7 @@ class MatriculaController extends Controller
                     ->join('perfis', 'alunos.id_perfil', '=', 'perfis.id')
                     ->orderBy('perfis.nome', $dir);
             } elseif ($col === 'turma') {
-                $query->join('turmas', 'matriculas.turma_id', '=', 'turmas.id')
+                $query->join('turmas', 'matriculas.id_turma', '=', 'turmas.id')
                     ->orderBy('turmas.nome', $dir);
             } else {
                 $query->orderBy($col, $dir);
@@ -81,7 +81,7 @@ class MatriculaController extends Controller
     {
         $data = $request->validate([
             'aluno_curso_admissao_id' => 'required|exists:alunos_curso_admissao,id',
-            'turma_id' => 'required|exists:turmas,id',
+            'id_turma' => 'required|exists:turmas,id',
             'id_contrato' => 'nullable|integer',
             'data_matricula' => 'required|date',
             'data_ocorrencia' => 'nullable|date',
@@ -117,7 +117,7 @@ class MatriculaController extends Controller
     {
         $data = $request->validate([
             'aluno_curso_admissao_id' => 'required|exists:alunos_curso_admissao,id',
-            'turma_id' => 'required|exists:turmas,id',
+            'id_turma' => 'required|exists:turmas,id',
             'id_contrato' => 'nullable|integer',
             'data_matricula' => 'required|date',
             'data_ocorrencia' => 'nullable|date',

@@ -43,7 +43,7 @@
             Turmas
             <input type="checkbox" id="select-all-turmas" class="ml-2"> Selecionar todos
         </label>
-        <select name="turma_ids[]" id="turmas-select" class="form-control select2" multiple>
+        <select name="id_turmas[]" id="turmas-select" class="form-control select2" multiple>
             @foreach($turmas as $turma)
                 <option value="{{ $turma->id }}" {{ (isset($restricao) && $restricao->turmas->contains($turma->id)) ? 'selected' : '' }}>
                     {{ $turma->nome }}

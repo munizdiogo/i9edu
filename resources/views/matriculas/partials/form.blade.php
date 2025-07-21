@@ -19,11 +19,11 @@
       </div>
       <div class="form-group col-md-4">
         <label>Turma*</label>
-        <select name="turma_id" class="form-control select2bs4" required>
+        <select name="id_turma" class="form-control select2bs4" required>
           <option value="">— selecione —</option>
           @foreach($turmas as $id => $nome)
             <option value="{{ $id }}"
-              {{ old('turma_id',$matricula->turma_id??'')==$id?'selected':'' }}>
+              {{ old('id_turma',$matricula->id_turma??'')==$id?'selected':'' }}>
               {{ $nome }}
             </option>
           @endforeach

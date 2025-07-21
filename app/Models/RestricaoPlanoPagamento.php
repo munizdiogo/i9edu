@@ -31,7 +31,7 @@ class RestricaoPlanoPagamento extends Model
     }
     public function turmas()
     {
-        return $this->belongsToMany(Turma::class, 'restricao_plano_pagamento_turma', 'restricao_id', 'turma_id');
+        return $this->belongsToMany(Turma::class, 'restricao_plano_pagamento_turma', 'restricao_id', 'id_turma');
     }
     protected static function booted()
     {

@@ -100,7 +100,7 @@ class RestricaoPlanoPagamentoController extends Controller
         // vincula vários de uma vez só
         $restricao->cursos()->sync($request->id_cursos ?: []);
         $restricao->polos()->sync($request->id_polos ?: []);
-        $restricao->turmas()->sync($request->turma_ids ?: []);
+        $restricao->turmas()->sync($request->id_turmas ?: []);
 
         return redirect()->route('restricoes_plano_pagamento.index')->with('success', 'Restrição adicionada!');
     }
@@ -134,7 +134,7 @@ class RestricaoPlanoPagamentoController extends Controller
         $restricao->update($data);
         $restricao->cursos()->sync($request->id_cursos ?: []);
         $restricao->polos()->sync($request->id_polos ?: []);
-        $restricao->turmas()->sync($request->turma_ids ?: []);
+        $restricao->turmas()->sync($request->id_turmas ?: []);
 
         return redirect()->route('restricoes_plano_pagamento.index')->with('success', 'Restrição atualizada!');
     }
