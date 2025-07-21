@@ -12,7 +12,7 @@ class ApiMatriculaController
     {
         // Supondo que a tabela de vínculo seja matricula_disciplinas
         // $disciplinas = Disciplina::whereHas('matriculas', function ($query) use ($id) {
-        //     $query->where('matricula_id', $id);
+        //     $query->where('id_matricula', $id);
         // })
 
         $query = Matricula::with(['turma']);
