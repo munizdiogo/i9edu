@@ -15,7 +15,7 @@ class Cupom extends Model
         'descricao',
         'data_inicio',
         'data_fim',
-        'convenio_id',
+        'id_convenio',
         'status',
         'quantidade_maxima',
         'criar_convenio_pagador',
@@ -26,7 +26,7 @@ class Cupom extends Model
 
     public function convenio()
     {
-        return $this->belongsTo(Convenio::class, 'convenio_id');
+        return $this->belongsTo(Convenio::class, 'id_convenio');
     }
 
     public function planoConta()
