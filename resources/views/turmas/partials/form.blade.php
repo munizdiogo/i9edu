@@ -23,8 +23,8 @@
                     </option>@endforeach</select>
             </div>
             <div class="form-group col-md-4"><label>Período Letivo*</label>
-                <select name="periodo_letivo_id" class="form-control select2bs4" required>@foreach($periodos as $p)
-                    <option value="{{$p->id}}" {{old('periodo_letivo_id', $turma->periodo_letivo_id ?? '') == $p->id ? 'selected' : ''}}>
+                <select name="id_periodo_letivo" class="form-control select2bs4" required>@foreach($periodos as $p)
+                    <option value="{{$p->id}}" {{old('id_periodo_letivo', $turma->id_periodo_letivo ?? '') == $p->id ? 'selected' : ''}}>
                         {{$p->nome}}
                 </option>@endforeach
                 </select>

@@ -10,7 +10,7 @@ class Turma extends Model
     protected $table = 'turmas';
     protected $fillable = [
         'id_matriz_curricular',
-        'periodo_letivo_id',
+        'id_periodo_letivo',
         'turma_base_id',
         'centro_custo_id',
         'professor_responsavel_id',
@@ -54,7 +54,7 @@ class Turma extends Model
     }
     public function periodoLetivo()
     {
-        return $this->belongsTo(PeriodoLetivo::class, 'periodo_letivo_id');
+        return $this->belongsTo(PeriodoLetivo::class, 'id_periodo_letivo');
     }
     public function turmaBase()
     {

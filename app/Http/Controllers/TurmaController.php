@@ -33,7 +33,7 @@ class TurmaController extends Controller
                 $q->join('matrizes_curriculares', 'turmas.id_matriz_curricular', '=', 'matrizes_curriculares.id')
                     ->orderBy('matrizes_curriculares.nome', $dir);
             } elseif ($col === 'periodo') {
-                $q->join('periodos_letivos', 'turmas.periodo_letivo_id', '=', 'periodos_letivos.id')
+                $q->join('periodos_letivos', 'turmas.id_periodo_letivo', '=', 'periodos_letivos.id')
                     ->orderBy('periodos_letivos.nome', $dir);
             } else {
                 $q->orderBy($col, $dir);
@@ -118,7 +118,7 @@ class TurmaController extends Controller
     {
         $rules = [
             'id_matriz_curricular' => 'required|exists:matrizes_curriculares,id',
-            'periodo_letivo_id' => 'required|exists:periodos_letivos,id',
+            'id_periodo_letivo' => 'required|exists:periodos_letivos,id',
             'nome' => 'required|string|max:255',
             'turno' => 'required|in:Manhã,Tarde,Noite,EaD,Integral',
             'status' => 'required|in:ATIVA,INATIVA',

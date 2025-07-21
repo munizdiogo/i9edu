@@ -17,10 +17,10 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Período Letivo*</label>
-                <select name="periodo_letivo_id" class="form-control select2bs4" required>
+                <select name="id_periodo_letivo" class="form-control select2bs4" required>
                     <option value="">— selecione —</option>
                     @foreach($periodos as $id => $nome)
-                        <option value="{{ $id }}" {{ old('periodo_letivo_id', $edital->periodo_letivo_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_periodo_letivo', $edital->id_periodo_letivo ?? '') == $id ? 'selected' : '' }}>
                             {{ $nome }}
                         </option>
                     @endforeach

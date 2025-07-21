@@ -12,7 +12,7 @@ class CreateEditaisProcessoSeletivoTable extends Migration
             $table->bigIncrements('id');
             // Dados básicos
             $table->string('descricao');
-            $table->unsignedBigInteger('periodo_letivo_id');
+            $table->unsignedBigInteger('id_periodo_letivo');
             $table->date('data_inicio');
             $table->date('data_fim');
             $table->date('visivel_ate')->nullable();
@@ -25,7 +25,7 @@ class CreateEditaisProcessoSeletivoTable extends Migration
             $table->timestamps();
 
             // FKs
-            $table->foreign('periodo_letivo_id')
+            $table->foreign('id_periodo_letivo')
                 ->references('id')->on('periodos_letivos')
                 ->onDelete('cascade');
 

@@ -10,7 +10,7 @@ class Disciplina extends Model
 
     protected $fillable = [
         'id_disciplina_base',
-        'etapa_periodo_letivo_id',
+        'etapa_id_periodo_letivo',
         'id_modulo',
         'descricao',
         'nome_reduzido',
@@ -54,7 +54,7 @@ class Disciplina extends Model
 
     public function etapa()
     {
-        return $this->belongsTo(EtapaPeriodoLetivo::class, 'etapa_periodo_letivo_id');
+        return $this->belongsTo(EtapaPeriodoLetivo::class, 'etapa_id_periodo_letivo');
     }
 
     public function modulo()

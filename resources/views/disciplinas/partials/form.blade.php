@@ -64,10 +64,10 @@
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label>Etapa Período*</label>
-                <select name="etapa_periodo_letivo_id" class="form-control select2bs4" required>
+                <select name="etapa_id_periodo_letivo" class="form-control select2bs4" required>
                     <option value=""></option>
                     @foreach($etapas as $id => $desc)
-                        <option value="{{ $id }}" {{ old('etapa_periodo_letivo_id', $disciplina->etapa_periodo_letivo_id ?? '') == $id ? 'selected' : '' }}>{{ $desc }}</option>
+                        <option value="{{ $id }}" {{ old('etapa_id_periodo_letivo', $disciplina->etapa_id_periodo_letivo ?? '') == $id ? 'selected' : '' }}>{{ $desc }}</option>
                     @endforeach
                 </select>
             </div>

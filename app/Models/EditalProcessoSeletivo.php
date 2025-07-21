@@ -13,7 +13,7 @@ class EditalProcessoSeletivo extends Model
 
     protected $fillable = [
         'descricao',
-        'periodo_letivo_id',
+        'id_periodo_letivo',
         'data_inicio',
         'data_fim',
         'visivel_ate',
@@ -27,7 +27,7 @@ class EditalProcessoSeletivo extends Model
 
     public function periodoLetivo()
     {
-        return $this->belongsTo(PeriodoLetivo::class, 'periodo_letivo_id');
+        return $this->belongsTo(PeriodoLetivo::class, 'id_periodo_letivo');
     }
 
     protected static function booted()

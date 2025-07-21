@@ -100,7 +100,7 @@ class EtapaPeriodoLetivoController extends Controller
                 'codigo' => 'required|unique:etapas_periodos_letivos,codigo',
                 'descricao' => 'required|string',
                 'status' => 'required|in:Ativo,Inativo',
-                'periodo_letivo_id' => 'required|exists:periodos_letivos,id',
+                'id_periodo_letivo' => 'required|exists:periodos_letivos,id',
             ];
 
         } else {
@@ -108,7 +108,7 @@ class EtapaPeriodoLetivoController extends Controller
                 'codigo' => 'required|unique:etapas_periodos_letivos,codigo,' . $etapas_periodos_letivo->id,
                 'descricao' => 'required|string',
                 'status' => 'required|in:Ativo,Inativo',
-                'periodo_letivo_id' => 'required|exists:periodos_letivos,id',
+                'id_periodo_letivo' => 'required|exists:periodos_letivos,id',
             ];
 
         }

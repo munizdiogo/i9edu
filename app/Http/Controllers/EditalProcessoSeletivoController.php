@@ -29,7 +29,7 @@ class EditalProcessoSeletivoController extends Controller
             $col = $cols[$order['column']];
             $dir = $order['dir'];
             if ($col === 'periodo') {
-                $query->join('periodos_letivos', 'editais_processo_seletivo.periodo_letivo_id', '=', 'periodos_letivos.id')
+                $query->join('periodos_letivos', 'editais_processo_seletivo.id_periodo_letivo', '=', 'periodos_letivos.id')
                     ->orderBy('periodos_letivos.descricao', $dir);
             } else {
                 $query->orderBy($col, $dir);
@@ -109,7 +109,7 @@ class EditalProcessoSeletivoController extends Controller
     {
         $rules = [
             'descricao' => 'required|string|max:255',
-            'periodo_letivo_id' => 'required|exists:periodos_letivos,id',
+            'id_periodo_letivo' => 'required|exists:periodos_letivos,id',
             'data_inicio' => 'required|date|before_or_equal:data_fim',
             'data_fim' => 'required|date|after_or_equal:data_inicio',
             'visivel_ate' => 'nullable|date|after_or_equal:data_inicio',
