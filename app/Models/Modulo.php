@@ -14,18 +14,18 @@ class Modulo extends Model
         'nome_reduzido',
         'ordem',
         'status',
-        'prox_modulo_id',
+        'prox_id_modulo',
         'id_estrutura',
     ];
 
     public function proxModulo()
     {
-        return $this->belongsTo(Modulo::class, 'prox_modulo_id');
+        return $this->belongsTo(Modulo::class, 'prox_id_modulo');
     }
 
     public function modulosSeguintes()
     {
-        return $this->hasMany(Modulo::class, 'prox_modulo_id');
+        return $this->hasMany(Modulo::class, 'prox_id_modulo');
     }
 
     protected static function booted()

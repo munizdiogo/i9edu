@@ -111,7 +111,7 @@ class DisciplinaController extends Controller
         $rules = [
             'disciplina_base_id' => 'required|exists:disciplinas_base,id',
             'etapa_periodo_letivo_id' => 'required|exists:etapas_periodos_letivos,id',
-            'modulo_id' => 'required|exists:modulos,id',
+            'id_modulo' => 'required|exists:modulos,id',
             'descricao' => 'required|string',
             'nome_reduzido' => 'required|string',
             'modalidade' => 'required|in:Presencial,EaD',

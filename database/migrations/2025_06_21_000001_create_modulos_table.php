@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->string('nome_reduzido');
             $table->integer('ordem')->default(0);
             $table->enum('status', ['Ativo', 'Inativo'])->default('Ativo');
-            $table->foreignId('prox_modulo_id')->nullable()
+            $table->foreignId('prox_id_modulo')->nullable()
                 ->constrained('modulos')
                 ->nullOnDelete();
             $table->timestamps();

@@ -97,7 +97,7 @@ class ModuloController extends Controller
                 'nome_reduzido' => 'required|string',
                 'ordem' => 'required|integer',
                 'status' => 'required|in:Ativo,Inativo',
-                'prox_modulo_id' => 'nullable|exists:modulos,id',
+                'prox_id_modulo' => 'nullable|exists:modulos,id',
             ];
 
         } else {
@@ -107,7 +107,7 @@ class ModuloController extends Controller
                 'nome_reduzido' => 'required|string',
                 'ordem' => 'required|integer',
                 'status' => 'required|in:Ativo,Inativo',
-                'prox_modulo_id' => 'nullable|exists:modulos,id',
+                'prox_id_modulo' => 'nullable|exists:modulos,id',
             ];
 
         }

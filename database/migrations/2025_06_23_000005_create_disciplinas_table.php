@@ -11,7 +11,7 @@ return new class extends Migration {
             // relacionamentos
             $table->foreignId('disciplina_base_id')->constrained('disciplinas_base')->onDelete('cascade');
             $table->foreignId('etapa_periodo_letivo_id')->constrained('etapas_periodos_letivos')->onDelete('cascade');
-            $table->foreignId('modulo_id')->constrained('modulos')->onDelete('cascade');
+            $table->foreignId('id_modulo')->constrained('modulos')->onDelete('cascade');
             // dados principais
             $table->string('descricao');
             $table->string('nome_reduzido');
