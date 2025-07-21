@@ -13,7 +13,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Curso*</label>
-                        <select name="curso_id" class="form-control select2bs4" required>
+                        <select name="id_curso" class="form-control select2bs4" required>
                             <option value=""></option>
                             @foreach(App\Models\Curso::pluck('nome', 'id') as $id => $nome)
                                 <option value="{{ $id }}">{{ $nome }}</option>

@@ -27,7 +27,7 @@ class CursoMatrizCaptacaoController extends Controller
     {
         $data = $request->validate([
             'matriz_captacao_id' => 'required|exists:matriz_captacao,id',
-            'curso_id' => 'required|exists:cursos,id',
+            'id_curso' => 'required|exists:cursos,id',
             'status' => 'required|in:Ativo,Inativo',
             'modalidade' => 'required|in:Presencial,EaD',
             'quantidade_vagas' => 'required|integer',

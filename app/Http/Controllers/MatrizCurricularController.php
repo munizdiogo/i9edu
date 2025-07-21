@@ -14,7 +14,7 @@ class MatrizCurricularController extends Controller
 
     public function data(Request $request)
     {
-        $cols = ['id', 'nome', 'curso_id', 'status'];
+        $cols = ['id', 'nome', 'id_curso', 'status'];
         $total = MatrizCurricular::count();
         $q = MatrizCurricular::with('curso');
         if ($s = $request->input('search.value')) {
@@ -95,7 +95,7 @@ class MatrizCurricularController extends Controller
         $rules = [
             'nome' => 'required|string',
             'nome_reduzido' => 'nullable|string',
-            'curso_id' => 'required|exists:cursos,id',
+            'id_curso' => 'required|exists:cursos,id',
             'centro_custo_id' => 'nullable|exists:polos,id',
             'habilitacao' => 'nullable|string',
             'data_habilitacao' => 'nullable|date',

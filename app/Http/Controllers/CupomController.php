@@ -146,15 +146,15 @@ class CupomController extends Controller
     public function adicionarCurso(Request $request, $cupomId)
     {
         $request->validate([
-            'curso_ids' => 'required|array|min:1',
-            'curso_ids.*' => 'exists:cursos,id',
+            'id_cursos' => 'required|array|min:1',
+            'id_cursos.*' => 'exists:cursos,id',
             'quantidade_disponivel' => 'required|integer|min:0'
         ]);
 
         $cupom = Cupom::findOrFail($cupomId);
 
         $syncData = [];
-        foreach ($request->curso_ids as $cursoId) {
+        foreach ($request->id_cursos as $cursoId) {
             $syncData[$cursoId] = ['quantidade_disponivel' => $request->quantidade_disponivel];
         }
         $cupom->cursos()->syncWithoutDetaching($syncData);

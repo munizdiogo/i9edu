@@ -98,7 +98,7 @@ class RestricaoPlanoPagamentoController extends Controller
         $restricao = RestricaoPlanoPagamento::create($data);
 
         // vincula vários de uma vez só
-        $restricao->cursos()->sync($request->curso_ids ?: []);
+        $restricao->cursos()->sync($request->id_cursos ?: []);
         $restricao->polos()->sync($request->polo_ids ?: []);
         $restricao->turmas()->sync($request->turma_ids ?: []);
 
@@ -132,7 +132,7 @@ class RestricaoPlanoPagamentoController extends Controller
         $data['id_estrutura'] = session('estrutura_id');
 
         $restricao->update($data);
-        $restricao->cursos()->sync($request->curso_ids ?: []);
+        $restricao->cursos()->sync($request->id_cursos ?: []);
         $restricao->polos()->sync($request->polo_ids ?: []);
         $restricao->turmas()->sync($request->turma_ids ?: []);
 

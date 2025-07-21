@@ -6,7 +6,7 @@ class CursoMatrizCaptacao extends Model
     protected $table = 'cursos_matriz_captacao';
     protected $fillable = [
         'matriz_captacao_id',
-        'curso_id',
+        'id_curso',
         'status',
         'modalidade',
         'quantidade_vagas',

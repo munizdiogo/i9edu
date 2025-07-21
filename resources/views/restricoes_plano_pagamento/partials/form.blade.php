@@ -15,7 +15,7 @@
             Cursos
             <input type="checkbox" id="select-all-cursos" class="ml-2"> Selecionar todos
         </label>
-        <select name="curso_ids[]" id="cursos-select" class="form-control select2" multiple>
+        <select name="id_cursos[]" id="cursos-select" class="form-control select2" multiple>
             @foreach($cursos as $curso)
                 <option value="{{ $curso->id }}" {{ (isset($restricao) && $restricao->cursos->contains($curso->id)) ? 'selected' : '' }}>
                     {{ $curso->nome }}

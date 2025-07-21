@@ -10,7 +10,7 @@ class LiberacaoCupomCurso extends Model
 
     protected $fillable = [
         'id_cupom',
-        'curso_id',
+        'id_curso',
         'quantidade_disponivel',
         'id_estrutura',
     ];

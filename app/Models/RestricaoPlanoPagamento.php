@@ -23,7 +23,7 @@ class RestricaoPlanoPagamento extends Model
 
     public function cursos()
     {
-        return $this->belongsToMany(Curso::class, 'restricao_plano_pagamento_curso', 'restricao_id', 'curso_id');
+        return $this->belongsToMany(Curso::class, 'restricao_plano_pagamento_curso', 'restricao_id', 'id_curso');
     }
     public function polos()
     {

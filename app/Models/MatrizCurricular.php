@@ -11,7 +11,7 @@ class MatrizCurricular extends Model
     protected $fillable = [
         'nome',
         'nome_reduzido',
-        'curso_id',
+        'id_curso',
         'centro_custo_id',
         'habilitacao',
         'data_habilitacao',
@@ -50,11 +50,11 @@ class MatrizCurricular extends Model
 
     public function curso()
     {
-        return $this->belongsTo(Curso::class, 'curso_id');
+        return $this->belongsTo(Curso::class, 'id_curso');
     }
     public function gradeDisciplinas()
     {
-        return $this->belongsTo(Curso::class, 'curso_id');
+        return $this->belongsTo(Curso::class, 'id_curso');
     }
     public function centroCusto()
     {

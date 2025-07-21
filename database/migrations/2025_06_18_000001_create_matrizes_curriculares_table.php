@@ -12,7 +12,7 @@ class CreateMatrizesCurricularesTable extends Migration
             // Dados principais
             $table->string('nome');
             $table->string('nome_reduzido')->nullable();
-            $table->unsignedBigInteger('curso_id');
+            $table->unsignedBigInteger('id_curso');
             $table->unsignedBigInteger('centro_custo_id')->nullable();
             $table->string('habilitacao')->nullable();
             $table->date('data_habilitacao')->nullable();
@@ -52,7 +52,7 @@ class CreateMatrizesCurricularesTable extends Migration
             $table->timestamps();
 
             // FKs
-            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
+            $table->foreign('id_curso')->references('id')->on('cursos')->onDelete('cascade');
             $table->foreign('centro_custo_id')->references('id')->on('polos')->onDelete('set null');
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();
