@@ -20,7 +20,7 @@ class Cupom extends Model
         'quantidade_maxima',
         'criar_convenio_pagador',
         'validar_matricula_ativa',
-        'plano_conta_id',
+        'id_plano_conta',
         'id_estrutura',
     ];
 
@@ -31,7 +31,7 @@ class Cupom extends Model
 
     public function planoConta()
     {
-        return $this->belongsTo(PlanoConta::class, 'plano_conta_id');
+        return $this->belongsTo(PlanoConta::class, 'id_plano_conta');
     }
 
     public function cursos()

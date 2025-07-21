@@ -14,7 +14,7 @@ class Convenio extends Model
         'descricao',
         'modalidade',
         'tipo_financiamento',
-        'plano_conta_id',
+        'id_plano_conta',
         'valor',
         'tipo',
         'perde_convenio',
@@ -30,7 +30,7 @@ class Convenio extends Model
 
     public function planoConta()
     {
-        return $this->belongsTo(PlanoConta::class, 'plano_conta_id');
+        return $this->belongsTo(PlanoConta::class, 'id_plano_conta');
     }
 
     protected static function booted()

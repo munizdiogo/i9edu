@@ -15,8 +15,8 @@ class CreateConveniosTable extends Migration
             $table->enum('modalidade', ['Bolsa', 'Financiamento'])->default('Bolsa');
             $table->string('tipo_financiamento')->nullable();
 
-            $table->unsignedBigInteger('plano_conta_id')->nullable();
-            $table->foreign('plano_conta_id')->references('id')->on('plano_contas');
+            $table->unsignedBigInteger('id_plano_conta')->nullable();
+            $table->foreign('id_plano_conta')->references('id')->on('plano_contas');
 
             $table->decimal('valor', 10, 2)->default(0);
             $table->enum('tipo', ['Percentual', 'Fixo'])->default('Percentual');
