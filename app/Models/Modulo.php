@@ -14,7 +14,8 @@ class Modulo extends Model
         'nome_reduzido',
         'ordem',
         'status',
-        'prox_modulo_id'
+        'prox_modulo_id',
+        'id_estrutura',
     ];
 
     public function proxModulo()

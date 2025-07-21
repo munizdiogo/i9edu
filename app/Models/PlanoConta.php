@@ -18,6 +18,7 @@ class PlanoConta extends Model
         'tipo_conta',
         'grupo_conta_id',
         'natureza',
+        'id_estrutura',
     ];
 
     public function grupoConta()

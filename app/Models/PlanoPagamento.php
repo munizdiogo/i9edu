@@ -11,6 +11,7 @@ class PlanoPagamento extends Model
         'nome',
         'disponivel_todos_cursos',
         'permite_cupom',
+        'id_estrutura',
     ];
 
     public function parcelas()

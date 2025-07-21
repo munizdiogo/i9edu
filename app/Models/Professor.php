@@ -35,6 +35,7 @@ class Professor extends Model
         'atuacao_grad_distancia',
         'atuacao_pos_grad_distancia',
         'atuacao_bolsa_pesquisa',
+        'id_estrutura',
     ];
 
     public function funcionario()

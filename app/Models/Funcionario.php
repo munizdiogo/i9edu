@@ -26,6 +26,7 @@ class Funcionario extends Model
         'nr_folha',
         'nr_horas_mes',
         'tipo_contrato',
+        'id_estrutura',
     ];
 
     public function perfil()

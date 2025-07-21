@@ -19,6 +19,7 @@ class GrupoConta extends Model
         'eh_dre',
         'mensalidade',
         'apresentar_relatorio',
+        'id_estrutura',
     ];
 
     protected static function booted()

@@ -16,6 +16,7 @@ class Matricula extends Model
         'data_matricula',
         'data_ocorrencia',
         'status',
+        'id_estrutura',
     ];
 
     public function admissao()

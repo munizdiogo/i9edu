@@ -22,7 +22,8 @@ class Contrato extends Model
         'data_inicio_vigencia',
         'data_fim_vigencia',
         'cancelado_por',
-        'observacao'
+        'observacao',
+        'id_estrutura',
     ];
 
     public function perfil()

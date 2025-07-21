@@ -27,6 +27,7 @@ class RequerimentoAssunto extends Model
         'tipo_assunto',
         'id_requerimento_status',
         'id_requerimento_departamento',
+        'id_estrutura',
     ];
 
     protected $casts = [

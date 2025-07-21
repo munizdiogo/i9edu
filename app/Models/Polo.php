@@ -36,7 +36,8 @@ class Polo extends Model
         'gestor_faturamento_id',
         'supervisor_id',
         'data_contrato_inicio',
-        'data_contrato_termino'
+        'data_contrato_termino',
+        'id_estrutura',
     ];
 
     public function gestor()

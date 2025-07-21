@@ -43,7 +43,8 @@ class Disciplina extends Model
         'nao_enviar_educacenso',
         'nao_validar_conflito',
         'nao_contar_minimo',
-        'ter_cursado_pct'
+        'ter_cursado_pct',
+        'id_estrutura',
     ];
 
     public function base()

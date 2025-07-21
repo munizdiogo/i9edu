@@ -12,6 +12,7 @@ class RestricaoPlanoPagamento extends Model
     protected $fillable = [
         'id_plano_pagamento',
         'modalidade',
+        'id_estrutura',
     ];
 
     // Relacionamentos

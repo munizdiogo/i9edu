@@ -21,7 +21,8 @@ class PeriodoLetivo extends Model
         'semestre',
         'periodo_especial',
         'periodo_atual',
-        'situacao'
+        'situacao',
+        'id_estrutura',
     ];
 
     protected static function booted()

@@ -13,6 +13,7 @@ class AreaConhecimento extends Model
         'codigo',
         'descricao',
         'status',
+        'id_estrutura',
     ];
     protected static function booted()
     {

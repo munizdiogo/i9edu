@@ -22,7 +22,8 @@ class Curso extends Model
         'regime_funcionamento',
         'modalidade',
         'codigo_emec',
-        'link_emec'
+        'link_emec',
+        'id_estrutura',
     ];
 
     protected static function booted()

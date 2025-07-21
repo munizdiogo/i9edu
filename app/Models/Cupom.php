@@ -20,7 +20,8 @@ class Cupom extends Model
         'quantidade_maxima',
         'criar_convenio_pagador',
         'validar_matricula_ativa',
-        'plano_conta_id'
+        'plano_conta_id',
+        'id_estrutura',
     ];
 
     public function convenio()

@@ -4,7 +4,13 @@ use Illuminate\Database\Eloquent\Model;
 class PoloMatrizCaptacao extends Model
 {
     protected $table = 'polos_matriz_captacao';
-    protected $fillable = ['matriz_captacao_id', 'polo_id', 'status', 'quantidade_vagas'];
+    protected $fillable = [
+        'matriz_captacao_id',
+        'polo_id',
+        'status',
+        'quantidade_vagas',
+        'id_estrutura',
+    ];
     public function polo()
     {
         return $this->belongsTo(Polo::class);

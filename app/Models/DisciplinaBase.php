@@ -30,7 +30,8 @@ class DisciplinaBase extends Model
         'tipo_avaliacao',
         'obrigatoriedade',
         'complementaridade',
-        'area_avaliacao_id'
+        'area_avaliacao_id',
+        'id_estrutura',
     ];
 
     public function areaConhecimento()

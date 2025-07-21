@@ -14,7 +14,8 @@ class EtapaPeriodoLetivo extends Model
         'codigo',
         'descricao',
         'status',
-        'periodo_letivo_id'
+        'periodo_letivo_id',
+        'id_estrutura',
     ];
 
     public function periodoLetivo()

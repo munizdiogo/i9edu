@@ -14,6 +14,7 @@ class ParcelaPlanoPagamento extends Model
         'valor',
         'calculo_vencimento',
         'tipo_parcela',
+        'id_estrutura',
     ];
 
     public function plano()

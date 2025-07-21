@@ -12,6 +12,7 @@ class RequerimentoDepartamento extends Model
         'descricao',
         'status',
         'tipo',
+        'id_estrutura',
         // 'usuario_id'
     ];
 

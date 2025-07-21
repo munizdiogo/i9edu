@@ -20,6 +20,7 @@ class RequerimentoSolicitacao extends Model
         'id_status',
         'observacao',
         'descricao_anexos',
+        'id_estrutura',
     ];
 
     public function aluno()

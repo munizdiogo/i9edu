@@ -43,7 +43,8 @@ class Turma extends Model
         'nucleo_comum',
         'acesso_biblioteca',
         'acesso_blackboard',
-        'atendimento_online'
+        'atendimento_online',
+        'id_estrutura',
     ];
 
     // Relacionamentos

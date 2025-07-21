@@ -4,7 +4,14 @@ use Illuminate\Database\Eloquent\Model;
 class CursoMatrizCaptacao extends Model
 {
     protected $table = 'cursos_matriz_captacao';
-    protected $fillable = ['matriz_captacao_id', 'curso_id', 'status', 'modalidade', 'quantidade_vagas'];
+    protected $fillable = [
+        'matriz_captacao_id',
+        'curso_id',
+        'status',
+        'modalidade',
+        'quantidade_vagas',
+        'id_estrutura',
+    ];
     public function curso()
     {
         return $this->belongsTo(Curso::class);

@@ -42,7 +42,7 @@ class Transacao extends Model
         'dre',
         'mensalidade',
         'relatorio',
-        'id_estrutura'
+        'id_estrutura',
     ];
 
     // Relacionamentos principais
@@ -79,7 +79,7 @@ class Transacao extends Model
     {
         static::addGlobalScope('estrutura', function ($query) {
             if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+                $query->where('transacoes.id_estrutura', session('estrutura_id'));
             }
         });
     }

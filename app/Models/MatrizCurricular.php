@@ -44,7 +44,8 @@ class MatrizCurricular extends Model
         'prazo_inicial',
         'prazo_maximo',
         'periodicidade',
-        'possivel_trancar_1periodo'
+        'possivel_trancar_1periodo',
+        'id_estrutura',
     ];
 
     public function curso()

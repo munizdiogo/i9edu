@@ -14,7 +14,8 @@ class Documento extends Model
         'usar_jasper',
         'permitir_docx',
         'obrigatorio_informar_data',
-        'processar_historico_disciplinas'
+        'processar_historico_disciplinas',
+        'id_estrutura',
     ];
 
     protected static function booted()

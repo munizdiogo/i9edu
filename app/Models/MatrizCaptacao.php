@@ -5,7 +5,12 @@ use Illuminate\Database\Eloquent\Model;
 class MatrizCaptacao extends Model
 {
     protected $table = 'matriz_captacao';
-    protected $fillable = ['nome', 'descricao', 'status'];
+    protected $fillable = [
+        'nome',
+        'descricao',
+        'status',
+        'id_estrutura',
+    ];
     public function cursos()
     {
         return $this->hasMany(CursoMatrizCaptacao::class);

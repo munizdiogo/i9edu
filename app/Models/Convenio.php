@@ -25,6 +25,7 @@ class Convenio extends Model
         'inicio',
         'fim',
         'instrucao_bancaria',
+        'id_estrutura',
     ];
 
     public function planoConta()

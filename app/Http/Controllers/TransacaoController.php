@@ -211,7 +211,6 @@ class TransacaoController extends Controller
                 'valor' => 'required|numeric',
                 'situacao' => 'required|string',
                 'status' => 'required|string',
-                // ... outros campos conforme a migration
             ];
 
         } else {
@@ -229,7 +228,6 @@ class TransacaoController extends Controller
                 'valor' => 'required|numeric',
                 'situacao' => 'required|string',
                 'status' => 'required|string',
-                // ... outros campos conforme a migration
             ];
 
         }

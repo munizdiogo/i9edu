@@ -11,7 +11,8 @@ class LiberacaoCupomPolo extends Model
     protected $fillable = [
         'cupom_id',
         'polo_id',
-        'quantidade_disponivel'
+        'quantidade_disponivel',
+        'id_estrutura',
     ];
 
     public function cupom()

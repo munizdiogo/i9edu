@@ -21,7 +21,8 @@ class EditalProcessoSeletivo extends Model
         'status',
         'nota_minima_enade',
         'enade_ano_inicio',
-        'enade_ano_fim'
+        'enade_ano_fim',
+        'id_estrutura',
     ];
 
     public function periodoLetivo()

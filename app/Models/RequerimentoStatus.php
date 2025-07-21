@@ -18,6 +18,7 @@ class RequerimentoStatus extends Model
         'email_encaminhamento_aluno',
         'email_encaminhamento_setor',
         'permite_encaminhar',
+        'id_estrutura',
     ];
 
     protected $casts = [

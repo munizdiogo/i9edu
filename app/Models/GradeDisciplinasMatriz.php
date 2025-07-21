@@ -13,6 +13,7 @@ class GradeDisciplinasMatriz extends Model
     protected $fillable = [
         'matriz_curricular_id',
         'disciplina_id',
+        'id_estrutura',
     ];
 
     public function matrizCurricular()

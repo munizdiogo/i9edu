@@ -17,6 +17,7 @@ class Setor extends Model
         'email',
         'funcionario_responsavel_id',
         'status',
+        'id_estrutura',
     ];
 
     public function responsavel()

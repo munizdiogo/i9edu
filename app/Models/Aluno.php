@@ -27,7 +27,8 @@ class Aluno extends Model
         'religiao',
         'telefone',
         'celular',
-        'status'
+        'status',
+        'id_estrutura',
     ];
 
     public function perfil()

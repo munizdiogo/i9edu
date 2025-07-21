@@ -37,7 +37,8 @@ class AlunoCursoAdmissao extends Model
         'data_estagio',
         'horas_estagio',
         'instituicao_transferencia_id',
-        'status'
+        'status',
+        'id_estrutura',
     ];
 
     public function aluno()

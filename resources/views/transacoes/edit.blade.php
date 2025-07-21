@@ -7,7 +7,7 @@
             <form action="{{ route('transacoes.update', $transacao->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                @include('transacoes.form')
+                @include('transacoes.partials.form')
                 <button class="btn btn-primary">Salvar</button>
                 <a href="{{ route('transacoes.index') }}" class="btn btn-default">Voltar</a>
             </form>
