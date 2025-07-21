@@ -13,10 +13,10 @@
         </div>
         <div class="form-group">
             <label>Disciplina*</label>
-            <select name="disciplina_id" class="form-control select2bs4" required>
+            <select name="id_disciplina" class="form-control select2bs4" required>
                 <option value=""></option>
                 @foreach($disciplinas as $id => $nome)
-                    <option value="{{ $id }}" {{ old('disciplina_id', $grade_disciplinas_matrize->disciplina_id ?? '') == $id ? 'selected' : '' }}>
+                    <option value="{{ $id }}" {{ old('id_disciplina', $grade_disciplinas_matrize->id_disciplina ?? '') == $id ? 'selected' : '' }}>
                         {{ $nome }}
                     </option>
                 @endforeach

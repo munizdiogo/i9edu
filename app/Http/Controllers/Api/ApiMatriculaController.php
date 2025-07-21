@@ -19,7 +19,7 @@ class ApiMatriculaController
         $disciplinas = $query
             ->join('turmas', 'turma_id', '=', 'turmas.id')
             ->join('grade_disciplinas_matrizes', 'turmas.matriz_curricular_id', '=', 'grade_disciplinas_matrizes.matriz_curricular_id')
-            ->join('disciplinas', 'grade_disciplinas_matrizes.disciplina_id', '=', 'disciplinas.id')
+            ->join('disciplinas', 'grade_disciplinas_matrizes.id_disciplina', '=', 'disciplinas.id')
             ->get(['disciplinas.id', 'disciplinas.descricao']);
 
         return response()->json($disciplinas);

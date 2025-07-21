@@ -12,7 +12,7 @@ class GradeDisciplinasMatriz extends Model
 
     protected $fillable = [
         'matriz_curricular_id',
-        'disciplina_id',
+        'id_disciplina',
         'id_estrutura',
     ];
 
@@ -23,7 +23,7 @@ class GradeDisciplinasMatriz extends Model
 
     public function disciplina()
     {
-        return $this->belongsTo(Disciplina::class, 'disciplina_id');
+        return $this->belongsTo(Disciplina::class, 'id_disciplina');
     }
 
     protected static function booted()

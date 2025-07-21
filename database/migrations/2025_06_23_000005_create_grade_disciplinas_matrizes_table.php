@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->foreignId('matriz_curricular_id')
                 ->constrained('matrizes_curriculares')
                 ->onDelete('cascade');
-            $table->foreignId('disciplina_id')
+            $table->foreignId('id_disciplina')
                 ->constrained('disciplinas')
                 ->onDelete('cascade');
             $table->timestamps();
