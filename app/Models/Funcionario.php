@@ -22,7 +22,7 @@ class Funcionario extends Model
         'data_admissao',
         'data_demissao',
         'setor_id',
-        'funcao_id',
+        'id_funcao',
         'nr_folha',
         'nr_horas_mes',
         'tipo_contrato',

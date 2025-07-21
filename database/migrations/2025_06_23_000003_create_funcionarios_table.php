@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->date('data_demissao')->nullable();
             // FK para Setor e Função
             $table->foreignId('setor_id')->nullable()->constrained('setores')->nullOnDelete();
-            $table->foreignId('funcao_id')->nullable()->constrained('funcoes')->nullOnDelete();
+            $table->foreignId('id_funcao')->nullable()->constrained('funcoes')->nullOnDelete();
             $table->string('nr_folha')->nullable();
             $table->integer('nr_horas_mes')->nullable();
             $table->enum('tipo_contrato', ['Não informado', 'CLT', 'PJ', 'Autônomo'])->default('Não informado');

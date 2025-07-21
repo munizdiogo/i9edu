@@ -55,10 +55,10 @@
             </div>
             <div class="form-group col-md-3">
                 <label>Função</label>
-                <select name="funcao_id" class="form-control select2bs4">
+                <select name="id_funcao" class="form-control select2bs4">
                     <option value=""></option>
                     @foreach($funcoes as $id => $desc)
-                        <option value="{{ $id }}" {{ old('funcao_id', $funcionario->funcao_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_funcao', $funcionario->id_funcao ?? '') == $id ? 'selected' : '' }}>
                             {{ $desc }}
                         </option>
                     @endforeach
