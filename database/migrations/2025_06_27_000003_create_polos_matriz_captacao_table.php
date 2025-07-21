@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->integer('quantidade_vagas')->default(0);
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
     public function down()

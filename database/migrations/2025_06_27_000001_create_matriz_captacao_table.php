@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->enum('status', ['Ativo', 'Inativo'])->default('Ativo');
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
     public function down()

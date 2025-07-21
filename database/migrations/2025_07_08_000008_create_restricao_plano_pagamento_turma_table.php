@@ -19,7 +19,7 @@ class CreateRestricaoPlanoPagamentoTurmaTable extends Migration
                 ->references('id')->on('turmas')->onDelete('cascade');
             $table->unique(['restricao_id', 'turma_id']);
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

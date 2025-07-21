@@ -44,7 +44,7 @@ class CreateAlunosTable extends Migration
             // FK
             $table->foreign('perfil_id')->references('id')->on('perfis')->onDelete('cascade');
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

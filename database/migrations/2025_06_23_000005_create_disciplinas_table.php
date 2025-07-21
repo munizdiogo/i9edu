@@ -52,7 +52,7 @@ return new class extends Migration {
             // timestamps
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

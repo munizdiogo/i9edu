@@ -60,7 +60,6 @@ return new class extends Migration {
             $table->foreign('id_convenio')->references('id')->on('convenios');
             $table->foreign('id_plano_conta')->references('id')->on('plano_contas');
             $table->foreign('id_parcela_plano_pagamento')->references('id')->on('parcelas_plano_pagamento');
-            $table->foreign('id_estrutura')->references('id')->on('estruturas');
         });
     }
 

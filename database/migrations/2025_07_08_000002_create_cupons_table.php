@@ -25,7 +25,7 @@ class CreateCuponsTable extends Migration
             $table->foreign('convenio_id')->references('id')->on('convenios')->onDelete('set null');
             $table->foreign('plano_conta_id')->references('id')->on('plano_contas')->onDelete('set null');
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

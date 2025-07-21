@@ -16,7 +16,7 @@ class CreateRestricoesPlanoPagamentoTable extends Migration
 
             $table->foreign('id_plano_pagamento')->references('id')->on('planos_pagamento');
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

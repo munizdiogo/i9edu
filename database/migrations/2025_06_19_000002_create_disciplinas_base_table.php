@@ -42,7 +42,7 @@ class CreateDisciplinasBaseTable extends Migration
                 ->references('id')->on('area_conhecimentos')
                 ->onDelete('set null');
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

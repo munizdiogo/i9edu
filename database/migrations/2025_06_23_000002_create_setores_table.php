@@ -25,7 +25,7 @@ return new class extends Migration {
             $table->enum('status', ['ATIVO', 'INATIVO'])->default('ATIVO');
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

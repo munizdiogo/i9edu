@@ -58,7 +58,7 @@ class CreateAlunosCursoAdmissaoTable extends Migration
             $table->foreign('edital_processo_seletivo_id')->references('id')->on('editais_processo_seletivo');
             // outras FKs (forma_ingresso, instituicao, instituicao_transferencia) você cria conforme sua tabela de cadastros
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

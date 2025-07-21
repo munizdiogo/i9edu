@@ -34,7 +34,7 @@ class CreateMatriculasTable extends Migration
             $table->foreign('turma_id')
                 ->references('id')->on('turmas');
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

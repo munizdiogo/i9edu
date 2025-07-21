@@ -21,7 +21,7 @@ class CreateDocumentosTable extends Migration
             $table->boolean('processar_historico_disciplinas')->default(false);
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

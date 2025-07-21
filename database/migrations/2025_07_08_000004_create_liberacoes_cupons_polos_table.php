@@ -19,7 +19,7 @@ class CreateLiberacoesCuponsPolosTable extends Migration
             $table->foreign('polo_id')->references('id')->on('polos')->onDelete('cascade');
             $table->unique(['cupom_id', 'polo_id']);
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

@@ -61,7 +61,7 @@ class CreateTurmasTable extends Migration
             $table->foreign('centro_custo_id')->references('id')->on('polos')->onDelete('set null');
             $table->foreign('professor_responsavel_id')->references('id')->on('perfis')->onDelete('set null');
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

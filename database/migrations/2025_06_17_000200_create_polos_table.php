@@ -42,7 +42,7 @@ class CreatePolosTable extends Migration
             $table->foreign('gestor_faturamento_id')->references('id')->on('perfis')->onDelete('set null');
             $table->foreign('supervisor_id')->references('id')->on('perfis')->onDelete('set null');
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

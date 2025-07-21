@@ -24,6 +24,8 @@ class CreateContratosTable extends Migration
             $table->string('cancelado_por')->nullable();
             $table->text('observacao')->nullable();
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

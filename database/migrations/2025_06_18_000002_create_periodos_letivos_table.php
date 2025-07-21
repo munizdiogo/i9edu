@@ -23,7 +23,7 @@ class CreatePeriodosLetivosTable extends Migration
             $table->enum('situacao', ['ABERTO', 'FECHADO'])->default('ABERTO');
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

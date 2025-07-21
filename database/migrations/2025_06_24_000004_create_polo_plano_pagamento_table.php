@@ -20,7 +20,7 @@ class CreatePoloPlanoPagamentoTable extends Migration
                 ->references('id')->on('polos')
                 ->onDelete('cascade');
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

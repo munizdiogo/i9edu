@@ -27,7 +27,7 @@ return new class extends Migration {
             $table->enum('tipo_contrato', ['Não informado', 'CLT', 'PJ', 'Autônomo'])->default('Não informado');
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

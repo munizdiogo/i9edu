@@ -60,7 +60,7 @@ return new class extends Migration {
             $table->boolean('atuacao_bolsa_pesquisa')->default(false);
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

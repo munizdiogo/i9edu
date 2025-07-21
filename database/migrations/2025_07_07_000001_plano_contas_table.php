@@ -20,7 +20,7 @@ return new class extends Migration {
 
             $table->foreign('grupo_conta_id')->references('id')->on('grupo_contas');
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

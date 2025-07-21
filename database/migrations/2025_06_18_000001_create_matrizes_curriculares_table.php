@@ -55,7 +55,7 @@ class CreateMatrizesCurricularesTable extends Migration
             $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
             $table->foreign('centro_custo_id')->references('id')->on('polos')->onDelete('set null');
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

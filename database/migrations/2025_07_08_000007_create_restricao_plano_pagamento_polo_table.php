@@ -20,7 +20,7 @@ class CreateRestricaoPlanoPagamentoPoloTable extends Migration
                 ->references('id')->on('polos')->onDelete('cascade');
             $table->unique(['restricao_id', 'polo_id']);
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

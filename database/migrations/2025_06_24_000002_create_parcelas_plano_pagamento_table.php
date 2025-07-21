@@ -22,7 +22,7 @@ class CreateParcelasPlanoPagamentoTable extends Migration
                 ->references('id')->on('planos_pagamento')
                 ->onDelete('cascade');
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

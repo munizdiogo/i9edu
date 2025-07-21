@@ -20,7 +20,7 @@ class CreateRestricaoPlanoPagamentoCursoTable extends Migration
                 ->references('id')->on('cursos')->onDelete('cascade');
             $table->unique(['restricao_id', 'curso_id']);
 
-            $table->unsignedBigInteger('id_estrutura')->default(1)->index();
+            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 
