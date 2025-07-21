@@ -118,7 +118,7 @@ class DisciplinaController extends Controller
             'professor_padrao_id' => 'nullable|exists:professores,id',
             'codigo_mec' => 'nullable|string',
             'codigo_inep' => 'nullable|string',
-            'area_conhecimento_id' => 'nullable|exists:area_conhecimentos,id',
+            'id_area_conhecimento' => 'nullable|exists:area_conhecimentos,id',
             'ch_padrao' => 'integer',
             'ch_cobrada' => 'integer',
             'ch_teorica' => 'integer',

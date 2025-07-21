@@ -14,7 +14,7 @@ class DisciplinaBase extends Model
         'status',
         'nome',
         'nome_reduzido',
-        'area_conhecimento_id',
+        'id_area_conhecimento',
         'equivalencia_automatica',
         'ch_padrao',
         'ch_cobrada',
@@ -36,7 +36,7 @@ class DisciplinaBase extends Model
 
     public function areaConhecimento()
     {
-        return $this->belongsTo(AreaConhecimento::class, 'area_conhecimento_id');
+        return $this->belongsTo(AreaConhecimento::class, 'id_area_conhecimento');
     }
 
     public function areaAvaliacao()

@@ -82,10 +82,10 @@
             </div>
             <div class="form-group col-md-3">
                 <label>Área de Conhecimento</label>
-                <select name="area_conhecimento_id" class="form-control select2bs4">
+                <select name="id_area_conhecimento" class="form-control select2bs4">
                     <option value=""></option>
                     @foreach($areas as $id => $nome)
-                        <option value="{{ $id }}" {{ old('area_conhecimento_id', $disciplina->area_conhecimento_id ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
+                        <option value="{{ $id }}" {{ old('id_area_conhecimento', $disciplina->id_area_conhecimento ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
                     @endforeach
                 </select>
             </div>

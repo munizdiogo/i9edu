@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->foreignId('professor_padrao_id')->nullable()->constrained('professores')->nullOnDelete();
             $table->string('codigo_mec')->nullable();
             $table->string('codigo_inep')->nullable();
-            $table->foreignId('area_conhecimento_id')->nullable()->constrained('area_conhecimentos')->nullOnDelete();
+            $table->foreignId('id_area_conhecimento')->nullable()->constrained('area_conhecimentos')->nullOnDelete();
             // carga horária
             $table->integer('ch_padrao')->default(0);
             $table->integer('ch_cobrada')->default(0);

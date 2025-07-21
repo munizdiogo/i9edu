@@ -18,7 +18,7 @@ class Disciplina extends Model
         'professor_padrao_id',
         'codigo_mec',
         'codigo_inep',
-        'area_conhecimento_id',
+        'id_area_conhecimento',
         'ch_padrao',
         'ch_cobrada',
         'ch_teorica',
@@ -69,7 +69,7 @@ class Disciplina extends Model
 
     public function areaConhecimento()
     {
-        return $this->belongsTo(AreaConhecimento::class, 'area_conhecimento_id');
+        return $this->belongsTo(AreaConhecimento::class, 'id_area_conhecimento');
     }
 
     public function areaAvaliacao()
