@@ -12,7 +12,7 @@ class Matricula extends Model
     protected $fillable = [
         'aluno_curso_admissao_id',
         'turma_id',
-        'contrato_id',
+        'id_contrato',
         'data_matricula',
         'data_ocorrencia',
         'status',

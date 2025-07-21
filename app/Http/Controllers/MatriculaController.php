@@ -82,7 +82,7 @@ class MatriculaController extends Controller
         $data = $request->validate([
             'aluno_curso_admissao_id' => 'required|exists:alunos_curso_admissao,id',
             'turma_id' => 'required|exists:turmas,id',
-            'contrato_id' => 'nullable|integer',
+            'id_contrato' => 'nullable|integer',
             'data_matricula' => 'required|date',
             'data_ocorrencia' => 'nullable|date',
             'status' => 'required|in:ATIVA,AGUARDANDO,APROVADO,APROVADO_PARCIALMENTE,CANCELADA,DESISTENTE,INFREQUENTE,REENQUADRADA',
@@ -118,7 +118,7 @@ class MatriculaController extends Controller
         $data = $request->validate([
             'aluno_curso_admissao_id' => 'required|exists:alunos_curso_admissao,id',
             'turma_id' => 'required|exists:turmas,id',
-            'contrato_id' => 'nullable|integer',
+            'id_contrato' => 'nullable|integer',
             'data_matricula' => 'required|date',
             'data_ocorrencia' => 'nullable|date',
             'status' => 'required|in:ATIVA,AGUARDANDO,APROVADO,APROVADO_PARCIALMENTE,CANCELADA,DESISTENTE,INFREQUENTE,REENQUADRADA',

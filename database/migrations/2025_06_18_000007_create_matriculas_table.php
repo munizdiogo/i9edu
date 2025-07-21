@@ -12,7 +12,7 @@ class CreateMatriculasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('aluno_curso_admissao_id');
             $table->unsignedBigInteger('turma_id');
-            $table->unsignedBigInteger('contrato_id')->nullable();
+            $table->unsignedBigInteger('id_contrato')->nullable();
             $table->date('data_matricula');
             $table->date('data_ocorrencia')->nullable();
             $table->enum('status', [

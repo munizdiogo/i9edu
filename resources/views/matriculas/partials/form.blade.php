@@ -31,8 +31,8 @@
       </div>
       <div class="form-group col-md-4">
         <label>Contrato</label>
-        <input type="text" name="contrato_id" class="form-control"
-               value="{{ old('contrato_id',$matricula->contrato_id??'') }}">
+        <input type="text" name="id_contrato" class="form-control"
+               value="{{ old('id_contrato',$matricula->id_contrato??'') }}">
       </div>
     </div>
     <div class="form-row">
