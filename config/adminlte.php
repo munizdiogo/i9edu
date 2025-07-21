@@ -476,6 +476,13 @@ return [
                     'icon_color' => 'teal',
                     'classes' => 'pl-4',
                 ],
+                [
+                    'text' => ' Contratos',
+                    'url' => '/contratos',
+                    'icon' => 'fas fa-fw fa-circle',
+                    'icon_color' => 'teal',
+                    'classes' => 'pl-4',
+                ],
 
             ]
         ],
@@ -483,24 +490,17 @@ return [
         [
             'text' => ' Planos de Pagamento',
             'url' => '/planos_pagamento',
-            'icon' => 'fas fa-fw fa-dollar-sign',
+            'icon' => 'fas fa-fw fa-file-invoice-dollar',
             'icon_color' => 'teal',
             'classes' => 'pl-2',
         ],
 
         [
-            'text' => ' Contratos',
-            'url' => '/contratos',
-            'icon' => 'fas fa-fw fa-circle',
-            'icon_color' => 'teal',
-            'classes' => 'pl-4',
-        ],
-        [
             'text' => ' Transações',
             'url' => '/transacoes',
-            'icon' => 'fas fa-fw fa-circle',
+            'icon' => 'fas fa-fw fa-dollar-sign',
             'icon_color' => 'teal',
-            'classes' => 'pl-4',
+            'classes' => 'pl-2',
         ],
 
 
