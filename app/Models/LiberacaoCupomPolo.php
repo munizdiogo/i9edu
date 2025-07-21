@@ -9,7 +9,7 @@ class LiberacaoCupomPolo extends Model
     protected $table = 'liberacoes_cupons_polos';
 
     protected $fillable = [
-        'cupom_id',
+        'id_cupom',
         'polo_id',
         'quantidade_disponivel',
         'id_estrutura',
