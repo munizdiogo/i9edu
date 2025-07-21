@@ -101,7 +101,7 @@ class FuncionarioController extends Controller
         if ($origem == 'create') {
             $rules = [
                 'codigo' => 'required|integer|unique:funcionarios,codigo',
-                'perfil_id' => 'required|exists:perfis,id',
+                'id_perfil' => 'required|exists:perfis,id',
                 'nome_conjuge' => 'nullable|string',
                 'fone_conjuge' => 'nullable|string',
                 'nr_dependentes' => 'nullable|integer',
@@ -120,7 +120,7 @@ class FuncionarioController extends Controller
         } else {
             $rules = [
                 'codigo' => 'required|integer|unique:funcionarios,codigo,' . $funcionario->id,
-                'perfil_id' => 'required|exists:perfis,id',
+                'id_perfil' => 'required|exists:perfis,id',
                 'nome_conjuge' => 'nullable|string',
                 'fone_conjuge' => 'nullable|string',
                 'nr_dependentes' => 'nullable|integer',

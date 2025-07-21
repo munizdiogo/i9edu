@@ -12,7 +12,7 @@ class Funcionario extends Model
 
     protected $fillable = [
         'codigo',
-        'perfil_id',
+        'id_perfil',
         'nome_conjuge',
         'fone_conjuge',
         'nr_dependentes',

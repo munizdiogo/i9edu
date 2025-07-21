@@ -34,7 +34,7 @@ class AlunoController extends Controller
             $dir = $order['dir'];
 
             if ($col === 'nome') {
-                $query->join('perfis', 'alunos.perfil_id', '=', 'perfis.id')
+                $query->join('perfis', 'alunos.id_perfil', '=', 'perfis.id')
                     ->orderBy('perfis.nome', $dir);
             } else {
                 $query->orderBy($col, $dir);
@@ -114,7 +114,7 @@ class AlunoController extends Controller
     protected function validateData(Request $request, $id = null)
     {
         $rules = [
-            'perfil_id' => 'required|exists:perfis,id',
+            'id_perfil' => 'required|exists:perfis,id',
             // 'ra' => 'required|string|unique:alunos,ra',
             'ra' => 'required|string',
             // 'ra_est' => 'nullable|string',

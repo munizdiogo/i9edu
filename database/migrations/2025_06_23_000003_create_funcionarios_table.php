@@ -10,7 +10,7 @@ return new class extends Migration {
             $table->id();
             $table->integer('codigo')->unique();
             // FK para Perfil
-            $table->foreignId('perfil_id')->constrained('perfis')->cascadeOnDelete();
+            $table->foreignId('id_perfil')->constrained('perfis')->cascadeOnDelete();
             $table->string('nome_conjuge')->nullable();
             $table->string('fone_conjuge')->nullable();
             $table->integer('nr_dependentes')->default(0);

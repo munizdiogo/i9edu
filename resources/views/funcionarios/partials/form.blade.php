@@ -8,10 +8,10 @@
             </div>
             <div class="form-group col-md-4">
                 <label>Perfil*</label>
-                <select name="perfil_id" class="form-control select2bs4" required>
+                <select name="id_perfil" class="form-control select2bs4" required>
                     <option value=""></option>
                     @foreach($perfis as $id => $nome)
-                        <option value="{{ $id }}" {{ old('perfil_id', $funcionario->perfil_id ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
+                        <option value="{{ $id }}" {{ old('id_perfil', $funcionario->id_perfil ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
                     @endforeach
                 </select>
             </div>

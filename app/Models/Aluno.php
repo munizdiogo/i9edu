@@ -10,7 +10,7 @@ class Aluno extends Model
     use HasFactory;
 
     protected $fillable = [
-        'perfil_id',
+        'id_perfil',
         'ra',
         'ra_est',
         'id_inep',
@@ -33,7 +33,7 @@ class Aluno extends Model
 
     public function perfil()
     {
-        return $this->belongsTo(Perfil::class, 'perfil_id');
+        return $this->belongsTo(Perfil::class, 'id_perfil');
     }
 
     public function admissao()

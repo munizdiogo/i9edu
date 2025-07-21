@@ -34,7 +34,7 @@ class MatriculaController extends Controller
             if ($col === 'aluno') {
                 $query->join('alunos_curso_admissao', 'matriculas.aluno_curso_admissao_id', '=', 'alunos_curso_admissao.id')
                     ->join('alunos', 'alunos_curso_admissao.aluno_id', '=', 'alunos.id')
-                    ->join('perfis', 'alunos.perfil_id', '=', 'perfis.id')
+                    ->join('perfis', 'alunos.id_perfil', '=', 'perfis.id')
                     ->orderBy('perfis.nome', $dir);
             } elseif ($col === 'turma') {
                 $query->join('turmas', 'matriculas.turma_id', '=', 'turmas.id')

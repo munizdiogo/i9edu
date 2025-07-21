@@ -6,10 +6,10 @@
         <div class="form-row">
             <div class="form-group col-md-5">
                 <label>Perfil*</label>
-                <select name="perfil_id" class="form-control select2bs4" required>
+                <select name="id_perfil" class="form-control select2bs4" required>
                     <option value="">-- selecione --</option>
                     @foreach($perfis as $id => $nome)
-                        <option value="{{ $id }}" {{ old('perfil_id', $aluno->perfil_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_perfil', $aluno->id_perfil ?? '') == $id ? 'selected' : '' }}>
                             {{ $id . ' -- ' . $nome }}
                         </option>
                     @endforeach
