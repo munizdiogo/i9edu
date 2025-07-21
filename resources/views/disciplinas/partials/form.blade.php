@@ -35,10 +35,10 @@
             </div>
             <div class="form-group col-md-3">
                 <label>Professor Padrão</label>
-                <select name="professor_id" class="form-control select2bs4">
+                <select name="id_professor" class="form-control select2bs4">
                     <option value=""></option>
                     @foreach($professores as $id => $nome)
-                        <option value="{{ $id }}" {{ old('professor_id', $disciplina->professor_id ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
+                        <option value="{{ $id }}" {{ old('id_professor', $disciplina->id_professor ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
                     @endforeach
                 </select>
             </div>
