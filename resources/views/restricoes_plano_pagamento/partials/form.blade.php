@@ -29,7 +29,7 @@
             Polos
             <input type="checkbox" id="select-all-polos" class="ml-2"> Selecionar todos
         </label>
-        <select name="polo_ids[]" id="polos-select" class="form-control select2" multiple>
+        <select name="id_polos[]" id="polos-select" class="form-control select2" multiple>
             @foreach($polos as $polo)
                 <option value="{{ $polo->id }}" {{ (isset($restricao) && $restricao->polos->contains($polo->id)) ? 'selected' : '' }}>
                     {{ $polo->nome }}

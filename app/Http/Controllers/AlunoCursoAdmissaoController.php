@@ -142,7 +142,7 @@ class AlunoCursoAdmissaoController extends Controller
         $rules = [
             'id_aluno' => 'required|exists:alunos,id',
             'matriz_curricular_id' => 'required|exists:matrizes_curriculares,id',
-            // 'campus_polo_id' => 'nullable|exists:polos,id',
+            // 'campus_id_polo' => 'nullable|exists:polos,id',
             // 'periodo_letivo_ingresso_id' => 'nullable|exists:periodos_letivos,id',
             // 'turma_base_id' => 'nullable|exists:turmas,id',
             'edital_processo_seletivo_id' => 'nullable|exists:editais_processo_seletivo,id',

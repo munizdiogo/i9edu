@@ -6,7 +6,7 @@ class PoloMatrizCaptacao extends Model
     protected $table = 'polos_matriz_captacao';
     protected $fillable = [
         'matriz_captacao_id',
-        'polo_id',
+        'id_polo',
         'status',
         'quantidade_vagas',
         'id_estrutura',

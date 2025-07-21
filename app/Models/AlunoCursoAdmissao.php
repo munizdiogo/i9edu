@@ -14,7 +14,7 @@ class AlunoCursoAdmissao extends Model
     protected $fillable = [
         'id_aluno',
         'matriz_curricular_id',
-        'campus_polo_id',
+        'campus_id_polo',
         'periodo_letivo_ingresso_id',
         'turma_base_id',
         'edital_processo_seletivo_id',
@@ -51,7 +51,7 @@ class AlunoCursoAdmissao extends Model
     }
     public function polo()
     {
-        return $this->belongsTo(Polo::class, 'campus_polo_id');
+        return $this->belongsTo(Polo::class, 'campus_id_polo');
     }
     public function periodo()
     {

@@ -27,7 +27,7 @@ class RestricaoPlanoPagamento extends Model
     }
     public function polos()
     {
-        return $this->belongsToMany(Polo::class, 'restricao_plano_pagamento_polo', 'restricao_id', 'polo_id');
+        return $this->belongsToMany(Polo::class, 'restricao_plano_pagamento_polo', 'restricao_id', 'id_polo');
     }
     public function turmas()
     {

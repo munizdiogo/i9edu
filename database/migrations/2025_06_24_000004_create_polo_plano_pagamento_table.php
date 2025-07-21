@@ -10,13 +10,13 @@ class CreatePoloPlanoPagamentoTable extends Migration
     {
         Schema::create('polo_plano_pagamento', function (Blueprint $table) {
             $table->unsignedBigInteger('plano_pagamento_id');
-            $table->unsignedBigInteger('polo_id');
-            $table->primary(['plano_pagamento_id', 'polo_id']);
+            $table->unsignedBigInteger('id_polo');
+            $table->primary(['plano_pagamento_id', 'id_polo']);
 
             $table->foreign('plano_pagamento_id')
                 ->references('id')->on('planos_pagamento')
                 ->onDelete('cascade');
-            $table->foreign('polo_id')
+            $table->foreign('id_polo')
                 ->references('id')->on('polos')
                 ->onDelete('cascade');
 

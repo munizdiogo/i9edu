@@ -201,15 +201,15 @@ class CupomController extends Controller
     public function adicionarPolo(Request $request, $cupomId)
     {
         $request->validate([
-            'polo_ids' => 'required|array|min:1',
-            'polo_ids.*' => 'exists:polos,id',
+            'id_polos' => 'required|array|min:1',
+            'id_polos.*' => 'exists:polos,id',
             'quantidade_disponivel' => 'required|integer|min:0'
         ]);
 
         $cupom = Cupom::findOrFail($cupomId);
 
         $syncData = [];
-        foreach ($request->polo_ids as $poloId) {
+        foreach ($request->id_polos as $poloId) {
             $syncData[$poloId] = ['quantidade_disponivel' => $request->quantidade_disponivel];
         }
         $cupom->polos()->syncWithoutDetaching($syncData);

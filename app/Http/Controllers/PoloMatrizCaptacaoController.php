@@ -26,7 +26,7 @@ class PoloMatrizCaptacaoController extends Controller
     {
         $data = $request->validate([
             'matriz_captacao_id' => 'required|exists:matriz_captacao,id',
-            'polo_id' => 'required|exists:polos,id',
+            'id_polo' => 'required|exists:polos,id',
             'status' => 'required|in:Ativo,Inativo',
             'quantidade_vagas' => 'required|integer',
         ]);
