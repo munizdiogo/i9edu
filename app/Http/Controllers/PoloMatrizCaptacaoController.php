@@ -9,7 +9,7 @@ class PoloMatrizCaptacaoController extends Controller
     public function data(Request $request)
     {
         $data = PoloMatrizCaptacao::with('polo')
-            ->where('matriz_captacao_id', $request->matriz)
+            ->where('id_matriz_captacao', $request->matriz)
             ->get()
             ->map(fn($p) => [
                 'id' => $p->id,
@@ -25,7 +25,7 @@ class PoloMatrizCaptacaoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'matriz_captacao_id' => 'required|exists:matriz_captacao,id',
+            'id_matriz_captacao' => 'required|exists:matriz_captacao,id',
             'id_polo' => 'required|exists:polos,id',
             'status' => 'required|in:Ativo,Inativo',
             'quantidade_vagas' => 'required|integer',

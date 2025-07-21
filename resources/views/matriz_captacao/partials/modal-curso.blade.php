@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <form action="{{ route('matriz_captacao.cursos.store') }}" method="POST">
             @csrf
-            <input type="hidden" name="matriz_captacao_id" value="{{ $matriz->id ?? ''}}">
+            <input type="hidden" name="id_matriz_captacao" value="{{ $matriz->id ?? ''}}">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCursoLabel">Adicionar Curso à Matriz</h5>

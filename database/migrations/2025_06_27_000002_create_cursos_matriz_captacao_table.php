@@ -8,7 +8,7 @@ return new class extends Migration {
     {
         Schema::create('cursos_matriz_captacao', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('matriz_captacao_id')->constrained('matriz_captacao')->cascadeOnDelete();
+            $table->foreignId('id_matriz_captacao')->constrained('matriz_captacao')->cascadeOnDelete();
             $table->foreignId('id_curso')->constrained('cursos')->cascadeOnDelete();
             $table->enum('status', ['Ativo', 'Inativo'])->default('Ativo');
             $table->enum('modalidade', ['Presencial', 'EaD'])->default('EaD');

@@ -5,7 +5,7 @@ class PoloMatrizCaptacao extends Model
 {
     protected $table = 'polos_matriz_captacao';
     protected $fillable = [
-        'matriz_captacao_id',
+        'id_matriz_captacao',
         'id_polo',
         'status',
         'quantidade_vagas',
@@ -17,7 +17,7 @@ class PoloMatrizCaptacao extends Model
     }
     public function matriz()
     {
-        return $this->belongsTo(MatrizCaptacao::class, 'matriz_captacao_id');
+        return $this->belongsTo(MatrizCaptacao::class, 'id_matriz_captacao');
     }
 
     protected static function booted()

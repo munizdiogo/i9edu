@@ -9,7 +9,7 @@ class CursoMatrizCaptacaoController extends Controller
     public function data(Request $request)
     {
         $data = CursoMatrizCaptacao::with('curso')
-            ->where('matriz_captacao_id', $request->matriz)
+            ->where('id_matriz_captacao', $request->matriz)
             ->get()
             ->map(fn($c) => [
                 'id' => $c->id,
@@ -26,7 +26,7 @@ class CursoMatrizCaptacaoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'matriz_captacao_id' => 'required|exists:matriz_captacao,id',
+            'id_matriz_captacao' => 'required|exists:matriz_captacao,id',
             'id_curso' => 'required|exists:cursos,id',
             'status' => 'required|in:Ativo,Inativo',
             'modalidade' => 'required|in:Presencial,EaD',
