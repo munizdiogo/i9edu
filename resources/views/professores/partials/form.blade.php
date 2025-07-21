@@ -2,10 +2,10 @@
     <div class="card-body">
         <div class="form-group">
             <label>Funcionário*</label>
-            <select name="funcionario_id" class="form-control select2bs4" required>
+            <select name="id_funcionario" class="form-control select2bs4" required>
                 <option value=""></option>
                 @foreach($funcionarios as $id => $nome)
-                    <option value="{{ $id }}" {{ old('funcionario_id', $professor->funcionario_id ?? '') == $id ? 'selected' : '' }}>
+                    <option value="{{ $id }}" {{ old('id_funcionario', $professor->id_funcionario ?? '') == $id ? 'selected' : '' }}>
                         {{ $nome }}
                     </option>
                 @endforeach

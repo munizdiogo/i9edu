@@ -12,7 +12,7 @@ class Professor extends Model
 
     protected $fillable = [
         'id',
-        'funcionario_id',
+        'id_funcionario',
         'graduacao',
         'titulacao_principal',
         'tipo_docente',
@@ -40,7 +40,7 @@ class Professor extends Model
 
     public function funcionario()
     {
-        return $this->belongsTo(Funcionario::class, 'funcionario_id');
+        return $this->belongsTo(Funcionario::class, 'id_funcionario');
     }
     protected static function booted()
     {

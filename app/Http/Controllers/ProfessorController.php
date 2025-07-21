@@ -128,7 +128,7 @@ class ProfessorController extends Controller
     protected function validateData(Request $request, $origem = "create", $professor = null)
     {
         $rules = [
-            'funcionario_id' => 'required|exists:funcionarios,id',
+            'id_funcionario' => 'required|exists:funcionarios,id',
             'graduacao' => 'required|in:Extensão,Pós-Graduação,Graduação,Mestrado,' .
                 'Ensino Médio,Ensino Técnico de Nível Médio,' .
                 'Especializacao,mba,Doutorado,Curso Livre',

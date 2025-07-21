@@ -47,7 +47,7 @@ class Funcionario extends Model
     // relation with Professor, if necessário
     public function professor()
     {
-        return $this->hasOne(Professor::class, 'funcionario_id');
+        return $this->hasOne(Professor::class, 'id_funcionario');
     }
 
     protected static function booted()
