@@ -9,7 +9,7 @@ class Turma extends Model
     use HasFactory;
     protected $table = 'turmas';
     protected $fillable = [
-        'matriz_curricular_id',
+        'id_matriz_curricular',
         'periodo_letivo_id',
         'turma_base_id',
         'centro_custo_id',
@@ -50,7 +50,7 @@ class Turma extends Model
     // Relacionamentos
     public function matrizCurricular()
     {
-        return $this->belongsTo(MatrizCurricular::class, 'matriz_curricular_id');
+        return $this->belongsTo(MatrizCurricular::class, 'id_matriz_curricular');
     }
     public function periodoLetivo()
     {

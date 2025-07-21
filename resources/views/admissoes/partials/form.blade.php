@@ -21,10 +21,10 @@
             </div>
             <div class="form-group col-md-4">
                 <label>Matriz*</label>
-                <select name="matriz_curricular_id" class="form-control select2bs4" required>
+                <select name="id_matriz_curricular" class="form-control select2bs4" required>
                     <option value="">— selecione —</option>
                     @foreach($matrizes as $id => $nome)
-                        <option value="{{ $id }}" {{ old('matriz_curricular_id', $admissao->matriz_curricular_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_matriz_curricular', $admissao->id_matriz_curricular ?? '') == $id ? 'selected' : '' }}>
                             {{ $nome }}
                         </option>
                     @endforeach

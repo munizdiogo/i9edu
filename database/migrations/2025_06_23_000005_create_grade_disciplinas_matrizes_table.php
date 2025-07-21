@@ -8,7 +8,7 @@ return new class extends Migration {
     {
         Schema::create('grade_disciplinas_matrizes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('matriz_curricular_id')
+            $table->foreignId('id_matriz_curricular')
                 ->constrained('matrizes_curriculares')
                 ->onDelete('cascade');
             $table->foreignId('id_disciplina')

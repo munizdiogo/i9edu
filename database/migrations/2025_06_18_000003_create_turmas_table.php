@@ -10,7 +10,7 @@ class CreateTurmasTable extends Migration
         Schema::create('turmas', function (Blueprint $table) {
             $table->bigIncrements('id');
             // Relações principais
-            $table->unsignedBigInteger('matriz_curricular_id');
+            $table->unsignedBigInteger('id_matriz_curricular');
             $table->unsignedBigInteger('periodo_letivo_id');
             $table->unsignedBigInteger('turma_base_id')->nullable();
             $table->unsignedBigInteger('centro_custo_id')->nullable(); // polo
@@ -55,7 +55,7 @@ class CreateTurmasTable extends Migration
             $table->timestamps();
 
             // FKs
-            $table->foreign('matriz_curricular_id')->references('id')->on('matrizes_curriculares')->onDelete('set null');
+            $table->foreign('id_matriz_curricular')->references('id')->on('matrizes_curriculares')->onDelete('set null');
             $table->foreign('periodo_letivo_id')->references('id')->on('periodos_letivos')->onDelete('set null');
             // $table->foreign('turma_base_id')->references('id')->on('turmas')->onDelete('set null');
             $table->foreign('centro_custo_id')->references('id')->on('polos')->onDelete('set null');

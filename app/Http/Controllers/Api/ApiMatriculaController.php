@@ -18,7 +18,7 @@ class ApiMatriculaController
         $query = Matricula::with(['turma']);
         $disciplinas = $query
             ->join('turmas', 'id_turma', '=', 'turmas.id')
-            ->join('grade_disciplinas_matrizes', 'turmas.matriz_curricular_id', '=', 'grade_disciplinas_matrizes.matriz_curricular_id')
+            ->join('grade_disciplinas_matrizes', 'turmas.id_matriz_curricular', '=', 'grade_disciplinas_matrizes.id_matriz_curricular')
             ->join('disciplinas', 'grade_disciplinas_matrizes.id_disciplina', '=', 'disciplinas.id')
             ->get(['disciplinas.id', 'disciplinas.descricao']);
 

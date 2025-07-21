@@ -17,8 +17,8 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-4"><label>Matriz*</label>
-                <select name="matriz_curricular_id" class="form-control select2bs4"
-                    required>@foreach($matrizes as $matriz)<option value="{{$matriz->id}}" {{old('matriz_curricular_id', $turma->matriz_curricular_id ?? '') == $matriz->id ? 'selected' : ''}}>
+                <select name="id_matriz_curricular" class="form-control select2bs4"
+                    required>@foreach($matrizes as $matriz)<option value="{{$matriz->id}}" {{old('id_matriz_curricular', $turma->id_matriz_curricular ?? '') == $matriz->id ? 'selected' : ''}}>
                         {{$matriz->nome}}
                     </option>@endforeach</select>
             </div>

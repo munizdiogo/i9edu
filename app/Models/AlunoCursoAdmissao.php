@@ -13,7 +13,7 @@ class AlunoCursoAdmissao extends Model
 
     protected $fillable = [
         'id_aluno',
-        'matriz_curricular_id',
+        'id_matriz_curricular',
         'campus_id_polo',
         'periodo_letivo_ingresso_id',
         'turma_base_id',
@@ -47,7 +47,7 @@ class AlunoCursoAdmissao extends Model
     }
     public function matriz()
     {
-        return $this->belongsTo(MatrizCurricular::class, 'matriz_curricular_id');
+        return $this->belongsTo(MatrizCurricular::class, 'id_matriz_curricular');
     }
     public function polo()
     {

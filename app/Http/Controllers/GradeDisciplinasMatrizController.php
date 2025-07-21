@@ -100,13 +100,13 @@ class GradeDisciplinasMatrizController extends Controller
     {
         if ($origem == 'create') {
             $rules = [
-                'matriz_curricular_id' => 'required|exists:matrizes_curriculares,id',
+                'id_matriz_curricular' => 'required|exists:matrizes_curriculares,id',
                 'id_disciplina' => 'required|exists:disciplinas,id',
             ];
 
         } else {
             $rules = [
-                'matriz_curricular_id' => 'required|exists:matrizes_curriculares,id',
+                'id_matriz_curricular' => 'required|exists:matrizes_curriculares,id',
                 'id_disciplina' => 'required|exists:disciplinas,id',
             ];
 

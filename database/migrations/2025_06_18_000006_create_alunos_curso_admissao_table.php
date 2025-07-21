@@ -13,7 +13,7 @@ class CreateAlunosCursoAdmissaoTable extends Migration
 
             // vínculos
             $table->unsignedBigInteger('id_aluno');
-            $table->unsignedBigInteger('matriz_curricular_id');
+            $table->unsignedBigInteger('id_matriz_curricular');
             $table->unsignedBigInteger('campus_id_polo')->nullable();
             $table->unsignedBigInteger('periodo_letivo_ingresso_id')->nullable();
             $table->unsignedBigInteger('turma_base_id')->nullable();
@@ -51,7 +51,7 @@ class CreateAlunosCursoAdmissaoTable extends Migration
 
             // FKs
             $table->foreign('id_aluno')->references('id')->on('alunos')->onDelete('cascade');
-            $table->foreign('matriz_curricular_id')->references('id')->on('matrizes_curriculares');
+            $table->foreign('id_matriz_curricular')->references('id')->on('matrizes_curriculares');
             $table->foreign('campus_id_polo')->references('id')->on('polos');
             $table->foreign('periodo_letivo_ingresso_id')->references('id')->on('periodos_letivos');
             $table->foreign('turma_base_id')->references('id')->on('turmas');

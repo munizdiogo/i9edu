@@ -11,14 +11,14 @@ class GradeDisciplinasMatriz extends Model
     protected $table = 'grade_disciplinas_matrizes';
 
     protected $fillable = [
-        'matriz_curricular_id',
+        'id_matriz_curricular',
         'id_disciplina',
         'id_estrutura',
     ];
 
     public function matrizCurricular()
     {
-        return $this->belongsTo(MatrizCurricular::class, 'matriz_curricular_id');
+        return $this->belongsTo(MatrizCurricular::class, 'id_matriz_curricular');
     }
 
     public function disciplina()

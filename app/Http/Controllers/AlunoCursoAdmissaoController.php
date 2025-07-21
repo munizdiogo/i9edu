@@ -41,7 +41,7 @@ class AlunoCursoAdmissaoController extends Controller
                 $query->join('alunos', 'admissoes.id_aluno', '=', 'alunos.id')
                     ->orderBy('alunos.nome', $dir);
             } elseif ($col === 'matriz') {
-                $query->join('matrizes_curriculares', 'admissoes.matriz_curricular_id', '=', 'matrizes_curriculares.id')
+                $query->join('matrizes_curriculares', 'admissoes.id_matriz_curricular', '=', 'matrizes_curriculares.id')
                     ->orderBy('matrizes_curriculares.nome', $dir);
             } else {
                 $query->orderBy($col, $dir);
@@ -141,7 +141,7 @@ class AlunoCursoAdmissaoController extends Controller
     {
         $rules = [
             'id_aluno' => 'required|exists:alunos,id',
-            'matriz_curricular_id' => 'required|exists:matrizes_curriculares,id',
+            'id_matriz_curricular' => 'required|exists:matrizes_curriculares,id',
             // 'campus_id_polo' => 'nullable|exists:polos,id',
             // 'periodo_letivo_ingresso_id' => 'nullable|exists:periodos_letivos,id',
             // 'turma_base_id' => 'nullable|exists:turmas,id',
