@@ -12,7 +12,7 @@ class AlunoCursoAdmissao extends Model
     protected $table = 'alunos_curso_admissao';
 
     protected $fillable = [
-        'aluno_id',
+        'id_aluno',
         'matriz_curricular_id',
         'campus_polo_id',
         'periodo_letivo_ingresso_id',

@@ -38,7 +38,7 @@ class Aluno extends Model
 
     public function admissao()
     {
-        return $this->belongsTo(AlunoCursoAdmissao::class, 'id', 'aluno_id');
+        return $this->belongsTo(AlunoCursoAdmissao::class, 'id', 'id_aluno');
     }
     protected static function booted()
     {

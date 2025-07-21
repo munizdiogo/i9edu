@@ -10,10 +10,10 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Aluno*</label>
-                <select name="aluno_id" class="form-control select2bs4" required>
+                <select name="id_aluno" class="form-control select2bs4" required>
                     <option value="">— selecione —</option>
                     @foreach($alunos as $id => $nome)
-                        <option value="{{ $id }}" {{ old('aluno_id', $admissao->aluno_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_aluno', $admissao->id_aluno ?? '') == $id ? 'selected' : '' }}>
                             {{ $nome }}
                         </option>
                     @endforeach

@@ -12,7 +12,7 @@ class CreateAlunosCursoAdmissaoTable extends Migration
             $table->bigIncrements('id');
 
             // vínculos
-            $table->unsignedBigInteger('aluno_id');
+            $table->unsignedBigInteger('id_aluno');
             $table->unsignedBigInteger('matriz_curricular_id');
             $table->unsignedBigInteger('campus_polo_id')->nullable();
             $table->unsignedBigInteger('periodo_letivo_ingresso_id')->nullable();
@@ -50,7 +50,7 @@ class CreateAlunosCursoAdmissaoTable extends Migration
             $table->timestamps();
 
             // FKs
-            $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');
+            $table->foreign('id_aluno')->references('id')->on('alunos')->onDelete('cascade');
             $table->foreign('matriz_curricular_id')->references('id')->on('matrizes_curriculares');
             $table->foreign('campus_polo_id')->references('id')->on('polos');
             $table->foreign('periodo_letivo_ingresso_id')->references('id')->on('periodos_letivos');

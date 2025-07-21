@@ -82,7 +82,7 @@ class AlunoController extends Controller
     public function show(Aluno $aluno)
     {
         $perfis = Perfil::pluck('nome', 'id');
-        $admissoes = AlunoCursoAdmissao::where('aluno_id', $aluno->id)->get();
+        $admissoes = AlunoCursoAdmissao::where('id_aluno', $aluno->id)->get();
         return view('alunos.show', compact('aluno', 'perfis', 'admissoes'));
     }
 

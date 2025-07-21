@@ -38,7 +38,7 @@ class AlunoCursoAdmissaoController extends Controller
             $col = $cols[$order['column']];
             $dir = $order['dir'];
             if ($col === 'aluno') {
-                $query->join('alunos', 'admissoes.aluno_id', '=', 'alunos.id')
+                $query->join('alunos', 'admissoes.id_aluno', '=', 'alunos.id')
                     ->orderBy('alunos.nome', $dir);
             } elseif ($col === 'matriz') {
                 $query->join('matrizes_curriculares', 'admissoes.matriz_curricular_id', '=', 'matrizes_curriculares.id')
@@ -140,7 +140,7 @@ class AlunoCursoAdmissaoController extends Controller
     protected function validateData(Request $request, $id = null)
     {
         $rules = [
-            'aluno_id' => 'required|exists:alunos,id',
+            'id_aluno' => 'required|exists:alunos,id',
             'matriz_curricular_id' => 'required|exists:matrizes_curriculares,id',
             // 'campus_polo_id' => 'nullable|exists:polos,id',
             // 'periodo_letivo_ingresso_id' => 'nullable|exists:periodos_letivos,id',
