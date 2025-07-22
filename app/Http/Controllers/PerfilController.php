@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Perfil;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 
 class PerfilController extends Controller
 {
@@ -78,6 +80,12 @@ class PerfilController extends Controller
     {
         $data = $this->validateData($request);
 
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+
         // Tratamento de upload de foto
         if ($request->hasFile('photo')) {
             $data['photo_url'] = $request->file('photo')->store('perfis', 'public');
@@ -122,13 +130,21 @@ class PerfilController extends Controller
         return redirect()->route('perfis.index')->with('success', 'Perfil removido.');
     }
 
+
     protected function validateData(Request $request, $id = null)
     {
-        $uniqueEmail = 'unique:perfis,email' . ($id ? ",$id" : '');
+        $dados = $request->all();
+
+        if (isset($dados['cpf'])) {
+            $dados['cpf'] = preg_replace('/[^0-9]/', '', $dados['cpf']);
+        }
+        if (isset($dados['cnpj'])) {
+            $dados['cnpj'] = preg_replace('/[^0-9]/', '', $dados['cnpj']);
+        }
+
         $rules = [
             'tipo_cadastro' => 'required|in:fisica,juridica',
-            'email' => "required|email|$uniqueEmail",
-            // 'tipo_perfil' => 'required|in:aluno,docente,tecnico,parceiro,outro',
+            'email' => 'required|email|unique:perfis,email',
             'photo' => 'nullable|image|max:2048',
             'cep' => 'nullable|string',
             'logradouro' => 'nullable|string',
@@ -143,14 +159,14 @@ class PerfilController extends Controller
             'celular' => 'nullable|string',
             'fax' => 'nullable|string',
             'fone_comercial' => 'nullable|string',
+            'razao_social' => 'required|string|max:255',
         ];
 
-        if ($request->tipo_cadastro === 'fisica') {
-            $uniqueCpf = 'unique:perfis,cpf' . ($id ? ",$id" : '');
+        if ($dados['tipo_cadastro'] === 'fisica') {
             $rules += [
                 'nome' => 'required|string|max:255',
                 'sobrenome' => 'required|string|max:255',
-                'cpf' => "required|string|size:11|$uniqueCpf",
+                'cpf' => 'nullable|string|unique:perfis,cpf',
                 // 'data_nascimento' => 'required|date',
                 'rg' => 'nullable|string',
                 'orgao_expedidor' => 'nullable|string',
@@ -159,19 +175,19 @@ class PerfilController extends Controller
                 'sexo' => 'nullable|in:M,F',
                 'estado_civil' => 'nullable|in:solteiro,casado,divorciado',
             ];
-        } else {
-            $uniqueCnpj = 'unique:perfis,cnpj' . ($id ? ",$id" : '');
+        }
+        if ($dados['tipo_cadastro'] === 'juridica') {
             $rules += [
                 'razao_social' => 'required|string|max:255',
                 'nome_fantasia' => 'required|string|max:255',
-                'cnpj' => "required|string|size:14|$uniqueCnpj",
+                'cnpj' => 'required|string|unique:perfis,cnpj',
                 'inscricao_estadual' => 'nullable|string',
-                'inscricao_municipal' => 'nullable|string',
+                'inscricao_municipal' => 'nullable|string'
             ];
         }
 
+        return Validator::make($dados, $rules);
 
-        return $request->validate($rules);
     }
 
 }

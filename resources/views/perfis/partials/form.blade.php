@@ -121,8 +121,10 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Razão Social</label>
-                                <input type="text" name="razao_social" class="form-control"
+                                <input type="text" name="razao_social"
+                                    class="form-control  @error('razao_social') is-invalid @enderror"
                                     value="{{ old('razao_social', $perfil->razao_social ?? '') }}">
+                                @error('razao_social')<span class="invalid-feedback">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Nome Fantasia</label>
@@ -133,8 +135,10 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label>CNPJ</label>
-                                <input type="text" id="cnpj" name="cnpj" class="form-control"
+                                <input type="text" id="cnpj" name="cnpj"
+                                    class="form-control @error('cnpj') is-invalid @enderror"
                                     value="{{ old('cnpj', $perfil->cnpj ?? '') }}">
+                                @error('cnpj')<span class="invalid-feedback">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Inscr. Est.</label>
@@ -252,6 +256,7 @@
 </form>
 
 {{-- Script para toggle de campos PF/PJ --}}
+
 @section('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
@@ -310,4 +315,9 @@
             $('#fone').mask('(00) 0000-0000');
         });
     </script>
+
+
+    @if ($errors->any())
+        @include('components.alert-swal-erro-validacoes')
+    @endif
 @endsection

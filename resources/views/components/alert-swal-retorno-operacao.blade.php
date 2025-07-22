@@ -7,7 +7,7 @@
 </script>
 @if (session('success'))
     <script>
-        var mensagemCorrigida = decodeHtml('{{ session('success') }}');
+        var mensagemCorrigida = '{{ session('success') }}';
         Swal.fire({
             icon: 'success',
             title: 'Sucesso!',
@@ -19,11 +19,11 @@
 
 @if (session('error'))
     <script>
-        var mensagemCorrigida = decodeHtml('{{ session('error') }}');
+        var mensagemCorrigida = '{{ session('error') }}';
         Swal.fire({
             icon: 'error',
             title: 'Erro!',
-            text: mensagemCorrigida,
+            html: mensagemCorrigida,
             confirmButtonText: 'OK'
         });
     </script>
