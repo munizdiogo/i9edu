@@ -17,7 +17,7 @@ class MatrizCurricular extends Model
         'data_habilitacao',
         'status',
         'modalidade',
-        'inep_id',
+        'id_inep',
         'data_curriculo',
         'tipo_horas_atividades',
         'min_hr_aula',

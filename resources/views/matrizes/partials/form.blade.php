@@ -45,8 +45,8 @@
           <option value="Híbrido" {{old('modalidade', $matriz->modalidade ?? '') == 'Híbrido' ? 'selected' : ''}}>
             Híbrido</option>
         </select></div>
-      <div class="form-group col-md-3"><label>ID INEP</label><input type="text" name="inep_id"
-          value="{{ old('inep_id', $matriz->inep_id ?? '') }}" class="form-control"></div>
+      <div class="form-group col-md-3"><label>ID INEP</label><input type="text" name="id_inep"
+          value="{{ old('id_inep', $matriz->id_inep ?? '') }}" class="form-control"></div>
     </div>
     <div class="form-group"><label>Data do Currículo</label><input type="date" name="data_curriculo"
         value="{{ old('data_curriculo', $matriz->data_curriculo ?? '') }}" class="form-control"></div>

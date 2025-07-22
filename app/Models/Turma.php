@@ -34,7 +34,7 @@ class Turma extends Model
         'data_inicio',
         'data_termino',
         'formato_venda',
-        'inep_id',
+        'id_inep',
         'seguro_escolar',
         'fech_diario',
         'data_limite_matriculas',

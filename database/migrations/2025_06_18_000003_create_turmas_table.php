@@ -41,7 +41,7 @@ class CreateTurmasTable extends Migration
             $table->date('data_inicio')->nullable();
             $table->date('data_termino')->nullable();
             $table->string('formato_venda')->nullable();
-            $table->string('inep_id')->nullable();
+            $table->string('id_inep')->nullable();
             $table->string('seguro_escolar')->nullable();
             $table->date('fech_diario')->nullable();
             $table->date('data_limite_matriculas')->nullable();

@@ -137,7 +137,7 @@ class TurmaController extends Controller
             'data_inicio' => 'nullable|date',
             'data_termino' => 'nullable|date',
             'formato_venda' => 'nullable|string',
-            'inep_id' => 'nullable|string',
+            'id_inep' => 'nullable|string',
             'seguro_escolar' => 'nullable|string',
             'professor_responsavel_id' => 'nullable|exists:perfis,id',
             'fech_diario' => 'nullable|date',

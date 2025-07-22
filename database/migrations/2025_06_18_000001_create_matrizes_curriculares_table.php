@@ -18,7 +18,7 @@ class CreateMatrizesCurricularesTable extends Migration
             $table->date('data_habilitacao')->nullable();
             $table->enum('status', ['ATIVO', 'INATIVO'])->default('ATIVO');
             $table->enum('modalidade', ['Presencial', 'EaD', 'Híbrido'])->default('Presencial');
-            $table->string('inep_id')->nullable();
+            $table->string('id_inep')->nullable();
             $table->date('data_curriculo')->nullable();
             // Configuração de Horas
             $table->integer('tipo_horas_atividades')->default(0);

@@ -101,7 +101,7 @@ class MatrizCurricularController extends Controller
             'data_habilitacao' => 'nullable|date',
             'status' => 'required|in:ATIVO,INATIVO',
             'modalidade' => 'required|in:Presencial,EaD,Híbrido',
-            'inep_id' => 'nullable|string',
+            'id_inep' => 'nullable|string',
             'data_curriculo' => 'nullable|date',
             'tipo_horas_atividades' => 'integer',
             'min_hr_aula' => 'integer',

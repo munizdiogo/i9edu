@@ -118,8 +118,8 @@
                     class="form-control" value="{{ old('formato_venda', $turma->formato_venda ?? '') }}"></div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-3"><label>ID Inep</label><input type="text" name="inep_id"
-                    class="form-control" value="{{ old('inep_id', $turma->inep_id ?? '') }}"></div>
+            <div class="form-group col-md-3"><label>ID Inep</label><input type="text" name="id_inep"
+                    class="form-control" value="{{ old('id_inep', $turma->id_inep ?? '') }}"></div>
             <div class="form-group col-md-3"><label>Seguro Escolar</label><input type="text" name="seguro_escolar"
                     class="form-control" value="{{ old('seguro_escolar', $turma->seguro_escolar ?? '') }}"></div>
             <div class="form-group col-md-3 form-check"><label class="form-check-label"><input type="checkbox"
