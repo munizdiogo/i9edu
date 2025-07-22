@@ -53,7 +53,7 @@
                                         <th>{{$admissao->id ?? ''}}</th>
                                         <th>{{$admissao->ra ?? ''}} (RA)</th>
                                         <th>{{$admissao->id_matriz_curricular ?? ''}}</th>
-                                        <th>{{$admissao->forma_ingresso_id ?? ''}}</th>
+                                        <th>{{$admissao->id_forma_ingresso ?? ''}}</th>
                                         <th>{{$admissao->turno ?? ''}}</th>
                                         <th>{{$admissao->status ?? ''}}</th>
                                         <th>

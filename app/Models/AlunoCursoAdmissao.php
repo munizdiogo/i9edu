@@ -24,7 +24,7 @@ class AlunoCursoAdmissao extends Model
         'periodo_conclusao',
         'turno',
         'numero_matricula',
-        'forma_ingresso_id',
+        'id_forma_ingresso',
         'id_instituicao',
         'classificacao',
         'pontos',
