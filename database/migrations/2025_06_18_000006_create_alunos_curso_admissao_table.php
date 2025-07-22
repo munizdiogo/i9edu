@@ -29,7 +29,7 @@ class CreateAlunosCursoAdmissaoTable extends Migration
 
             // Process o seletivo
             $table->unsignedBigInteger('forma_ingresso_id')->nullable();
-            $table->unsignedBigInteger('instituicao_id')->nullable();
+            $table->unsignedBigInteger('id_instituicao')->nullable();
             $table->integer('classificacao')->nullable();
             $table->decimal('pontos', 5, 2)->nullable();
             $table->integer('vagas')->nullable();

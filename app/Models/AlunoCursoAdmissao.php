@@ -25,7 +25,7 @@ class AlunoCursoAdmissao extends Model
         'turno',
         'numero_matricula',
         'forma_ingresso_id',
-        'instituicao_id',
+        'id_instituicao',
         'classificacao',
         'pontos',
         'vagas',

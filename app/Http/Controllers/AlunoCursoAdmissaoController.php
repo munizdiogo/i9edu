@@ -153,7 +153,7 @@ class AlunoCursoAdmissaoController extends Controller
             'turno' => 'required|in:Matutino,Vespertino,Noturno,Integral,EaD',
             'numero_matricula' => 'nullable|string',
             'forma_ingresso_id' => 'nullable|exists:formas_ingresso,id',
-            'instituicao_id' => 'nullable|exists:instituicoes,id',
+            'id_instituicao' => 'nullable|exists:instituicoes,id',
             'classificacao' => 'nullable|integer',
             'pontos' => 'nullable|numeric',
             'vagas' => 'nullable|integer',
