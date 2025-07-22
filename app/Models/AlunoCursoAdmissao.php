@@ -16,7 +16,7 @@ class AlunoCursoAdmissao extends Model
         'id_matriz_curricular',
         'campus_id_polo',
         'periodo_letivo_ingresso_id',
-        'turma_base_id',
+        'id_turma_base',
         'id_edital_processo_seletivo',
         'data_ingresso',
         'data_inicio_curso',
@@ -59,7 +59,7 @@ class AlunoCursoAdmissao extends Model
     }
     public function turmaBase()
     {
-        return $this->belongsTo(Turma::class, 'turma_base_id');
+        return $this->belongsTo(Turma::class, 'id_turma_base');
     }
     public function edital()
     {

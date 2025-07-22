@@ -29,9 +29,9 @@
                 </option>@endforeach
                 </select>
             </div>
-            <div class="form-group col-md-4"><label>Turma Base</label><select name="turma_base_id" class="form-control">
+            <div class="form-group col-md-4"><label>Turma Base</label><select name="id_turma_base" class="form-control">
                     <option value="">--</option>@foreach($turmasBase ?? [] as $tb)<option value="{{$tb->id}}"
-                        {{old('turma_base_id', $turma->turma_base_id ?? '') == $tb->id ? 'selected' : ''}}>{{$tb->nome}}
+                        {{old('id_turma_base', $turma->id_turma_base ?? '') == $tb->id ? 'selected' : ''}}>{{$tb->nome}}
                     </option>@endforeach
                 </select></div>
         </div>
