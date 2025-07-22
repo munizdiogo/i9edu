@@ -25,7 +25,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Credenciais inválidas.',
+            'email' => 'Dados de acesso inválidos',
         ])->onlyInput('email');
     }
 

@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             PermissionRoleSeeder::class,
-            TransacoesSeeder::class,
+            UserSeeder::class,
         ]);
 
     }
