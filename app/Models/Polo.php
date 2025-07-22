@@ -33,7 +33,7 @@ class Polo extends Model
         'data_ativacao',
         'data_inativacao',
         'id_gestor',
-        'gestor_faturamento_id',
+        'id_gestor_faturamento',
         'supervisor_id',
         'data_contrato_inicio',
         'data_contrato_termino',
@@ -46,7 +46,7 @@ class Polo extends Model
     }
     public function gestorFaturamento()
     {
-        return $this->belongsTo(Perfil::class, 'gestor_faturamento_id');
+        return $this->belongsTo(Perfil::class, 'id_gestor_faturamento');
     }
     public function supervisor()
     {

@@ -178,11 +178,11 @@
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="gestor_faturamento_id">Gestor Faturamento</label>
-                    <select id="gestor_faturamento_id" name="gestor_faturamento_id" class="form-control select2bs4">
+                    <label for="id_gestor_faturamento">Gestor Faturamento</label>
+                    <select id="id_gestor_faturamento" name="id_gestor_faturamento" class="form-control select2bs4">
                         <option value="">-- selecione --</option>
                         @foreach($perfis as $perfil)
-                            <option value="{{ $perfil->id }}" {{ old('gestor_faturamento_id', $polo->gestor_faturamento_id ?? '') == $perfil->id ? 'selected' : '' }}>
+                            <option value="{{ $perfil->id }}" {{ old('id_gestor_faturamento', $polo->id_gestor_faturamento ?? '') == $perfil->id ? 'selected' : '' }}>
                                 {{ $perfil->nome }} {{ $perfil->sobrenome }}
                             </option>
                         @endforeach

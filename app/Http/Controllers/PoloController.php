@@ -126,7 +126,7 @@ class PoloController extends Controller
             'data_ativacao' => 'nullable|date',
             'data_inativacao' => 'nullable|date',
             'id_gestor' => 'nullable|exists:perfis,id',
-            'gestor_faturamento_id' => 'nullable|exists:perfis,id',
+            'id_gestor_faturamento' => 'nullable|exists:perfis,id',
             'supervisor_id' => 'nullable|exists:perfis,id',
             'data_contrato_inicio' => 'nullable|date',
             'data_contrato_termino' => 'nullable|date',
