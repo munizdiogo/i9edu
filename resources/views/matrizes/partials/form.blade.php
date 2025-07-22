@@ -17,10 +17,10 @@
       </option>@endforeach
         </select>
       </div>
-      <div class="form-group col-md-4"><label>Centro de Custo</label><select name="centro_custo_id"
+      <div class="form-group col-md-4"><label>Centro de Custo</label><select name="id_centro_custo"
           class="form-control">
           <option value="">-- selecione --</option>@foreach($polos as $p)<option value="{{$p->id}}"
-      {{old('centro_custo_id', $matriz->centro_custo_id ?? '') == $p->id ? 'selected' : ''}}>
+      {{old('id_centro_custo', $matriz->id_centro_custo ?? '') == $p->id ? 'selected' : ''}}>
       {{$p->nome}}
       </option>@endforeach
         </select></div>

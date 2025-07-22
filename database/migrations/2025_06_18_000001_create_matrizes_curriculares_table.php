@@ -13,7 +13,7 @@ class CreateMatrizesCurricularesTable extends Migration
             $table->string('nome');
             $table->string('nome_reduzido')->nullable();
             $table->unsignedBigInteger('id_curso');
-            $table->unsignedBigInteger('centro_custo_id')->nullable();
+            $table->unsignedBigInteger('id_centro_custo')->nullable();
             $table->string('habilitacao')->nullable();
             $table->date('data_habilitacao')->nullable();
             $table->enum('status', ['ATIVO', 'INATIVO'])->default('ATIVO');
@@ -53,7 +53,7 @@ class CreateMatrizesCurricularesTable extends Migration
 
             // FKs
             $table->foreign('id_curso')->references('id')->on('cursos')->onDelete('cascade');
-            $table->foreign('centro_custo_id')->references('id')->on('polos')->onDelete('set null');
+            $table->foreign('id_centro_custo')->references('id')->on('polos')->onDelete('set null');
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });

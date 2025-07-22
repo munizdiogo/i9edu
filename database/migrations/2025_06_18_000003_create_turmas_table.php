@@ -13,7 +13,7 @@ class CreateTurmasTable extends Migration
             $table->unsignedBigInteger('id_matriz_curricular');
             $table->unsignedBigInteger('id_periodo_letivo');
             $table->unsignedBigInteger('turma_base_id')->nullable();
-            $table->unsignedBigInteger('centro_custo_id')->nullable(); // polo
+            $table->unsignedBigInteger('id_centro_custo')->nullable(); // polo
             $table->unsignedBigInteger('professor_responsavel_id')->nullable();
 
             // Dados principais
@@ -58,7 +58,7 @@ class CreateTurmasTable extends Migration
             $table->foreign('id_matriz_curricular')->references('id')->on('matrizes_curriculares')->onDelete('set null');
             $table->foreign('id_periodo_letivo')->references('id')->on('periodos_letivos')->onDelete('set null');
             // $table->foreign('turma_base_id')->references('id')->on('turmas')->onDelete('set null');
-            $table->foreign('centro_custo_id')->references('id')->on('polos')->onDelete('set null');
+            $table->foreign('id_centro_custo')->references('id')->on('polos')->onDelete('set null');
             $table->foreign('professor_responsavel_id')->references('id')->on('perfis')->onDelete('set null');
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();

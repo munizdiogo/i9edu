@@ -12,7 +12,7 @@ class MatrizCurricular extends Model
         'nome',
         'nome_reduzido',
         'id_curso',
-        'centro_custo_id',
+        'id_centro_custo',
         'habilitacao',
         'data_habilitacao',
         'status',
@@ -58,7 +58,7 @@ class MatrizCurricular extends Model
     }
     public function centroCusto()
     {
-        return $this->belongsTo(Polo::class, 'centro_custo_id');
+        return $this->belongsTo(Polo::class, 'id_centro_custo');
     }
 
     protected static function booted()

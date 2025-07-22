@@ -37,9 +37,9 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-4"><label>Centro de Custo</label>
-                <select name="centro_custo_id" class="form-control select2bs4">
+                <select name="id_centro_custo" class="form-control select2bs4">
                     <option value="">--</option>@foreach($polos as $p)<option value="{{$p->id}}"
-                        {{old('centro_custo_id', $turma->centro_custo_id ?? '') == $p->id ? 'selected' : ''}}>{{$p->nome}}
+                        {{old('id_centro_custo', $turma->id_centro_custo ?? '') == $p->id ? 'selected' : ''}}>{{$p->nome}}
                     </option>@endforeach
                 </select>
             </div>

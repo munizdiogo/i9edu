@@ -96,7 +96,7 @@ class MatrizCurricularController extends Controller
             'nome' => 'required|string',
             'nome_reduzido' => 'nullable|string',
             'id_curso' => 'required|exists:cursos,id',
-            'centro_custo_id' => 'nullable|exists:polos,id',
+            'id_centro_custo' => 'nullable|exists:polos,id',
             'habilitacao' => 'nullable|string',
             'data_habilitacao' => 'nullable|date',
             'status' => 'required|in:ATIVO,INATIVO',

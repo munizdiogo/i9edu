@@ -12,7 +12,7 @@ class Turma extends Model
         'id_matriz_curricular',
         'id_periodo_letivo',
         'turma_base_id',
-        'centro_custo_id',
+        'id_centro_custo',
         'professor_responsavel_id',
         'nome',
         'nome_reduzido',
@@ -62,7 +62,7 @@ class Turma extends Model
     }
     public function centroCusto()
     {
-        return $this->belongsTo(Polo::class, 'centro_custo_id');
+        return $this->belongsTo(Polo::class, 'id_centro_custo');
     }
     public function professorResponsavel()
     {
