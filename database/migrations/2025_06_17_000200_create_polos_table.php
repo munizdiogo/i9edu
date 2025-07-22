@@ -33,14 +33,14 @@ class CreatePolosTable extends Migration
             $table->date('data_inativacao')->nullable();
             $table->unsignedBigInteger('id_gestor')->nullable();
             $table->unsignedBigInteger('id_gestor_faturamento')->nullable();
-            $table->unsignedBigInteger('supervisor_id')->nullable();
+            $table->unsignedBigInteger('id_supervisor')->nullable();
             $table->date('data_contrato_inicio')->nullable();
             $table->date('data_contrato_termino')->nullable();
             $table->timestamps();
 
             $table->foreign('id_gestor')->references('id')->on('perfis')->onDelete('set null');
             $table->foreign('id_gestor_faturamento')->references('id')->on('perfis')->onDelete('set null');
-            $table->foreign('supervisor_id')->references('id')->on('perfis')->onDelete('set null');
+            $table->foreign('id_supervisor')->references('id')->on('perfis')->onDelete('set null');
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });

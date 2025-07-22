@@ -189,11 +189,11 @@
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="supervisor_id">Supervisor</label>
-                    <select id="supervisor_id" name="supervisor_id" class="form-control select2bs4">
+                    <label for="id_supervisor">Supervisor</label>
+                    <select id="id_supervisor" name="id_supervisor" class="form-control select2bs4">
                         <option value="">-- selecione --</option>
                         @foreach($perfis as $perfil)
-                            <option value="{{ $perfil->id }}" {{ old('supervisor_id', $polo->supervisor_id ?? '') == $perfil->id ? 'selected' : '' }}>
+                            <option value="{{ $perfil->id }}" {{ old('id_supervisor', $polo->id_supervisor ?? '') == $perfil->id ? 'selected' : '' }}>
                                 {{ $perfil->nome }} {{ $perfil->sobrenome }}
                             </option>
                         @endforeach

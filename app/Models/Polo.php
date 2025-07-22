@@ -34,7 +34,7 @@ class Polo extends Model
         'data_inativacao',
         'id_gestor',
         'id_gestor_faturamento',
-        'supervisor_id',
+        'id_supervisor',
         'data_contrato_inicio',
         'data_contrato_termino',
         'id_estrutura',
@@ -50,7 +50,7 @@ class Polo extends Model
     }
     public function supervisor()
     {
-        return $this->belongsTo(Perfil::class, 'supervisor_id');
+        return $this->belongsTo(Perfil::class, 'id_supervisor');
     }
 
     protected static function booted()
