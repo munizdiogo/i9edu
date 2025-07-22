@@ -43,10 +43,10 @@
                     </option>@endforeach
                 </select>
             </div>
-            <div class="form-group col-md-4"><label>Professor Resp.</label><select name="professor_responsavel_id"
+            <div class="form-group col-md-4"><label>Professor Resp.</label><select name="id_professor_responsavel_id"
                     class="form-control">
                     <option value="">--</option>@foreach($professores as $pr)<option value="{{$pr->id}}"
-                    {{old('professor_responsavel_id', $turma->professor_responsavel_id ?? '') == $pr->id ? 'selected' : ''}}>{{$pr->nome}} {{$pr->sobrenome}}</option>@endforeach
+                    {{old('id_professor_responsavel_id', $turma->id_professor_responsavel_id ?? '') == $pr->id ? 'selected' : ''}}>{{$pr->nome}} {{$pr->sobrenome}}</option>@endforeach
                 </select></div>
             <div class="form-group col-md-4"><label>Status</label><select name="status" class="form-control">
                     <option value="ATIVA" {{old('status', $turma->status ?? '') == 'ATIVA' ? 'selected' : ''}}>ATIVA

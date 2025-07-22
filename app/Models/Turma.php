@@ -13,7 +13,7 @@ class Turma extends Model
         'id_periodo_letivo',
         'id_turma_base',
         'id_centro_custo',
-        'professor_responsavel_id',
+        'id_professor_responsavel_id',
         'nome',
         'nome_reduzido',
         'descricao',
@@ -66,7 +66,7 @@ class Turma extends Model
     }
     public function professorResponsavel()
     {
-        return $this->belongsTo(Perfil::class, 'professor_responsavel_id');
+        return $this->belongsTo(Perfil::class, 'id_professor_responsavel_id');
     }
     protected static function booted()
     {
