@@ -15,7 +15,7 @@ class AlunoCursoAdmissao extends Model
         'id_aluno',
         'id_matriz_curricular',
         'campus_id_polo',
-        'periodo_letivo_ingresso_id',
+        'id_periodo_letivo_ingresso',
         'id_turma_base',
         'id_edital_processo_seletivo',
         'data_ingresso',
@@ -55,7 +55,7 @@ class AlunoCursoAdmissao extends Model
     }
     public function periodo()
     {
-        return $this->belongsTo(PeriodoLetivo::class, 'periodo_letivo_ingresso_id');
+        return $this->belongsTo(PeriodoLetivo::class, 'id_periodo_letivo_ingresso');
     }
     public function turmaBase()
     {
