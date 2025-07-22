@@ -18,7 +18,6 @@ class CreatePlanosPagamentoTable extends Migration
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();
 
-            $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
     }
 

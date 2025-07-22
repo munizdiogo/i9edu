@@ -55,8 +55,8 @@ class CreateTurmasTable extends Migration
             $table->timestamps();
 
             // FKs
-            $table->foreign('id_matriz_curricular')->references('id')->on('matrizes_curriculares')->onDelete('set null');
-            $table->foreign('id_periodo_letivo')->references('id')->on('periodos_letivos')->onDelete('set null');
+            $table->foreign('id_matriz_curricular')->references('id')->on('matrizes_curriculares')->onDelete('cascade');
+            $table->foreign('id_periodo_letivo')->references('id')->on('periodos_letivos')->onDelete('cascade');
             // $table->foreign('id_turma_base')->references('id')->on('turmas')->onDelete('set null');
             $table->foreign('id_centro_custo')->references('id')->on('polos')->onDelete('set null');
             $table->foreign('id_professor_responsavel')->references('id')->on('perfis')->onDelete('set null');
