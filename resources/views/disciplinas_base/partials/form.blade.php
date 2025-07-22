@@ -114,10 +114,10 @@
     <div class="form-row">
       <div class="form-group col-md-4">
         <label>Área Conhecimento (Avaliação)</label>
-        <select name="area_avaliacao_id" class="form-control select2bs4">
+        <select name="id_area_avaliacao" class="form-control select2bs4">
           <option value=""></option>
           @foreach($areas as $id=>$nome)
-            <option value="{{ $id }}" {{ old('area_avaliacao_id',$disciplinas_base->area_avaliacao_id??'')==$id?'selected':'' }}>
+            <option value="{{ $id }}" {{ old('id_area_avaliacao',$disciplinas_base->id_area_avaliacao??'')==$id?'selected':'' }}>
               {{ $nome }}
             </option>
           @endforeach

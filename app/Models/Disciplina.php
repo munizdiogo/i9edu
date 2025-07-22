@@ -34,7 +34,7 @@ class Disciplina extends Model
         'tipo_avaliacao',
         'obrigatoriedade',
         'complementaridade',
-        'area_avaliacao_id',
+        'id_area_avaliacao',
         'disciplina_tcc',
         'nao_apresentar_nota',
         'reprovar_por_frequencia',
@@ -74,7 +74,7 @@ class Disciplina extends Model
 
     public function areaAvaliacao()
     {
-        return $this->belongsTo(AreaConhecimento::class, 'area_avaliacao_id');
+        return $this->belongsTo(AreaConhecimento::class, 'id_area_avaliacao');
     }
 
     // public function matriculas()

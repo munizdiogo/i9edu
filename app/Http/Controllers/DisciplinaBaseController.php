@@ -118,7 +118,7 @@ class DisciplinaBaseController extends Controller
                 'tipo_avaliacao' => 'required|string',
                 'obrigatoriedade' => 'in:Obrigatória,Optativa',
                 'complementaridade' => 'in:Não Informado,Sim,Não',
-                'area_avaliacao_id' => 'nullable|exists:area_conhecimentos,id',
+                'id_area_avaliacao' => 'nullable|exists:area_conhecimentos,id',
             ];
 
         } else {
@@ -143,7 +143,7 @@ class DisciplinaBaseController extends Controller
                 'tipo_avaliacao' => 'required|string',
                 'obrigatoriedade' => 'in:Obrigatória,Optativa',
                 'complementaridade' => 'in:Não Informado,Sim,Não',
-                'area_avaliacao_id' => 'nullable|exists:area_conhecimentos,id',
+                'id_area_avaliacao' => 'nullable|exists:area_conhecimentos,id',
             ];
 
         }

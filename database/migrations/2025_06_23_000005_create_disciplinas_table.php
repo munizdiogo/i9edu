@@ -37,7 +37,7 @@ return new class extends Migration {
             $table->string('tipo_avaliacao')->default('Disciplina');
             $table->enum('obrigatoriedade', ['Obrigatória', 'Optativa'])->default('Obrigatória');
             $table->enum('complementaridade', ['Não Informado', 'Sim', 'Não'])->default('Não Informado');
-            $table->foreignId('area_avaliacao_id')->nullable()->constrained('area_conhecimentos')->nullOnDelete();
+            $table->foreignId('id_area_avaliacao')->nullable()->constrained('area_conhecimentos')->nullOnDelete();
             // opções extras
             $table->boolean('disciplina_tcc')->default(false);
             $table->boolean('nao_apresentar_nota')->default(false);

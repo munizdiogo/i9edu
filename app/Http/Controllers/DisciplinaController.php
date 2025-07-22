@@ -134,7 +134,7 @@ class DisciplinaController extends Controller
             'tipo_avaliacao' => 'string',
             'obrigatoriedade' => 'in:Obrigatória,Optativa',
             'complementaridade' => 'in:Não Informado,Sim,Não',
-            'area_avaliacao_id' => 'nullable|exists:area_conhecimentos,id',
+            'id_area_avaliacao' => 'nullable|exists:area_conhecimentos,id',
             'disciplina_tcc' => 'boolean',
             // 'nao_apresentar_nota' => 'boolean',
             // 'reprovar_por_frequencia' => 'boolean',

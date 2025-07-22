@@ -30,7 +30,7 @@ class DisciplinaBase extends Model
         'tipo_avaliacao',
         'obrigatoriedade',
         'complementaridade',
-        'area_avaliacao_id',
+        'id_area_avaliacao',
         'id_estrutura',
     ];
 
@@ -41,7 +41,7 @@ class DisciplinaBase extends Model
 
     public function areaAvaliacao()
     {
-        return $this->belongsTo(AreaConhecimento::class, 'area_avaliacao_id');
+        return $this->belongsTo(AreaConhecimento::class, 'id_area_avaliacao');
     }
 
     protected static function booted()
