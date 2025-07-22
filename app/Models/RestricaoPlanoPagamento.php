@@ -23,15 +23,15 @@ class RestricaoPlanoPagamento extends Model
 
     public function cursos()
     {
-        return $this->belongsToMany(Curso::class, 'restricao_plano_pagamento_curso', 'restricao_id', 'id_curso');
+        return $this->belongsToMany(Curso::class, 'restricao_plano_pagamento_curso', 'id_restricao', 'id_curso');
     }
     public function polos()
     {
-        return $this->belongsToMany(Polo::class, 'restricao_plano_pagamento_polo', 'restricao_id', 'id_polo');
+        return $this->belongsToMany(Polo::class, 'restricao_plano_pagamento_polo', 'id_restricao', 'id_polo');
     }
     public function turmas()
     {
-        return $this->belongsToMany(Turma::class, 'restricao_plano_pagamento_turma', 'restricao_id', 'id_turma');
+        return $this->belongsToMany(Turma::class, 'restricao_plano_pagamento_turma', 'id_restricao', 'id_turma');
     }
     protected static function booted()
     {

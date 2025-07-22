@@ -10,15 +10,15 @@ class CreateRestricaoPlanoPagamentoCursoTable extends Migration
     {
         Schema::create('restricao_plano_pagamento_curso', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('restricao_id');
+            $table->unsignedBigInteger('id_restricao');
             $table->unsignedBigInteger('id_curso');
             $table->timestamps();
 
-            $table->foreign('restricao_id')
+            $table->foreign('id_restricao')
                 ->references('id')->on('restricoes_plano_pagamento')->onDelete('cascade');
             $table->foreign('id_curso')
                 ->references('id')->on('cursos')->onDelete('cascade');
-            $table->unique(['restricao_id', 'id_curso']);
+            $table->unique(['id_restricao', 'id_curso']);
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });
