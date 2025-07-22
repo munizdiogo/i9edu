@@ -13,12 +13,12 @@ class RequerimentoDepartamento extends Model
         'status',
         'tipo',
         'id_estrutura',
-        // 'usuario_id'
+        // 'id_usuario'
     ];
 
     public function usuario()
     {
-        return $this->belongsTo(User::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'id_usuario');
     }
     protected static function booted()
     {
