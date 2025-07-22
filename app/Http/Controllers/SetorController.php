@@ -101,7 +101,7 @@ class SetorController extends Controller
                 'descricao' => 'required|string',
                 'tipo' => 'required|in:NENHUM,ADMINISTRATIVO,ACADEMICO,FINANCEIRO,TI,OUTRO',
                 'email' => 'nullable|email',
-                'funcionario_responsavel_id' => 'nullable|exists:funcionarios,id',
+                'id_funcionario_responsavel' => 'nullable|exists:funcionarios,id',
                 'status' => 'required|in:ATIVO,INATIVO',
             ];
 
@@ -111,7 +111,7 @@ class SetorController extends Controller
                 'descricao' => 'required|string',
                 'tipo' => 'required|in:NENHUM,ADMINISTRATIVO,ACADEMICO,FINANCEIRO,TI,OUTRO',
                 'email' => 'nullable|email',
-                'funcionario_responsavel_id' => 'nullable|exists:funcionarios,id',
+                'id_funcionario_responsavel' => 'nullable|exists:funcionarios,id',
                 'status' => 'required|in:ATIVO,INATIVO'
             ];
 

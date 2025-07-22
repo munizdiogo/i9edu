@@ -19,7 +19,7 @@ return new class extends Migration {
                 'OUTRO'
             ])->default('NENHUM');
             $table->string('email')->nullable();
-            $table->foreignId('funcionario_responsavel_id')
+            $table->foreignId('id_funcionario_responsavel')
                 ->nullable()
                 ->nullOnDelete();
             $table->enum('status', ['ATIVO', 'INATIVO'])->default('ATIVO');

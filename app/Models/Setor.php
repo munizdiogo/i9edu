@@ -15,14 +15,14 @@ class Setor extends Model
         'descricao',
         'tipo',
         'email',
-        'funcionario_responsavel_id',
+        'id_funcionario_responsavel',
         'status',
         'id_estrutura',
     ];
 
     public function responsavel()
     {
-        return $this->belongsTo(Funcionario::class, 'funcionario_responsavel_id');
+        return $this->belongsTo(Funcionario::class, 'id_funcionario_responsavel');
     }
     protected static function booted()
     {
