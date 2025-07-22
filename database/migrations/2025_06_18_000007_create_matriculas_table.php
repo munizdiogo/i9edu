@@ -10,7 +10,7 @@ class CreateMatriculasTable extends Migration
     {
         Schema::create('matriculas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('aluno_curso_admissao_id');
+            $table->unsignedBigInteger('id_aluno_curso_admissao');
             $table->unsignedBigInteger('id_turma');
             $table->unsignedBigInteger('id_contrato')->nullable();
             $table->date('data_matricula');
@@ -28,7 +28,7 @@ class CreateMatriculasTable extends Migration
             $table->timestamps();
 
             // chaves estrangeiras
-            $table->foreign('aluno_curso_admissao_id')
+            $table->foreign('id_aluno_curso_admissao')
                 ->references('id')->on('alunos_curso_admissao')
                 ->onDelete('cascade');
             $table->foreign('id_turma')

@@ -6,12 +6,12 @@
     <div class="form-row">
       <div class="form-group col-md-4">
         <label>Admissão*</label>
-        <select name="aluno_curso_admissao_id"
+        <select name="id_aluno_curso_admissao"
                 class="form-control select2bs4" required>
           <option value="">— selecione —</option>
           @foreach($admissoes as $id => $nome)
             <option value="{{ $id }}"
-              {{ old('aluno_curso_admissao_id',$matricula->aluno_curso_admissao_id??'')==$id?'selected':'' }}>
+              {{ old('id_aluno_curso_admissao',$matricula->id_aluno_curso_admissao??'')==$id?'selected':'' }}>
               {{ $nome }}
             </option>
           @endforeach

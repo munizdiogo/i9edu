@@ -10,7 +10,7 @@ class Matricula extends Model
     use HasFactory;
 
     protected $fillable = [
-        'aluno_curso_admissao_id',
+        'id_aluno_curso_admissao',
         'id_turma',
         'id_contrato',
         'data_matricula',
@@ -21,7 +21,7 @@ class Matricula extends Model
 
     public function admissao()
     {
-        return $this->belongsTo(AlunoCursoAdmissao::class, 'aluno_curso_admissao_id');
+        return $this->belongsTo(AlunoCursoAdmissao::class, 'id_aluno_curso_admissao');
     }
 
     public function turma()

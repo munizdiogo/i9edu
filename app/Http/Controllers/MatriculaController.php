@@ -32,7 +32,7 @@ class MatriculaController extends Controller
             $col = $cols[$order['column']];
             $dir = $order['dir'];
             if ($col === 'aluno') {
-                $query->join('alunos_curso_admissao', 'matriculas.aluno_curso_admissao_id', '=', 'alunos_curso_admissao.id')
+                $query->join('alunos_curso_admissao', 'matriculas.id_aluno_curso_admissao', '=', 'alunos_curso_admissao.id')
                     ->join('alunos', 'alunos_curso_admissao.id_aluno', '=', 'alunos.id')
                     ->join('perfis', 'alunos.id_perfil', '=', 'perfis.id')
                     ->orderBy('perfis.nome', $dir);
@@ -80,7 +80,7 @@ class MatriculaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'aluno_curso_admissao_id' => 'required|exists:alunos_curso_admissao,id',
+            'id_aluno_curso_admissao' => 'required|exists:alunos_curso_admissao,id',
             'id_turma' => 'required|exists:turmas,id',
             'id_contrato' => 'nullable|integer',
             'data_matricula' => 'required|date',
@@ -116,7 +116,7 @@ class MatriculaController extends Controller
     public function update(Request $request, Matricula $matricula)
     {
         $data = $request->validate([
-            'aluno_curso_admissao_id' => 'required|exists:alunos_curso_admissao,id',
+            'id_aluno_curso_admissao' => 'required|exists:alunos_curso_admissao,id',
             'id_turma' => 'required|exists:turmas,id',
             'id_contrato' => 'nullable|integer',
             'data_matricula' => 'required|date',
