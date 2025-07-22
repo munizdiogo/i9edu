@@ -9,7 +9,7 @@ class ParcelaPlanoPagamentoController extends Controller
 {
     public function data(Request $request, PlanoPagamento $plano)
     {
-        $q = ParcelaPlanoPagamento::where('plano_pagamento_id', $plano->id);
+        $q = ParcelaPlanoPagamento::where('id_plano_pagamento', $plano->id);
         $total = $q->count();
 
         if ($search = $request->input('search.value')) {
@@ -42,7 +42,7 @@ class ParcelaPlanoPagamentoController extends Controller
     {
         $data = $this->validateData($request, "create");
         $data['id_estrutura'] = session('id_estrutura');
-        $data['plano_pagamento_id'] = $plano->id;
+        $data['id_plano_pagamento'] = $plano->id;
         ParcelaPlanoPagamento::create($data);
         return back();
     }

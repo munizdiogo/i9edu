@@ -16,7 +16,7 @@ class PlanoPagamento extends Model
 
     public function parcelas()
     {
-        return $this->hasMany(ParcelaPlanoPagamento::class, 'plano_pagamento_id');
+        return $this->hasMany(ParcelaPlanoPagamento::class, 'id_plano_pagamento');
     }
 
     public function cursos()

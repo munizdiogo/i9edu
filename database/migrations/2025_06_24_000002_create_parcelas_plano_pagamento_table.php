@@ -10,7 +10,7 @@ class CreateParcelasPlanoPagamentoTable extends Migration
     {
         Schema::create('parcelas_plano_pagamento', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('plano_pagamento_id');
+            $table->unsignedBigInteger('id_plano_pagamento');
             $table->string('descricao');
             $table->string('quantidade_parcelas');
             $table->decimal('valor', 10, 2);
@@ -18,7 +18,7 @@ class CreateParcelasPlanoPagamentoTable extends Migration
             $table->enum('tipo_parcela', ['NORMAL', 'MATRICULA', 'DESCONTO'])->default('NORMAL');
             $table->timestamps();
 
-            $table->foreign('plano_pagamento_id')
+            $table->foreign('id_plano_pagamento')
                 ->references('id')->on('planos_pagamento')
                 ->onDelete('cascade');
 

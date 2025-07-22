@@ -10,11 +10,11 @@ class CreateCursoPlanoPagamentoTable extends Migration
     public function up()
     {
         Schema::create('curso_plano_pagamento', function (Blueprint $table) {
-            $table->unsignedBigInteger('plano_pagamento_id');
+            $table->unsignedBigInteger('id_plano_pagamento');
             $table->unsignedBigInteger('id_curso');
-            $table->primary(['plano_pagamento_id', 'id_curso']);
+            $table->primary(['id_plano_pagamento', 'id_curso']);
 
-            $table->foreign('plano_pagamento_id')
+            $table->foreign('id_plano_pagamento')
                 ->references('id')->on('planos_pagamento')
                 ->onDelete('cascade');
             $table->foreign('id_curso')
