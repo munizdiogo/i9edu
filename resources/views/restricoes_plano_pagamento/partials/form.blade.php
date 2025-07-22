@@ -15,7 +15,7 @@
             Cursos
             <input type="checkbox" id="select-all-cursos" class="ml-2"> Selecionar todos
         </label>
-        <select name="curso_ids[]" id="cursos-select" class="form-control select2" multiple>
+        <select name="id_cursos[]" id="cursos-select" class="form-control select2" multiple>
             @foreach($cursos as $curso)
                 <option value="{{ $curso->id }}" {{ (isset($restricao) && $restricao->cursos->contains($curso->id)) ? 'selected' : '' }}>
                     {{ $curso->nome }}
@@ -29,7 +29,7 @@
             Polos
             <input type="checkbox" id="select-all-polos" class="ml-2"> Selecionar todos
         </label>
-        <select name="polo_ids[]" id="polos-select" class="form-control select2" multiple>
+        <select name="id_polos[]" id="polos-select" class="form-control select2" multiple>
             @foreach($polos as $polo)
                 <option value="{{ $polo->id }}" {{ (isset($restricao) && $restricao->polos->contains($polo->id)) ? 'selected' : '' }}>
                     {{ $polo->nome }}
@@ -43,7 +43,7 @@
             Turmas
             <input type="checkbox" id="select-all-turmas" class="ml-2"> Selecionar todos
         </label>
-        <select name="turma_ids[]" id="turmas-select" class="form-control select2" multiple>
+        <select name="id_turmas[]" id="turmas-select" class="form-control select2" multiple>
             @foreach($turmas as $turma)
                 <option value="{{ $turma->id }}" {{ (isset($restricao) && $restricao->turmas->contains($turma->id)) ? 'selected' : '' }}>
                     {{ $turma->nome }}

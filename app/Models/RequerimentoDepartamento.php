@@ -13,18 +13,18 @@ class RequerimentoDepartamento extends Model
         'status',
         'tipo',
         'id_estrutura',
-        // 'usuario_id'
+        // 'id_usuario'
     ];
 
     public function usuario()
     {
-        return $this->belongsTo(User::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'id_usuario');
     }
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

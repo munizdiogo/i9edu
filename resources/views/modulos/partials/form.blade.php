@@ -31,10 +31,10 @@
         </div>
         <div class="form-group">
             <label>Próximo Módulo</label>
-            <select name="prox_modulo_id" class="form-control select2bs4">
+            <select name="prox_id_modulo" class="form-control select2bs4">
                 <option value=""></option>
                 @foreach($proximos as $id => $desc)
-                    <option value="{{ $id }}" {{ old('prox_modulo_id', $modulo->prox_modulo_id ?? '') == $id ? 'selected' : '' }}>
+                    <option value="{{ $id }}" {{ old('prox_id_modulo', $modulo->prox_id_modulo ?? '') == $id ? 'selected' : '' }}>
                         {{ $desc }}
                     </option>
                 @endforeach

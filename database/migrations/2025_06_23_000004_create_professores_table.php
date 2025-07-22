@@ -9,7 +9,7 @@ return new class extends Migration {
         Schema::create('professores', function (Blueprint $table) {
             $table->id();
             // FK para Funcionário
-            $table->foreignId('funcionario_id')->constrained('funcionarios')->onDelete('cascade');
+            $table->foreignId('id_funcionario')->constrained('funcionarios')->onDelete('cascade');
             // enum Graduação
             $table->enum('graduacao', [
                 'Extensão',

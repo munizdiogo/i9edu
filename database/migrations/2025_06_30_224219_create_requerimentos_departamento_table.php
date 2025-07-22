@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('requerimentos_departamentos', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId(column: 'usuario_id')->constrained('users')->onDelete('cascade');
+            // $table->foreignId(column: 'id_usuario')->constrained('users')->onDelete('cascade');
             $table->string('descricao');
             $table->enum('status', ['Ativo', 'Inativo'])->default('Ativo');
             $table->enum('tipo', ['Aluno', 'Polo', 'Funcionario']);

@@ -12,20 +12,20 @@ class AlunoCursoAdmissao extends Model
     protected $table = 'alunos_curso_admissao';
 
     protected $fillable = [
-        'aluno_id',
-        'matriz_curricular_id',
-        'campus_polo_id',
-        'periodo_letivo_ingresso_id',
-        'turma_base_id',
-        'edital_processo_seletivo_id',
+        'id_aluno',
+        'id_matriz_curricular',
+        'campus_id_polo',
+        'id_periodo_letivo_ingresso',
+        'id_turma_base',
+        'id_edital_processo_seletivo',
         'data_ingresso',
         'data_inicio_curso',
         'data_conclusao',
         'periodo_conclusao',
         'turno',
         'numero_matricula',
-        'forma_ingresso_id',
-        'instituicao_id',
+        'id_forma_ingresso',
+        'id_instituicao',
         'classificacao',
         'pontos',
         'vagas',
@@ -36,7 +36,7 @@ class AlunoCursoAdmissao extends Model
         'observacao',
         'data_estagio',
         'horas_estagio',
-        'instituicao_transferencia_id',
+        'id_instituicao_transferencia',
         'status',
         'id_estrutura',
     ];
@@ -47,30 +47,30 @@ class AlunoCursoAdmissao extends Model
     }
     public function matriz()
     {
-        return $this->belongsTo(MatrizCurricular::class, 'matriz_curricular_id');
+        return $this->belongsTo(MatrizCurricular::class, 'id_matriz_curricular');
     }
     public function polo()
     {
-        return $this->belongsTo(Polo::class, 'campus_polo_id');
+        return $this->belongsTo(Polo::class, 'campus_id_polo');
     }
     public function periodo()
     {
-        return $this->belongsTo(PeriodoLetivo::class, 'periodo_letivo_ingresso_id');
+        return $this->belongsTo(PeriodoLetivo::class, 'id_periodo_letivo_ingresso');
     }
     public function turmaBase()
     {
-        return $this->belongsTo(Turma::class, 'turma_base_id');
+        return $this->belongsTo(Turma::class, 'id_turma_base');
     }
     public function edital()
     {
-        return $this->belongsTo(EditalProcessoSeletivo::class, 'edital_processo_seletivo_id');
+        return $this->belongsTo(EditalProcessoSeletivo::class, 'id_edital_processo_seletivo');
     }
     // outros relacionamentos: formaIngresso, instituicao, instituicaoTransferencia...
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

@@ -16,21 +16,21 @@ class PlanoConta extends Model
         'operacao',
         'status',
         'tipo_conta',
-        'grupo_conta_id',
+        'id_grupo_conta',
         'natureza',
         'id_estrutura',
     ];
 
     public function grupoConta()
     {
-        return $this->belongsTo(GrupoConta::class, 'grupo_conta_id');
+        return $this->belongsTo(GrupoConta::class, 'id_grupo_conta');
     }
 
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

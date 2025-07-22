@@ -9,16 +9,16 @@ class Disciplina extends Model
     use HasFactory;
 
     protected $fillable = [
-        'disciplina_base_id',
-        'etapa_periodo_letivo_id',
-        'modulo_id',
+        'id_disciplina_base',
+        'etapa_id_periodo_letivo',
+        'id_modulo',
         'descricao',
         'nome_reduzido',
         'modalidade',
-        'professor_padrao_id',
+        'id_professor_padrao',
         'codigo_mec',
         'codigo_inep',
-        'area_conhecimento_id',
+        'id_area_conhecimento',
         'ch_padrao',
         'ch_cobrada',
         'ch_teorica',
@@ -34,7 +34,7 @@ class Disciplina extends Model
         'tipo_avaliacao',
         'obrigatoriedade',
         'complementaridade',
-        'area_avaliacao_id',
+        'id_area_avaliacao',
         'disciplina_tcc',
         'nao_apresentar_nota',
         'reprovar_por_frequencia',
@@ -49,32 +49,32 @@ class Disciplina extends Model
 
     public function base()
     {
-        return $this->belongsTo(DisciplinaBase::class, 'disciplina_base_id');
+        return $this->belongsTo(DisciplinaBase::class, 'id_disciplina_base');
     }
 
     public function etapa()
     {
-        return $this->belongsTo(EtapaPeriodoLetivo::class, 'etapa_periodo_letivo_id');
+        return $this->belongsTo(EtapaPeriodoLetivo::class, 'etapa_id_periodo_letivo');
     }
 
     public function modulo()
     {
-        return $this->belongsTo(Modulo::class, 'modulo_id');
+        return $this->belongsTo(Modulo::class, 'id_modulo');
     }
 
     public function professor()
     {
-        return $this->belongsTo(Professor::class, 'professor_padrao_id');
+        return $this->belongsTo(Professor::class, 'id_professor_padrao');
     }
 
     public function areaConhecimento()
     {
-        return $this->belongsTo(AreaConhecimento::class, 'area_conhecimento_id');
+        return $this->belongsTo(AreaConhecimento::class, 'id_area_conhecimento');
     }
 
     public function areaAvaliacao()
     {
-        return $this->belongsTo(AreaConhecimento::class, 'area_avaliacao_id');
+        return $this->belongsTo(AreaConhecimento::class, 'id_area_avaliacao');
     }
 
     // public function matriculas()
@@ -85,8 +85,8 @@ class Disciplina extends Model
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

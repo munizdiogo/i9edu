@@ -31,16 +31,16 @@ class CreatePolosTable extends Migration
             $table->boolean('nao_apresentar_atendimento')->default(false);
             $table->date('data_ativacao')->nullable();
             $table->date('data_inativacao')->nullable();
-            $table->unsignedBigInteger('gestor_id')->nullable();
-            $table->unsignedBigInteger('gestor_faturamento_id')->nullable();
-            $table->unsignedBigInteger('supervisor_id')->nullable();
+            $table->unsignedBigInteger('id_gestor')->nullable();
+            $table->unsignedBigInteger('id_gestor_faturamento')->nullable();
+            $table->unsignedBigInteger('id_supervisor')->nullable();
             $table->date('data_contrato_inicio')->nullable();
             $table->date('data_contrato_termino')->nullable();
             $table->timestamps();
 
-            $table->foreign('gestor_id')->references('id')->on('perfis')->onDelete('set null');
-            $table->foreign('gestor_faturamento_id')->references('id')->on('perfis')->onDelete('set null');
-            $table->foreign('supervisor_id')->references('id')->on('perfis')->onDelete('set null');
+            $table->foreign('id_gestor')->references('id')->on('perfis')->onDelete('set null');
+            $table->foreign('id_gestor_faturamento')->references('id')->on('perfis')->onDelete('set null');
+            $table->foreign('id_supervisor')->references('id')->on('perfis')->onDelete('set null');
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });

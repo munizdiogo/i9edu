@@ -10,11 +10,11 @@ class CreateTurmasTable extends Migration
         Schema::create('turmas', function (Blueprint $table) {
             $table->bigIncrements('id');
             // Relações principais
-            $table->unsignedBigInteger('matriz_curricular_id');
-            $table->unsignedBigInteger('periodo_letivo_id');
-            $table->unsignedBigInteger('turma_base_id')->nullable();
-            $table->unsignedBigInteger('centro_custo_id')->nullable(); // polo
-            $table->unsignedBigInteger('professor_responsavel_id')->nullable();
+            $table->unsignedBigInteger('id_matriz_curricular');
+            $table->unsignedBigInteger('id_periodo_letivo');
+            $table->unsignedBigInteger('id_turma_base')->nullable();
+            $table->unsignedBigInteger('id_centro_custo')->nullable(); // polo
+            $table->unsignedBigInteger('id_professor_responsavel')->nullable();
 
             // Dados principais
             $table->string('nome');
@@ -41,7 +41,7 @@ class CreateTurmasTable extends Migration
             $table->date('data_inicio')->nullable();
             $table->date('data_termino')->nullable();
             $table->string('formato_venda')->nullable();
-            $table->string('inep_id')->nullable();
+            $table->string('id_inep')->nullable();
             $table->string('seguro_escolar')->nullable();
             $table->date('fech_diario')->nullable();
             $table->date('data_limite_matriculas')->nullable();
@@ -55,11 +55,11 @@ class CreateTurmasTable extends Migration
             $table->timestamps();
 
             // FKs
-            $table->foreign('matriz_curricular_id')->references('id')->on('matrizes_curriculares')->onDelete('set null');
-            $table->foreign('periodo_letivo_id')->references('id')->on('periodos_letivos')->onDelete('set null');
-            // $table->foreign('turma_base_id')->references('id')->on('turmas')->onDelete('set null');
-            $table->foreign('centro_custo_id')->references('id')->on('polos')->onDelete('set null');
-            $table->foreign('professor_responsavel_id')->references('id')->on('perfis')->onDelete('set null');
+            $table->foreign('id_matriz_curricular')->references('id')->on('matrizes_curriculares')->onDelete('set null');
+            $table->foreign('id_periodo_letivo')->references('id')->on('periodos_letivos')->onDelete('set null');
+            // $table->foreign('id_turma_base')->references('id')->on('turmas')->onDelete('set null');
+            $table->foreign('id_centro_custo')->references('id')->on('polos')->onDelete('set null');
+            $table->foreign('id_professor_responsavel')->references('id')->on('perfis')->onDelete('set null');
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });

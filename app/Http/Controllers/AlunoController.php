@@ -34,7 +34,7 @@ class AlunoController extends Controller
             $dir = $order['dir'];
 
             if ($col === 'nome') {
-                $query->join('perfis', 'alunos.perfil_id', '=', 'perfis.id')
+                $query->join('perfis', 'alunos.id_perfil', '=', 'perfis.id')
                     ->orderBy('perfis.nome', $dir);
             } else {
                 $query->orderBy($col, $dir);
@@ -72,7 +72,7 @@ class AlunoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         Aluno::create($data);
         return redirect()->route('alunos.index')
@@ -82,7 +82,7 @@ class AlunoController extends Controller
     public function show(Aluno $aluno)
     {
         $perfis = Perfil::pluck('nome', 'id');
-        $admissoes = AlunoCursoAdmissao::where('aluno_id', $aluno->id)->get();
+        $admissoes = AlunoCursoAdmissao::where('id_aluno', $aluno->id)->get();
         return view('alunos.show', compact('aluno', 'perfis', 'admissoes'));
     }
 
@@ -96,7 +96,7 @@ class AlunoController extends Controller
     public function update(Request $request, Aluno $aluno)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $aluno->update($data);
         return redirect()->route('alunos.index')
@@ -114,7 +114,7 @@ class AlunoController extends Controller
     protected function validateData(Request $request, $id = null)
     {
         $rules = [
-            'perfil_id' => 'required|exists:perfis,id',
+            'id_perfil' => 'required|exists:perfis,id',
             // 'ra' => 'required|string|unique:alunos,ra',
             'ra' => 'required|string',
             // 'ra_est' => 'nullable|string',

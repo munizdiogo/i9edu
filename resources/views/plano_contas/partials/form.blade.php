@@ -51,11 +51,11 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-3">
-                <label for="grupo_conta_id" class="form-label">Grupo de Contas</label>
-                <select name="grupo_conta_id" class="form-control form-select">
+                <label for="id_grupo_conta" class="form-label">Grupo de Contas</label>
+                <select name="id_grupo_conta" class="form-control form-select">
                     @foreach ($gruposContas as $grupo)
                         @if(isset($grupo->id))
-                                    <option value="{{ $grupo->id ?? ''}}" {{ old('grupo_conta_id', $planoConta->grupo_conta_id ?? '') == $grupo->id ?
+                                    <option value="{{ $grupo->id ?? ''}}" {{ old('id_grupo_conta', $planoConta->id_grupo_conta ?? '') == $grupo->id ?
                             'selected' : '' }}>
                                         {{ $grupo->descricao }}
                                     </option>

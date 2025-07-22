@@ -17,36 +17,36 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-4"><label>Matriz*</label>
-                <select name="matriz_curricular_id" class="form-control select2bs4"
-                    required>@foreach($matrizes as $matriz)<option value="{{$matriz->id}}" {{old('matriz_curricular_id', $turma->matriz_curricular_id ?? '') == $matriz->id ? 'selected' : ''}}>
+                <select name="id_matriz_curricular" class="form-control select2bs4"
+                    required>@foreach($matrizes as $matriz)<option value="{{$matriz->id}}" {{old('id_matriz_curricular', $turma->id_matriz_curricular ?? '') == $matriz->id ? 'selected' : ''}}>
                         {{$matriz->nome}}
                     </option>@endforeach</select>
             </div>
             <div class="form-group col-md-4"><label>Período Letivo*</label>
-                <select name="periodo_letivo_id" class="form-control select2bs4" required>@foreach($periodos as $p)
-                    <option value="{{$p->id}}" {{old('periodo_letivo_id', $turma->periodo_letivo_id ?? '') == $p->id ? 'selected' : ''}}>
+                <select name="id_periodo_letivo" class="form-control select2bs4" required>@foreach($periodos as $p)
+                    <option value="{{$p->id}}" {{old('id_periodo_letivo', $turma->id_periodo_letivo ?? '') == $p->id ? 'selected' : ''}}>
                         {{$p->nome}}
                 </option>@endforeach
                 </select>
             </div>
-            <div class="form-group col-md-4"><label>Turma Base</label><select name="turma_base_id" class="form-control">
+            <div class="form-group col-md-4"><label>Turma Base</label><select name="id_turma_base" class="form-control">
                     <option value="">--</option>@foreach($turmasBase ?? [] as $tb)<option value="{{$tb->id}}"
-                        {{old('turma_base_id', $turma->turma_base_id ?? '') == $tb->id ? 'selected' : ''}}>{{$tb->nome}}
+                        {{old('id_turma_base', $turma->id_turma_base ?? '') == $tb->id ? 'selected' : ''}}>{{$tb->nome}}
                     </option>@endforeach
                 </select></div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-4"><label>Centro de Custo</label>
-                <select name="centro_custo_id" class="form-control select2bs4">
+                <select name="id_centro_custo" class="form-control select2bs4">
                     <option value="">--</option>@foreach($polos as $p)<option value="{{$p->id}}"
-                        {{old('centro_custo_id', $turma->centro_custo_id ?? '') == $p->id ? 'selected' : ''}}>{{$p->nome}}
+                        {{old('id_centro_custo', $turma->id_centro_custo ?? '') == $p->id ? 'selected' : ''}}>{{$p->nome}}
                     </option>@endforeach
                 </select>
             </div>
-            <div class="form-group col-md-4"><label>Professor Resp.</label><select name="professor_responsavel_id"
+            <div class="form-group col-md-4"><label>Professor Resp.</label><select name="id_professor_responsavel"
                     class="form-control">
                     <option value="">--</option>@foreach($professores as $pr)<option value="{{$pr->id}}"
-                    {{old('professor_responsavel_id', $turma->professor_responsavel_id ?? '') == $pr->id ? 'selected' : ''}}>{{$pr->nome}} {{$pr->sobrenome}}</option>@endforeach
+                    {{old('id_professor_responsavel', $turma->id_professor_responsavel ?? '') == $pr->id ? 'selected' : ''}}>{{$pr->nome}} {{$pr->sobrenome}}</option>@endforeach
                 </select></div>
             <div class="form-group col-md-4"><label>Status</label><select name="status" class="form-control">
                     <option value="ATIVA" {{old('status', $turma->status ?? '') == 'ATIVA' ? 'selected' : ''}}>ATIVA
@@ -118,8 +118,8 @@
                     class="form-control" value="{{ old('formato_venda', $turma->formato_venda ?? '') }}"></div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-3"><label>ID Inep</label><input type="text" name="inep_id"
-                    class="form-control" value="{{ old('inep_id', $turma->inep_id ?? '') }}"></div>
+            <div class="form-group col-md-3"><label>ID Inep</label><input type="text" name="id_inep"
+                    class="form-control" value="{{ old('id_inep', $turma->id_inep ?? '') }}"></div>
             <div class="form-group col-md-3"><label>Seguro Escolar</label><input type="text" name="seguro_escolar"
                     class="form-control" value="{{ old('seguro_escolar', $turma->seguro_escolar ?? '') }}"></div>
             <div class="form-group col-md-3 form-check"><label class="form-check-label"><input type="checkbox"

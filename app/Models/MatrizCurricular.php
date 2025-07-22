@@ -11,13 +11,13 @@ class MatrizCurricular extends Model
     protected $fillable = [
         'nome',
         'nome_reduzido',
-        'curso_id',
-        'centro_custo_id',
+        'id_curso',
+        'id_centro_custo',
         'habilitacao',
         'data_habilitacao',
         'status',
         'modalidade',
-        'inep_id',
+        'id_inep',
         'data_curriculo',
         'tipo_horas_atividades',
         'min_hr_aula',
@@ -50,22 +50,22 @@ class MatrizCurricular extends Model
 
     public function curso()
     {
-        return $this->belongsTo(Curso::class, 'curso_id');
+        return $this->belongsTo(Curso::class, 'id_curso');
     }
     public function gradeDisciplinas()
     {
-        return $this->belongsTo(Curso::class, 'curso_id');
+        return $this->belongsTo(Curso::class, 'id_curso');
     }
     public function centroCusto()
     {
-        return $this->belongsTo(Polo::class, 'centro_custo_id');
+        return $this->belongsTo(Polo::class, 'id_centro_custo');
     }
 
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

@@ -10,15 +10,15 @@ class CreateRestricaoPlanoPagamentoPoloTable extends Migration
     {
         Schema::create('restricao_plano_pagamento_polo', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('restricao_id');
-            $table->unsignedBigInteger('polo_id');
+            $table->unsignedBigInteger('id_restricao');
+            $table->unsignedBigInteger('id_polo');
             $table->timestamps();
 
-            $table->foreign('restricao_id')
+            $table->foreign('id_restricao')
                 ->references('id')->on('restricoes_plano_pagamento')->onDelete('cascade');
-            $table->foreign('polo_id')
+            $table->foreign('id_polo')
                 ->references('id')->on('polos')->onDelete('cascade');
-            $table->unique(['restricao_id', 'polo_id']);
+            $table->unique(['id_restricao', 'id_polo']);
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });

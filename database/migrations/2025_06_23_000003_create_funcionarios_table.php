@@ -10,7 +10,7 @@ return new class extends Migration {
             $table->id();
             $table->integer('codigo')->unique();
             // FK para Perfil
-            $table->foreignId('perfil_id')->constrained('perfis')->cascadeOnDelete();
+            $table->foreignId('id_perfil')->constrained('perfis')->cascadeOnDelete();
             $table->string('nome_conjuge')->nullable();
             $table->string('fone_conjuge')->nullable();
             $table->integer('nr_dependentes')->default(0);
@@ -20,8 +20,8 @@ return new class extends Migration {
             $table->date('data_admissao')->nullable();
             $table->date('data_demissao')->nullable();
             // FK para Setor e Função
-            $table->foreignId('setor_id')->nullable()->constrained('setores')->nullOnDelete();
-            $table->foreignId('funcao_id')->nullable()->constrained('funcoes')->nullOnDelete();
+            $table->foreignId('id_setor')->nullable()->constrained('setores')->nullOnDelete();
+            $table->foreignId('id_funcao')->nullable()->constrained('funcoes')->nullOnDelete();
             $table->string('nr_folha')->nullable();
             $table->integer('nr_horas_mes')->nullable();
             $table->enum('tipo_contrato', ['Não informado', 'CLT', 'PJ', 'Autônomo'])->default('Não informado');

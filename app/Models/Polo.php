@@ -32,9 +32,9 @@ class Polo extends Model
         'nao_apresentar_atendimento',
         'data_ativacao',
         'data_inativacao',
-        'gestor_id',
-        'gestor_faturamento_id',
-        'supervisor_id',
+        'id_gestor',
+        'id_gestor_faturamento',
+        'id_supervisor',
         'data_contrato_inicio',
         'data_contrato_termino',
         'id_estrutura',
@@ -42,22 +42,22 @@ class Polo extends Model
 
     public function gestor()
     {
-        return $this->belongsTo(Perfil::class, 'gestor_id');
+        return $this->belongsTo(Perfil::class, 'id_gestor');
     }
     public function gestorFaturamento()
     {
-        return $this->belongsTo(Perfil::class, 'gestor_faturamento_id');
+        return $this->belongsTo(Perfil::class, 'id_gestor_faturamento');
     }
     public function supervisor()
     {
-        return $this->belongsTo(Perfil::class, 'supervisor_id');
+        return $this->belongsTo(Perfil::class, 'id_supervisor');
     }
 
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('polos.id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('polos.id_estrutura', session('id_estrutura'));
             }
         });
     }

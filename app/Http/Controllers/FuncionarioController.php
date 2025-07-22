@@ -58,7 +58,7 @@ class FuncionarioController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         Funcionario::create($data);
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário criado!');
@@ -83,7 +83,7 @@ class FuncionarioController extends Controller
     public function update(Request $request, Funcionario $funcionario)
     {
         $data = $this->validateData($request, "update", $funcionario);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $funcionario->update($data);
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário atualizado!');
@@ -101,7 +101,7 @@ class FuncionarioController extends Controller
         if ($origem == 'create') {
             $rules = [
                 'codigo' => 'required|integer|unique:funcionarios,codigo',
-                'perfil_id' => 'required|exists:perfis,id',
+                'id_perfil' => 'required|exists:perfis,id',
                 'nome_conjuge' => 'nullable|string',
                 'fone_conjuge' => 'nullable|string',
                 'nr_dependentes' => 'nullable|integer',
@@ -110,8 +110,8 @@ class FuncionarioController extends Controller
                 'status' => 'required|in:Ativo,Inativo',
                 'data_admissao' => 'nullable|date',
                 'data_demissao' => 'nullable|date|after_or_equal:data_admissao',
-                'setor_id' => 'nullable|exists:setores,id',
-                'funcao_id' => 'nullable|exists:funcoes,id',
+                'id_setor' => 'nullable|exists:setores,id',
+                'id_funcao' => 'nullable|exists:funcoes,id',
                 'nr_folha' => 'nullable|string',
                 'nr_horas_mes' => 'nullable|integer',
                 'tipo_contrato' => 'required|in:Não informado,CLT,PJ,Autônomo',
@@ -120,7 +120,7 @@ class FuncionarioController extends Controller
         } else {
             $rules = [
                 'codigo' => 'required|integer|unique:funcionarios,codigo,' . $funcionario->id,
-                'perfil_id' => 'required|exists:perfis,id',
+                'id_perfil' => 'required|exists:perfis,id',
                 'nome_conjuge' => 'nullable|string',
                 'fone_conjuge' => 'nullable|string',
                 'nr_dependentes' => 'nullable|integer',
@@ -129,8 +129,8 @@ class FuncionarioController extends Controller
                 'status' => 'required|in:Ativo,Inativo',
                 'data_admissao' => 'nullable|date',
                 'data_demissao' => 'nullable|date|after_or_equal:data_admissao',
-                'setor_id' => 'nullable|exists:setores,id',
-                'funcao_id' => 'nullable|exists:funcoes,id',
+                'id_setor' => 'nullable|exists:setores,id',
+                'id_funcao' => 'nullable|exists:funcoes,id',
                 'nr_folha' => 'nullable|string',
                 'nr_horas_mes' => 'nullable|integer',
                 'tipo_contrato' => 'required|in:Não informado,CLT,PJ,Autônomo',

@@ -12,7 +12,7 @@ class CreateAlunosTable extends Migration
             $table->bigIncrements('id');
 
             // vínculo com Perfil
-            $table->unsignedBigInteger('perfil_id');
+            $table->unsignedBigInteger('id_perfil');
 
             // dados de matrícula / identificação
             $table->string('ra')->unique();
@@ -42,7 +42,7 @@ class CreateAlunosTable extends Migration
             $table->timestamps();
 
             // FK
-            $table->foreign('perfil_id')->references('id')->on('perfis')->onDelete('cascade');
+            $table->foreign('id_perfil')->references('id')->on('perfis')->onDelete('cascade');
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });

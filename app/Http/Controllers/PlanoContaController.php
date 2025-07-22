@@ -22,7 +22,7 @@ class PlanoContaController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         PlanoConta::create($data);
 
@@ -44,7 +44,7 @@ class PlanoContaController extends Controller
     public function update(Request $request, PlanoConta $plano_conta)
     {
         $data = $this->validateData($request, "update");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
 
         $plano_conta->update($data);

@@ -48,7 +48,7 @@ class CupomController extends Controller
         $data = $this->validateData($request, "create");
         $data['criar_convenio_pagador'] = $request->has('criar_convenio_pagador');
         $data['validar_matricula_ativa'] = $request->has('validar_matricula_ativa');
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $cupom = Cupom::create($data);
 
@@ -76,7 +76,7 @@ class CupomController extends Controller
         $data = $this->validateData($request, "update", $cupom);
         $data['criar_convenio_pagador'] = $request->has('criar_convenio_pagador');
         $data['validar_matricula_ativa'] = $request->has('validar_matricula_ativa');
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $cupom->update($data);
 
@@ -98,7 +98,7 @@ class CupomController extends Controller
                 'descricao' => 'nullable|string',
                 'data_inicio' => 'required|date',
                 'data_fim' => 'required|date|after_or_equal:data_inicio',
-                'convenio_id' => 'nullable|exists:convenios,id',
+                'id_convenio' => 'nullable|exists:convenios,id',
                 'status' => 'required|in:ATIVO,INATIVO',
                 'quantidade_maxima' => 'nullable|integer|min:0',
                 'criar_convenio_pagador' => 'nullable|boolean',
@@ -111,7 +111,7 @@ class CupomController extends Controller
                 'descricao' => 'nullable|string',
                 'data_inicio' => 'required|date',
                 'data_fim' => 'required|date|after_or_equal:data_inicio',
-                'convenio_id' => 'nullable|exists:convenios,id',
+                'id_convenio' => 'nullable|exists:convenios,id',
                 'status' => 'required|in:ATIVO,INATIVO',
                 'quantidade_maxima' => 'nullable|integer|min:0',
                 'criar_convenio_pagador' => 'nullable|boolean',
@@ -146,15 +146,15 @@ class CupomController extends Controller
     public function adicionarCurso(Request $request, $cupomId)
     {
         $request->validate([
-            'curso_ids' => 'required|array|min:1',
-            'curso_ids.*' => 'exists:cursos,id',
+            'id_cursos' => 'required|array|min:1',
+            'id_cursos.*' => 'exists:cursos,id',
             'quantidade_disponivel' => 'required|integer|min:0'
         ]);
 
         $cupom = Cupom::findOrFail($cupomId);
 
         $syncData = [];
-        foreach ($request->curso_ids as $cursoId) {
+        foreach ($request->id_cursos as $cursoId) {
             $syncData[$cursoId] = ['quantidade_disponivel' => $request->quantidade_disponivel];
         }
         $cupom->cursos()->syncWithoutDetaching($syncData);
@@ -201,15 +201,15 @@ class CupomController extends Controller
     public function adicionarPolo(Request $request, $cupomId)
     {
         $request->validate([
-            'polo_ids' => 'required|array|min:1',
-            'polo_ids.*' => 'exists:polos,id',
+            'id_polos' => 'required|array|min:1',
+            'id_polos.*' => 'exists:polos,id',
             'quantidade_disponivel' => 'required|integer|min:0'
         ]);
 
         $cupom = Cupom::findOrFail($cupomId);
 
         $syncData = [];
-        foreach ($request->polo_ids as $poloId) {
+        foreach ($request->id_polos as $poloId) {
             $syncData[$poloId] = ['quantidade_disponivel' => $request->quantidade_disponivel];
         }
         $cupom->polos()->syncWithoutDetaching($syncData);

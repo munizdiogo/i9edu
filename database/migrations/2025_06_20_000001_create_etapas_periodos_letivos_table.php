@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->string('codigo')->unique();
             $table->string('descricao');
             $table->enum('status', ['Ativo', 'Inativo'])->default('Ativo');
-            $table->foreignId('periodo_letivo_id')
+            $table->foreignId('id_periodo_letivo')
                 ->constrained('periodos_letivos')
                 ->onDelete('cascade');
             $table->timestamps();

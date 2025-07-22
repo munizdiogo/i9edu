@@ -167,33 +167,33 @@
 
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label for="gestor_id">Gestor</label>
-                    <select id="gestor_id" name="gestor_id" class="form-control select2bs4">
+                    <label for="id_gestor">Gestor</label>
+                    <select id="id_gestor" name="id_gestor" class="form-control select2bs4">
                         <option value="">-- selecione --</option>
                         @foreach($perfis as $perfil)
-                            <option value="{{ $perfil->id }}" {{ old('gestor_id', $polo->gestor_id ?? '') == $perfil->id ? 'selected' : '' }}>
+                            <option value="{{ $perfil->id }}" {{ old('id_gestor', $polo->id_gestor ?? '') == $perfil->id ? 'selected' : '' }}>
                                 {{ $perfil->nome }} {{ $perfil->sobrenome }}
                             </option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="gestor_faturamento_id">Gestor Faturamento</label>
-                    <select id="gestor_faturamento_id" name="gestor_faturamento_id" class="form-control select2bs4">
+                    <label for="id_gestor_faturamento">Gestor Faturamento</label>
+                    <select id="id_gestor_faturamento" name="id_gestor_faturamento" class="form-control select2bs4">
                         <option value="">-- selecione --</option>
                         @foreach($perfis as $perfil)
-                            <option value="{{ $perfil->id }}" {{ old('gestor_faturamento_id', $polo->gestor_faturamento_id ?? '') == $perfil->id ? 'selected' : '' }}>
+                            <option value="{{ $perfil->id }}" {{ old('id_gestor_faturamento', $polo->id_gestor_faturamento ?? '') == $perfil->id ? 'selected' : '' }}>
                                 {{ $perfil->nome }} {{ $perfil->sobrenome }}
                             </option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="supervisor_id">Supervisor</label>
-                    <select id="supervisor_id" name="supervisor_id" class="form-control select2bs4">
+                    <label for="id_supervisor">Supervisor</label>
+                    <select id="id_supervisor" name="id_supervisor" class="form-control select2bs4">
                         <option value="">-- selecione --</option>
                         @foreach($perfis as $perfil)
-                            <option value="{{ $perfil->id }}" {{ old('supervisor_id', $polo->supervisor_id ?? '') == $perfil->id ? 'selected' : '' }}>
+                            <option value="{{ $perfil->id }}" {{ old('id_supervisor', $polo->id_supervisor ?? '') == $perfil->id ? 'selected' : '' }}>
                                 {{ $perfil->nome }} {{ $perfil->sobrenome }}
                             </option>
                         @endforeach

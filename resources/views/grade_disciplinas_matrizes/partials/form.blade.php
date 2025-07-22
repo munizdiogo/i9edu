@@ -2,10 +2,10 @@
     <div class="card-body">
         <div class="form-group">
             <label>Matriz Curricular*</label>
-            <select name="matriz_curricular_id" class="form-control select2bs4" required>
+            <select name="id_matriz_curricular" class="form-control select2bs4" required>
                 <option value=""></option>
                 @foreach($matrizes as $id => $nome)
-                    <option value="{{ $id }}" {{ old('matriz_curricular_id', $grade_disciplinas_matrize->matriz_curricular_id ?? '') == $id ? 'selected' : '' }}>
+                    <option value="{{ $id }}" {{ old('id_matriz_curricular', $grade_disciplinas_matrize->id_matriz_curricular ?? '') == $id ? 'selected' : '' }}>
                         {{ $nome }}
                     </option>
                 @endforeach
@@ -13,10 +13,10 @@
         </div>
         <div class="form-group">
             <label>Disciplina*</label>
-            <select name="disciplina_id" class="form-control select2bs4" required>
+            <select name="id_disciplina" class="form-control select2bs4" required>
                 <option value=""></option>
                 @foreach($disciplinas as $id => $nome)
-                    <option value="{{ $id }}" {{ old('disciplina_id', $grade_disciplinas_matrize->disciplina_id ?? '') == $id ? 'selected' : '' }}>
+                    <option value="{{ $id }}" {{ old('id_disciplina', $grade_disciplinas_matrize->id_disciplina ?? '') == $id ? 'selected' : '' }}>
                         {{ $nome }}
                     </option>
                 @endforeach

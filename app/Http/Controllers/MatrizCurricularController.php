@@ -14,7 +14,7 @@ class MatrizCurricularController extends Controller
 
     public function data(Request $request)
     {
-        $cols = ['id', 'nome', 'curso_id', 'status'];
+        $cols = ['id', 'nome', 'id_curso', 'status'];
         $total = MatrizCurricular::count();
         $q = MatrizCurricular::with('curso');
         if ($s = $request->input('search.value')) {
@@ -57,7 +57,7 @@ class MatrizCurricularController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         MatrizCurricular::create($data);
         return redirect()->route('matrizes.index')->with('success', 'Matriz criada!');
     }
@@ -79,7 +79,7 @@ class MatrizCurricularController extends Controller
     public function update(Request $request, MatrizCurricular $matriz)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $matriz->update($data);
         return redirect()->route('matrizes.index')->with('success', 'Matriz atualizada!');
     }
@@ -95,13 +95,13 @@ class MatrizCurricularController extends Controller
         $rules = [
             'nome' => 'required|string',
             'nome_reduzido' => 'nullable|string',
-            'curso_id' => 'required|exists:cursos,id',
-            'centro_custo_id' => 'nullable|exists:polos,id',
+            'id_curso' => 'required|exists:cursos,id',
+            'id_centro_custo' => 'nullable|exists:polos,id',
             'habilitacao' => 'nullable|string',
             'data_habilitacao' => 'nullable|date',
             'status' => 'required|in:ATIVO,INATIVO',
             'modalidade' => 'required|in:Presencial,EaD,Híbrido',
-            'inep_id' => 'nullable|string',
+            'id_inep' => 'nullable|string',
             'data_curriculo' => 'nullable|date',
             'tipo_horas_atividades' => 'integer',
             'min_hr_aula' => 'integer',

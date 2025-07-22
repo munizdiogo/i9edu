@@ -13,7 +13,7 @@ class CreateDisciplinasBaseTable extends Migration
             $table->enum('status', ['Ativo', 'Inativo'])->default('Ativo');
             $table->string('nome');
             $table->string('nome_reduzido')->nullable();
-            $table->unsignedBigInteger('area_conhecimento_id')->nullable();
+            $table->unsignedBigInteger('id_area_conhecimento')->nullable();
             $table->boolean('equivalencia_automatica')->default(false);
             // carga horária
             $table->integer('ch_padrao')->default(0);
@@ -31,14 +31,14 @@ class CreateDisciplinasBaseTable extends Migration
             $table->string('tipo_avaliacao')->default('Disciplina');
             $table->enum('obrigatoriedade', ['Obrigatória', 'Optativa'])->default('Obrigatória');
             $table->enum('complementaridade', ['Não Informado', 'Sim', 'Não'])->default('Não Informado');
-            $table->unsignedBigInteger('area_avaliacao_id')->nullable();
+            $table->unsignedBigInteger('id_area_avaliacao')->nullable();
             $table->timestamps();
 
             // FKs
-            $table->foreign('area_conhecimento_id')
+            $table->foreign('id_area_conhecimento')
                 ->references('id')->on('area_conhecimentos')
                 ->onDelete('set null');
-            $table->foreign('area_avaliacao_id')
+            $table->foreign('id_area_avaliacao')
                 ->references('id')->on('area_conhecimentos')
                 ->onDelete('set null');
 

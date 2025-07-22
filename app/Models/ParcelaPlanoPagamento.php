@@ -8,7 +8,7 @@ class ParcelaPlanoPagamento extends Model
     protected $table = 'parcelas_plano_pagamento';
 
     protected $fillable = [
-        'plano_pagamento_id',
+        'id_plano_pagamento',
         'descricao',
         'quantidade_parcelas',
         'valor',
@@ -19,14 +19,14 @@ class ParcelaPlanoPagamento extends Model
 
     public function plano()
     {
-        return $this->belongsTo(PlanoPagamento::class, 'plano_pagamento_id');
+        return $this->belongsTo(PlanoPagamento::class, 'id_plano_pagamento');
     }
 
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

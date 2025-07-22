@@ -58,7 +58,7 @@ class GrupoContaController extends Controller
     {
         try {
             $data = $this->validateData($request, "update");
-            $data['id_estrutura'] = session('estrutura_id');
+            $data['id_estrutura'] = session('id_estrutura');
 
             GrupoConta::create($data);
 
@@ -82,7 +82,7 @@ class GrupoContaController extends Controller
     public function update(Request $request, GrupoConta $grupoConta)
     {
         $data = $this->validateData($request, "update");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $grupoConta->update($data);
 

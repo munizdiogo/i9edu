@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <form action="{{ route('matriz_captacao.polos.store', $matriz->id) }}" method="POST">
             @csrf
-            <input type="hidden" name="matriz_captacao_id" value="{{ $matriz->id }}">
+            <input type="hidden" name="id_matriz_captacao" value="{{ $matriz->id }}">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalPoloLabel">Adicionar Polo</h5>
@@ -12,8 +12,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="polo_id">Polo*</label>
-                        <select name="polo_id" id="polo_id" class="form-control select2bs4" required>
+                        <label for="id_polo">Polo*</label>
+                        <select name="id_polo" id="id_polo" class="form-control select2bs4" required>
                             <option value="">-- selecione --</option>
                             @foreach(\App\Models\Polo::pluck('nome', 'id') as $id => $desc)
                                 <option value="{{ $id }}">{{ $desc }}</option>

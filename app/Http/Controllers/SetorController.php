@@ -55,7 +55,7 @@ class SetorController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         Setor::create($data);
         return redirect()->route('setores.index')->with('success', 'Setor criado!');
@@ -80,7 +80,7 @@ class SetorController extends Controller
     public function update(Request $request, Setor $setor)
     {
         $data = $this->validateData($request, "update", $setor);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $setor->update($data);
         return redirect()->route('setores.index')->with('success', 'Setor atualizado!');
@@ -101,7 +101,7 @@ class SetorController extends Controller
                 'descricao' => 'required|string',
                 'tipo' => 'required|in:NENHUM,ADMINISTRATIVO,ACADEMICO,FINANCEIRO,TI,OUTRO',
                 'email' => 'nullable|email',
-                'funcionario_responsavel_id' => 'nullable|exists:funcionarios,id',
+                'id_funcionario_responsavel' => 'nullable|exists:funcionarios,id',
                 'status' => 'required|in:ATIVO,INATIVO',
             ];
 
@@ -111,7 +111,7 @@ class SetorController extends Controller
                 'descricao' => 'required|string',
                 'tipo' => 'required|in:NENHUM,ADMINISTRATIVO,ACADEMICO,FINANCEIRO,TI,OUTRO',
                 'email' => 'nullable|email',
-                'funcionario_responsavel_id' => 'nullable|exists:funcionarios,id',
+                'id_funcionario_responsavel' => 'nullable|exists:funcionarios,id',
                 'status' => 'required|in:ATIVO,INATIVO'
             ];
 

@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <form action="{{ route('matriz_captacao.cursos.store', $matriz) }}" method="POST">
             @csrf
-            <input type="hidden" name="matriz_captacao_id" value="{{ $matriz->id }}">
+            <input type="hidden" name="id_matriz_captacao" value="{{ $matriz->id }}">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCursoLabel">Adicionar Curso</h5>
@@ -13,8 +13,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="curso_id">Curso*</label>
-                        <select name="curso_id" id="curso_id" class="form-control select2bs4" required>
+                        <label for="id_curso">Curso*</label>
+                        <select name="id_curso" id="id_curso" class="form-control select2bs4" required>
                             <option value="">-- selecione --</option>
                             @foreach(\App\Models\Curso::pluck('nome', 'id') as $id => $nome)
                                 <option value="{{ $id }}">{{ $nome }}</option>

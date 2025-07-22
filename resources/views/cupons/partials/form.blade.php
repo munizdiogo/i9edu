@@ -22,11 +22,11 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="convenio_id">Convênio</label>
-        <select name="convenio_id" class="form-control">
+        <label for="id_convenio">Convênio</label>
+        <select name="id_convenio" class="form-control">
             <option value="">Selecione...</option>
             @foreach($convenios as $convenio)
-                <option value="{{ $convenio->id }}" {{ old('convenio_id', $cupom->convenio_id ?? '') == $convenio->id ? 'selected' : '' }}>
+                <option value="{{ $convenio->id }}" {{ old('id_convenio', $cupom->id_convenio ?? '') == $convenio->id ? 'selected' : '' }}>
                     {{ $convenio->descricao }}
                 </option>
             @endforeach

@@ -61,7 +61,7 @@ class ConvenioController extends Controller
     {
         $data = $this->validateData($request, "create");
         $data['perde_convenio'] = $request->has('perde_convenio');
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         Convenio::create($data);
         return redirect()->route('convenios.index')->with('success', 'Convênio cadastrado!');
@@ -77,7 +77,7 @@ class ConvenioController extends Controller
     {
         $data = $this->validateData($request, "update");
         $data['perde_convenio'] = $request->has('perde_convenio');
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $convenio->update($data);
         return redirect()->route('convenios.index')->with('success', 'Convênio atualizado!');
@@ -102,7 +102,7 @@ class ConvenioController extends Controller
                 'descricao' => 'required|string',
                 'modalidade' => 'required|string',
                 'tipo_financiamento' => 'nullable|string',
-                'plano_conta_id' => 'required|exists:plano_contas,id',
+                'id_plano_conta' => 'required|exists:plano_contas,id',
                 'valor' => 'required|numeric',
                 'tipo' => 'required|string',
                 'perde_convenio' => 'boolean',
@@ -119,7 +119,7 @@ class ConvenioController extends Controller
                 'descricao' => 'required|string',
                 'modalidade' => 'required|string',
                 'tipo_financiamento' => 'nullable|string',
-                'plano_conta_id' => 'required|exists:plano_contas,id',
+                'id_plano_conta' => 'required|exists:plano_contas,id',
                 'valor' => 'required|numeric',
                 'tipo' => 'required|string',
                 'perde_convenio' => 'boolean',

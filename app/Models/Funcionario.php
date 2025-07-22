@@ -12,7 +12,7 @@ class Funcionario extends Model
 
     protected $fillable = [
         'codigo',
-        'perfil_id',
+        'id_perfil',
         'nome_conjuge',
         'fone_conjuge',
         'nr_dependentes',
@@ -21,8 +21,8 @@ class Funcionario extends Model
         'status',
         'data_admissao',
         'data_demissao',
-        'setor_id',
-        'funcao_id',
+        'id_setor',
+        'id_funcao',
         'nr_folha',
         'nr_horas_mes',
         'tipo_contrato',
@@ -47,14 +47,14 @@ class Funcionario extends Model
     // relation with Professor, if necessário
     public function professor()
     {
-        return $this->hasOne(Professor::class, 'funcionario_id');
+        return $this->hasOne(Professor::class, 'id_funcionario');
     }
 
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

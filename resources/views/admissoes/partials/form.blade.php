@@ -10,10 +10,10 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Aluno*</label>
-                <select name="aluno_id" class="form-control select2bs4" required>
+                <select name="id_aluno" class="form-control select2bs4" required>
                     <option value="">— selecione —</option>
                     @foreach($alunos as $id => $nome)
-                        <option value="{{ $id }}" {{ old('aluno_id', $admissao->aluno_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_aluno', $admissao->id_aluno ?? '') == $id ? 'selected' : '' }}>
                             {{ $nome }}
                         </option>
                     @endforeach
@@ -21,10 +21,10 @@
             </div>
             <div class="form-group col-md-4">
                 <label>Matriz*</label>
-                <select name="matriz_curricular_id" class="form-control select2bs4" required>
+                <select name="id_matriz_curricular" class="form-control select2bs4" required>
                     <option value="">— selecione —</option>
                     @foreach($matrizes as $id => $nome)
-                        <option value="{{ $id }}" {{ old('matriz_curricular_id', $admissao->matriz_curricular_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_matriz_curricular', $admissao->id_matriz_curricular ?? '') == $id ? 'selected' : '' }}>
                             {{ $nome }}
                         </option>
                     @endforeach
@@ -81,10 +81,10 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Edital Vestibular</label>
-                <select name="edital_processo_seletivo_id" class="form-control select2bs4">
+                <select name="id_edital_processo_seletivo" class="form-control select2bs4">
                     <option value="">— selecione —</option>
                     @foreach($editais as $id => $descricao)
-                        <option value="{{ $id }}" {{ old('edital_processo_seletivo_id', $admissao->edital_processo_seletivo_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_edital_processo_seletivo', $admissao->id_edital_processo_seletivo ?? '') == $id ? 'selected' : '' }}>
                             {{ $descricao }}
                         </option>
                     @endforeach
@@ -123,10 +123,10 @@
             </div>
             <div class="form-group col-md-6">
                 <label>Instituição Transferência</label>
-                <select name="instituicao_transferencia_id" class="form-control select2bs4">
+                <select name="id_instituicao_transferencia" class="form-control select2bs4">
                     <option value="">— selecione —</option>
                     @foreach($instituicoes as $id => $nome)
-                        <option value="{{ $id }}" {{ old('instituicao_transferencia_id', $admissao->instituicao_transferencia_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_instituicao_transferencia', $admissao->id_instituicao_transferencia ?? '') == $id ? 'selected' : '' }}>
                             {{ $nome }}
                         </option>
                     @endforeach

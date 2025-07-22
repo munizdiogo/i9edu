@@ -15,20 +15,20 @@ class Setor extends Model
         'descricao',
         'tipo',
         'email',
-        'funcionario_responsavel_id',
+        'id_funcionario_responsavel',
         'status',
         'id_estrutura',
     ];
 
     public function responsavel()
     {
-        return $this->belongsTo(Funcionario::class, 'funcionario_responsavel_id');
+        return $this->belongsTo(Funcionario::class, 'id_funcionario_responsavel');
     }
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

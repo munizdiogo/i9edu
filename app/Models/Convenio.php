@@ -14,7 +14,7 @@ class Convenio extends Model
         'descricao',
         'modalidade',
         'tipo_financiamento',
-        'plano_conta_id',
+        'id_plano_conta',
         'valor',
         'tipo',
         'perde_convenio',
@@ -30,14 +30,14 @@ class Convenio extends Model
 
     public function planoConta()
     {
-        return $this->belongsTo(PlanoConta::class, 'plano_conta_id');
+        return $this->belongsTo(PlanoConta::class, 'id_plano_conta');
     }
 
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

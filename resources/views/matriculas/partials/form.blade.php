@@ -6,12 +6,12 @@
     <div class="form-row">
       <div class="form-group col-md-4">
         <label>Admissão*</label>
-        <select name="aluno_curso_admissao_id"
+        <select name="id_aluno_curso_admissao"
                 class="form-control select2bs4" required>
           <option value="">— selecione —</option>
           @foreach($admissoes as $id => $nome)
             <option value="{{ $id }}"
-              {{ old('aluno_curso_admissao_id',$matricula->aluno_curso_admissao_id??'')==$id?'selected':'' }}>
+              {{ old('id_aluno_curso_admissao',$matricula->id_aluno_curso_admissao??'')==$id?'selected':'' }}>
               {{ $nome }}
             </option>
           @endforeach
@@ -19,11 +19,11 @@
       </div>
       <div class="form-group col-md-4">
         <label>Turma*</label>
-        <select name="turma_id" class="form-control select2bs4" required>
+        <select name="id_turma" class="form-control select2bs4" required>
           <option value="">— selecione —</option>
           @foreach($turmas as $id => $nome)
             <option value="{{ $id }}"
-              {{ old('turma_id',$matricula->turma_id??'')==$id?'selected':'' }}>
+              {{ old('id_turma',$matricula->id_turma??'')==$id?'selected':'' }}>
               {{ $nome }}
             </option>
           @endforeach
@@ -31,8 +31,8 @@
       </div>
       <div class="form-group col-md-4">
         <label>Contrato</label>
-        <input type="text" name="contrato_id" class="form-control"
-               value="{{ old('contrato_id',$matricula->contrato_id??'') }}">
+        <input type="text" name="id_contrato" class="form-control"
+               value="{{ old('id_contrato',$matricula->id_contrato??'') }}">
       </div>
     </div>
     <div class="form-row">

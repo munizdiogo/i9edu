@@ -14,7 +14,7 @@ class DisciplinaBase extends Model
         'status',
         'nome',
         'nome_reduzido',
-        'area_conhecimento_id',
+        'id_area_conhecimento',
         'equivalencia_automatica',
         'ch_padrao',
         'ch_cobrada',
@@ -30,25 +30,25 @@ class DisciplinaBase extends Model
         'tipo_avaliacao',
         'obrigatoriedade',
         'complementaridade',
-        'area_avaliacao_id',
+        'id_area_avaliacao',
         'id_estrutura',
     ];
 
     public function areaConhecimento()
     {
-        return $this->belongsTo(AreaConhecimento::class, 'area_conhecimento_id');
+        return $this->belongsTo(AreaConhecimento::class, 'id_area_conhecimento');
     }
 
     public function areaAvaliacao()
     {
-        return $this->belongsTo(AreaConhecimento::class, 'area_avaliacao_id');
+        return $this->belongsTo(AreaConhecimento::class, 'id_area_avaliacao');
     }
 
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

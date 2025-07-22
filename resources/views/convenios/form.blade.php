@@ -21,9 +21,9 @@
 <div class="row mt-2">
     <div class="col-md-6">
         <label>Plano de Conta*</label>
-        <select name="plano_conta_id" class="form-control" required>
+        <select name="id_plano_conta" class="form-control" required>
             @foreach($planos as $id => $desc)
-                <option value="{{ $id }}" @selected(old('plano_conta_id', $convenio->plano_conta_id ?? '') == $id)>
+                <option value="{{ $id }}" @selected(old('id_plano_conta', $convenio->id_plano_conta ?? '') == $id)>
                     {{ $desc }}
                 </option>
             @endforeach

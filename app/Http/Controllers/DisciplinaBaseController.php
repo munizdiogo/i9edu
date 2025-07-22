@@ -59,7 +59,7 @@ class DisciplinaBaseController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         DisciplinaBase::create($data);
         return redirect()->route('disciplinas_base.index')
             ->with('success', 'Disciplina Base criada!');
@@ -80,7 +80,7 @@ class DisciplinaBaseController extends Controller
     public function update(Request $request, DisciplinaBase $disciplinas_base)
     {
         $data = $this->validateData($request, "update", $disciplinas_base);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $disciplinas_base->update($data);
         return redirect()->route('disciplinas_base.index')
             ->with('success', 'Disciplina Base atualizada!');
@@ -102,7 +102,7 @@ class DisciplinaBaseController extends Controller
                 'status' => 'required|in:Ativo,Inativo',
                 'nome' => 'required|string',
                 'nome_reduzido' => 'nullable|string',
-                'area_conhecimento_id' => 'nullable|exists:area_conhecimentos,id',
+                'id_area_conhecimento' => 'nullable|exists:area_conhecimentos,id',
                 'equivalencia_automatica' => 'boolean',
                 'ch_padrao' => 'integer',
                 'ch_cobrada' => 'integer',
@@ -118,7 +118,7 @@ class DisciplinaBaseController extends Controller
                 'tipo_avaliacao' => 'required|string',
                 'obrigatoriedade' => 'in:Obrigatória,Optativa',
                 'complementaridade' => 'in:Não Informado,Sim,Não',
-                'area_avaliacao_id' => 'nullable|exists:area_conhecimentos,id',
+                'id_area_avaliacao' => 'nullable|exists:area_conhecimentos,id',
             ];
 
         } else {
@@ -127,7 +127,7 @@ class DisciplinaBaseController extends Controller
                 'status' => 'required|in:Ativo,Inativo',
                 'nome' => 'required|string',
                 'nome_reduzido' => 'nullable|string',
-                'area_conhecimento_id' => 'nullable|exists:area_conhecimentos,id',
+                'id_area_conhecimento' => 'nullable|exists:area_conhecimentos,id',
                 'equivalencia_automatica' => 'boolean',
                 'ch_padrao' => 'integer',
                 'ch_cobrada' => 'integer',
@@ -143,7 +143,7 @@ class DisciplinaBaseController extends Controller
                 'tipo_avaliacao' => 'required|string',
                 'obrigatoriedade' => 'in:Obrigatória,Optativa',
                 'complementaridade' => 'in:Não Informado,Sim,Não',
-                'area_avaliacao_id' => 'nullable|exists:area_conhecimentos,id',
+                'id_area_avaliacao' => 'nullable|exists:area_conhecimentos,id',
             ];
 
         }

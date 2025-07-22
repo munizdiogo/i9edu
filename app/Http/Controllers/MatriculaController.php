@@ -32,12 +32,12 @@ class MatriculaController extends Controller
             $col = $cols[$order['column']];
             $dir = $order['dir'];
             if ($col === 'aluno') {
-                $query->join('alunos_curso_admissao', 'matriculas.aluno_curso_admissao_id', '=', 'alunos_curso_admissao.id')
-                    ->join('alunos', 'alunos_curso_admissao.aluno_id', '=', 'alunos.id')
-                    ->join('perfis', 'alunos.perfil_id', '=', 'perfis.id')
+                $query->join('alunos_curso_admissao', 'matriculas.id_aluno_curso_admissao', '=', 'alunos_curso_admissao.id')
+                    ->join('alunos', 'alunos_curso_admissao.id_aluno', '=', 'alunos.id')
+                    ->join('perfis', 'alunos.id_perfil', '=', 'perfis.id')
                     ->orderBy('perfis.nome', $dir);
             } elseif ($col === 'turma') {
-                $query->join('turmas', 'matriculas.turma_id', '=', 'turmas.id')
+                $query->join('turmas', 'matriculas.id_turma', '=', 'turmas.id')
                     ->orderBy('turmas.nome', $dir);
             } else {
                 $query->orderBy($col, $dir);
@@ -80,14 +80,14 @@ class MatriculaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'aluno_curso_admissao_id' => 'required|exists:alunos_curso_admissao,id',
-            'turma_id' => 'required|exists:turmas,id',
-            'contrato_id' => 'nullable|integer',
+            'id_aluno_curso_admissao' => 'required|exists:alunos_curso_admissao,id',
+            'id_turma' => 'required|exists:turmas,id',
+            'id_contrato' => 'nullable|integer',
             'data_matricula' => 'required|date',
             'data_ocorrencia' => 'nullable|date',
             'status' => 'required|in:ATIVA,AGUARDANDO,APROVADO,APROVADO_PARCIALMENTE,CANCELADA,DESISTENTE,INFREQUENTE,REENQUADRADA',
         ]);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         Matricula::create($data);
 
@@ -116,14 +116,14 @@ class MatriculaController extends Controller
     public function update(Request $request, Matricula $matricula)
     {
         $data = $request->validate([
-            'aluno_curso_admissao_id' => 'required|exists:alunos_curso_admissao,id',
-            'turma_id' => 'required|exists:turmas,id',
-            'contrato_id' => 'nullable|integer',
+            'id_aluno_curso_admissao' => 'required|exists:alunos_curso_admissao,id',
+            'id_turma' => 'required|exists:turmas,id',
+            'id_contrato' => 'nullable|integer',
             'data_matricula' => 'required|date',
             'data_ocorrencia' => 'nullable|date',
             'status' => 'required|in:ATIVA,AGUARDANDO,APROVADO,APROVADO_PARCIALMENTE,CANCELADA,DESISTENTE,INFREQUENTE,REENQUADRADA',
         ]);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $matricula->update($data);
 

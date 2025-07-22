@@ -67,7 +67,7 @@ class RequerimentoDepartamentoController extends Controller
             'status' => 'required|string',
             'tipo' => 'required|string',
         ]);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         RequerimentoDepartamento::create($data);
 
@@ -92,7 +92,7 @@ class RequerimentoDepartamentoController extends Controller
             'status' => 'required|string',
             'tipo' => 'required|string',
         ]);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $requerimento_departamento->update($data);
 

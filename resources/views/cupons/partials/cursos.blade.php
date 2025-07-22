@@ -8,7 +8,7 @@
                     <input type="checkbox" id="select-all-cursos" class="ml-2" style="transform: scale(1.2);">
                     Selecionar todos
                 </label>
-                <select name="curso_ids[]" id="cursos-select" class="form-control select2" multiple required>
+                <select name="id_cursos[]" id="cursos-select" class="form-control select2" multiple required>
                     @foreach($cursos as $curso)
                         <option value="{{ $curso->id }}">
                             {{ $curso->nome }}{{ $curso->areaConhecimento ? ' - ' . $curso->areaConhecimento->nome : '' }}

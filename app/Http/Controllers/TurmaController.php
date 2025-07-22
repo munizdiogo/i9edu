@@ -30,10 +30,10 @@ class TurmaController extends Controller
             $col = $cols[$order['column']];
             $dir = $order['dir'];
             if ($col === 'matriz') {
-                $q->join('matrizes_curriculares', 'turmas.matriz_curricular_id', '=', 'matrizes_curriculares.id')
+                $q->join('matrizes_curriculares', 'turmas.id_matriz_curricular', '=', 'matrizes_curriculares.id')
                     ->orderBy('matrizes_curriculares.nome', $dir);
             } elseif ($col === 'periodo') {
-                $q->join('periodos_letivos', 'turmas.periodo_letivo_id', '=', 'periodos_letivos.id')
+                $q->join('periodos_letivos', 'turmas.id_periodo_letivo', '=', 'periodos_letivos.id')
                     ->orderBy('periodos_letivos.nome', $dir);
             } else {
                 $q->orderBy($col, $dir);
@@ -74,7 +74,7 @@ class TurmaController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         Turma::create($data);
         return redirect()->route('turmas.index')->with('success', 'Turma criada!');
     }
@@ -101,7 +101,7 @@ class TurmaController extends Controller
     public function update(Request $request, Turma $turma)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $turma->update($data);
         return redirect()->route('turmas.index')->with('success', 'Turma atualizada!');
@@ -117,8 +117,8 @@ class TurmaController extends Controller
     protected function validateData(Request $request, $id = null)
     {
         $rules = [
-            'matriz_curricular_id' => 'required|exists:matrizes_curriculares,id',
-            'periodo_letivo_id' => 'required|exists:periodos_letivos,id',
+            'id_matriz_curricular' => 'required|exists:matrizes_curriculares,id',
+            'id_periodo_letivo' => 'required|exists:periodos_letivos,id',
             'nome' => 'required|string|max:255',
             'turno' => 'required|in:Manhã,Tarde,Noite,EaD,Integral',
             'status' => 'required|in:ATIVA,INATIVA',
@@ -137,9 +137,9 @@ class TurmaController extends Controller
             'data_inicio' => 'nullable|date',
             'data_termino' => 'nullable|date',
             'formato_venda' => 'nullable|string',
-            'inep_id' => 'nullable|string',
+            'id_inep' => 'nullable|string',
             'seguro_escolar' => 'nullable|string',
-            'professor_responsavel_id' => 'nullable|exists:perfis,id',
+            'id_professor_responsavel' => 'nullable|exists:perfis,id',
             'fech_diario' => 'nullable|date',
             'data_limite_matriculas' => 'nullable|date',
             'data_abono_faltas' => 'nullable|date',

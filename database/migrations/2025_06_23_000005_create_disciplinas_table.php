@@ -9,17 +9,17 @@ return new class extends Migration {
         Schema::create('disciplinas', function (Blueprint $table) {
             $table->id();
             // relacionamentos
-            $table->foreignId('disciplina_base_id')->constrained('disciplinas_base')->onDelete('cascade');
-            $table->foreignId('etapa_periodo_letivo_id')->constrained('etapas_periodos_letivos')->onDelete('cascade');
-            $table->foreignId('modulo_id')->constrained('modulos')->onDelete('cascade');
+            $table->foreignId('id_disciplina_base')->constrained('disciplinas_base')->onDelete('cascade');
+            $table->foreignId('etapa_id_periodo_letivo')->constrained('etapas_periodos_letivos')->onDelete('cascade');
+            $table->foreignId('id_modulo')->constrained('modulos')->onDelete('cascade');
             // dados principais
             $table->string('descricao');
             $table->string('nome_reduzido');
             $table->enum('modalidade', ['Presencial', 'EaD'])->default('EaD');
-            $table->foreignId('professor_padrao_id')->nullable()->constrained('professores')->nullOnDelete();
+            $table->foreignId('id_professor_padrao')->nullable()->constrained('professores')->nullOnDelete();
             $table->string('codigo_mec')->nullable();
             $table->string('codigo_inep')->nullable();
-            $table->foreignId('area_conhecimento_id')->nullable()->constrained('area_conhecimentos')->nullOnDelete();
+            $table->foreignId('id_area_conhecimento')->nullable()->constrained('area_conhecimentos')->nullOnDelete();
             // carga horária
             $table->integer('ch_padrao')->default(0);
             $table->integer('ch_cobrada')->default(0);
@@ -37,7 +37,7 @@ return new class extends Migration {
             $table->string('tipo_avaliacao')->default('Disciplina');
             $table->enum('obrigatoriedade', ['Obrigatória', 'Optativa'])->default('Obrigatória');
             $table->enum('complementaridade', ['Não Informado', 'Sim', 'Não'])->default('Não Informado');
-            $table->foreignId('area_avaliacao_id')->nullable()->constrained('area_conhecimentos')->nullOnDelete();
+            $table->foreignId('id_area_avaliacao')->nullable()->constrained('area_conhecimentos')->nullOnDelete();
             // opções extras
             $table->boolean('disciplina_tcc')->default(false);
             $table->boolean('nao_apresentar_nota')->default(false);

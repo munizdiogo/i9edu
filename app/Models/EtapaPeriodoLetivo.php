@@ -14,7 +14,7 @@ class EtapaPeriodoLetivo extends Model
         'codigo',
         'descricao',
         'status',
-        'periodo_letivo_id',
+        'id_periodo_letivo',
         'id_estrutura',
     ];
 
@@ -26,8 +26,8 @@ class EtapaPeriodoLetivo extends Model
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

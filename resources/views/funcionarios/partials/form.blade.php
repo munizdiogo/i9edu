@@ -8,10 +8,10 @@
             </div>
             <div class="form-group col-md-4">
                 <label>Perfil*</label>
-                <select name="perfil_id" class="form-control select2bs4" required>
+                <select name="id_perfil" class="form-control select2bs4" required>
                     <option value=""></option>
                     @foreach($perfis as $id => $nome)
-                        <option value="{{ $id }}" {{ old('perfil_id', $funcionario->perfil_id ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
+                        <option value="{{ $id }}" {{ old('id_perfil', $funcionario->id_perfil ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
                     @endforeach
                 </select>
             </div>
@@ -44,10 +44,10 @@
             </div>
             <div class="form-group col-md-3">
                 <label>Setor</label>
-                <select name="setor_id" class="form-control select2bs4">
+                <select name="id_setor" class="form-control select2bs4">
                     <option value=""></option>
                     @foreach($setores as $id => $desc)
-                        <option value="{{ $id }}" {{ old('setor_id', $funcionario->setor_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_setor', $funcionario->id_setor ?? '') == $id ? 'selected' : '' }}>
                             {{ $desc }}
                         </option>
                     @endforeach
@@ -55,10 +55,10 @@
             </div>
             <div class="form-group col-md-3">
                 <label>Função</label>
-                <select name="funcao_id" class="form-control select2bs4">
+                <select name="id_funcao" class="form-control select2bs4">
                     <option value=""></option>
                     @foreach($funcoes as $id => $desc)
-                        <option value="{{ $id }}" {{ old('funcao_id', $funcionario->funcao_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_funcao', $funcionario->id_funcao ?? '') == $id ? 'selected' : '' }}>
                             {{ $desc }}
                         </option>
                     @endforeach

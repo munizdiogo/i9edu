@@ -93,14 +93,14 @@ class RestricaoPlanoPagamentoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $restricao = RestricaoPlanoPagamento::create($data);
 
         // vincula vários de uma vez só
-        $restricao->cursos()->sync($request->curso_ids ?: []);
-        $restricao->polos()->sync($request->polo_ids ?: []);
-        $restricao->turmas()->sync($request->turma_ids ?: []);
+        $restricao->cursos()->sync($request->id_cursos ?: []);
+        $restricao->polos()->sync($request->id_polos ?: []);
+        $restricao->turmas()->sync($request->id_turmas ?: []);
 
         return redirect()->route('restricoes_plano_pagamento.index')->with('success', 'Restrição adicionada!');
     }
@@ -129,12 +129,12 @@ class RestricaoPlanoPagamentoController extends Controller
     {
         // $restricao = RestricaoPlanoPagamento::findOrFail($id);
         $data = $this->validateData($request, "update", $restricao);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $restricao->update($data);
-        $restricao->cursos()->sync($request->curso_ids ?: []);
-        $restricao->polos()->sync($request->polo_ids ?: []);
-        $restricao->turmas()->sync($request->turma_ids ?: []);
+        $restricao->cursos()->sync($request->id_cursos ?: []);
+        $restricao->polos()->sync($request->id_polos ?: []);
+        $restricao->turmas()->sync($request->id_turmas ?: []);
 
         return redirect()->route('restricoes_plano_pagamento.index')->with('success', 'Restrição atualizada!');
     }

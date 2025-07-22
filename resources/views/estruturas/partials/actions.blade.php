@@ -13,7 +13,7 @@
 
 <form action="{{ route('estruturas.selecionar') }}" method="POST" class="d-inline">
     @csrf
-    <input type="hidden" name="estrutura_id" value="{{ $estrutura->id }}">
+    <input type="hidden" name="id_estrutura" value="{{ $estrutura->id }}">
     <button class="btn btn-sm btn-info" title="Selecionar Estrutura">
         <i class="fa fa-check-circle"></i>
     </button>

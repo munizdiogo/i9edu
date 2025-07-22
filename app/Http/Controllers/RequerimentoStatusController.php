@@ -25,7 +25,7 @@ class RequerimentoStatusController extends Controller
             // 'cor' => 'nullable|string|max:20',
             // 'status' => 'required|in:Ativo,Inativo',
         ]);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
 
         RequerimentoStatus::create($data);
@@ -46,7 +46,7 @@ class RequerimentoStatusController extends Controller
             'cor' => 'nullable|string|max:20',
             'status' => 'required|in:Ativo,Inativo',
         ]);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $statusModel = RequerimentoStatus::findOrFail($id);
         $statusModel->update($data);

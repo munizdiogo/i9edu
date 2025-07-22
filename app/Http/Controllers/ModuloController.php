@@ -57,7 +57,7 @@ class ModuloController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         Modulo::create($data);
         return redirect()->route('modulos.index')->with('success', 'Módulo criado!');
     }
@@ -77,7 +77,7 @@ class ModuloController extends Controller
     public function update(Request $request, Modulo $modulo)
     {
         $data = $this->validateData($request, "update", $modulo);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $modulo->update($data);
         return redirect()->route('modulos.index')->with('success', 'Módulo atualizado!');
     }
@@ -97,7 +97,7 @@ class ModuloController extends Controller
                 'nome_reduzido' => 'required|string',
                 'ordem' => 'required|integer',
                 'status' => 'required|in:Ativo,Inativo',
-                'prox_modulo_id' => 'nullable|exists:modulos,id',
+                'prox_id_modulo' => 'nullable|exists:modulos,id',
             ];
 
         } else {
@@ -107,7 +107,7 @@ class ModuloController extends Controller
                 'nome_reduzido' => 'required|string',
                 'ordem' => 'required|integer',
                 'status' => 'required|in:Ativo,Inativo',
-                'prox_modulo_id' => 'nullable|exists:modulos,id',
+                'prox_id_modulo' => 'nullable|exists:modulos,id',
             ];
 
         }

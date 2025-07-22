@@ -9,7 +9,7 @@ class ParcelaPlanoPagamentoController extends Controller
 {
     public function data(Request $request, PlanoPagamento $plano)
     {
-        $q = ParcelaPlanoPagamento::where('plano_pagamento_id', $plano->id);
+        $q = ParcelaPlanoPagamento::where('id_plano_pagamento', $plano->id);
         $total = $q->count();
 
         if ($search = $request->input('search.value')) {
@@ -41,8 +41,8 @@ class ParcelaPlanoPagamentoController extends Controller
     public function store(Request $request, PlanoPagamento $plano)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
-        $data['plano_pagamento_id'] = $plano->id;
+        $data['id_estrutura'] = session('id_estrutura');
+        $data['id_plano_pagamento'] = $plano->id;
         ParcelaPlanoPagamento::create($data);
         return back();
     }
@@ -62,7 +62,7 @@ class ParcelaPlanoPagamentoController extends Controller
     public function update(Request $request, PlanoPagamento $plano, ParcelaPlanoPagamento $parcela)
     {
         $data = $this->validateData($request, "update");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $parcela->update($data);
         return back()->with('success', 'Parcela atualizada!');

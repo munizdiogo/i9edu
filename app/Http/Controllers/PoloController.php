@@ -69,7 +69,7 @@ class PoloController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         Polo::create($data);
         return redirect()->route('polos.index')->with('success', 'Polo criado com sucesso!');
     }
@@ -89,7 +89,7 @@ class PoloController extends Controller
     public function update(Request $request, Polo $polo)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $polo->update($data);
         return redirect()->route('polos.index')->with('success', 'Polo atualizado com sucesso!');
     }
@@ -125,9 +125,9 @@ class PoloController extends Controller
             'nao_apresentar_atendimento' => 'boolean',
             'data_ativacao' => 'nullable|date',
             'data_inativacao' => 'nullable|date',
-            'gestor_id' => 'nullable|exists:perfis,id',
-            'gestor_faturamento_id' => 'nullable|exists:perfis,id',
-            'supervisor_id' => 'nullable|exists:perfis,id',
+            'id_gestor' => 'nullable|exists:perfis,id',
+            'id_gestor_faturamento' => 'nullable|exists:perfis,id',
+            'id_supervisor' => 'nullable|exists:perfis,id',
             'data_contrato_inicio' => 'nullable|date',
             'data_contrato_termino' => 'nullable|date',
         ];

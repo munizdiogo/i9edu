@@ -6,10 +6,10 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Disciplina Base*</label>
-                <select name="disciplina_base_id" class="form-control select2bs4" required>
+                <select name="id_disciplina_base" class="form-control select2bs4" required>
                     <option value=""></option>
                     @foreach($bases as $id => $nome)
-                        <option value="{{ $id }}" {{ old('disciplina_base_id', $disciplina->disciplina_base_id ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
+                        <option value="{{ $id }}" {{ old('id_disciplina_base', $disciplina->id_disciplina_base ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
                     @endforeach
                 </select>
             </div>
@@ -35,10 +35,10 @@
             </div>
             <div class="form-group col-md-3">
                 <label>Professor Padrão</label>
-                <select name="professor_id" class="form-control select2bs4">
+                <select name="id_professor" class="form-control select2bs4">
                     <option value=""></option>
                     @foreach($professores as $id => $nome)
-                        <option value="{{ $id }}" {{ old('professor_id', $disciplina->professor_id ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
+                        <option value="{{ $id }}" {{ old('id_professor', $disciplina->id_professor ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
                     @endforeach
                 </select>
             </div>
@@ -64,28 +64,28 @@
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label>Etapa Período*</label>
-                <select name="etapa_periodo_letivo_id" class="form-control select2bs4" required>
+                <select name="etapa_id_periodo_letivo" class="form-control select2bs4" required>
                     <option value=""></option>
                     @foreach($etapas as $id => $desc)
-                        <option value="{{ $id }}" {{ old('etapa_periodo_letivo_id', $disciplina->etapa_periodo_letivo_id ?? '') == $id ? 'selected' : '' }}>{{ $desc }}</option>
+                        <option value="{{ $id }}" {{ old('etapa_id_periodo_letivo', $disciplina->etapa_id_periodo_letivo ?? '') == $id ? 'selected' : '' }}>{{ $desc }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group col-md-3">
                 <label>Módulo*</label>
-                <select name="modulo_id" class="form-control select2bs4" required>
+                <select name="id_modulo" class="form-control select2bs4" required>
                     <option value=""></option>
                     @foreach($modulos as $id => $desc)
-                        <option value="{{ $id }}" {{ old('modulo_id', $disciplina->modulo_id ?? '') == $id ? 'selected' : '' }}>{{ $desc }}</option>
+                        <option value="{{ $id }}" {{ old('id_modulo', $disciplina->id_modulo ?? '') == $id ? 'selected' : '' }}>{{ $desc }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group col-md-3">
                 <label>Área de Conhecimento</label>
-                <select name="area_conhecimento_id" class="form-control select2bs4">
+                <select name="id_area_conhecimento" class="form-control select2bs4">
                     <option value=""></option>
                     @foreach($areas as $id => $nome)
-                        <option value="{{ $id }}" {{ old('area_conhecimento_id', $disciplina->area_conhecimento_id ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
+                        <option value="{{ $id }}" {{ old('id_area_conhecimento', $disciplina->id_area_conhecimento ?? '') == $id ? 'selected' : '' }}>{{ $nome }}</option>
                     @endforeach
                 </select>
             </div>

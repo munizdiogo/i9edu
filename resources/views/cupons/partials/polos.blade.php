@@ -8,7 +8,7 @@
                     <input type="checkbox" id="select-all-polos" class="ml-2" style="transform: scale(1.2);"> Selecionar
                     todos
                 </label>
-                <select name="polo_ids[]" id="polos-select" class="form-control select2" multiple required>
+                <select name="id_polos[]" id="polos-select" class="form-control select2" multiple required>
                     @foreach($polos as $polo)
                         <option value="{{ $polo->id }}">{{ $polo->nome }}{{ $polo->cidade ? ' - ' . $polo->cidade : '' }}
                         </option>

@@ -65,7 +65,7 @@ class DisciplinaController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         Disciplina::create($data);
         return redirect()->route('disciplinas.index')
             ->with('success', 'Disciplina criada!');
@@ -94,7 +94,7 @@ class DisciplinaController extends Controller
     public function update(Request $request, Disciplina $disciplina)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $disciplina->update($data);
         return redirect()->route('disciplinas.index')->with('success', 'Disciplina atualizada!');
     }
@@ -109,16 +109,16 @@ class DisciplinaController extends Controller
     protected function validateData(Request $request, $origem = "create", $setor = null)
     {
         $rules = [
-            'disciplina_base_id' => 'required|exists:disciplinas_base,id',
-            'etapa_periodo_letivo_id' => 'required|exists:etapas_periodos_letivos,id',
-            'modulo_id' => 'required|exists:modulos,id',
+            'id_disciplina_base' => 'required|exists:disciplinas_base,id',
+            'etapa_id_periodo_letivo' => 'required|exists:etapas_periodos_letivos,id',
+            'id_modulo' => 'required|exists:modulos,id',
             'descricao' => 'required|string',
             'nome_reduzido' => 'required|string',
             'modalidade' => 'required|in:Presencial,EaD',
-            'professor_padrao_id' => 'nullable|exists:professores,id',
+            'id_professor_padrao' => 'nullable|exists:professores,id',
             'codigo_mec' => 'nullable|string',
             'codigo_inep' => 'nullable|string',
-            'area_conhecimento_id' => 'nullable|exists:area_conhecimentos,id',
+            'id_area_conhecimento' => 'nullable|exists:area_conhecimentos,id',
             'ch_padrao' => 'integer',
             'ch_cobrada' => 'integer',
             'ch_teorica' => 'integer',
@@ -134,7 +134,7 @@ class DisciplinaController extends Controller
             'tipo_avaliacao' => 'string',
             'obrigatoriedade' => 'in:Obrigatória,Optativa',
             'complementaridade' => 'in:Não Informado,Sim,Não',
-            'area_avaliacao_id' => 'nullable|exists:area_conhecimentos,id',
+            'id_area_avaliacao' => 'nullable|exists:area_conhecimentos,id',
             'disciplina_tcc' => 'boolean',
             // 'nao_apresentar_nota' => 'boolean',
             // 'reprovar_por_frequencia' => 'boolean',

@@ -11,26 +11,26 @@ class GradeDisciplinasMatriz extends Model
     protected $table = 'grade_disciplinas_matrizes';
 
     protected $fillable = [
-        'matriz_curricular_id',
-        'disciplina_id',
+        'id_matriz_curricular',
+        'id_disciplina',
         'id_estrutura',
     ];
 
     public function matrizCurricular()
     {
-        return $this->belongsTo(MatrizCurricular::class, 'matriz_curricular_id');
+        return $this->belongsTo(MatrizCurricular::class, 'id_matriz_curricular');
     }
 
     public function disciplina()
     {
-        return $this->belongsTo(Disciplina::class, 'disciplina_id');
+        return $this->belongsTo(Disciplina::class, 'id_disciplina');
     }
 
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

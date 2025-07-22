@@ -53,7 +53,7 @@ class RequerimentoAssuntoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         RequerimentoAssunto::create($data);
         return redirect()->route('requerimentos_assuntos.index')->with('success', 'Assunto criado com sucesso!');
@@ -69,7 +69,7 @@ class RequerimentoAssuntoController extends Controller
     public function update(Request $request, RequerimentoAssunto $requerimento_assunto)
     {
         $data = $this->validateData($request, "update");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
 
         $requerimento_assunto->update($data);
         return redirect()->route('requerimentos_assuntos.index')->with('success', 'Assunto atualizado com sucesso!');

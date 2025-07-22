@@ -12,15 +12,15 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-4"><label>Curso*</label>
-        <select name="curso_id" class="form-control select2bs4">
-          <option value="">-- selecione --</option>@foreach($cursos as $c)<option value="{{$c->id}}" {{old('curso_id', $matriz->curso_id ?? '') == $c->id ? 'selected' : ''}}>{{$c->nome_impressao1}}
+        <select name="id_curso" class="form-control select2bs4">
+          <option value="">-- selecione --</option>@foreach($cursos as $c)<option value="{{$c->id}}" {{old('id_curso', $matriz->id_curso ?? '') == $c->id ? 'selected' : ''}}>{{$c->nome_impressao1}}
       </option>@endforeach
         </select>
       </div>
-      <div class="form-group col-md-4"><label>Centro de Custo</label><select name="centro_custo_id"
+      <div class="form-group col-md-4"><label>Centro de Custo</label><select name="id_centro_custo"
           class="form-control">
           <option value="">-- selecione --</option>@foreach($polos as $p)<option value="{{$p->id}}"
-      {{old('centro_custo_id', $matriz->centro_custo_id ?? '') == $p->id ? 'selected' : ''}}>
+      {{old('id_centro_custo', $matriz->id_centro_custo ?? '') == $p->id ? 'selected' : ''}}>
       {{$p->nome}}
       </option>@endforeach
         </select></div>
@@ -45,8 +45,8 @@
           <option value="Híbrido" {{old('modalidade', $matriz->modalidade ?? '') == 'Híbrido' ? 'selected' : ''}}>
             Híbrido</option>
         </select></div>
-      <div class="form-group col-md-3"><label>ID INEP</label><input type="text" name="inep_id"
-          value="{{ old('inep_id', $matriz->inep_id ?? '') }}" class="form-control"></div>
+      <div class="form-group col-md-3"><label>ID INEP</label><input type="text" name="id_inep"
+          value="{{ old('id_inep', $matriz->id_inep ?? '') }}" class="form-control"></div>
     </div>
     <div class="form-group"><label>Data do Currículo</label><input type="date" name="data_curriculo"
         value="{{ old('data_curriculo', $matriz->data_curriculo ?? '') }}" class="form-control"></div>

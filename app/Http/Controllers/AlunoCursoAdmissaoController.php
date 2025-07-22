@@ -38,10 +38,10 @@ class AlunoCursoAdmissaoController extends Controller
             $col = $cols[$order['column']];
             $dir = $order['dir'];
             if ($col === 'aluno') {
-                $query->join('alunos', 'admissoes.aluno_id', '=', 'alunos.id')
+                $query->join('alunos', 'admissoes.id_aluno', '=', 'alunos.id')
                     ->orderBy('alunos.nome', $dir);
             } elseif ($col === 'matriz') {
-                $query->join('matrizes_curriculares', 'admissoes.matriz_curricular_id', '=', 'matrizes_curriculares.id')
+                $query->join('matrizes_curriculares', 'admissoes.id_matriz_curricular', '=', 'matrizes_curriculares.id')
                     ->orderBy('matrizes_curriculares.nome', $dir);
             } else {
                 $query->orderBy($col, $dir);
@@ -89,7 +89,7 @@ class AlunoCursoAdmissaoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         AlunoCursoAdmissao::create($data);
         return redirect()->route('admissoes.index')->with('success', 'Registro salvo!');
     }
@@ -125,7 +125,7 @@ class AlunoCursoAdmissaoController extends Controller
     public function update(Request $request, AlunoCursoAdmissao $admissao)
     {
         $data = $this->validateData($request);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $admissao->update($data);
         return redirect()->route('admissoes.index')->with('success', 'Registro atualizado!');
     }
@@ -140,20 +140,20 @@ class AlunoCursoAdmissaoController extends Controller
     protected function validateData(Request $request, $id = null)
     {
         $rules = [
-            'aluno_id' => 'required|exists:alunos,id',
-            'matriz_curricular_id' => 'required|exists:matrizes_curriculares,id',
-            // 'campus_polo_id' => 'nullable|exists:polos,id',
-            // 'periodo_letivo_ingresso_id' => 'nullable|exists:periodos_letivos,id',
-            // 'turma_base_id' => 'nullable|exists:turmas,id',
-            'edital_processo_seletivo_id' => 'nullable|exists:editais_processo_seletivo,id',
+            'id_aluno' => 'required|exists:alunos,id',
+            'id_matriz_curricular' => 'required|exists:matrizes_curriculares,id',
+            // 'campus_id_polo' => 'nullable|exists:polos,id',
+            // 'id_periodo_letivo_ingresso' => 'nullable|exists:periodos_letivos,id',
+            // 'id_turma_base' => 'nullable|exists:turmas,id',
+            'id_edital_processo_seletivo' => 'nullable|exists:editais_processo_seletivo,id',
             'data_ingresso' => 'required|date',
             'data_inicio_curso' => 'nullable|date',
             'data_conclusao' => 'nullable|date',
             'periodo_conclusao' => 'nullable|string',
             'turno' => 'required|in:Matutino,Vespertino,Noturno,Integral,EaD',
             'numero_matricula' => 'nullable|string',
-            'forma_ingresso_id' => 'nullable|exists:formas_ingresso,id',
-            'instituicao_id' => 'nullable|exists:instituicoes,id',
+            'id_forma_ingresso' => 'nullable|exists:formas_ingresso,id',
+            'id_instituicao' => 'nullable|exists:instituicoes,id',
             'classificacao' => 'nullable|integer',
             'pontos' => 'nullable|numeric',
             'vagas' => 'nullable|integer',
@@ -164,7 +164,7 @@ class AlunoCursoAdmissaoController extends Controller
             'observacao' => 'nullable|string',
             'data_estagio' => 'nullable|date',
             'horas_estagio' => 'nullable|integer',
-            // 'instituicao_transferencia_id' => 'nullable|exists:instituicoes,id',
+            // 'id_instituicao_transferencia' => 'nullable|exists:instituicoes,id',
             // 'status' => 'required|in:ATIVO,INATIVO'
         ];
 

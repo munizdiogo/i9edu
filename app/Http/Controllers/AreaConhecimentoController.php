@@ -62,7 +62,7 @@ class AreaConhecimentoController extends Controller
             'descricao' => 'required|string',
             'status' => 'required|in:Ativo,Inativo',
         ]);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         AreaConhecimento::create($data);
         return redirect()->route('area_conhecimentos.index')->with('success', 'Área criada!');
     }
@@ -84,7 +84,7 @@ class AreaConhecimentoController extends Controller
             'descricao' => 'required|string',
             'status' => 'required|in:Ativo,Inativo',
         ]);
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $area_conhecimento->update($data);
         return redirect()->route('area_conhecimentos.index')->with('success', 'Área atualizada!');
     }

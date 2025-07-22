@@ -10,7 +10,7 @@ class Aluno extends Model
     use HasFactory;
 
     protected $fillable = [
-        'perfil_id',
+        'id_perfil',
         'ra',
         'ra_est',
         'id_inep',
@@ -33,18 +33,18 @@ class Aluno extends Model
 
     public function perfil()
     {
-        return $this->belongsTo(Perfil::class, 'perfil_id');
+        return $this->belongsTo(Perfil::class, 'id_perfil');
     }
 
     public function admissao()
     {
-        return $this->belongsTo(AlunoCursoAdmissao::class, 'id', 'aluno_id');
+        return $this->belongsTo(AlunoCursoAdmissao::class, 'id', 'id_aluno');
     }
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

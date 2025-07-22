@@ -14,16 +14,16 @@ class CreateCuponsTable extends Migration
             $table->string('descricao')->nullable();
             $table->date('data_inicio');
             $table->date('data_fim');
-            $table->unsignedBigInteger('convenio_id')->nullable();
+            $table->unsignedBigInteger('id_convenio')->nullable();
             $table->enum('status', ['ATIVO', 'INATIVO'])->default('ATIVO');
             $table->integer('quantidade_maxima')->default(0);
             $table->boolean('criar_convenio_pagador')->default(false);
             $table->boolean('validar_matricula_ativa')->default(false);
-            $table->unsignedBigInteger('plano_conta_id')->nullable();
+            $table->unsignedBigInteger('id_plano_conta')->nullable();
             $table->timestamps();
 
-            $table->foreign('convenio_id')->references('id')->on('convenios')->onDelete('set null');
-            $table->foreign('plano_conta_id')->references('id')->on('plano_contas')->onDelete('set null');
+            $table->foreign('id_convenio')->references('id')->on('convenios')->onDelete('set null');
+            $table->foreign('id_plano_conta')->references('id')->on('plano_contas')->onDelete('set null');
 
             $table->unsignedBigInteger('id_estrutura')->default(0)->index();
         });

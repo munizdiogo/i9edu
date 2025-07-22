@@ -9,11 +9,11 @@ class Turma extends Model
     use HasFactory;
     protected $table = 'turmas';
     protected $fillable = [
-        'matriz_curricular_id',
-        'periodo_letivo_id',
-        'turma_base_id',
-        'centro_custo_id',
-        'professor_responsavel_id',
+        'id_matriz_curricular',
+        'id_periodo_letivo',
+        'id_turma_base',
+        'id_centro_custo',
+        'id_professor_responsavel',
         'nome',
         'nome_reduzido',
         'descricao',
@@ -34,7 +34,7 @@ class Turma extends Model
         'data_inicio',
         'data_termino',
         'formato_venda',
-        'inep_id',
+        'id_inep',
         'seguro_escolar',
         'fech_diario',
         'data_limite_matriculas',
@@ -50,29 +50,29 @@ class Turma extends Model
     // Relacionamentos
     public function matrizCurricular()
     {
-        return $this->belongsTo(MatrizCurricular::class, 'matriz_curricular_id');
+        return $this->belongsTo(MatrizCurricular::class, 'id_matriz_curricular');
     }
     public function periodoLetivo()
     {
-        return $this->belongsTo(PeriodoLetivo::class, 'periodo_letivo_id');
+        return $this->belongsTo(PeriodoLetivo::class, 'id_periodo_letivo');
     }
     public function turmaBase()
     {
-        return $this->belongsTo(Turma::class, 'turma_base_id');
+        return $this->belongsTo(Turma::class, 'id_turma_base');
     }
     public function centroCusto()
     {
-        return $this->belongsTo(Polo::class, 'centro_custo_id');
+        return $this->belongsTo(Polo::class, 'id_centro_custo');
     }
     public function professorResponsavel()
     {
-        return $this->belongsTo(Perfil::class, 'professor_responsavel_id');
+        return $this->belongsTo(Perfil::class, 'id_professor_responsavel');
     }
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('turmas.id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('turmas.id_estrutura', session('id_estrutura'));
             }
         });
     }

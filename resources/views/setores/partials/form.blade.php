@@ -28,10 +28,10 @@
             </div>
             <div class="form-group col-md-4">
                 <label>Func. Responsável</label>
-                <select name="funcionario_responsavel_id" class="form-control select2bs4">
+                <select name="id_funcionario_responsavel" class="form-control select2bs4">
                     <option value=""></option>
                     @foreach($funcionarios as $id => $nome)
-                        <option value="{{ $id }}" {{ old('funcionario_responsavel_id', $setor->funcionario_responsavel_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_funcionario_responsavel', $setor->id_funcionario_responsavel ?? '') == $id ? 'selected' : '' }}>
                             {{ $nome }}
                         </option>
                     @endforeach

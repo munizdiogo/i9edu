@@ -12,7 +12,7 @@ class Professor extends Model
 
     protected $fillable = [
         'id',
-        'funcionario_id',
+        'id_funcionario',
         'graduacao',
         'titulacao_principal',
         'tipo_docente',
@@ -40,13 +40,13 @@ class Professor extends Model
 
     public function funcionario()
     {
-        return $this->belongsTo(Funcionario::class, 'funcionario_id');
+        return $this->belongsTo(Funcionario::class, 'id_funcionario');
     }
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

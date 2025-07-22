@@ -15,23 +15,23 @@ class Cupom extends Model
         'descricao',
         'data_inicio',
         'data_fim',
-        'convenio_id',
+        'id_convenio',
         'status',
         'quantidade_maxima',
         'criar_convenio_pagador',
         'validar_matricula_ativa',
-        'plano_conta_id',
+        'id_plano_conta',
         'id_estrutura',
     ];
 
     public function convenio()
     {
-        return $this->belongsTo(Convenio::class, 'convenio_id');
+        return $this->belongsTo(Convenio::class, 'id_convenio');
     }
 
     public function planoConta()
     {
-        return $this->belongsTo(PlanoConta::class, 'plano_conta_id');
+        return $this->belongsTo(PlanoConta::class, 'id_plano_conta');
     }
 
     public function cursos()
@@ -50,8 +50,8 @@ class Cupom extends Model
     protected static function booted()
     {
         static::addGlobalScope('estrutura', function ($query) {
-            if (session('estrutura_id')) {
-                $query->where('id_estrutura', session('estrutura_id'));
+            if (session('id_estrutura')) {
+                $query->where('id_estrutura', session('id_estrutura'));
             }
         });
     }

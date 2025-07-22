@@ -60,7 +60,7 @@ class GradeDisciplinasMatrizController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request, "create");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         GradeDisciplinasMatriz::create($data);
         return redirect()->route('grade_disciplinas_matrizes.index')
             ->with('success', 'Vínculo criado!');
@@ -83,7 +83,7 @@ class GradeDisciplinasMatrizController extends Controller
     public function update(Request $request, GradeDisciplinasMatriz $grade_disciplinas_matrize)
     {
         $data = $this->validateData($request, "update");
-        $data['id_estrutura'] = session('estrutura_id');
+        $data['id_estrutura'] = session('id_estrutura');
         $grade_disciplinas_matrize->update($data);
         return redirect()->route('grade_disciplinas_matrizes.index')
             ->with('success', 'Vínculo atualizado!');
@@ -100,14 +100,14 @@ class GradeDisciplinasMatrizController extends Controller
     {
         if ($origem == 'create') {
             $rules = [
-                'matriz_curricular_id' => 'required|exists:matrizes_curriculares,id',
-                'disciplina_id' => 'required|exists:disciplinas,id',
+                'id_matriz_curricular' => 'required|exists:matrizes_curriculares,id',
+                'id_disciplina' => 'required|exists:disciplinas,id',
             ];
 
         } else {
             $rules = [
-                'matriz_curricular_id' => 'required|exists:matrizes_curriculares,id',
-                'disciplina_id' => 'required|exists:disciplinas,id',
+                'id_matriz_curricular' => 'required|exists:matrizes_curriculares,id',
+                'id_disciplina' => 'required|exists:disciplinas,id',
             ];
 
         }
