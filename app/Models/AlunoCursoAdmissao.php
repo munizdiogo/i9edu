@@ -36,7 +36,7 @@ class AlunoCursoAdmissao extends Model
         'observacao',
         'data_estagio',
         'horas_estagio',
-        'instituicao_transferencia_id',
+        'id_instituicao_transferencia',
         'status',
         'id_estrutura',
     ];

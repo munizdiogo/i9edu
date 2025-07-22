@@ -164,7 +164,7 @@ class AlunoCursoAdmissaoController extends Controller
             'observacao' => 'nullable|string',
             'data_estagio' => 'nullable|date',
             'horas_estagio' => 'nullable|integer',
-            // 'instituicao_transferencia_id' => 'nullable|exists:instituicoes,id',
+            // 'id_instituicao_transferencia' => 'nullable|exists:instituicoes,id',
             // 'status' => 'required|in:ATIVO,INATIVO'
         ];
 

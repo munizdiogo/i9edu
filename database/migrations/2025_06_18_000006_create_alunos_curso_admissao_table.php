@@ -44,7 +44,7 @@ class CreateAlunosCursoAdmissaoTable extends Migration
             $table->integer('horas_estagio')->nullable();
 
             // Transferência
-            $table->unsignedBigInteger('instituicao_transferencia_id')->nullable();
+            $table->unsignedBigInteger('id_instituicao_transferencia')->nullable();
 
             $table->enum('status', ['ATIVO', 'INATIVO'])->default('ATIVO');
             $table->timestamps();

@@ -123,10 +123,10 @@
             </div>
             <div class="form-group col-md-6">
                 <label>Instituição Transferência</label>
-                <select name="instituicao_transferencia_id" class="form-control select2bs4">
+                <select name="id_instituicao_transferencia" class="form-control select2bs4">
                     <option value="">— selecione —</option>
                     @foreach($instituicoes as $id => $nome)
-                        <option value="{{ $id }}" {{ old('instituicao_transferencia_id', $admissao->instituicao_transferencia_id ?? '') == $id ? 'selected' : '' }}>
+                        <option value="{{ $id }}" {{ old('id_instituicao_transferencia', $admissao->id_instituicao_transferencia ?? '') == $id ? 'selected' : '' }}>
                             {{ $nome }}
                         </option>
                     @endforeach
