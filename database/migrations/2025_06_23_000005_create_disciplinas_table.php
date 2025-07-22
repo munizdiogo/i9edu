@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('descricao');
             $table->string('nome_reduzido');
             $table->enum('modalidade', ['Presencial', 'EaD'])->default('EaD');
-            $table->foreignId('professor_padrao_id')->nullable()->constrained('professores')->nullOnDelete();
+            $table->foreignId('id_professor_padrao')->nullable()->constrained('professores')->nullOnDelete();
             $table->string('codigo_mec')->nullable();
             $table->string('codigo_inep')->nullable();
             $table->foreignId('id_area_conhecimento')->nullable()->constrained('area_conhecimentos')->nullOnDelete();

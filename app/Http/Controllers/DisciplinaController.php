@@ -115,7 +115,7 @@ class DisciplinaController extends Controller
             'descricao' => 'required|string',
             'nome_reduzido' => 'required|string',
             'modalidade' => 'required|in:Presencial,EaD',
-            'professor_padrao_id' => 'nullable|exists:professores,id',
+            'id_professor_padrao' => 'nullable|exists:professores,id',
             'codigo_mec' => 'nullable|string',
             'codigo_inep' => 'nullable|string',
             'id_area_conhecimento' => 'nullable|exists:area_conhecimentos,id',
