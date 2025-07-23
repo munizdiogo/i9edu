@@ -67,3 +67,9 @@
         <button type="submit" class="btn btn-success">Salvar</button>
     </div>
 @endif
+
+@section('js')
+    @if ($errors->any())
+        @include('components.alert-swal-erro-validacoes')
+    @endif
+@endsection

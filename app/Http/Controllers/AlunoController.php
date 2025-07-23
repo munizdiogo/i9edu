@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Validator;
 
 use App\Models\Aluno;
 use App\Models\AlunoCursoAdmissao;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
+
     public function index()
     {
         return view('alunos.index');
@@ -72,7 +74,15 @@ class AlunoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
         $data['id_estrutura'] = session('id_estrutura');
+        dd($data);
 
         Aluno::create($data);
         return redirect()->route('alunos.index')
@@ -96,6 +106,14 @@ class AlunoController extends Controller
     public function update(Request $request, Aluno $aluno)
     {
         $data = $this->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
+
         $data['id_estrutura'] = session('id_estrutura');
 
         $aluno->update($data);
@@ -113,28 +131,30 @@ class AlunoController extends Controller
 
     protected function validateData(Request $request, $id = null)
     {
+        $dados = $request->all();
+
         $rules = [
             'id_perfil' => 'required|exists:perfis,id',
             // 'ra' => 'required|string|unique:alunos,ra',
             'ra' => 'required|string',
-            // 'ra_est' => 'nullable|string',
-            // 'id_inep' => 'nullable|string',
-            // 'email_institucional' => 'nullable|email',
-            // 'cpf' => 'nullable|string',
-            // 'rg' => 'nullable|string',
-            // 'orgao_expedidor' => 'nullable|string',
-            // 'data_expedicao' => 'nullable|date',
-            // 'data_nascimento' => 'nullable|date',
-            // 'sexo' => 'nullable|in:Masculino,Feminino,Outro',
-            // 'estado_civil' => 'nullable|in:Solteiro(a),Casado(a),Divorciado(a),Viúvo(a)',
-            // 'nacionalidade' => 'nullable|string',
-            // 'naturalidade' => 'nullable|string',
-            // 'religiao' => 'nullable|string',
-            // 'telefone' => 'nullable|string',
-            // 'celular' => 'nullable|string',
+            'ra_est' => 'nullable|string',
+            'id_inep' => 'nullable|string',
+            'email_institucional' => 'nullable|email',
+            'cpf' => 'nullable|string',
+            'rg' => 'nullable|string',
+            'orgao_expedidor' => 'nullable|string',
+            'data_expedicao' => 'nullable|date',
+            'data_nascimento' => 'nullable|date',
+            'sexo' => 'nullable|in:Masculino,Feminino,Outro',
+            'estado_civil' => 'nullable|in:Solteiro(a),Casado(a),Divorciado(a),Viúvo(a)',
+            'nacionalidade' => 'nullable|string',
+            'naturalidade' => 'nullable|string',
+            'religiao' => 'nullable|string',
+            'telefone' => 'nullable|string',
+            'celular' => 'nullable|string',
             'status' => 'required|in:ATIVO,INATIVO',
         ];
 
-        return $request->validate($rules);
+        return Validator::make($dados, $rules);
     }
 }

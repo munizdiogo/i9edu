@@ -65,6 +65,13 @@ class PeriodoLetivoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
         $data['id_estrutura'] = session('id_estrutura');
 
         PeriodoLetivo::create($data);
@@ -84,6 +91,13 @@ class PeriodoLetivoController extends Controller
     public function update(Request $request, PeriodoLetivo $periodo)
     {
         $data = $this->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
         $data['id_estrutura'] = session('id_estrutura');
 
         $periodo->update($data);

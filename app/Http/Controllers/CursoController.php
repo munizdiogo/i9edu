@@ -66,6 +66,13 @@ class CursoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
         $data['id_estrutura'] = session('id_estrutura');
         Curso::create($data);
         return redirect()->route('cursos.index')->with('success', 'Curso criado!');
@@ -84,6 +91,13 @@ class CursoController extends Controller
     public function update(Request $request, Curso $curso)
     {
         $data = $this->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
         $data['id_estrutura'] = session('id_estrutura');
         $curso->update($data);
         return redirect()->route('cursos.index')->with('success', 'Curso atualizado!');

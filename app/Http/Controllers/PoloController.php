@@ -69,6 +69,13 @@ class PoloController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
         $data['id_estrutura'] = session('id_estrutura');
         Polo::create($data);
         return redirect()->route('polos.index')->with('success', 'Polo criado com sucesso!');
@@ -89,6 +96,13 @@ class PoloController extends Controller
     public function update(Request $request, Polo $polo)
     {
         $data = $this->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
         $data['id_estrutura'] = session('id_estrutura');
         $polo->update($data);
         return redirect()->route('polos.index')->with('success', 'Polo atualizado com sucesso!');

@@ -65,6 +65,13 @@ class DisciplinaController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
         $data['id_estrutura'] = session('id_estrutura');
         Disciplina::create($data);
         return redirect()->route('disciplinas.index')
@@ -94,6 +101,13 @@ class DisciplinaController extends Controller
     public function update(Request $request, Disciplina $disciplina)
     {
         $data = $this->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
         $data['id_estrutura'] = session('id_estrutura');
         $disciplina->update($data);
         return redirect()->route('disciplinas.index')->with('success', 'Disciplina atualizada!');

@@ -30,7 +30,7 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 
 // Dashboard
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
 // Perfil
 use App\Http\Controllers\PerfilController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('perfis/data', [PerfilController::class, 'data'])
         ->name('perfis.data');
     Route::resource('perfis', PerfilController::class)->parameters(['perfis' => 'perfil']);
@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function () {
 
 
 // Polos
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     // endpoint AJAX para o DataTable
     Route::get('polos/data', [PoloController::class, 'data'])->name('polos.data');
     Route::resource('polos', PoloController::class);
@@ -62,7 +62,7 @@ Route::middleware('auth')->group(function () {
 // Cursos
 use App\Http\Controllers\CursoController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('cursos/data', [CursoController::class, 'data'])->name('cursos.data');
     Route::resource('cursos', CursoController::class);
 });
@@ -71,7 +71,7 @@ Route::middleware('auth')->group(function () {
 // Matrizes Curriculares
 use App\Http\Controllers\MatrizCurricularController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('matrizes/data', [MatrizCurricularController::class, 'data'])->name('matrizes.data');
     Route::resource('matrizes', MatrizCurricularController::class)->parameters(['matrizes' => 'matriz']);
     ;
@@ -81,7 +81,7 @@ Route::middleware('auth')->group(function () {
 // Turmas
 use App\Http\Controllers\TurmaController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('turmas/data', [TurmaController::class, 'data'])->name('turmas.data');
     Route::resource('turmas', TurmaController::class);
 });
@@ -90,7 +90,7 @@ Route::middleware('auth')->group(function () {
 // Perriodos Letivos
 use App\Http\Controllers\PeriodoLetivoController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('periodos/data', [PeriodoLetivoController::class, 'data'])->name('periodos.data');
     Route::resource('periodos', PeriodoLetivoController::class);
 });
@@ -99,7 +99,7 @@ Route::middleware('auth')->group(function () {
 // Alunos
 use App\Http\Controllers\AlunoController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('alunos/data', [AlunoController::class, 'data'])->name('alunos.data');
     Route::resource('alunos', AlunoController::class);
     ;
@@ -109,7 +109,7 @@ Route::middleware('auth')->group(function () {
 // Aluno Curso Admissão
 use App\Http\Controllers\AlunoCursoAdmissaoController as AdmissaoController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('admissoes/data', [AdmissaoController::class, 'data'])->name('admissoes.data');
     Route::resource('admissoes', AdmissaoController::class)->parameters(['admissoes' => 'admissao']);
 });
@@ -118,7 +118,7 @@ Route::middleware('auth')->group(function () {
 // Editais Processo Seletivo
 use App\Http\Controllers\EditalProcessoSeletivoController as EditalController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('editais/data', [EditalController::class, 'data'])->name('editais.data');
     Route::resource('editais', EditalController::class)->parameters(['editais' => 'edital']);
 });
@@ -127,7 +127,7 @@ Route::middleware('auth')->group(function () {
 // Matrículas
 use App\Http\Controllers\MatriculaController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('matriculas/data', [MatriculaController::class, 'data'])
         ->name('matriculas.data');
     Route::resource('matriculas', MatriculaController::class);
@@ -138,7 +138,7 @@ Route::middleware('auth')->group(function () {
 //  Área de Conhecimento
 use App\Http\Controllers\AreaConhecimentoController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('area_conhecimentos/data', [AreaConhecimentoController::class, 'data'])->name('area_conhecimentos.data');
     Route::resource('area_conhecimentos', AreaConhecimentoController::class);
 });
@@ -148,7 +148,7 @@ Route::middleware('auth')->group(function () {
 // Etapas Período Letivo
 use App\Http\Controllers\EtapaPeriodoLetivoController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('etapas_periodos_letivos/data', [EtapaPeriodoLetivoController::class, 'data'])
         ->name('etapas_periodos_letivos.data');
     Route::resource('etapas_periodos_letivos', EtapaPeriodoLetivoController::class);
@@ -158,7 +158,7 @@ Route::middleware('auth')->group(function () {
 // Módulos
 use App\Http\Controllers\ModuloController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('modulos/data', [ModuloController::class, 'data'])->name('modulos.data');
     Route::resource('modulos', ModuloController::class);
 });
@@ -169,7 +169,7 @@ Route::middleware('auth')->group(function () {
 // Grade Disciplinas Matrizes
 use App\Http\Controllers\GradeDisciplinasMatrizController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('grade_disciplinas_matrizes/data', [GradeDisciplinasMatrizController::class, 'data'])
         ->name('grade_disciplinas_matrizes.data');
     Route::resource('grade_disciplinas_matrizes', GradeDisciplinasMatrizController::class);
@@ -179,7 +179,7 @@ Route::middleware('auth')->group(function () {
 //  Disciplinas Base
 use App\Http\Controllers\DisciplinaBaseController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('disciplinas_base/data', [DisciplinaBaseController::class, 'data'])
         ->name('disciplinas_base.data');
     Route::resource('disciplinas_base', DisciplinaBaseController::class);
@@ -202,7 +202,7 @@ Route::group(['permission' => ['permission:disciplinas.edit']], function () {
 // Professores
 use App\Http\Controllers\ProfessorController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('professores/data', [ProfessorController::class, 'data'])->name('professores.data');
     Route::resource('professores', ProfessorController::class)->parameters(['professores' => 'professor']);
 });
@@ -211,7 +211,7 @@ Route::middleware('auth')->group(function () {
 //  Setores
 use App\Http\Controllers\SetorController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('setores/data', [SetorController::class, 'data'])->name('setores.data');
     Route::resource('setores', SetorController::class)->parameters(['setores' => 'setor']);
 });
@@ -220,7 +220,7 @@ Route::middleware('auth')->group(function () {
 // Funções
 use App\Http\Controllers\FuncaoController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('funcoes/data', [FuncaoController::class, 'data'])->name('funcoes.data');
     Route::resource('funcoes', FuncaoController::class)->parameters(['funcoes' => 'funcao']);
 });
@@ -229,7 +229,7 @@ Route::middleware('auth')->group(function () {
 // Funções
 use App\Http\Controllers\FuncionarioController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('funcionarios/data', [FuncionarioController::class, 'data'])->name('funcionarios.data');
     Route::resource('funcionarios', FuncionarioController::class)->parameters(['funcionarios' => 'funcionario']);
 });
@@ -240,7 +240,7 @@ use App\Http\Controllers\MatrizCaptacaoController;
 use App\Http\Controllers\CursoMatrizCaptacaoController;
 use App\Http\Controllers\PoloMatrizCaptacaoController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('matriz-captacao/data', [MatrizCaptacaoController::class, 'data'])->name('matriz_captacao.data');
     Route::resource('matriz-captacao', MatrizCaptacaoController::class)->parameters(['matriz-captacao' => 'matriz']);
 
@@ -259,7 +259,7 @@ Route::middleware('auth')->group(function () {
 use App\Http\Controllers\PlanoPagamentoController;
 use App\Http\Controllers\ParcelaPlanoPagamentoController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('planos/data', [PlanoPagamentoController::class, 'data'])->name('planos.data');
     Route::resource('planos_pagamento', PlanoPagamentoController::class);
 
@@ -282,7 +282,7 @@ Route::middleware('auth')->group(function () {
 //  Requerimentos
 use App\Http\Controllers\RequerimentoDepartamentoController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'estrutura'])->group(function () {
     Route::get('requerimentos_departamentos/data', [RequerimentoDepartamentoController::class, 'data'])->name('requerimentos_departamentos.data');
     Route::resource('requerimentos_departamentos', RequerimentoDepartamentoController::class)->parameters(['requerimentos_departamentos' => 'requerimento_departamento']);
 

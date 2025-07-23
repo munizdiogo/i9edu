@@ -10,6 +10,7 @@ use App\Models\PeriodoLetivo;
 use App\Models\PlanoPagamento;
 use App\Models\Turma;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ContratoController extends Controller
 {
@@ -67,20 +68,15 @@ class ContratoController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'id_perfil' => 'required',
-            'id_curso' => 'required',
-            'id_matricula' => 'nullable',
-            'id_turma' => 'nullable',
-            'id_periodo_letivo' => 'required',
-            'id_plano_pagamento' => 'required',
-            'status' => 'required',
-            'data_aceite' => 'nullable|date',
-            'data_inicio_vigencia' => 'nullable|date',
-            'data_fim_vigencia' => 'nullable|date',
-            'cancelado_por' => 'nullable|string',
-            'observacao' => 'nullable|string',
-        ]);
+        $data = $request->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
+
         $data['id_estrutura'] = session('id_estrutura');
         Contrato::create($data);
         return redirect()->route('contratos.index')->with('success', 'Contrato criado!');
@@ -103,9 +99,16 @@ class ContratoController extends Controller
     public function update(Request $request, $id)
     {
         $contrato = Contrato::findOrFail($id);
-        $data = $request->validate([
-            // Mesmos campos do store
-        ]);
+
+        $data = $request->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
+
         $data['id_estrutura'] = session('id_estrutura');
 
         $contrato->update($data);
@@ -122,5 +125,32 @@ class ContratoController extends Controller
     {
         Contrato::findOrFail($id)->delete();
         return redirect()->route('contratos.index')->with('success', 'Contrato excluído!');
+    }
+
+
+    protected function validateData(Request $request, $origem = "create", $dados = null)
+    {
+        $dados = $request->all();
+
+        $rules = [
+            'id_perfil' => 'required',
+            'id_curso' => 'required',
+            'id_matricula' => 'nullable',
+            'id_turma' => 'nullable',
+            'id_periodo_letivo' => 'required',
+            'id_plano_pagamento' => 'required',
+            'status' => 'required',
+            'data_aceite' => 'nullable|date',
+            'data_inicio_vigencia' => 'nullable|date',
+            'data_fim_vigencia' => 'nullable|date',
+            'cancelado_por' => 'nullable|string',
+            'observacao' => 'nullable|string',
+        ];
+
+        if ($origem != 'create') {
+
+        }
+
+        return Validator::make($dados, $rules);
     }
 }

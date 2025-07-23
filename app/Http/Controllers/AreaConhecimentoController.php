@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AreaConhecimento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AreaConhecimentoController extends Controller
 {
@@ -57,11 +58,15 @@ class AreaConhecimentoController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'codigo' => 'required|unique:area_conhecimentos,codigo',
-            'descricao' => 'required|string',
-            'status' => 'required|in:Ativo,Inativo',
-        ]);
+        $data = $request->validateData($request, "create");
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
+
         $data['id_estrutura'] = session('id_estrutura');
         AreaConhecimento::create($data);
         return redirect()->route('area_conhecimentos.index')->with('success', 'Área criada!');
@@ -79,11 +84,15 @@ class AreaConhecimentoController extends Controller
 
     public function update(Request $request, AreaConhecimento $area_conhecimento)
     {
-        $data = $request->validate([
-            'codigo' => 'required|unique:area_conhecimentos,codigo,' . $area_conhecimento->id,
-            'descricao' => 'required|string',
-            'status' => 'required|in:Ativo,Inativo',
-        ]);
+        $data = $request->validateData($request, "update", $area_conhecimento);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
+
         $data['id_estrutura'] = session('id_estrutura');
         $area_conhecimento->update($data);
         return redirect()->route('area_conhecimentos.index')->with('success', 'Área atualizada!');
@@ -93,5 +102,27 @@ class AreaConhecimentoController extends Controller
     {
         $area_conhecimento->delete();
         return redirect()->route('area_conhecimentos.index')->with('success', 'Área removida!');
+    }
+
+    protected function validateData(Request $request, $origem = "create", $area_conhecimento = null)
+    {
+        $dados = $request->all();
+
+        if ($origem == 'create') {
+            $rules = [
+                'codigo' => 'required|unique:area_conhecimentos,codigo',
+                'descricao' => 'required|string',
+                'status' => 'required|in:Ativo,Inativo',
+            ];
+
+        } else {
+            $rules = [
+                'codigo' => 'required|unique:area_conhecimentos,codigo,' . $area_conhecimento->id,
+                'descricao' => 'required|string',
+                'status' => 'required|in:Ativo,Inativo',
+            ];
+
+        }
+        return Validator::make($dados, $rules);
     }
 }

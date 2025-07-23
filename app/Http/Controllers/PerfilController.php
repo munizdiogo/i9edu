@@ -85,6 +85,7 @@ class PerfilController extends Controller
                 ->withErrors($data)
                 ->withInput();
         }
+        $data = $data->getData();
 
         // Tratamento de upload de foto
         if ($request->hasFile('photo')) {
@@ -108,6 +109,7 @@ class PerfilController extends Controller
     public function update(Request $request, Perfil $perfil)
     {
         $data = $this->validateData($request, $perfil->id);
+
 
         if ($request->hasFile('photo')) {
             // Deleta foto antiga

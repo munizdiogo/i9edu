@@ -10,6 +10,7 @@ use App\Models\PeriodoLetivo;
 use App\Models\Turma;
 use App\Models\EditalProcessoSeletivo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AlunoCursoAdmissaoController extends Controller
 {
@@ -89,6 +90,13 @@ class AlunoCursoAdmissaoController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
         $data['id_estrutura'] = session('id_estrutura');
         AlunoCursoAdmissao::create($data);
         return redirect()->route('admissoes.index')->with('success', 'Registro salvo!');
@@ -125,6 +133,14 @@ class AlunoCursoAdmissaoController extends Controller
     public function update(Request $request, AlunoCursoAdmissao $admissao)
     {
         $data = $this->validateData($request);
+
+        if ($data->fails()) {
+            return redirect()->back()
+                ->withErrors($data)
+                ->withInput();
+        }
+        $data = $data->getData();
+
         $data['id_estrutura'] = session('id_estrutura');
         $admissao->update($data);
         return redirect()->route('admissoes.index')->with('success', 'Registro atualizado!');
@@ -139,6 +155,7 @@ class AlunoCursoAdmissaoController extends Controller
 
     protected function validateData(Request $request, $id = null)
     {
+        $dados = $request->all();
         $rules = [
             'id_aluno' => 'required|exists:alunos,id',
             'id_matriz_curricular' => 'required|exists:matrizes_curriculares,id',
@@ -168,6 +185,6 @@ class AlunoCursoAdmissaoController extends Controller
             // 'status' => 'required|in:ATIVO,INATIVO'
         ];
 
-        return $request->validate($rules);
+        return Validator::make($dados, $rules);
     }
 }
